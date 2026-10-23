@@ -1,0 +1,269 @@
+<!--
+  PATTERN: guarantee-card
+  THEME:   warm-authority
+  USE:     Professional commitment — 2-col: amber seal + Lora italic promise
+  Design:  "Cam Kết Kết Quả — hoặc làm lại không tính phí." Trusted advisor tone.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --forest: #2d5016;
+    --bg: #fdf9f4; --surface: #f7f1e8; --raised: #efe6d8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+    --rim: rgba(181,115,42,0.20);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .guarantee-section {
+    background: var(--surface);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .guarantee-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .guarantee-inner {
+    max-width: 840px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .guarantee-card {
+    background: var(--raised);
+    border: 1px solid var(--rim);
+    border-radius: 20px;
+    padding: 52px 48px;
+    box-shadow: 0 4px 24px rgba(30,22,10,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Decorative corner marks — restrained, professional */
+  .guarantee-card::before,
+  .guarantee-card::after {
+    content: '';
+    position: absolute;
+    width: 60px; height: 60px;
+    border: 1px solid rgba(181,115,42,0.15);
+    border-radius: 4px;
+  }
+  .guarantee-card::before { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+  .guarantee-card::after  { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+  /* 2-column layout: seal | promise */
+  .guarantee-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  /* Left — amber seal */
+  .guarantee-seal-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .seal-ring {
+    width: 96px; height: 96px;
+    position: relative;
+  }
+  .seal-tag {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--accent);
+    text-align: center;
+    white-space: nowrap;
+  }
+  /* Right — promise */
+  .guarantee-content {}
+  .guarantee-eyebrow {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 14px;
+  }
+  /* Lora bold headline */
+  .guarantee-headline {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  /* Lora italic promise */
+  .guarantee-promise {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--body);
+    line-height: 1.72;
+    margin-bottom: 28px;
+    max-width: 500px;
+  }
+  .guarantee-promise .strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  /* 3 commitment points */
+  .commitment-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--faint);
+  }
+  .commitment-point {}
+  .cp-icon {
+    width: 32px; height: 32px;
+    background: rgba(181,115,42,0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .cp-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .cp-desc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+    line-height: 1.5;
+  }
+  /* Signature line */
+  .sig-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--faint);
+  }
+  .sig-line-svg { flex-shrink: 0; }
+  .sig-name {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+  .sig-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .guarantee-card { padding: 36px 24px; }
+    .guarantee-grid { grid-template-columns: 1fr; gap: 24px; }
+    .guarantee-seal-col { flex-direction: row; justify-content: flex-start; }
+    .commitment-points { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section class="guarantee-section">
+  <div class="guarantee-inner">
+    <div class="guarantee-card">
+      <div class="guarantee-grid">
+
+        <!-- Seal (left) -->
+        <div class="guarantee-seal-col">
+          <div class="seal-ring">
+            <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer dashed ring -->
+              <circle cx="48" cy="48" r="44" stroke="#b5732a" stroke-width="1"
+                      stroke-dasharray="5 4" opacity="0.35"/>
+              <!-- Inner solid ring -->
+              <circle cx="48" cy="48" r="36" stroke="#b5732a" stroke-width="1.5"
+                      fill="rgba(181,115,42,0.05)"/>
+              <!-- Star / seal center -->
+              <path d="M48 24 L52 36 L65 36 L55 44 L59 57 L48 50 L37 57 L41 44 L31 36 L44 36 Z"
+                    fill="#b5732a" opacity="0.75"/>
+            </svg>
+          </div>
+          <span class="seal-tag">Cam kết<br>chuyên nghiệp</span>
+        </div>
+
+        <!-- Content (right) -->
+        <div class="guarantee-content">
+          <span class="guarantee-eyebrow">Bảo đảm kết quả</span>
+          <h2 class="guarantee-headline">
+            Cam Kết Kết Quả —<br>Hoặc Làm Lại Không Tính Phí
+          </h2>
+          <p class="guarantee-promise">
+            "Tôi cam kết mỗi doanh nghiệp tôi làm việc cùng sẽ thấy được
+            <span class="strong">kết quả đo được</span> trong vòng 90 ngày đầu.
+            Nếu chúng ta không đạt được mục tiêu đã thống nhất cùng nhau
+            — tôi sẽ tiếp tục đồng hành thêm mà <span class="strong">không tính thêm bất kỳ chi phí nào</span>."
+          </p>
+
+          <!-- Commitment points -->
+          <div class="commitment-points">
+            <div class="commitment-point">
+              <div class="cp-icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 9 L7 13 L15 5" stroke="#b5732a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p class="cp-title">Mục Tiêu Rõ Ràng</p>
+              <p class="cp-desc">KPI cụ thể thống nhất từ buổi đầu tiên</p>
+            </div>
+            <div class="commitment-point">
+              <div class="cp-icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="3" y="3" width="12" height="12" rx="2" stroke="#b5732a" stroke-width="1.5" fill="rgba(181,115,42,0.06)"/>
+                  <path d="M6 9 L8 11 L12 7" stroke="#b5732a" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p class="cp-title">Review Hàng Tháng</p>
+              <p class="cp-desc">Đánh giá tiến độ thực tế, điều chỉnh kịp thời</p>
+            </div>
+            <div class="commitment-point">
+              <div class="cp-icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="6" stroke="#b5732a" stroke-width="1.5" fill="rgba(181,115,42,0.06)"/>
+                  <path d="M9 6 L9 9 L11.5 11.5" stroke="#b5732a" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p class="cp-title">Bảo Hành 90 Ngày</p>
+              <p class="cp-desc">Làm lại miễn phí nếu chưa đạt mục tiêu</p>
+            </div>
+          </div>
+
+          <!-- Signature -->
+          <div class="sig-row">
+            <svg class="sig-line-svg" width="120" height="36" viewBox="0 0 120 36" fill="none">
+              <path d="M8 24 C18 16 24 12 32 17 C40 22 38 11 48 14 C58 17 55 8 64 12
+                       C73 16 70 24 80 20 C90 16 95 9 104 13 C109 15 113 21 118 19"
+                    stroke="#b5732a" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+            </svg>
+            <div>
+              <p class="sig-name">[Nguyễn Minh Tuấn]</p>
+              <p class="sig-title">Business Growth Consultant · 12 năm kinh nghiệm</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

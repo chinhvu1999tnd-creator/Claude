@@ -1,0 +1,151 @@
+{
+  "version": "1.0",
+  "items": [
+    {
+      "name": "logo-pop",
+      "file": "logo-pop.mp3",
+      "duration_ms": 300,
+      "tags": [
+        "ui",
+        "confirm",
+        "pop",
+        "logo"
+      ],
+      "gen_prompt": "short logo pop sound, modern UI confirmation, crisp pluck, no music, no voice",
+      "gen_at": "2026-05-23T15:12:43.121Z",
+      "cost_usd": 0.0024,
+      "size_bytes": 8821
+    },
+    {
+      "name": "whoosh-impact",
+      "file": "whoosh-impact.mp3",
+      "duration_ms": 600,
+      "tags": [
+        "transition",
+        "whoosh",
+        "motion"
+      ],
+      "gen_prompt": "short whoosh transition with subtle impact, modern motion graphics, no music",
+      "gen_at": "2026-05-23T15:12:44.573Z",
+      "cost_usd": 0.0048,
+      "size_bytes": 10493
+    },
+    {
+      "name": "count-up-tick",
+      "file": "count-up-tick.mp3",
+      "duration_ms": 500,
+      "tags": [
+        "data",
+        "counter",
+        "tick",
+        "digital"
+      ],
+      "gen_prompt": "single short digital tick, like counter increment, very brief metallic click",
+      "gen_at": "2026-05-23T15:12:46.035Z",
+      "cost_usd": 0.004,
+      "size_bytes": 8821
+    },
+    {
+      "name": "notification",
+      "file": "notification.mp3",
+      "duration_ms": 500,
+      "tags": [
+        "alert",
+        "notification",
+        "news"
+      ],
+      "gen_prompt": "short notification ding, soft modern alert tone, two-note positive",
+      "gen_at": "2026-05-23T15:12:47.460Z",
+      "cost_usd": 0.004,
+      "size_bytes": 8821
+    },
+    {
+      "name": "line-draw",
+      "file": "line-draw.mp3",
+      "duration_ms": 800,
+      "tags": [
+        "draw",
+        "sweep",
+        "chart",
+        "reveal"
+      ],
+      "gen_prompt": "short ascending whoosh like drawing a line on screen, smooth sweep, no music",
+      "gen_at": "2026-05-23T15:12:49.191Z",
+      "cost_usd": 0.0064,
+      "size_bytes": 13836
+    },
+    {
+      "name": "glitch",
+      "file": "glitch.mp3",
+      "duration_ms": 500,
+      "tags": [
+        "glitch",
+        "vs",
+        "digital",
+        "impact"
+      ],
+      "gen_prompt": "brief digital glitch zap, electronic interference, no music",
+      "gen_at": "2026-05-23T15:12:50.604Z",
+      "cost_usd": 0.004,
+      "size_bytes": 8821
+    },
+    {
+      "name": "chime-success",
+      "file": "chime-success.mp3",
+      "duration_ms": 700,
+      "tags": [
+        "success",
+        "chime",
+        "positive",
+        "reveal"
+      ],
+      "gen_prompt": "short positive chime, two ascending bells, achievement reveal, no music",
+      "gen_at": "2026-05-23T15:12:51.966Z",
+      "cost_usd": 0.0056,
+      "size_bytes": 12164
+    },
+    {
+      "name": "typewriter",
+      "file": "typewriter.mp3",
+      "duration_ms": 1500,
+      "tags": [
+        "typewriter",
+        "text",
+        "keys"
+      ],
+      "gen_prompt": "soft typewriter keystrokes, rapid typing, mechanical click pattern",
+      "gen_at": "2026-05-23T15:12:54.118Z",
+      "cost_usd": 0.012,
+      "size_bytes": 24703
+    },
+    {
+      "name": "countdown-tick",
+      "file": "countdown-tick.mp3",
+      "duration_ms": 800,
+      "tags": [
+        "countdown",
+        "timer",
+        "clock"
+      ],
+      "gen_prompt": "single deep clock tick, mechanical pendulum, timer suspense",
+      "gen_at": "2026-05-23T15:12:55.644Z",
+      "cost_usd": 0.0064,
+      "size_bytes": 13836
+    },
+    {
+      "name": "pen-scratch",
+      "file": "pen-scratch.mp3",
+      "duration_ms": 600,
+      "tags": [
+        "doodle",
+        "draw",
+        "pen",
+        "sketch"
+      ],
+      "gen_prompt": "pen scratching on paper, brief doodle stroke sound",
+      "gen_at": "2026-05-23T15:12:57.123Z",
+      "cost_usd": 0.0048,
+      "size_bytes": 10493
+    }
+  ]
+}

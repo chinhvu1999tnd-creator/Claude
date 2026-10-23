@@ -1,0 +1,324 @@
+<!--
+  PATTERN: Hero — Full Bleed, 2-Column Split
+  THEME: prestige-dark
+  Layout: Copy left (40%) | Media right (60%) | Thin vertical gold divider
+  Height: 100vh minimum
+  Typography: Cormorant Garamond display headline with italic gold accent word
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: Hero — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:      #c9a84c;
+      --accent-rgb:  201, 168, 76;
+      --bg:          #0c0c0a;
+      --surface:     #141412;
+      --raised:      #1c1c19;
+      --ink:         #f5f0e8;
+      --body:        #c8c4b8;
+      --subtle:      #7a7870;
+      --faint:       #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+      color: var(--body);
+    }
+
+    /* ─── Hero Section ──────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 40fr 60fr;
+      overflow: hidden;
+
+      /* Subtle gold radial — top left, nearly invisible */
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(201,168,76,0.04) 0%, transparent 70%),
+        var(--bg);
+    }
+
+    /* ─── Copy Column (left 40%) ───────────────────────────────────── */
+    .hero__copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 48px 80px 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Eyebrow label */
+    .hero__eyebrow {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    /* Main headline */
+    .hero__headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    /* Italic gold accent word — the signature technique */
+    .hero__headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* Sub-headline */
+    .hero__subline {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--body);
+      max-width: 380px;
+      margin-bottom: 44px;
+    }
+
+    /* CTA Button — ghost style (gold border, no fill) */
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--accent);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 350ms, color 350ms;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .hero__cta:hover {
+      background: rgba(201,168,76,0.08);
+      color: var(--ink);
+    }
+
+    .hero__cta svg {
+      transition: transform 350ms;
+    }
+
+    .hero__cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Social proof strip below CTA */
+    .hero__proof {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--faint);
+      display: flex;
+      gap: 32px;
+    }
+
+    .hero__proof-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero__proof-number {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 1.375rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .hero__proof-label {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--subtle);
+    }
+
+    /* ─── Vertical Divider Line ─────────────────────────────────────── */
+    .hero__divider {
+      position: absolute;
+      left: 40%;
+      top: 80px;
+      bottom: 80px;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(201,168,76,0.35) 20%,
+        rgba(201,168,76,0.35) 80%,
+        transparent
+      );
+      z-index: 3;
+    }
+
+    /* ─── Media Column (right 60%) ──────────────────────────────────── */
+    .hero__media {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Full-bleed image slot */
+    .hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Dark surface placeholder (when no image is available) */
+    .hero__media-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      background: var(--raised);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--subtle);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 50vh;
+        min-height: auto;
+      }
+
+      .hero__copy {
+        padding: 64px 32px 48px;
+      }
+
+      .hero__divider {
+        display: none;
+      }
+
+      .hero__media {
+        min-height: 50vh;
+      }
+
+      .hero__media-placeholder {
+        min-height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <section class="hero">
+
+    <!-- Copy column -->
+    <div class="hero__copy">
+
+      <!-- Eyebrow -->
+      <p class="hero__eyebrow">The Grand Residences · Hà Nội</p>
+
+      <!-- Headline — italic gold on one key word -->
+      <h1 class="hero__headline">
+        Sống Đỉnh<br>
+        <em>Cao Hơn</em><br>
+        Mọi Giới Hạn
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="hero__subline">
+        Căn hộ cao cấp tầm cao tại trung tâm Hà Nội —
+        nơi kiến trúc, thiên nhiên và phong cách sống hội tụ
+        trong một không gian chưa từng có.
+      </p>
+
+      <!-- Ghost CTA -->
+      <a href="#inquire" class="hero__cta">
+        Đặt Lịch Tham Quan
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+             stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+
+      <!-- Social proof -->
+      <div class="hero__proof">
+        <div class="hero__proof-item">
+          <span class="hero__proof-number">98%</span>
+          <span class="hero__proof-label">Đã bán</span>
+        </div>
+        <div class="hero__proof-item">
+          <span class="hero__proof-number">42</span>
+          <span class="hero__proof-label">Tầng cao</span>
+        </div>
+        <div class="hero__proof-item">
+          <span class="hero__proof-number">2026</span>
+          <span class="hero__proof-label">Bàn giao</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Vertical gold divider -->
+    <div class="hero__divider" aria-hidden="true"></div>
+
+    <!-- Media column — replace placeholder with <img> tag -->
+    <div class="hero__media">
+      <!--
+        REPLACE WITH:
+        <img src="path/to/hero-property.jpg" alt="The Grand Residences exterior">
+      -->
+      <div class="hero__media-placeholder">
+        Media Slot · 60% Width · Full Bleed
+      </div>
+    </div>
+
+  </section>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • Replace .hero__media-placeholder with a real <img> tag.
+    • The italic gold word in the headline is the design signature.
+      Choose ONE key word per headline, not multiple.
+    • The vertical divider line fades at top and bottom — it never
+      touches the edge. This is intentional.
+    • The ghost CTA button never fills with color on this theme.
+    • Social proof strip should have max 3 items — keep it tight.
+    • Background radial is at 0.04 opacity — barely perceptible.
+      Do not increase it.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!--
+  social-proof-counter.html — "X người mua trong 24h" live counter
+  Elements: animated counter + live dot + short copy
+  Layout: compact horizontal bar · compact card variant
+-->
+<!-- Compact bar version (use in order page header area) -->
+<div class="flex items-center justify-center gap-2 py-2 px-4 rounded-full font-mono text-xs" style="background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.15)">
+  <span class="w-1.5 h-1.5 rounded-full animate-live shrink-0" style="background:var(--accent)"></span>
+  <span style="color:var(--subtle)">Đã có</span>
+  <span class="font-black tabular-nums" style="color:var(--accent)" id="buyer-count">47</span>
+  <span style="color:var(--subtle)">người mua trong 24 giờ qua</span>
+</div>
+
+<script>
+// Subtle increment to make it feel live
+(function(){
+  const el = document.getElementById('buyer-count');
+  if (!el) return;
+  let base = 47;
+  // Random small increment every 30–60 seconds
+  function maybeIncrement() {
+    if (Math.random() > 0.6) {
+      base++;
+      el.textContent = base;
+    }
+    setTimeout(maybeIncrement, 30000 + Math.random() * 30000);
+  }
+  setTimeout(maybeIncrement, 20000);
+})();
+</script>

@@ -1,0 +1,172 @@
+<!--
+  PATTERN: stats-bar
+  THEME:   warm-authority
+  USE:     4 warm metric cards on surface — social proof numbers for personal brand
+  Design:  Amber Lora italic numbers, Source Code Pro labels
+           "[N]+ / Khách hàng" · "[N]M+ / Doanh thu khách" · "[N] năm / Kinh nghiệm" · "[N]% / Tái ký"
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,700&family=Source+Sans+3:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --forest: #2d5016;
+    --bg: #fdf9f4; --surface: #f7f1e8; --raised: #efe6d8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .stats-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+    padding: 52px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .stats-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 16px;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .stat-item:hover { transform: translateY(-2px); }
+  /* Warm vertical divider */
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 44px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--faint), transparent);
+  }
+  /* Amber number in Lora italic — the signature of warm-authority */
+  .stat-number {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+  .stat-number .suffix {
+    font-size: 0.52em;
+    font-style: normal;
+    color: var(--subtle);
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+  }
+  /* Thin warm divider line */
+  .stat-rule {
+    width: 32px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    margin: 8px auto;
+    opacity: 0.5;
+  }
+  /* Source Code Pro label */
+  .stat-label {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--subtle);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .stat-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--faint);
+    margin-top: 3px;
+  }
+  /* Forest green for win metrics */
+  .stat-item.win .stat-number { color: var(--forest); }
+  .stat-item.win .stat-rule { background: linear-gradient(to right, transparent, var(--forest), transparent); }
+
+  @media (max-width: 600px) {
+    .stats-inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+    .stat-item:nth-child(2)::after,
+    .stat-item:nth-child(4)::after { display: none; }
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2) {
+      border-bottom: 1px solid var(--faint);
+      padding-bottom: 28px;
+    }
+    .stat-item:nth-child(3),
+    .stat-item:nth-child(4) {
+      padding-top: 28px;
+    }
+  }
+</style>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+
+    <!-- Stat 1: Clients -->
+    <div class="stat-item">
+      <div class="stat-number">
+        200
+        <span class="suffix">+</span>
+      </div>
+      <div class="stat-rule"></div>
+      <div class="stat-label">Khách hàng</div>
+    </div>
+
+    <!-- Stat 2: Revenue generated (win metric — forest green) -->
+    <div class="stat-item win">
+      <div class="stat-number">
+        45M
+        <span class="suffix">+</span>
+      </div>
+      <div class="stat-rule"></div>
+      <div class="stat-label">Doanh thu khách</div>
+    </div>
+
+    <!-- Stat 3: Years of experience -->
+    <div class="stat-item">
+      <div class="stat-number">
+        12
+        <span class="suffix">năm</span>
+      </div>
+      <div class="stat-rule"></div>
+      <div class="stat-label">Kinh nghiệm</div>
+    </div>
+
+    <!-- Stat 4: Renewal rate (win metric) -->
+    <div class="stat-item win">
+      <div class="stat-number">
+        94
+        <span class="suffix">%</span>
+      </div>
+      <div class="stat-rule"></div>
+      <div class="stat-label">Tái ký hợp đồng</div>
+    </div>
+
+  </div>
+</div>

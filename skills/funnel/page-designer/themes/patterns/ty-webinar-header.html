@@ -1,0 +1,85 @@
+<!--
+  ty-webinar-header.html — Webinar / Event registration confirmation header
+  Layout:     centered · max-w-xl · event detail card
+  Elements:   Confirmed badge · Headline · Event info card (date/time/platform/link) · Show-up tip
+  Rule:       Link tham dự phải xuất hiện ngay tại đây — không chỉ gửi qua email
+              Mục tiêu: người dùng bookmark / screenshot thông tin ngay lúc này
+-->
+<div class="relative text-center py-14 px-6 overflow-hidden">
+
+  <!-- Top glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 pointer-events-none"
+    style="background:radial-gradient(ellipse,rgba(var(--purple-rgb),.14) 0%,transparent 70%);filter:blur(36px)"></div>
+
+  <div class="relative max-w-xl mx-auto">
+
+    <!-- Confirmed badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+      style="background:rgba(var(--purple-rgb),.10);border:1px solid rgba(var(--purple-rgb),.25)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="7" cy="7" r="6" stroke="var(--purple)" stroke-width="1.2"/>
+        <path d="M4.5 7l2 2 3-3" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--purple)">Đăng ký thành công</span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="font-display font-black text-ink mb-2"
+      style="font-size:clamp(1.625rem,4vw,2.375rem);line-height:1.1;letter-spacing:-0.03em">
+      Hẹn gặp anh/chị tại buổi<br>[Tên webinar / event]!
+    </h1>
+    <p class="font-body mb-8" style="color:var(--body);font-size:1rem;line-height:1.7">
+      Thông tin chi tiết đã gửi về email. Lưu thông tin bên dưới để không bỏ lỡ.
+    </p>
+
+    <!-- Event detail card -->
+    <div class="rounded-xl p-5 text-left" style="background:var(--surface);border:1px solid rgba(var(--purple-rgb),.25)">
+
+      <div class="space-y-3 mb-5">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+            style="background:rgba(var(--purple-rgb),.10);border:1px solid rgba(var(--purple-rgb),.18)">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="2" width="12" height="11" rx="2" stroke="var(--purple)" stroke-width="1.2"/>
+              <path d="M1 6h12M5 1v2M9 1v2" stroke="var(--purple)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider mb-0.5" style="color:var(--subtle)">Ngày giờ</p>
+            <p class="font-body font-semibold text-sm text-ink">[Thứ X, DD/MM/YYYY · HH:MM — HH:MM]</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+            style="background:rgba(var(--purple-rgb),.10);border:1px solid rgba(var(--purple-rgb),.18)">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="3" width="12" height="8" rx="2" stroke="var(--purple)" stroke-width="1.2"/>
+              <path d="M4 7l2 1.5L10 5" stroke="var(--purple)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider mb-0.5" style="color:var(--subtle)">Nền tảng</p>
+            <p class="font-body font-semibold text-sm text-ink">[Zoom / Google Meet / YouTube Live / Zalo]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Join link -->
+      <a href="[WEBINAR_LINK]" target="_blank"
+        class="btn-glow flex items-center justify-center gap-2 w-full py-3 px-5 rounded-btn font-display font-bold text-sm"
+        style="background:rgba(var(--purple-rgb),.15);color:var(--purple);border:1px solid rgba(var(--purple-rgb),.3);text-decoration:none">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <path d="M7.5 1a6.5 6.5 0 100 13A6.5 6.5 0 007.5 1z" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M6 5.5l4 2-4 2V5.5z" fill="currentColor"/>
+        </svg>
+        Lưu link tham dự
+      </a>
+
+    </div>
+
+    <p class="font-mono text-[10px] mt-4" style="color:var(--subtle)">
+      Link cũng đã được gửi về email · Reminder sẽ gửi trước 1 tiếng
+    </p>
+
+  </div>
+</div>

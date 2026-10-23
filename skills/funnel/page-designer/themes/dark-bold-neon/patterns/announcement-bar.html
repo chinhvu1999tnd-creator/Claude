@@ -1,0 +1,29 @@
+<!--
+  OVERRIDE: announcement-bar.html — Dark Bold Neon
+  vs shared: plain accent-bg strip
+  Override: dark surface bg + neon text + live dot + mono counter
+  Visual:   technical/hacker aesthetic vs. bright marketing strip
+-->
+<div class="relative w-full py-2.5 px-6 flex items-center justify-center gap-4 flex-wrap overflow-hidden"
+     style="background:var(--surface);border-bottom:1px solid rgba(182,255,0,0.18);">
+  <!-- Grid micro overlay -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background-image:linear-gradient(90deg,rgba(182,255,0,.025) 1px,transparent 1px);background-size:40px 100%;"></div>
+  <!-- Live dot + text -->
+  <div class="relative flex items-center gap-2.5">
+    <span class="relative flex h-2 w-2">
+      <span class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping" style="background:var(--accent)"></span>
+      <span class="relative inline-flex h-2 w-2 rounded-full" style="background:var(--accent)"></span>
+    </span>
+    <p class="font-mono text-xs font-bold tracking-tight" style="color:var(--accent)">[OFFER TEXT — e.g. FLASH SALE · Giảm 68% — Chỉ còn hôm nay]</p>
+  </div>
+  <div class="flex items-center gap-1 font-mono text-xs font-black" style="color:var(--ink)">
+    <span style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.2);padding:1px 7px;border-radius:4px;" id="ab-hrs">08</span>
+    <span style="color:var(--accent)">:</span>
+    <span style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.2);padding:1px 7px;border-radius:4px;" id="ab-min">47</span>
+    <span style="color:var(--accent)">:</span>
+    <span style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.2);padding:1px 7px;border-radius:4px;" id="ab-sec">33</span>
+  </div>
+  <a href="order.html" class="font-mono font-bold text-[11px] uppercase tracking-widest transition-opacity hover:opacity-75"
+     style="color:var(--accent);text-decoration:none;">→ Đăng ký ngay</a>
+</div>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <rect width="240" height="240" rx="32" fill="#1a1a1a"/>
+  <g transform="translate(120 92)" fill="#D97757"><path d="M-26 18c-10-2-16-12-16-22 0-14 10-24 24-24 12 0 20 6 24 16M26-18c10 2 16 12 16 22 0 14-10 24-24 24-12 0-20-6-24-16" stroke="#D97757" stroke-width="8" stroke-linecap="round" fill="none"/></g>
+  <text x="120" y="190" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="22" fill="#faf9f5" text-anchor="middle" letter-spacing="-0.02em">Claude</text>
+</svg>

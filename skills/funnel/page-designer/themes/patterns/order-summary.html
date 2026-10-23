@@ -1,0 +1,65 @@
+<!--
+  order-summary.html — What they're buying + price breakdown
+  Slots: [PRODUCT] 1:1 thumbnail
+  Elements: Product thumbnail · name · included items mini-list · price breakdown
+  Layout: stacked card · sticky on desktop right column
+-->
+<div class="rounded-xl overflow-hidden" style="background:var(--surface);border:1px solid var(--rim)">
+
+  <!-- Product row -->
+  <div class="flex items-center gap-4 p-5" style="border-bottom:1px solid var(--rim)">
+    <!-- [PRODUCT] thumbnail -->
+    <div class="media-slot aspect-1-1 rounded-xl shrink-0" style="width:60px;height:60px;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;" data-role="PRODUCT">
+      <!-- Replace: <img src="product-cover.jpg" class="slot-img" alt="Product"> -->
+      <span style="font-size:1.5rem;opacity:0.35">📸</span>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="font-display font-bold text-ink text-sm leading-snug">Tên sản phẩm / Offer</p>
+      <p class="font-mono text-xs mt-0.5" style="color:var(--subtle)">Truy cập trọn đời · Update miễn phí</p>
+    </div>
+    <span class="font-mono font-black text-sm shrink-0" style="color:var(--accent)">1.997K</span>
+  </div>
+
+  <!-- Included mini-list -->
+  <div class="px-5 py-4" style="border-bottom:1px solid var(--rim)">
+    <p class="font-mono text-[10px] uppercase tracking-wider mb-3" style="color:var(--subtle)">Bao gồm</p>
+    <div class="space-y-2">
+      <div class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="font-body text-xs" style="color:var(--body)">6 AI Agents chuyên biệt</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="font-body text-xs" style="color:var(--body)">21 Skills + 21 Commands</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="font-body text-xs" style="color:var(--body)">46 HTML pattern templates</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="font-body text-xs" style="color:var(--body)">Bonus: Mini CRM Google Sheets</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Price breakdown -->
+  <div class="px-5 py-4">
+    <div class="space-y-2 mb-3">
+      <div class="flex justify-between font-body text-sm">
+        <span style="color:var(--subtle)">Giá gốc</span>
+        <span class="font-mono line-through" style="color:var(--subtle)">4.997.000đ</span>
+      </div>
+      <div class="flex justify-between font-body text-sm">
+        <span style="color:var(--accent)">Giảm giá ra mắt</span>
+        <span class="font-mono" style="color:var(--accent)">-3.000.000đ</span>
+      </div>
+    </div>
+    <div class="flex justify-between items-baseline pt-3" style="border-top:1px solid var(--rim)">
+      <span class="font-display font-bold text-ink text-sm">Tổng thanh toán</span>
+      <span class="font-mono font-black" style="font-size:1.375rem;color:var(--accent)">1.997.000đ</span>
+    </div>
+    <p class="font-mono text-[10px] mt-1.5 text-right" style="color:var(--subtle)">Thanh toán một lần · Không phí ẩn</p>
+  </div>
+
+</div>

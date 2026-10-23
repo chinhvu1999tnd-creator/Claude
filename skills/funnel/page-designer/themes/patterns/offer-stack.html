@@ -1,0 +1,58 @@
+<!--
+  PATTERN: Offer Stack
+  Theme: dark-bold-neon · Tailwind
+  Use: S16 Value stacking
+  Sig: gradient border p-px wrap, divide-y rows, bonus-tag cyan, stack-val accent mono
+-->
+<section class="py-20 px-6">
+  <div class="max-w-2xl mx-auto">
+
+    <div class="text-center mb-10">
+      <p class="section-label">[LABEL]</p>
+      <h2 class="font-display font-black text-ink tracking-tight"
+          style="font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.03em;">
+        [HEADING]<br><span class="text-gradient">[ACCENT]</span>
+      </h2>
+    </div>
+
+    <!-- Gradient border -->
+    <div class="p-px rounded-3xl"
+         style="background:linear-gradient(135deg,rgba(182,255,0,0.50),rgba(0,194,255,0.35));">
+      <div class="rounded-3xl p-8" style="background:#1c1c1a;">
+        <div class="space-y-0 divide-y" style="border-color:rgba(255,255,255,0.06);">
+
+          <!-- Stack row -->
+          <div class="flex gap-4 items-start py-4 first:pt-0">
+            <div class="w-5 h-5 min-w-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                 style="background:rgba(182,255,0,0.10);border:1.5px solid rgba(182,255,0,0.30);">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#B6FF00" stroke-width="3" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-display font-semibold text-ink text-sm">[ITEM NAME]</p>
+              <p class="text-faint text-xs mt-0.5">[ITEM DETAIL]</p>
+            </div>
+            <span class="font-mono text-[10px] tracking-widest text-accent-DEFAULT whitespace-nowrap">[VALUE]</span>
+          </div>
+
+          <!-- Stack row with bonus tag -->
+          <div class="flex gap-4 items-start py-4">
+            <div class="w-5 h-5 min-w-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                 style="background:rgba(182,255,0,0.10);border:1.5px solid rgba(182,255,0,0.30);">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#B6FF00" stroke-width="3" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            <div class="flex-1">
+              <!-- Bonus tag -->
+              <span class="inline-block font-mono text-[9px] uppercase tracking-[0.08em] px-2 py-0.5 rounded mb-1"
+                    style="background:rgba(0,194,255,0.10);color:#00C2FF;border:1px solid rgba(0,194,255,0.20);">BONUS [N]</span>
+              <p class="font-display font-semibold text-ink text-sm">[BONUS NAME]</p>
+              <p class="text-faint text-xs mt-0.5">[BONUS DETAIL]</p>
+            </div>
+            <span class="font-mono text-[10px] tracking-widest text-cyan-DEFAULT whitespace-nowrap">Tặng kèm</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

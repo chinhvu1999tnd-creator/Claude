@@ -1,0 +1,148 @@
+<!-- PATTERN: stats-bar | Soft Luxe Theme
+     Layout: 4 elegant metric blocks in a horizontal row
+     Variables: STAT_1..4 (number + label pairs)
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400&display=swap');
+  :root {
+    --accent: #c9956a; --blush: #f0c8b8; --surface: #f8f0eb;
+    --faint: #e8d5cc; --ink: #2c2218; --body: #6b5042; --subtle: #a89080;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .sl-stats {
+    background: var(--surface);
+    padding: 56px 24px;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle dot pattern background */
+  .sl-stats__dots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image: radial-gradient(circle, var(--faint) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  .sl-stats__inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .sl-stats__block {
+    position: relative;
+    padding: 32px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    transition: transform 0.25s ease;
+  }
+
+  /* Rose gold top border accent */
+  .sl-stats__block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* Vertical divider between blocks (not after last) */
+  .sl-stats__block:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--faint);
+  }
+
+  .sl-stats__block:hover { transform: translateY(-3px); }
+
+  .sl-stats__number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .sl-stats__label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--subtle);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .sl-stats__desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--subtle);
+    line-height: 1.5;
+    max-width: 120px;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .sl-stats__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .sl-stats__block:nth-child(2)::after { display: none; }
+    .sl-stats__block:nth-child(3)::after { display: none; }
+    .sl-stats__block:nth-child(4)::after { display: none; }
+  }
+  @media (max-width: 400px) {
+    .sl-stats__inner { grid-template-columns: 1fr 1fr; }
+    .sl-stats { padding: 40px 16px; }
+  }
+</style>
+
+<section class="sl-stats" aria-label="Thống kê">
+  <div class="sl-stats__dots" aria-hidden="true"></div>
+  <div class="sl-stats__inner">
+
+    <div class="sl-stats__block">
+      <div class="sl-stats__number">15,000+</div>
+      <div class="sl-stats__label">Khách hàng</div>
+      <div class="sl-stats__desc">tin dùng mỗi tháng</div>
+    </div>
+
+    <div class="sl-stats__block">
+      <div class="sl-stats__number">94%</div>
+      <div class="sl-stats__label">Hài lòng</div>
+      <div class="sl-stats__desc">sau 4 tuần sử dụng</div>
+    </div>
+
+    <div class="sl-stats__block">
+      <div class="sl-stats__number">8 năm</div>
+      <div class="sl-stats__label">Nghiên cứu</div>
+      <div class="sl-stats__desc">phát triển công thức</div>
+    </div>
+
+    <div class="sl-stats__block">
+      <div class="sl-stats__number">Không</div>
+      <div class="sl-stats__label">Paraben</div>
+      <div class="sl-stats__desc">100% thành phần an toàn</div>
+    </div>
+
+  </div>
+</section>

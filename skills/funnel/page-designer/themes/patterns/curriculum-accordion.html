@@ -1,0 +1,103 @@
+<!--
+  curriculum-accordion.html — Course curriculum with expand/collapse modules
+  Layout:     single col · max-w-2xl · stacked accordion items
+  Background: var(--bg)
+  Elements:   section label + H2 + module rows (number + title + lesson count + expand icon)
+              expanded state: lesson list inside
+  Visuals:    accent number badge · chevron icon rotates on open
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-2xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Chương trình học</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Lộ trình <span style="color:var(--accent)">33 ngày</span></h2>
+      <p class="text-subtle mt-3 text-sm">8 module · 40+ bài học · Lifetime access</p>
+    </div>
+
+    <div class="space-y-2 reveal" id="curriculum">
+
+      <!-- Module item — open by default -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleModule(this)" class="w-full flex items-center gap-4 p-4 text-left hover:bg-white/[0.03] transition-colors">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-sm" style="background:rgba(182,255,0,0.12);color:var(--accent)">01</span>
+          <div class="flex-1 min-w-0">
+            <p class="text-ink font-medium text-sm">Tên module 1</p>
+            <p class="text-subtle text-xs mt-0.5">5 bài học · 45 phút</p>
+          </div>
+          <svg class="w-4 h-4 text-subtle shrink-0 transition-transform duration-200 rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-list px-4 pb-4 border-t border-white/[0.05]" style="display:block">
+          <div class="space-y-2 pt-3">
+            <div class="flex items-center gap-3 text-sm text-subtle py-1">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 7l1.5 1.5 2-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Bài 1: Giới thiệu khóa học
+            </div>
+            <div class="flex items-center gap-3 text-sm text-subtle py-1">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 5h4v4H5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Bài 2: Nền tảng cần biết
+            </div>
+            <div class="flex items-center gap-3 text-sm text-subtle py-1">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 5h4v4H5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Bài 3: Thực hành đầu tiên
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module item — collapsed -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleModule(this)" class="w-full flex items-center gap-4 p-4 text-left hover:bg-white/[0.03] transition-colors">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-sm" style="background:rgba(255,255,255,0.05);color:var(--subtle)">02</span>
+          <div class="flex-1 min-w-0">
+            <p class="text-ink font-medium text-sm">Tên module 2</p>
+            <p class="text-subtle text-xs mt-0.5">6 bài học · 60 phút</p>
+          </div>
+          <svg class="w-4 h-4 text-subtle shrink-0 transition-transform duration-200" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-list px-4 pb-4 border-t border-white/[0.05]" style="display:none">
+          <div class="space-y-2 pt-3">
+            <div class="flex items-center gap-3 text-sm text-subtle py-1">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 5h4v4H5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Bài 4: Nội dung bài học
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module item — collapsed -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleModule(this)" class="w-full flex items-center gap-4 p-4 text-left hover:bg-white/[0.03] transition-colors">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-sm" style="background:rgba(255,255,255,0.05);color:var(--subtle)">03</span>
+          <div class="flex-1 min-w-0">
+            <p class="text-ink font-medium text-sm">Tên module 3</p>
+            <p class="text-subtle text-xs mt-0.5">4 bài học · 30 phút</p>
+          </div>
+          <svg class="w-4 h-4 text-subtle shrink-0 transition-transform duration-200" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-list px-4 pb-4 border-t border-white/[0.05]" style="display:none">
+          <div class="space-y-2 pt-3">
+            <div class="flex items-center gap-3 text-sm text-subtle py-1">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 5h4v4H5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Bài 7: Nội dung bài học
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleModule(btn) {
+  const list = btn.nextElementSibling;
+  const icon = btn.querySelector('svg');
+  const numBadge = btn.querySelector('span');
+  const isOpen = list.style.display !== 'none';
+  list.style.display = isOpen ? 'none' : 'block';
+  icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+  numBadge.style.background = isOpen ? 'rgba(255,255,255,0.05)' : 'rgba(182,255,0,0.12)';
+  numBadge.style.color = isOpen ? 'var(--subtle)' : 'var(--accent)';
+}
+</script>

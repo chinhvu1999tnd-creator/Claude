@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <rect width="240" height="240" rx="32" fill="#1a1a1a"/>
+  <g transform="translate(120 92)" fill="#4285F4"><path d="M0-36c2 18 16 32 34 34-18 2-32 16-34 34-2-18-16-32-34-34 18-2 32-16 34-34z"/></g>
+  <text x="120" y="190" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="22" fill="#faf9f5" text-anchor="middle" letter-spacing="-0.02em">Gemini</text>
+</svg>

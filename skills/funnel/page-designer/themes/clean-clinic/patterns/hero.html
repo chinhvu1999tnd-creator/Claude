@@ -1,0 +1,330 @@
+<!--
+  PATTERN: hero
+  THEME: clean-clinic
+  USE: Primary hero section — 2-column split layout
+  LEFT: Headline, sub, CTA, trust strip
+  RIGHT: Before/after image slot or doctor image
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --accent-rgb: 15, 163, 127;
+    --accent-text: #ffffff;
+    --blue: #2563eb;
+    --alert: #dc2626;
+    --positive: #16a34a;
+    --bg: #f8fffe;
+    --surface: #f0faf8;
+    --raised: #e6f7f4;
+    --ink: #0d2b24;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+    --rim: rgba(15,163,127,0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); }
+
+  .hero-section {
+    background: var(--bg);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle radial teal glow — top right */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(15,163,127,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Eyebrow badge */
+  .eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    border-radius: 99px;
+    padding: 5px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+  }
+
+  /* Headline */
+  .hero-headline {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero-headline span { color: var(--accent); }
+
+  /* Sub */
+  .hero-sub {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--body);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+
+  /* CTA row */
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: #0d9270; box-shadow: 0 4px 16px rgba(15,163,127,0.30); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-ghost:hover { background: var(--surface); }
+
+  /* Trust strip */
+  .trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--faint);
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--subtle);
+    font-weight: 500;
+  }
+  .trust-item strong { color: var(--body); }
+
+  /* Image slot */
+  .hero-visual {
+    position: relative;
+  }
+  .before-after-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .ba-panel {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+  .ba-panel.before {
+    background: #f4f4f5;
+    border: 1px solid #e4e4e7;
+  }
+  .ba-panel.after {
+    background: var(--surface);
+    border: 1px solid var(--faint);
+  }
+  .ba-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 99px;
+  }
+  .ba-panel.before .ba-label { background: #e4e4e7; color: #71717a; }
+  .ba-panel.after .ba-label { background: var(--raised); color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .hero-container { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .before-after-pair { max-width: 400px; margin: 0 auto; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="hero-container">
+
+    <!-- LEFT: Copy -->
+    <div class="hero-copy">
+      <!-- Eyebrow: certification badge -->
+      <div class="eyebrow-badge">
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 1L7.5 4.5H11L8.25 6.5L9.5 10L6 8L2.5 10L3.75 6.5L1 4.5H4.5Z"/>
+        </svg>
+        <!-- SLOT: Replace with actual certification -->
+        Được Bộ Y Tế Cấp Phép · ISO 9001
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-headline">
+        <!-- SLOT: Replace with actual headline -->
+        [Tiêu đề chính]<br>
+        <span>[Điểm nhấn teal]</span>
+      </h1>
+
+      <!-- Sub -->
+      <p class="hero-sub">
+        <!-- SLOT: Replace with actual subheadline -->
+        [Mô tả ngắn — giải pháp, không hứa hẹn thái quá. 1–2 câu, tone chuyên nghiệp, trấn an.]
+      </p>
+
+      <!-- CTAs -->
+      <div class="cta-row">
+        <a href="#booking" class="btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="10" height="10" rx="1"/>
+            <line x1="8" y1="2" x2="8" y2="5"/>
+            <line x1="3" y1="8" x2="13" y2="8"/>
+          </svg>
+          Đặt Lịch Tư Vấn
+        </a>
+        <a href="#services" class="btn-ghost">
+          Xem Dịch Vụ
+        </a>
+      </div>
+
+      <!-- Trust strip: certifications inline -->
+      <div class="trust-strip">
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l-4 4"/>
+            <path d="M12 3L6 9l4 4 6-6"/>
+          </svg>
+          <!-- SLOT: Replace -->
+          <span><strong>MOH</strong> Cấp Phép</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="8" r="6"/>
+            <polyline points="5.5,8 7,9.5 10.5,6"/>
+          </svg>
+          <!-- SLOT: Replace -->
+          <span><strong>12 năm</strong> kinh nghiệm</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 11c0 2.761-3.582 5-8 5S0 13.761 0 11s3.582-5 8-5 8 2.239 8 5z"/>
+            <circle cx="8" cy="6" r="3"/>
+          </svg>
+          <!-- SLOT: Replace -->
+          <span><strong>8,500+</strong> bệnh nhân</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Visual -->
+    <div class="hero-visual">
+      <!-- Before/After panels — replace content with actual images/SVG -->
+      <div class="before-after-pair">
+        <div class="ba-panel before" style="height:320px;display:flex;align-items:center;justify-content:center;">
+          <span class="ba-label">Trước</span>
+          <!-- SLOT: Before image or SVG illustration -->
+          <div style="text-align:center;padding:24px;">
+            <svg width="64" height="64" fill="none" stroke="#a1a1aa" stroke-width="1.2" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="28" stroke-dasharray="4 2"/>
+              <text x="32" y="36" text-anchor="middle" font-size="10" fill="#a1a1aa" font-family="Inter,sans-serif">Ảnh trước</text>
+            </svg>
+            <p style="font-size:0.75rem;color:#a1a1aa;margin-top:8px;font-family:Inter,sans-serif">Trước điều trị</p>
+          </div>
+        </div>
+        <div class="ba-panel after" style="height:320px;display:flex;align-items:center;justify-content:center;">
+          <span class="ba-label">Sau</span>
+          <!-- SLOT: After image or SVG illustration -->
+          <div style="text-align:center;padding:24px;">
+            <svg width="64" height="64" fill="none" stroke="var(--accent)" stroke-width="1.2" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="28"/>
+              <polyline points="20,34 28,42 44,24" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p style="font-size:0.75rem;color:var(--accent);margin-top:8px;font-family:Inter,sans-serif;font-weight:600;">Sau điều trị</p>
+          </div>
+        </div>
+      </div>
+      <!-- Floating stat badge -->
+      <div style="
+        position:absolute; bottom:-16px; left:50%; transform:translateX(-50%);
+        background:white; border:1px solid var(--faint); border-radius:99px;
+        padding:8px 20px; display:flex; align-items:center; gap:8px;
+        box-shadow:0 4px 20px rgba(13,43,36,0.10); white-space:nowrap;
+      ">
+        <svg width="16" height="16" fill="none" stroke="var(--positive)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="2,8 6,12 14,4"/>
+        </svg>
+        <span style="font-size:0.875rem;font-weight:600;color:var(--ink);font-family:Inter,sans-serif;">
+          <!-- SLOT: Key outcome metric -->
+          98% bệnh nhân hài lòng
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END: hero -->
+
+<!--
+  USAGE NOTES:
+  - Replace all [SLOT] placeholders with real content
+  - Before/after panels: use real images (with consent) or clean SVG
+  - Radial glow is purely decorative — top-right corner only
+  - Keep CTA text under 4 words
+  - Trust strip: max 3 items, facts only
+-->

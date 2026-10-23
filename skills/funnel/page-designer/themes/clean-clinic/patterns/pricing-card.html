@@ -1,0 +1,363 @@
+<!--
+  PATTERN: pricing-card
+  THEME: clean-clinic
+  USE: 3-tier horizontal pricing for medical services
+  FORMAT: Cơ Bản / Tiêu Chuẩn / Toàn Diện
+  RECOMMENDED: Middle card gets teal 2px top border accent
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --accent-rgb: 15, 163, 127;
+    --accent-text: #ffffff;
+    --blue: #2563eb;
+    --positive: #16a34a;
+    --bg: #f8fffe;
+    --surface: #f0faf8;
+    --raised: #e6f7f4;
+    --ink: #0d2b24;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+
+  .pricing-section {
+    background: var(--surface);
+    padding: 80px 24px;
+  }
+  .pricing-container {
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--subtle);
+    margin-bottom: 48px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--faint);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(13,43,36,0.06);
+    transition: box-shadow 0.2s ease;
+  }
+  .pricing-card:hover {
+    box-shadow: 0 8px 32px rgba(13,43,36,0.10);
+  }
+
+  /* Recommended card — center, teal top border */
+  .pricing-card.recommended {
+    border-top: 2px solid var(--accent);
+    position: relative;
+  }
+
+  .recommended-badge {
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    background: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 0 0 8px 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .card-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--faint);
+  }
+  .card-tier {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--subtle);
+    margin-bottom: 6px;
+  }
+  .card-name {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+  }
+  .card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .price-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+  }
+  .price-unit {
+    font-size: 0.875rem;
+    color: var(--subtle);
+    font-weight: 500;
+  }
+  .price-free {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--positive);
+    font-family: 'Inter', sans-serif;
+  }
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--body);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .card-body {
+    padding: 24px 28px;
+  }
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9375rem;
+    color: var(--body);
+    line-height: 1.5;
+  }
+  .feature-item .check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--accent);
+  }
+  .feature-item.not-included {
+    color: var(--subtle);
+    text-decoration: none;
+  }
+  .feature-item.not-included .check { color: var(--faint); }
+
+  /* CTA button */
+  .card-cta {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+  }
+  .cta-outline:hover { background: var(--surface); }
+  .cta-filled {
+    background: var(--accent);
+    color: white;
+  }
+  .cta-filled:hover { background: #0d9270; box-shadow: 0 4px 16px rgba(15,163,127,0.30); }
+
+  /* VAT / note */
+  .card-note {
+    font-size: 0.75rem;
+    color: var(--subtle);
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.recommended { margin: 0; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- PRICING CARDS -->
+<section class="pricing-section">
+  <div class="pricing-container">
+    <p class="section-eyebrow">Bảng Giá Dịch Vụ</p>
+    <h2 class="section-title">Chọn gói phù hợp với bạn</h2>
+    <p class="section-sub">Giá đã bao gồm VAT · Không phát sinh chi phí ẩn</p>
+
+    <div class="pricing-grid">
+
+      <!-- TIER 1: Basic -->
+      <div class="pricing-card">
+        <div class="card-header">
+          <div class="card-tier">Gói 01</div>
+          <div class="card-name">Cơ Bản</div>
+          <div class="card-price">
+            <span class="price-free">Miễn phí</span>
+          </div>
+          <p class="card-desc">Khám và tư vấn ban đầu, phù hợp khi bạn chưa biết cần điều trị gì.</p>
+        </div>
+        <div class="card-body">
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Khám tổng quát răng miệng
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Tư vấn phác đồ điều trị
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Chụp X-quang cơ bản
+            </li>
+            <li class="feature-item not-included">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+              Điều trị chuyên sâu
+            </li>
+            <li class="feature-item not-included">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+              Theo dõi sau điều trị
+            </li>
+          </ul>
+          <a href="#booking" class="card-cta cta-outline">Đặt Lịch Khám Miễn Phí</a>
+          <p class="card-note">Không cần đặt cọc</p>
+        </div>
+      </div>
+
+      <!-- TIER 2: Standard (RECOMMENDED) -->
+      <div class="pricing-card recommended">
+        <div class="recommended-badge">Phổ biến nhất</div>
+        <div class="card-header">
+          <div class="card-tier">Gói 02</div>
+          <div class="card-name">Tiêu Chuẩn</div>
+          <div class="card-price">
+            <span class="price-number">1,5M</span>
+            <span class="price-unit">đ / lần điều trị</span>
+          </div>
+          <p class="card-desc">Điều trị cơ bản đầy đủ, bao gồm thuốc và tái khám một lần.</p>
+        </div>
+        <div class="card-body">
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Tất cả trong gói Cơ Bản
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Điều trị theo phác đồ chuẩn
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Thuốc điều trị đi kèm
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Tái khám 1 lần miễn phí
+            </li>
+            <li class="feature-item not-included">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+              Gói chăm sóc dài hạn
+            </li>
+          </ul>
+          <a href="#booking" class="card-cta cta-filled">Chọn Gói Này</a>
+          <p class="card-note">Hoặc trả góp 0% qua thẻ</p>
+        </div>
+      </div>
+
+      <!-- TIER 3: Full / Premium -->
+      <div class="pricing-card">
+        <div class="card-header">
+          <div class="card-tier">Gói 03</div>
+          <div class="card-name">Toàn Diện</div>
+          <div class="card-price">
+            <span class="price-number">15M</span>
+            <span class="price-unit">đ / gói</span>
+          </div>
+          <p class="card-desc">Gói điều trị toàn diện 12 tháng, bao gồm mọi dịch vụ và theo dõi định kỳ.</p>
+        </div>
+        <div class="card-body">
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Tất cả trong gói Tiêu Chuẩn
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Điều trị không giới hạn 12 tháng
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Khám định kỳ mỗi 3 tháng
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Đường dây ưu tiên bác sĩ
+            </li>
+            <li class="feature-item">
+              <svg class="check" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+              Cam kết kết quả hoặc bù thêm buổi
+            </li>
+          </ul>
+          <a href="#booking" class="card-cta cta-outline">Tư Vấn Gói Này</a>
+          <p class="card-note">Tiết kiệm đến 30% so với lẻ</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pricing disclaimer -->
+    <p style="text-align:center;font-size:0.75rem;color:var(--subtle);margin-top:32px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.5;">
+      * Giá có thể thay đổi tùy theo tình trạng thực tế sau khi khám. Bác sĩ sẽ tư vấn phác đồ và chi phí chính xác sau lần khám đầu.
+    </p>
+  </div>
+</section>
+<!-- END: pricing-card -->
+
+<!--
+  USAGE NOTES:
+  - Middle card = recommended — teal 2px top border
+  - Green checkmarks var(--accent) for included
+  - Grey X for not included items
+  - Always include "no hidden fees" note
+  - Always include pricing disclaimer below
+  - VND format: 1,5M / 15M (abbreviate for readability)
+-->

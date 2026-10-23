@@ -1,0 +1,122 @@
+<!--
+  OVERRIDE: testimonials.html — Trust Navy
+  vs shared: dark card grid · neon result tags
+  vs bright-learn: 2-col masonry · star ratings
+  Override: CASE STUDY ROWS — horizontal rows + metrics inline + credential badge
+  Layout change: MAJOR — row layout replaces card grid
+-->
+<section class="py-20" style="background:var(--surface)">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="mb-10">
+      <p class="font-mono text-[10px] uppercase tracking-widest mb-3" style="color:var(--subtle)">Client outcomes</p>
+      <h2 class="font-display font-semibold" style="font-size:clamp(1.375rem,3vw,2rem);line-height:1.2;letter-spacing:-0.015em;color:var(--ink)">
+        Track record — kết quả đo được
+      </h2>
+    </div>
+
+    <!-- Case study rows -->
+    <div class="space-y-0" style="border:1px solid var(--faint);border-radius:6px;overflow:hidden">
+
+      <!-- Row header -->
+      <div class="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_180px_180px] px-6 py-3"
+           style="background:var(--raised);border-bottom:1px solid var(--faint)">
+        <p class="font-mono text-[9px] uppercase tracking-widest" style="color:var(--subtle)">Client</p>
+        <p class="hidden sm:block font-mono text-[9px] uppercase tracking-widest text-right" style="color:var(--subtle)">Key result</p>
+        <p class="hidden sm:block font-mono text-[9px] uppercase tracking-widest text-right" style="color:var(--subtle)">Timeline</p>
+      </div>
+
+      <!-- Case study row 1 — featured -->
+      <div class="relative" style="background:rgba(201,168,76,0.03);border-bottom:1px solid var(--faint)">
+        <div class="absolute left-0 top-0 bottom-0 w-0.5" style="background:var(--accent)"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-[1fr_180px_180px] px-6 py-5 gap-4 items-start">
+          <!-- Client info -->
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+                   style="background:rgba(201,168,76,0.12);border:1px solid var(--rim);border-radius:4px;color:var(--accent)">[INI]</div>
+              <div>
+                <p class="font-body font-semibold text-sm" style="color:var(--ink)">[Tên học viên]</p>
+                <div class="flex items-center gap-2">
+                  <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[Nghề nghiệp] · [Thành phố]</p>
+                  <span class="font-mono text-[9px] px-2 py-0.5" style="background:rgba(201,168,76,0.08);border:1px solid var(--rim);border-radius:2px;color:var(--accent)">Cohort [N]</span>
+                </div>
+              </div>
+            </div>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">
+              "[Quote — 1–2 câu, tập trung vào kết quả đo được, không dùng superlative.]"
+            </p>
+          </div>
+          <!-- Metric -->
+          <div class="sm:text-right">
+            <p class="font-mono font-bold" style="font-size:1.5rem;color:var(--positive)">[+XX.X%]</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[Metric label]</p>
+          </div>
+          <!-- Timeline -->
+          <div class="sm:text-right">
+            <p class="font-mono font-bold text-base" style="color:var(--ink)">[N] tháng</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">Đạt kết quả</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case study row 2 -->
+      <div style="border-bottom:1px solid var(--faint)">
+        <div class="grid grid-cols-1 sm:grid-cols-[1fr_180px_180px] px-6 py-5 gap-4 items-start">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+                   style="background:rgba(184,196,212,0.10);border:1px solid var(--faint);border-radius:4px;color:var(--silver)">[INI]</div>
+              <div>
+                <p class="font-body font-semibold text-sm" style="color:var(--ink)">[Tên học viên 2]</p>
+                <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[Nghề nghiệp] · [Thành phố]</p>
+              </div>
+            </div>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">"[Quote]"</p>
+          </div>
+          <div class="sm:text-right">
+            <p class="font-mono font-bold" style="font-size:1.5rem;color:var(--accent)">[VALUE]</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[Metric label]</p>
+          </div>
+          <div class="sm:text-right">
+            <p class="font-mono font-bold text-base" style="color:var(--ink)">[N] tháng</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">Đạt kết quả</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case study row 3 -->
+      <div>
+        <div class="grid grid-cols-1 sm:grid-cols-[1fr_180px_180px] px-6 py-5 gap-4 items-start">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+                   style="background:rgba(184,196,212,0.10);border:1px solid var(--faint);border-radius:4px;color:var(--silver)">[INI]</div>
+              <div>
+                <p class="font-body font-semibold text-sm" style="color:var(--ink)">[Tên học viên 3]</p>
+                <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[Nghề nghiệp] · [Thành phố]</p>
+              </div>
+            </div>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">"[Quote]"</p>
+          </div>
+          <div class="sm:text-right">
+            <p class="font-mono font-bold" style="font-size:1.5rem;color:var(--positive)">[+XX%]</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[Metric label]</p>
+          </div>
+          <div class="sm:text-right">
+            <p class="font-mono font-bold text-base" style="color:var(--ink)">[N] tháng</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">Đạt kết quả</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="font-mono text-[9px] mt-4" style="color:var(--subtle)">
+      * Individual results vary. Past student outcomes do not guarantee future results.
+      All metrics self-reported and independently verifiable upon request.
+    </p>
+
+  </div>
+</section>

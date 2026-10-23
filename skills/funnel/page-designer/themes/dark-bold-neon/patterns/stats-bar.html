@@ -1,0 +1,53 @@
+<!--
+  OVERRIDE: stats-bar.html — Dark Bold Neon
+  vs shared: surface bg + accent numbers + plain dividers between stats
+  Override: individual raised dark cards per stat + neon metric glow + scanlines bg
+  Visual:   data-terminal feel vs. marketing strip
+-->
+<section class="relative py-12 overflow-hidden" style="background:var(--surface)">
+  <!-- Scanlines overlay -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
+       style="background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,1) 3px,rgba(255,255,255,1) 4px)"></div>
+
+  <div class="relative max-w-4xl mx-auto px-6">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+
+      <!-- Stat 1 -->
+      <div class="rounded-xl p-5 text-center relative overflow-hidden"
+           style="background:var(--raised);border:1px solid rgba(182,255,0,0.14)">
+        <div class="absolute inset-x-0 top-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(182,255,0,0.5),transparent)"></div>
+        <p class="font-mono font-black tracking-tight leading-none mb-1.5"
+           style="font-size:clamp(1.75rem,4vw,2.5rem);color:var(--accent);text-shadow:0 0 20px rgba(182,255,0,0.4)">[STAT 1]</p>
+        <p class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 1]</p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="rounded-xl p-5 text-center relative overflow-hidden"
+           style="background:var(--raised);border:1px solid rgba(0,194,255,0.14)">
+        <div class="absolute inset-x-0 top-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(0,194,255,0.5),transparent)"></div>
+        <p class="font-mono font-black tracking-tight leading-none mb-1.5"
+           style="font-size:clamp(1.75rem,4vw,2.5rem);color:#00C2FF;text-shadow:0 0 20px rgba(0,194,255,0.35)">[STAT 2]</p>
+        <p class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 2]</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="rounded-xl p-5 text-center relative overflow-hidden"
+           style="background:var(--raised);border:1px solid rgba(182,255,0,0.14)">
+        <div class="absolute inset-x-0 top-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(182,255,0,0.5),transparent)"></div>
+        <p class="font-mono font-black tracking-tight leading-none mb-1.5"
+           style="font-size:clamp(1.75rem,4vw,2.5rem);color:var(--accent);text-shadow:0 0 20px rgba(182,255,0,0.4)">[STAT 3]</p>
+        <p class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 3]</p>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="rounded-xl p-5 text-center relative overflow-hidden"
+           style="background:var(--raised);border:1px solid rgba(0,194,255,0.14)">
+        <div class="absolute inset-x-0 top-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(0,194,255,0.5),transparent)"></div>
+        <p class="font-mono font-black tracking-tight leading-none mb-1.5"
+           style="font-size:clamp(1.75rem,4vw,2.5rem);color:#00C2FF;text-shadow:0 0 20px rgba(0,194,255,0.35)">[STAT 4]</p>
+        <p class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 4]</p>
+      </div>
+
+    </div>
+  </div>
+</section>

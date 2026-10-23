@@ -1,0 +1,14 @@
+{
+  "name": "image-generator",
+  "version": "3.0.0",
+  "type": "module",
+  "description": "Landing page image generator — Claude (SKILL.md) generates prompts, this script calls OpenAI API + patches HTML",
+  "scripts": {
+    "slots":  "node generate.js --list-slots",
+    "patch":  "node generate.js --update-html",
+    "gen":    "node generate.js --prompt"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

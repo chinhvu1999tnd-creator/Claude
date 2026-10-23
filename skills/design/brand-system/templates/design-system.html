@@ -1,0 +1,281 @@
+<!doctype html>
+<!--
+  Design System — Template Skeleton (9 sections, scrollable)
+  Thay mọi {{TOKEN}} bằng giá trị thật từ THEME.md + BUSINESS.md.
+  Xóa section nào không có source material — không để lại placeholder rỗng.
+-->
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{{TEN_THUONG_HIEU}} — Hệ Thống Thiết Kế</title>
+{{GOOGLE_FONTS_LINK}}
+<style>
+  :root {
+    --mau-chinh:    {{MAU_CHINH}};
+    --mau-phu:      {{MAU_PHU}};
+    --mau-thu-ba:   {{MAU_THU_BA}};
+    --mau-nen:      {{MAU_NEN}};
+    --mau-surface:  {{MAU_SURFACE}};
+    --mau-vien:     {{MAU_VIEN}};
+    --mau-chu:      {{MAU_CHU}};
+    --mau-mo:       {{MAU_MO}};
+    --mau-alert:    {{MAU_ALERT}};
+    --font-tieu-de:  '{{FONT_TIEU_DE_NAME}}', sans-serif;
+    --font-noi-dung: '{{FONT_NOI_DUNG_NAME}}', sans-serif;
+    --font-mono:     '{{FONT_MONO_NAME}}', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--mau-nen); color: var(--mau-chu); font-family: var(--font-noi-dung); line-height: 1.6; }
+
+  .trang-chu { max-width: 960px; margin: 0 auto; padding: 64px 32px 120px; }
+
+  .section { margin-bottom: 80px; }
+  .nhan-section {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--mau-chinh);
+    margin-bottom: 24px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--mau-vien);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nhan-section::before { content: attr(data-so); color: var(--mau-mo); }
+
+  /* 01 Tiêu Đề */
+  .khoi-tieu-de { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .ten-brand { display: flex; align-items: center; gap: 16px; }
+  .ten-brand h1 { font-family: var(--font-tieu-de); font-size: 48px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .tagline { font-size: 16px; color: var(--mau-mo); margin-top: 8px; }
+  .meta-brand { font-family: var(--font-mono); font-size: 11px; color: var(--mau-mo); letter-spacing: 1px; text-align: right; }
+  .meta-brand span { display: block; margin-bottom: 4px; }
+  .meta-brand .version { color: var(--mau-chinh); }
+
+  /* 02 Màu Sắc Chủ Đạo */
+  .luoi-mau-lon { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .the-mau { border: 1px solid var(--mau-vien); border-radius: 12px; overflow: hidden; }
+  .the-mau .mau-hien-thi { height: 100px; }
+  .the-mau .mau-thong-tin { padding: 16px; background: var(--mau-surface); }
+  .the-mau .cap-do-mau { font-weight: 700; font-size: 14px; display: block; }
+  .the-mau .hex-mau { font-family: var(--font-mono); font-size: 12px; color: var(--mau-mo); margin-top: 4px; display: block; }
+  .the-mau .dung-cho { font-size: 12px; color: var(--mau-mo); margin-top: 8px; line-height: 1.5; }
+
+  /* 03 Bảng Màu Mở Rộng */
+  .luoi-mau-nho { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .the-mau-nho { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--mau-vien); border-radius: 8px; background: var(--mau-surface); }
+  .mau-dot { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; }
+  .mau-dot-info { font-size: 12px; }
+  .mau-dot-ten { font-weight: 600; display: block; }
+  .mau-dot-hex { font-family: var(--font-mono); color: var(--mau-mo); font-size: 11px; }
+
+  /* 04 Kiểu Chữ */
+  .mau-chu-lon { font-family: var(--font-tieu-de); font-size: 64px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; margin-bottom: 24px; }
+  .mau-chu-lon span { color: var(--mau-chinh); }
+  .bang-chu { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 13px; }
+  .bang-chu th { text-align: left; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mau-mo); padding: 8px 16px; border-bottom: 1px solid var(--mau-vien); }
+  .bang-chu td { padding: 12px 16px; border-bottom: 1px solid var(--mau-surface); vertical-align: middle; }
+  .bang-chu tr:last-child td { border-bottom: none; }
+
+  /* 05 Nguyên Tắc */
+  .luoi-nguyen-tac { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .the-nguyen-tac { padding: 24px; border: 1px solid var(--mau-vien); border-radius: 12px; background: var(--mau-surface); border-left: 3px solid var(--mau-chinh); }
+  .the-nguyen-tac h3 { font-family: var(--font-tieu-de); font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .the-nguyen-tac p { font-size: 13px; color: var(--mau-mo); line-height: 1.6; }
+
+  /* 06 Components */
+  .khoi-component { margin-bottom: 40px; }
+  .khoi-component h3 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mau-mo); margin-bottom: 16px; }
+  .nhom-component { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn { padding: 12px 28px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer; border: none; font-family: var(--font-noi-dung); }
+  .btn-chinh { background: var(--mau-chinh); color: var(--mau-nen); }
+  .btn-phu { background: transparent; border: 1px solid var(--mau-chinh); color: var(--mau-chinh); }
+  .btn-nguy-hiem { background: var(--mau-alert); color: #fff; }
+  .the-mau-component { padding: 20px; border: 1px solid var(--mau-vien); border-radius: 8px; background: var(--mau-surface); width: 200px; }
+  .the-mau-component h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+  .the-mau-component p { font-size: 12px; color: var(--mau-mo); }
+  .huy-hieu { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; font-family: var(--font-mono); letter-spacing: 0.5px; }
+  .huy-hieu-chinh { background: var(--mau-chinh); color: var(--mau-nen); }
+  .huy-hieu-phu { background: var(--mau-phu); color: #fff; }
+  .huy-hieu-vien { border: 1px solid var(--mau-vien); color: var(--mau-mo); }
+
+  /* 07 Biểu Tượng */
+  .luoi-bieu-tuong { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+  .the-bieu-tuong { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px; border: 1px solid var(--mau-vien); border-radius: 8px; background: var(--mau-surface); }
+  .the-bieu-tuong svg { width: 24px; height: 24px; }
+  .the-bieu-tuong span { font-family: var(--font-mono); font-size: 10px; color: var(--mau-mo); }
+
+  /* 08 Wordmark */
+  .luoi-lockup { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+  .the-lockup { padding: 28px; border: 1px solid var(--mau-vien); border-radius: 12px; background: var(--mau-surface); display: flex; flex-direction: column; gap: 12px; min-height: 120px; justify-content: center; }
+  .ten-lockup { font-family: var(--font-tieu-de); font-weight: 800; font-size: 24px; letter-spacing: 3px; text-transform: uppercase; }
+  .ten-lockup .nhe { font-weight: 300; color: var(--mau-mo); }
+  .mo-ta-lockup { font-size: 12px; color: var(--mau-mo); }
+  .loai-lockup { font-family: var(--font-mono); font-size: 10px; color: var(--mau-mo); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* 09 Chân Trang */
+  .chan-trang { padding-top: 40px; border-top: 1px solid var(--mau-vien); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .chan-trang p { font-family: var(--font-mono); font-size: 11px; color: var(--mau-mo); letter-spacing: 1px; }
+  .chan-trang .phien-ban { color: var(--mau-chinh); }
+</style>
+</head>
+<body>
+<div class="trang-chu">
+
+  <!-- 01. TIÊU ĐỀ -->
+  <section class="section">
+    <div class="nhan-section" data-so="01">Tiêu Đề</div>
+    <div class="khoi-tieu-de">
+      <div class="ten-brand">
+        {{LOGO_SVG}}
+        <div>
+          <h1>{{TEN_THUONG_HIEU}}</h1>
+          <p class="tagline">{{TAGLINE}}</p>
+        </div>
+      </div>
+      <div class="meta-brand">
+        <span class="version">v1.0</span>
+        <span>{{NGAY}}</span>
+        <span>Hệ Thống Thiết Kế</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02. MÀU SẮC CHỦ ĐẠO -->
+  <section class="section">
+    <div class="nhan-section" data-so="02">Màu Sắc Chủ Đạo</div>
+    <div class="luoi-mau-lon">
+      <div class="the-mau">
+        <div class="mau-hien-thi" style="background:var(--mau-chinh)"></div>
+        <div class="mau-thong-tin"><span class="cap-do-mau" style="color:var(--mau-chinh)">Màu Chính</span><span class="hex-mau">{{MAU_CHINH}}</span><p class="dung-cho">{{MO_TA_MAU_CHINH}}</p></div>
+      </div>
+      <div class="the-mau">
+        <div class="mau-hien-thi" style="background:var(--mau-phu)"></div>
+        <div class="mau-thong-tin"><span class="cap-do-mau" style="color:var(--mau-phu)">Màu Phụ</span><span class="hex-mau">{{MAU_PHU}}</span><p class="dung-cho">{{MO_TA_MAU_PHU}}</p></div>
+      </div>
+      <div class="the-mau">
+        <div class="mau-hien-thi" style="background:var(--mau-thu-ba)"></div>
+        <div class="mau-thong-tin"><span class="cap-do-mau" style="color:var(--mau-thu-ba)">Màu Thứ Ba</span><span class="hex-mau">{{MAU_THU_BA}}</span><p class="dung-cho">{{MO_TA_MAU_THU_BA}}</p></div>
+      </div>
+      <div class="the-mau">
+        <div class="mau-hien-thi" style="background:var(--mau-nen)"></div>
+        <div class="mau-thong-tin"><span class="cap-do-mau">Nền</span><span class="hex-mau">{{MAU_NEN}}</span><p class="dung-cho">Nền trang chính</p></div>
+      </div>
+      <div class="the-mau">
+        <div class="mau-hien-thi" style="background:var(--mau-surface)"></div>
+        <div class="mau-thong-tin"><span class="cap-do-mau">Surface</span><span class="hex-mau">{{MAU_SURFACE}}</span><p class="dung-cho">Card, box, input</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03. BẢNG MÀU MỞ RỘNG -->
+  <section class="section">
+    <div class="nhan-section" data-so="03">Bảng Màu Mở Rộng</div>
+    <div class="luoi-mau-nho">
+      <div class="the-mau-nho"><div class="mau-dot" style="background:var(--mau-chu)"></div><div class="mau-dot-info"><span class="mau-dot-ten">Chữ chính</span><span class="mau-dot-hex">{{MAU_CHU}}</span></div></div>
+      <div class="the-mau-nho"><div class="mau-dot" style="background:var(--mau-mo)"></div><div class="mau-dot-info"><span class="mau-dot-ten">Chữ mờ</span><span class="mau-dot-hex">{{MAU_MO}}</span></div></div>
+      <div class="the-mau-nho"><div class="mau-dot" style="background:var(--mau-vien)"></div><div class="mau-dot-info"><span class="mau-dot-ten">Viền</span><span class="mau-dot-hex">{{MAU_VIEN}}</span></div></div>
+      <div class="the-mau-nho"><div class="mau-dot" style="background:var(--mau-alert)"></div><div class="mau-dot-info"><span class="mau-dot-ten">Cảnh báo</span><span class="mau-dot-hex">{{MAU_ALERT}}</span></div></div>
+    </div>
+  </section>
+
+  <!-- 04. KIỂU CHỮ -->
+  <section class="section">
+    <div class="nhan-section" data-so="04">Kiểu Chữ</div>
+    <p class="mau-chu-lon">{{MAU_HIEN_THI_DONG_1}}<br/><span>{{MAU_HIEN_THI_DONG_2}}</span></p>
+    <table class="bang-chu">
+      <thead>
+        <tr>
+          <th>Tag</th><th>Font</th><th>Size</th><th>Weight</th><th>Dùng cho</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>H1</td><td style="font-family:var(--font-tieu-de)">{{FONT_TIEU_DE_NAME}}</td><td>56px</td><td>900</td><td>Hero headline</td></tr>
+        <tr><td>H2</td><td style="font-family:var(--font-tieu-de)">{{FONT_TIEU_DE_NAME}}</td><td>40px</td><td>900</td><td>Tiêu đề section</td></tr>
+        <tr><td>H3</td><td style="font-family:var(--font-tieu-de)">{{FONT_TIEU_DE_NAME}}</td><td>28px</td><td>700</td><td>Sub-section, card title</td></tr>
+        <tr><td>Body</td><td>{{FONT_NOI_DUNG_NAME}}</td><td>17px</td><td>400</td><td>Đoạn văn chính</td></tr>
+        <tr><td>Small</td><td>{{FONT_NOI_DUNG_NAME}}</td><td>14px</td><td>400</td><td>Caption, micro-copy</td></tr>
+        <tr><td>Mono</td><td style="font-family:var(--font-mono)">{{FONT_MONO_NAME}}</td><td>13px</td><td>400</td><td>Code, nhãn, badge</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 05. NGUYÊN TẮC THIẾT KẾ (xóa section này nếu không có data) -->
+  <section class="section">
+    <div class="nhan-section" data-so="05">Nguyên Tắc Thiết Kế</div>
+    <div class="luoi-nguyen-tac">
+      <div class="the-nguyen-tac"><h3>{{NGUYEN_TAC_1_TIEU_DE}}</h3><p>{{NGUYEN_TAC_1_MO_TA}}</p></div>
+      <div class="the-nguyen-tac"><h3>{{NGUYEN_TAC_2_TIEU_DE}}</h3><p>{{NGUYEN_TAC_2_MO_TA}}</p></div>
+      <div class="the-nguyen-tac"><h3>{{NGUYEN_TAC_3_TIEU_DE}}</h3><p>{{NGUYEN_TAC_3_MO_TA}}</p></div>
+      <div class="the-nguyen-tac"><h3>{{NGUYEN_TAC_4_TIEU_DE}}</h3><p>{{NGUYEN_TAC_4_MO_TA}}</p></div>
+    </div>
+  </section>
+
+  <!-- 06. COMPONENTS -->
+  <section class="section">
+    <div class="nhan-section" data-so="06">Components</div>
+    <div class="khoi-component">
+      <h3>Buttons</h3>
+      <div class="nhom-component">
+        <button class="btn btn-chinh">CTA Chính</button>
+        <button class="btn btn-phu">Phụ</button>
+        <button class="btn btn-nguy-hiem">Cảnh báo</button>
+      </div>
+    </div>
+    <div class="khoi-component">
+      <h3>Cards</h3>
+      <div class="nhom-component">
+        <div class="the-mau-component">
+          <h4>{{TEN_THUONG_HIEU}}</h4>
+          <p>Mẫu card với brand language. Border radius 8px, surface color.</p>
+        </div>
+      </div>
+    </div>
+    <div class="khoi-component">
+      <h3>Badges</h3>
+      <div class="nhom-component">
+        <span class="huy-hieu huy-hieu-chinh">Nổi bật</span>
+        <span class="huy-hieu huy-hieu-phu">Mới</span>
+        <span class="huy-hieu huy-hieu-vien">Draft</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07. BIỂU TƯỢNG (xóa section này nếu không có SVG icon source) -->
+  <section class="section">
+    <div class="nhan-section" data-so="07">Biểu Tượng</div>
+    <div class="luoi-bieu-tuong">
+      {{BIEU_TUONG_SVG_LIST}}
+    </div>
+  </section>
+
+  <!-- 08. WORDMARK & LOCKUP -->
+  <section class="section">
+    <div class="nhan-section" data-so="08">Wordmark &amp; Nhận Diện</div>
+    <div class="luoi-lockup">
+      <div class="the-lockup">
+        <div style="display:flex;align-items:center;gap:12px;">{{LOGO_SVG_NHO}}<span class="ten-lockup">{{TEN_VIET_HOA}}</span></div>
+        <p class="mo-ta-lockup">{{GHI_CHU_LOCKUP_1}}</p>
+        <span class="loai-lockup">Mark + wordmark</span>
+      </div>
+      <div class="the-lockup">
+        <span class="ten-lockup">{{PHAN_1_THUONG_HIEU}}<span class="nhe">{{PHAN_2_THUONG_HIEU}}</span></span>
+        <p class="mo-ta-lockup">{{GHI_CHU_LOCKUP_2}}</p>
+        <span class="loai-lockup">Chữ đậm - chữ nhẹ</span>
+      </div>
+      <div class="the-lockup">
+        <span class="ten-lockup" style="color:var(--mau-chinh)">{{PHAN_1_ACCENT}}<span class="nhe" style="color:var(--mau-chu);font-weight:800">{{PHAN_2_ACCENT}}</span></span>
+        <p class="mo-ta-lockup">{{GHI_CHU_LOCKUP_3}}</p>
+        <span class="loai-lockup">Màu nhấn</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09. CHÂN TRANG -->
+  <footer class="chan-trang">
+    <p>{{TEN_THUONG_HIEU}} Design System · v1.0</p>
+    <p class="phien-ban">output/design/{{NGAY}}/{{BRAND_SLUG}}/design-system.html</p>
+  </footer>
+
+</div>
+</body>
+</html>

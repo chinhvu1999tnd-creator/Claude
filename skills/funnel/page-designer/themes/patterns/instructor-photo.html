@@ -1,0 +1,91 @@
+<!--
+  instructor-photo.html — Author / expert / founder bio with photo
+  Slots: [PERSON] 3:4 portrait · [CONTEXT] logo/brand marks
+  Fits: course instructor · service provider · product founder · consultant · chef · tour guide
+  Layout: 2-col · photo left · bio right (or reverse for variety)
+  Background: bg-canvas
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Người hướng dẫn</span>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-12 items-start reveal">
+
+      <!-- Photo column -->
+      <div class="flex flex-col items-center gap-5 shrink-0">
+
+        <!-- [PERSON] portrait photo -->
+        <div class="relative" data-role="PERSON">
+          <!-- Accent ring frame -->
+          <div class="p-px rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,rgba(var(--accent-rgb),.40),rgba(var(--cyan-rgb),.20),rgba(var(--accent-rgb),.08))">
+            <div class="media-slot aspect-3-4 rounded-2xl" style="width:200px;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;">
+              <!-- Replace with: <img src="photo.jpg" class="slot-img" alt="Tên"> -->
+              <span style="font-size:1.5rem;opacity:0.4">👤</span>
+            </div>
+          </div>
+          <!-- Live indicator -->
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-[10px]" style="background:var(--surface);border:1px solid var(--rim-strong);color:var(--accent)">
+            <span class="w-1.5 h-1.5 rounded-full animate-live" style="background:var(--accent)"></span>
+            Đang hoạt động
+          </span>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="flex gap-5 text-center mt-2">
+          <div><p class="font-mono font-black text-lg text-accent">7+</p><p class="font-mono text-[10px] text-subtle uppercase tracking-wider">Năm KN</p></div>
+          <div><p class="font-mono font-black text-lg text-accent">500+</p><p class="font-mono text-[10px] text-subtle uppercase tracking-wider">Học viên</p></div>
+          <div><p class="font-mono font-black text-lg text-accent">4.9</p><p class="font-mono text-[10px] text-subtle uppercase tracking-wider">Rating</p></div>
+        </div>
+
+      </div>
+
+      <!-- Bio column -->
+      <div class="flex-1">
+        <h3 class="font-display font-black text-h2 text-ink mb-1">Tên Chuyên Gia / Giảng Viên</h3>
+        <p class="font-mono text-xs text-accent mb-5">Title · Chức vụ · Thương hiệu</p>
+
+        <!-- Credential badges -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-xs text-accent" style="background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.15)">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1l1 2.5 2.5.5-2 2 .5 2.5L5 7.5 2.5 8.5 3 6 1 4l2.5-.5L5 1z" fill="currentColor" opacity=".7"/></svg>
+            Chứng chỉ / Giải thưởng 1
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-xs text-cyan" style="background:rgba(var(--cyan-rgb),.08);border:1px solid rgba(var(--cyan-rgb),.15)">
+            Chứng nhận 2
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-xs text-subtle" style="background:var(--raised);border:1px solid var(--rim)">
+            Kinh nghiệm 3
+          </span>
+        </div>
+
+        <!-- Bio text -->
+        <div class="space-y-3 font-body text-sm text-subtle leading-relaxed mb-6">
+          <p>Đoạn đầu: xuất phát điểm và hành trình. Cụ thể. Ai họ là, họ đến từ đâu, vấn đề nào họ đã giải quyết cho bản thân trước khi giúp người khác.</p>
+          <p>Đoạn giữa: thành tích có thể đo lường. Con số thật, tên thương hiệu thật, kết quả thật. Không nói chung chung.</p>
+          <p>Đoạn kết: lý do họ tạo ra sản phẩm/dịch vụ này. Kết nối với khách hàng về mission.</p>
+        </div>
+
+        <!-- Media mentions [CONTEXT] -->
+        <div data-role="CONTEXT">
+          <p class="font-mono text-[10px] text-subtle uppercase tracking-wider mb-3">Đã xuất hiện trên</p>
+          <div class="flex flex-wrap gap-4 items-center">
+            <!-- PLACEHOLDER → replace with actual media logo images -->
+            <div class="media-slot rounded-lg" style="width:80px;height:28px" data-role="CONTEXT">
+              <div class="slot-placeholder rounded-lg"><span class="slot-hint" style="font-size:8px">Logo media</span></div>
+            </div>
+            <div class="media-slot rounded-lg" style="width:80px;height:28px" data-role="CONTEXT">
+              <div class="slot-placeholder rounded-lg"><span class="slot-hint" style="font-size:8px">Logo media</span></div>
+            </div>
+            <div class="media-slot rounded-lg" style="width:80px;height:28px" data-role="CONTEXT">
+              <div class="slot-placeholder rounded-lg"><span class="slot-hint" style="font-size:8px">Logo media</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

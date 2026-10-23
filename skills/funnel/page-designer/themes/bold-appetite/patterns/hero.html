@@ -1,0 +1,282 @@
+<!--
+  PATTERN: hero
+  THEME:   bold-appetite
+  USE:     Full-screen hero — food photography right, copy overlay left
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --cream: #f5ead8; --bg: #1a1008;
+    --surface: #231608; --faint: #3d2d1a; --body: #d4c4a8; --subtle: #8a7560;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .hero {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 2;
+  }
+  /* LEFT — copy panel */
+  .hero-copy {
+    position: relative;
+    z-index: 3;
+    width: 42%;
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 56px 80px 64px;
+    background: linear-gradient(to right, var(--bg) 70%, rgba(26,16,8,0) 100%);
+  }
+  .hero-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .hero-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    line-height: 1.02;
+    color: var(--cream);
+    margin-bottom: 0;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+    display: block;
+  }
+  .hero-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    color: var(--body);
+    line-height: 1.65;
+    margin-top: 20px;
+    margin-bottom: 36px;
+    max-width: 360px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 20px rgba(232,116,42,0.35);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 13px 26px;
+    border-radius: 6px;
+    border: 1.5px solid var(--faint);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .trust-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--subtle);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .trust-badge::before {
+    content: '✦';
+    color: var(--accent);
+    font-size: 0.6rem;
+  }
+  .trust-divider { color: var(--faint); }
+
+  /* RIGHT — photo panel */
+  .hero-photo-wrap {
+    flex: 1;
+    position: relative;
+    min-height: 100vh;
+  }
+  .hero-photo-slot {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+  /* SVG Placeholder illustration */
+  .hero-photo-slot svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+  }
+  /* Gradient fade at left edge */
+  .hero-photo-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 45%;
+    background: linear-gradient(to right, var(--bg), rgba(26,16,8,0));
+    z-index: 2;
+    pointer-events: none;
+  }
+  /* Decorative herbs */
+  .herb-deco {
+    position: absolute;
+    z-index: 4;
+    opacity: 0.5;
+    animation: sway 4s ease-in-out infinite;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50%       { transform: rotate(3deg); }
+  }
+
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; }
+    .hero-copy { width: 100%; padding: 60px 28px 40px; background: var(--bg); }
+    .hero-photo-wrap { min-height: 55vw; }
+    .hero-photo-wrap::after { display: none; }
+  }
+</style>
+
+<section class="hero">
+  <!-- Copy Panel (left) -->
+  <div class="hero-copy">
+    <div class="hero-tag">Nhà Hàng Bếp Lửa</div>
+    <h1 class="hero-headline">
+      Hương Vị
+      <em>Việt Nam</em>
+      Đương Đại
+    </h1>
+    <p class="hero-sub">
+      Thực đơn theo mùa, nguyên liệu chọn lọc từ vùng cao Đà Lạt đến bờ biển Phan Thiết.
+      Mỗi món là một câu chuyện.
+    </p>
+    <div class="hero-actions">
+      <a href="#dat-ban" class="btn-primary">
+        Đặt Bàn Ngay →
+      </a>
+      <a href="#menu" class="btn-secondary">
+        Xem Menu
+      </a>
+    </div>
+    <div class="hero-trust">
+      <span class="trust-badge">Michelin Recommended · 2024</span>
+      <span class="trust-divider">·</span>
+      <span class="trust-badge">4.9★ Google</span>
+    </div>
+  </div>
+
+  <!-- Photo Panel (right) -->
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-slot">
+      <!-- Replace SVG with actual food photography: <img src="[FOOD_IMAGE]" style="width:100%;height:100%;object-fit:cover;filter:sepia(0.15) saturate(1.2) brightness(0.92);"> -->
+      <svg viewBox="0 0 800 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Dark warm background -->
+        <rect width="800" height="900" fill="#1e120a"/>
+        <!-- Table surface -->
+        <ellipse cx="400" cy="680" rx="340" ry="80" fill="#2e1e0a"/>
+        <!-- Large bowl -->
+        <ellipse cx="400" cy="560" rx="200" ry="55" fill="#231608" stroke="#3d2d1a" stroke-width="2"/>
+        <path d="M210 550 C210 460 295 400 400 400 C505 400 590 460 590 550" fill="#2e1e0a" stroke="#3d2d1a" stroke-width="2"/>
+        <!-- Food surface inside bowl -->
+        <ellipse cx="400" cy="404" rx="155" ry="40" fill="#4a2810"/>
+        <ellipse cx="390" cy="395" rx="130" ry="32" fill="#c0392b" opacity="0.4"/>
+        <!-- Garnish: green herbs -->
+        <ellipse cx="350" cy="388" rx="22" ry="10" fill="#3a5c30" opacity="0.85" transform="rotate(-20 350 388)"/>
+        <ellipse cx="430" cy="382" rx="18" ry="8" fill="#4a6741" opacity="0.8" transform="rotate(15 430 382)"/>
+        <ellipse cx="400" cy="375" rx="15" ry="7" fill="#3a5c30" opacity="0.9" transform="rotate(-5 400 375)"/>
+        <!-- Garnish: sesame dots -->
+        <circle cx="370" cy="396" r="3" fill="#f5c842" opacity="0.7"/>
+        <circle cx="420" cy="390" r="2.5" fill="#f5c842" opacity="0.6"/>
+        <circle cx="395" cy="402" r="2" fill="#f5c842" opacity="0.8"/>
+        <!-- Sauce drizzle -->
+        <path d="M340 408 Q360 395 380 410 Q400 425 420 408" stroke="#e8742a" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <!-- Steam wisps -->
+        <path d="M340 390 C340 360 355 352 348 325 C341 298 355 290 348 265" stroke="#e8742a" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+        <path d="M400 385 C400 353 385 345 392 316 C399 287 385 279 392 252" stroke="#e8742a" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+        <path d="M460 390 C460 360 445 352 452 325 C459 298 445 290 452 265" stroke="#e8742a" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+        <!-- Chopsticks -->
+        <rect x="550" y="300" width="8" height="260" rx="4" fill="#e8742a" opacity="0.7" transform="rotate(-8 550 300)"/>
+        <rect x="575" y="300" width="8" height="260" rx="4" fill="#e8742a" opacity="0.5" transform="rotate(4 575 300)"/>
+        <!-- Scattered ingredients -->
+        <circle cx="230" cy="620" r="12" fill="#4a6741" opacity="0.5"/>
+        <circle cx="580" cy="600" r="8" fill="#c0392b" opacity="0.4"/>
+        <circle cx="260" cy="590" r="6" fill="#f5c842" opacity="0.3"/>
+        <!-- Warm vignette -->
+        <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+          <stop offset="0%" stop-color="transparent"/>
+          <stop offset="100%" stop-color="#1a1008" stop-opacity="0.7"/>
+        </radialGradient>
+        <rect width="800" height="900" fill="url(#vig)"/>
+        <!-- Placeholder label -->
+        <text x="400" y="760" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#3d2d1a">[ Thay bằng ảnh món ăn thực tế ]</text>
+      </svg>
+    </div>
+    <!-- Decorative herb -->
+    <div class="herb-deco" style="top:20px;right:20px;">
+      <svg width="40" height="60" viewBox="0 0 40 60" fill="none">
+        <path d="M20 58 C20 40 20 20 20 8" stroke="#8a7560" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="12" cy="25" rx="10" ry="6" fill="#4a6741" opacity="0.7" transform="rotate(-30 12 25)"/>
+        <ellipse cx="28" cy="18" rx="10" ry="6" fill="#4a6741" opacity="0.7" transform="rotate(25 28 18)"/>
+        <ellipse cx="14" cy="10" rx="8" ry="5" fill="#5a7a50" opacity="0.6" transform="rotate(-20 14 10)"/>
+      </svg>
+    </div>
+  </div>
+</section>

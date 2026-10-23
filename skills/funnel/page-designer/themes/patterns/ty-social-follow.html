@@ -1,0 +1,79 @@
+<!--
+  ty-social-follow.html — Follow on social channels
+  Layout:     centered · max-w-xl · platform pill list
+  Elements:   Label · Platform pills (icon + name + handle) · Follow CTAs
+  Rule:       Tối đa 3 platform — liệt kê nhiều hơn thì không ai follow cả
+              Ưu tiên theo market VN: Facebook Page > Zalo OA > YouTube > TikTok
+  Dùng cho:   Lead magnet · Webinar registration — section gần cuối
+-->
+<div class="max-w-xl mx-auto px-6 pb-10">
+
+  <p class="font-mono text-[11px] uppercase tracking-wider text-center mb-5" style="color:var(--subtle);letter-spacing:.12em">
+    Theo dõi để nhận thêm nội dung miễn phí
+  </p>
+
+  <div class="space-y-2.5">
+
+    <!-- Facebook Page -->
+    <a href="[FACEBOOK_URL]" target="_blank"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 transition-colors"
+      style="background:var(--surface);border:1px solid var(--rim);text-decoration:none">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+        style="background:rgba(24,119,242,.12);border:1px solid rgba(24,119,242,.2)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M11 2H9a4 4 0 00-4 4v1H3v4h2v6h4v-6h2.5L12 7H9V6a1 1 0 011-1h1V2z" stroke="#4A9EF5" stroke-width="1.3" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-body font-semibold text-sm text-ink">Facebook Page</p>
+        <p class="font-mono text-[10px]" style="color:var(--subtle)">[handle hoặc tên page]</p>
+      </div>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full shrink-0"
+        style="background:rgba(24,119,242,.10);color:#4A9EF5;border:1px solid rgba(24,119,242,.18)">
+        Theo dõi
+      </span>
+    </a>
+
+    <!-- Zalo OA -->
+    <a href="[ZALO_OA_URL]" target="_blank"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 transition-colors"
+      style="background:var(--surface);border:1px solid var(--rim);text-decoration:none">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+        style="background:rgba(var(--cyan-rgb),.10);border:1px solid rgba(var(--cyan-rgb),.2)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="2" y="2" width="14" height="14" rx="4" stroke="var(--cyan)" stroke-width="1.3"/>
+          <path d="M6 12V8a3 3 0 016 0v4M6 10h6" stroke="var(--cyan)" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-body font-semibold text-sm text-ink">Zalo Official Account</p>
+        <p class="font-mono text-[10px]" style="color:var(--subtle)">[Tên Zalo OA]</p>
+      </div>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full shrink-0"
+        style="background:rgba(var(--cyan-rgb),.08);color:var(--cyan);border:1px solid rgba(var(--cyan-rgb),.18)">
+        Quan tâm
+      </span>
+    </a>
+
+    <!-- [OPTIONAL: YouTube] — uncomment nếu có kênh YouTube
+    <a href="[YOUTUBE_URL]" target="_blank"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 transition-colors"
+      style="background:var(--surface);border:1px solid var(--rim);text-decoration:none">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+        style="background:rgba(255,0,0,.10);border:1px solid rgba(255,0,0,.18)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="1" y="4" width="16" height="10" rx="3" stroke="#FF4444" stroke-width="1.3"/>
+          <path d="M7.5 7l4 2-4 2V7z" fill="#FF4444"/>
+        </svg>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-body font-semibold text-sm text-ink">YouTube</p>
+        <p class="font-mono text-[10px]" style="color:var(--subtle)">[Tên kênh]</p>
+      </div>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full shrink-0"
+        style="background:rgba(255,0,0,.08);color:#FF4444;border:1px solid rgba(255,0,0,.15)">Subscribe</span>
+    </a>
+    END [OPTIONAL: YouTube] -->
+
+  </div>
+</div>

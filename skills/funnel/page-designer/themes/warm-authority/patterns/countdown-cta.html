@@ -1,0 +1,476 @@
+<!--
+  PATTERN: countdown-cta
+  THEME:   warm-authority
+  USE:     Cohort enrollment — calendar display + "Còn [N] suất" quota bar
+  Design:  Consultative, not pushy. "Cohort [N] khai giảng [DATE]" framing.
+           Warm palette, Lora serif, amber accent, green for available slots.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --forest: #2d5016; --warm-red: #9b2335;
+    --bg: #fdf9f4; --surface: #f7f1e8; --raised: #efe6d8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+    --rim: rgba(181,115,42,0.20);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .cohort-section {
+    background: var(--bg);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cohort-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .cohort-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  /* Eyebrow */
+  .cohort-eyebrow {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  /* Soft pulsing open indicator */
+  .open-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--forest);
+    display: inline-block;
+    position: relative;
+  }
+  .open-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: rgba(45,80,22,0.25);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50%       { transform: scale(1.4); opacity: 0; }
+  }
+  /* Headline */
+  .cohort-headline {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .cohort-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .cohort-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: var(--subtle);
+    margin-bottom: 40px;
+  }
+
+  /* Calendar card */
+  .calendar-card {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(30,22,10,0.08);
+    margin-bottom: 32px;
+    text-align: left;
+  }
+  .calendar-header {
+    background: var(--accent);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cal-month {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .cal-cohort-label {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.80);
+    background: rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+  .calendar-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  /* Key date item */
+  .date-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .date-block {
+    width: 52px;
+    height: 52px;
+    background: rgba(181,115,42,0.08);
+    border: 1px solid rgba(181,115,42,0.20);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .date-day {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .date-month-abbr {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    color: var(--subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+  .date-info {}
+  .date-event {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .date-note {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+    line-height: 1.45;
+  }
+
+  /* Quota bar */
+  .quota-wrap {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 24px rgba(30,22,10,0.06);
+  }
+  .quota-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .quota-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--body);
+  }
+  .quota-count {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--warm-red);
+  }
+  .quota-bar-track {
+    height: 8px;
+    background: var(--faint);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .quota-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--forest), #4a8a28);
+    transition: width 0.8s ease;
+  }
+  /* Seat indicators */
+  .seat-indicators {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .seat-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
+  .seat-dot:hover { transform: scale(1.1); }
+  .seat-dot.filled {
+    background: rgba(45,80,22,0.10);
+    border-color: rgba(45,80,22,0.30);
+  }
+  .seat-dot.available {
+    background: rgba(181,115,42,0.06);
+    border-color: rgba(181,115,42,0.30);
+    animation: gentle-glow 3s ease-in-out infinite;
+  }
+  @keyframes gentle-glow {
+    0%, 100% { box-shadow: none; }
+    50% { box-shadow: 0 0 6px rgba(181,115,42,0.25); }
+  }
+  .seat-dot.available .dot-inner {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.7;
+  }
+  .seat-dot.filled .dot-inner {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--forest);
+    opacity: 0.5;
+  }
+  .seat-legend {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--subtle);
+  }
+  .legend-pip {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .legend-pip.avail { background: var(--accent); opacity: 0.7; }
+  .legend-pip.filled { background: var(--forest); opacity: 0.5; }
+
+  /* CTA */
+  .cohort-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 16px 36px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(181,115,42,0.25);
+    margin-bottom: 14px;
+  }
+  .cohort-cta:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 24px rgba(181,115,42,0.35);
+    transform: translateY(-2px);
+  }
+  .cohort-secondary {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+  }
+  .cohort-secondary a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(181,115,42,0.25);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+  .cohort-secondary a:hover { border-color: var(--accent); }
+
+  @media (max-width: 540px) {
+    .calendar-body { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section class="cohort-section">
+  <div class="cohort-inner">
+
+    <div class="cohort-eyebrow">
+      <span class="open-dot"></span>
+      Đăng ký đang mở
+    </div>
+
+    <h2 class="cohort-headline">
+      Cohort 5 Khai Giảng
+      <em>20 tháng 6</em>
+    </h2>
+    <p class="cohort-sub">Chương trình 8 tuần · Nhóm 12 thành viên · Bắt đầu với buổi tư vấn miễn phí</p>
+
+    <!-- Calendar card -->
+    <div class="calendar-card">
+      <div class="calendar-header">
+        <span class="cal-month">Tháng 6 / Tháng 7 — 2026</span>
+        <span class="cal-cohort-label">Cohort 5</span>
+      </div>
+      <div class="calendar-body">
+        <div class="date-item">
+          <div class="date-block">
+            <span class="date-day">15</span>
+            <span class="date-month-abbr">Tháng 6</span>
+          </div>
+          <div class="date-info">
+            <p class="date-event">Hạn nộp hồ sơ</p>
+            <p class="date-note">Điền form đăng ký, tôi review trong 48h</p>
+          </div>
+        </div>
+        <div class="date-item">
+          <div class="date-block">
+            <span class="date-day">18</span>
+            <span class="date-month-abbr">Tháng 6</span>
+          </div>
+          <div class="date-info">
+            <p class="date-event">Tư vấn sàng lọc</p>
+            <p class="date-note">30 phút 1-1 — xem sự phù hợp</p>
+          </div>
+        </div>
+        <div class="date-item">
+          <div class="date-block">
+            <span class="date-day" style="color:var(--forest)">20</span>
+            <span class="date-month-abbr">Tháng 6</span>
+          </div>
+          <div class="date-info">
+            <p class="date-event" style="color:var(--forest)">Khai giảng Cohort 5</p>
+            <p class="date-note">Buổi workshop đầu tiên · 9:00 – 12:00</p>
+          </div>
+        </div>
+        <div class="date-item">
+          <div class="date-block">
+            <span class="date-day">15</span>
+            <span class="date-month-abbr">Tháng 8</span>
+          </div>
+          <div class="date-info">
+            <p class="date-event">Tốt nghiệp & Demo Day</p>
+            <p class="date-note">Trình bày kết quả · Networking alumni</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quota bar -->
+    <div class="quota-wrap">
+      <div class="quota-header">
+        <span class="quota-label">Số suất còn lại</span>
+        <span class="quota-count" id="quota-text">Còn 4 suất / 12</span>
+      </div>
+      <div class="quota-bar-track">
+        <div class="quota-bar-fill" id="quota-bar" style="width:66%"></div>
+      </div>
+      <div class="seat-indicators" id="seat-indicators">
+        <!-- Filled by JS -->
+      </div>
+      <div class="seat-legend">
+        <div class="legend-item">
+          <div class="legend-pip avail"></div>
+          Còn trống
+        </div>
+        <div class="legend-item">
+          <div class="legend-pip filled"></div>
+          Đã đăng ký
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div>
+      <a href="#dang-ky" class="cohort-cta">
+        Đăng Ký Tư Vấn Miễn Phí →
+      </a>
+      <br>
+      <span class="cohort-secondary">
+        Không chắc phù hợp? <a href="#dang-ky">Đặt câu hỏi trực tiếp</a>
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    var TOTAL = 12;
+    var FILLED = 8; // 12 - 4 remaining
+    var available = TOTAL - FILLED;
+
+    // Update quota text
+    document.getElementById('quota-text').textContent = 'Còn ' + available + ' suất / ' + TOTAL;
+
+    // Update bar
+    var pct = Math.round((FILLED / TOTAL) * 100);
+    document.getElementById('quota-bar').style.width = pct + '%';
+
+    // Render seat dots
+    var container = document.getElementById('seat-indicators');
+    for (var i = 0; i < TOTAL; i++) {
+      var dot = document.createElement('div');
+      var isFilled = i < FILLED;
+      dot.className = 'seat-dot ' + (isFilled ? 'filled' : 'available');
+      dot.title = isFilled ? 'Đã đăng ký' : 'Suất trống — nhấn để đăng ký';
+      var inner = document.createElement('div');
+      inner.className = 'dot-inner';
+      dot.appendChild(inner);
+      if (!isFilled) {
+        dot.style.cursor = 'pointer';
+        dot.addEventListener('click', function() {
+          var el = document.getElementById('dang-ky');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+      container.appendChild(dot);
+    }
+
+    // Stagger entry animation
+    container.querySelectorAll('.seat-dot').forEach(function(d, idx) {
+      d.style.opacity = '0';
+      d.style.transform = 'scale(0.5)';
+      d.style.transition = 'opacity 0.3s ease ' + (idx * 0.05) + 's, transform 0.3s ease ' + (idx * 0.05) + 's';
+      requestAnimationFrame(function() {
+        setTimeout(function() {
+          d.style.opacity = '1';
+          d.style.transform = 'scale(1)';
+        }, 80);
+      });
+    });
+  })();
+</script>

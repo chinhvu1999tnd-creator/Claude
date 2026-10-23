@@ -1,0 +1,499 @@
+<!--
+  PATTERN: Pricing Cards — Energy Sport Theme
+  3-tier side by side: Monthly / Quarterly / Annual
+  Featured (Annual): red top border + yellow BEST VALUE badge
+  Red checkmarks, aggressive pricing display
+-->
+<style>
+  :root {
+    --accent:      #ff2d2d;
+    --accent-rgb:  255, 45, 45;
+    --yellow:      #f5c500;
+    --alert:       #ff6b00;
+    --bg:          #0e0e0e;
+    --surface:     #141414;
+    --raised:      #1e1e1e;
+    --ink:         #ffffff;
+    --body:        #cccccc;
+    --subtle:      #888888;
+    --faint:       #2a2a2a;
+    --rim:         rgba(255,45,45,0.25);
+    --font-display:'Barlow Condensed', sans-serif;
+    --font-body:   'Barlow', sans-serif;
+    --font-label:  'Barlow Semi Condensed', sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .pricing-section {
+    background-color: var(--bg);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+    padding: 80px 40px;
+  }
+
+  .pricing-section__header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .pricing-section__eyebrow {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .pricing-section__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .pricing-section__title span { color: var(--accent); }
+
+  .pricing-section__sub {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--subtle);
+    margin-top: 12px;
+  }
+
+  /* ── CARDS GRID ─────────────────────────────── */
+  .pricing-grid {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--raised);
+    border-radius: 6px;
+    border: 1px solid var(--faint);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.015) 0px,
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  }
+
+  .pricing-card:hover { transform: translateY(-4px); }
+
+  /* Featured card — Annual */
+  .pricing-card--featured {
+    border-top: 3px solid var(--accent);
+    border-color: var(--rim);
+    box-shadow: 0 0 0 1px var(--rim), 0 16px 48px rgba(255,45,45,0.18);
+  }
+
+  /* BEST VALUE badge */
+  .pricing-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--yellow);
+    color: #000;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 2px;
+    transform: skewX(-5deg);
+  }
+  .pricing-badge span { display: inline-block; transform: skewX(5deg); }
+
+  /* Tier label */
+  .pricing-tier {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--subtle);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  /* Price display */
+  .pricing-amount {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    line-height: 1;
+  }
+
+  .pricing-currency {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--subtle);
+    margin-top: 8px;
+  }
+
+  .pricing-price {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .pricing-card--featured .pricing-price { color: var(--accent); }
+
+  .pricing-period {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--subtle);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .pricing-original {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--subtle);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .pricing-savings {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--yellow);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .pricing-divider {
+    height: 1px;
+    background: var(--faint);
+    margin: 20px 0;
+  }
+
+  /* Feature list */
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: 0.925rem;
+    color: var(--body);
+    line-height: 1.4;
+  }
+
+  /* Red checkmark */
+  .pricing-feature__check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    background: rgba(255,45,45,0.15);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .pricing-feature__check svg {
+    width: 10px;
+    height: 10px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: square;
+  }
+
+  /* Included/excluded state */
+  .pricing-feature--excluded {
+    opacity: 0.35;
+  }
+  .pricing-feature--excluded .pricing-feature__check {
+    background: var(--faint);
+  }
+  .pricing-feature--excluded .pricing-feature__check svg {
+    stroke: var(--subtle);
+  }
+
+  /* CTA button */
+  .btn-pricing {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 14px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-pricing--ghost {
+    background: transparent;
+    color: var(--body);
+    border: 2px solid var(--faint);
+  }
+  .btn-pricing--ghost:hover {
+    border-color: rgba(255,255,255,0.3);
+    color: var(--ink);
+  }
+
+  .btn-pricing--primary {
+    background: var(--accent);
+    color: #fff;
+    border: 2px solid var(--accent);
+    box-shadow: 0 4px 20px rgba(255,45,45,0.35);
+  }
+  .btn-pricing--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(255,45,45,0.55);
+  }
+
+  .pricing-micro {
+    font-family: var(--font-body);
+    font-size: 0.775rem;
+    color: var(--subtle);
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* Guarantee line */
+  .pricing-guarantee {
+    text-align: center;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--subtle);
+    margin-top: 40px;
+  }
+  .pricing-guarantee span { color: var(--accent); }
+
+  /* ── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 900px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+  }
+</style>
+
+<section class="pricing-section" id="pricing">
+  <div class="pricing-section__header">
+    <span class="pricing-section__eyebrow">Choose Your Plan</span>
+    <h2 class="pricing-section__title">INVEST IN YOUR <span>BEST SELF</span></h2>
+    <p class="pricing-section__sub">No hidden fees. Cancel anytime. 30-day money back guarantee.</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- TIER 1: Monthly -->
+    <div class="pricing-card">
+      <span class="pricing-tier">Monthly</span>
+      <div class="pricing-amount">
+        <span class="pricing-currency">$</span>
+        <span class="pricing-price">79</span>
+      </div>
+      <span class="pricing-period">per month</span>
+      <div class="pricing-divider"></div>
+
+      <ul class="pricing-features">
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Full gym access — all equipment
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Group classes (10+/week)
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          App access + workout tracking
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Locker room + showers
+        </li>
+        <li class="pricing-feature pricing-feature--excluded">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Personal training sessions
+        </li>
+        <li class="pricing-feature pricing-feature--excluded">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Nutrition coaching
+        </li>
+      </ul>
+
+      <a href="#signup" class="btn-pricing btn-pricing--ghost">GET STARTED</a>
+      <p class="pricing-micro">Cancel anytime</p>
+    </div>
+
+    <!-- TIER 2: Annual (FEATURED) -->
+    <div class="pricing-card pricing-card--featured">
+      <div class="pricing-badge"><span>BEST VALUE</span></div>
+      <span class="pricing-tier">Annual</span>
+
+      <div class="pricing-amount">
+        <span class="pricing-currency">$</span>
+        <span class="pricing-price">49</span>
+      </div>
+      <span class="pricing-period">per month · billed annually</span>
+      <span class="pricing-original">$948 → $588</span>
+      <span class="pricing-savings">🔥 SAVE $360 — 38% OFF</span>
+
+      <ul class="pricing-features">
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Full gym access — all equipment
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Group classes (unlimited)
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          App access + workout tracking
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Locker room + showers
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          <strong style="color:var(--ink)">2 PT sessions/month included</strong>
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Nutrition plan + coaching
+        </li>
+      </ul>
+
+      <a href="#signup" class="btn-pricing btn-pricing--primary">JOIN NOW →</a>
+      <p class="pricing-micro">30-day money back guarantee</p>
+    </div>
+
+    <!-- TIER 3: Quarterly -->
+    <div class="pricing-card">
+      <span class="pricing-tier">Quarterly</span>
+      <div class="pricing-amount">
+        <span class="pricing-currency">$</span>
+        <span class="pricing-price">64</span>
+      </div>
+      <span class="pricing-period">per month · billed quarterly</span>
+      <span class="pricing-savings">SAVE $45 EVERY 3 MONTHS</span>
+
+      <ul class="pricing-features">
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Full gym access — all equipment
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Group classes (12+/week)
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          App access + workout tracking
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Locker room + showers
+        </li>
+        <li class="pricing-feature">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          1 PT session/quarter
+        </li>
+        <li class="pricing-feature pricing-feature--excluded">
+          <div class="pricing-feature__check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </div>
+          Nutrition coaching
+        </li>
+      </ul>
+
+      <a href="#signup" class="btn-pricing btn-pricing--ghost">GET STARTED</a>
+      <p class="pricing-micro">Cancel anytime</p>
+    </div>
+
+  </div>
+
+  <p class="pricing-guarantee">
+    <span>30-DAY MONEY BACK GUARANTEE</span> · No questions asked · No contracts
+  </p>
+</section>

@@ -1,0 +1,76 @@
+<!--
+  PATTERN: announcement-bar
+  THEME:   minimal-mono
+  USAGE:   Top-of-page persistent strip. Pure black bg, white mono text.
+           Replace marquee text with your own campaign message.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+  .mm-announcement {
+    background: #111111;
+    color: #ffffff;
+    padding: 0.6rem 1.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .mm-announcement__track {
+    display: inline-block;
+    animation: mm-marquee 28s linear infinite;
+  }
+
+  .mm-announcement__text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: inline;
+  }
+
+  .mm-announcement__sep {
+    display: inline;
+    margin: 0 1.5rem;
+    color: #555555;
+  }
+
+  @keyframes mm-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Static fallback (no animation) for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .mm-announcement__track { animation: none; }
+    .mm-announcement { text-align: center; }
+  }
+</style>
+
+<div class="mm-announcement" role="marquee" aria-label="Announcement">
+  <span class="mm-announcement__track">
+    <span class="mm-announcement__text">New Collection</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">SS25</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">Available Now</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">Worldwide Shipping</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">Free Returns on All Orders</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="mm-announcement__text">New Collection</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">SS25</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">Available Now</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">Worldwide Shipping</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+    <span class="mm-announcement__text">Free Returns on All Orders</span>
+    <span class="mm-announcement__sep">&mdash;</span>
+  </span>
+</div>

@@ -1,0 +1,286 @@
+<!--
+  PATTERN: testimonials.html — Story First
+  Focus: EMOTIONAL TRANSFORMATION — not financial results, not "5-star" stickers
+  Structure: 3 testimonial cards in warm raised cards
+  Quote style: Baskerville italic for the transformation quote
+  Attribution: Name + "Thành viên cộng đồng từ [year]" — community belonging, not customer label
+  Emotional frame: Before state → Transformation quote → After state (how they feel now)
+-->
+<section style="
+  background: var(--surface);
+  padding: 72px 24px;
+  position: relative;
+  overflow: hidden;
+">
+
+  <!-- Subtle wave accent -->
+  <div style="position:absolute;top:0;left:0;right:0;pointer-events:none;opacity:0.5">
+    <svg viewBox="0 0 1200 48" fill="none" preserveAspectRatio="none" style="width:100%;height:48px">
+      <path d="M0 24C200 24 200 8 400 8C600 8 600 40 800 40C1000 40 1000 16 1200 24V48H0V24Z"
+            fill="var(--bg)"/>
+    </svg>
+  </div>
+
+  <div style="max-width:1000px;margin:0 auto;position:relative;z-index:1;">
+
+    <!-- Section header -->
+    <div style="text-align:center;margin-bottom:48px;">
+      <div style="
+        display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
+      ">
+        <div style="width:24px;height:1.5px;background:var(--accent)"></div>
+        <span style="
+          font-family:'Libre Franklin',sans-serif;font-size:11px;font-weight:600;
+          color:var(--accent);letter-spacing:0.10em;text-transform:uppercase;
+        ">Cộng đồng nói gì</span>
+        <div style="width:24px;height:1.5px;background:var(--accent)"></div>
+      </div>
+      <h2 style="
+        font-family:'Libre Baskerville',serif;
+        font-weight:400;
+        font-size:clamp(1.75rem,3.5vw,2.75rem);
+        color:var(--ink);
+        margin:0 0 12px;
+        line-height:1.22;
+      ">Những hành trình họ đã chia sẻ</h2>
+      <p style="
+        font-family:'Nunito Sans',sans-serif;font-weight:300;
+        font-size:16px;line-height:1.70;color:var(--body);
+        max-width:480px;margin:0 auto;
+      ">Không phải kết quả tài chính — mà là điều thực sự thay đổi trong cuộc sống của họ.</p>
+    </div>
+
+    <!-- 3-column testimonial grid -->
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    " class="testi-grid">
+
+      <!-- Testimonial 1 -->
+      <div style="
+        background:var(--raised);
+        border-radius:18px;
+        padding:28px;
+        box-shadow:0 4px 20px rgba(44,31,20,0.08);
+        border:1px solid var(--faint);
+        display:flex;
+        flex-direction:column;
+        transition:all 0.3s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(44,31,20,0.12)'"
+         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(44,31,20,0.08)'">
+
+        <!-- Before state label -->
+        <div style="
+          display:inline-flex;align-items:center;gap:6px;
+          padding:4px 10px;border-radius:999px;
+          background:rgba(61,90,128,0.08);
+          margin-bottom:18px;width:fit-content;
+        ">
+          <span style="
+            font-family:'Libre Franklin',sans-serif;font-size:10.5px;
+            font-weight:600;color:var(--slate);
+          ">Trước: [cảm xúc trước — vd: mất phương hướng]</span>
+        </div>
+
+        <!-- Quotation mark decoration -->
+        <div style="
+          font-family:'Libre Baskerville',serif;font-size:52px;line-height:1;
+          color:rgba(192,85,61,0.10);user-select:none;pointer-events:none;
+          margin-bottom:-8px;
+        ">"</div>
+
+        <!-- Transformation quote — Baskerville italic -->
+        <p style="
+          font-family:'Libre Baskerville',serif;
+          font-style:italic;
+          font-size:15.5px;
+          line-height:1.65;
+          color:var(--ink);
+          margin:0 0 20px;
+          flex:1;
+        ">
+          [Câu quote về sự thay đổi cảm xúc/tư duy — vd: "Tôi học được cách yêu thương bản thân sau nhiều năm chạy theo kỳ vọng của người khác. Lần đầu tiên trong đời tôi thực sự nghe tiếng mình."]
+        </p>
+
+        <!-- After state — what changed -->
+        <p style="
+          font-family:'Nunito Sans',sans-serif;font-weight:300;
+          font-size:13px;line-height:1.60;color:var(--body);
+          margin:0 0 20px;padding:12px;
+          background:rgba(107,143,113,0.07);border-radius:10px;
+          border-left:3px solid rgba(107,143,113,0.30);
+        ">
+          <span style="font-weight:600;color:var(--sage)">Bây giờ:</span>
+          [Mô tả ngắn trạng thái sau — vd: "Mỗi sáng tôi không còn sợ hãi. Tôi biết mình đang đi đâu và điều đó cảm giác thật bình yên."]
+        </p>
+
+        <!-- Attribution -->
+        <div style="
+          display:flex;align-items:center;gap:12px;
+          padding-top:16px;border-top:1px dashed var(--faint);
+        ">
+          <!-- Avatar -->
+          <div style="
+            width:38px;height:38px;border-radius:50%;flex-shrink:0;
+            background:linear-gradient(135deg,rgba(192,85,61,0.15),rgba(61,90,128,0.12));
+            border:2px solid var(--faint);
+            display:flex;align-items:center;justify-content:center;
+          ">
+            <span style="font-family:'Libre Franklin',sans-serif;font-size:14px;font-weight:600;color:var(--subtle)">[?]</span>
+          </div>
+          <div>
+            <p style="font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink);margin:0">[Tên]</p>
+            <p style="font-family:'Libre Franklin',sans-serif;font-size:11px;color:var(--subtle);margin:2px 0 0">Thành viên cộng đồng từ [năm]</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Testimonial 2 — featured (terracotta accent border top) -->
+      <div style="
+        background:var(--raised);
+        border-radius:18px;
+        padding:28px;
+        box-shadow:0 4px 20px rgba(44,31,20,0.08);
+        border:1px solid var(--faint);
+        border-top:3px solid var(--accent);
+        display:flex;flex-direction:column;
+        transition:all 0.3s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(44,31,20,0.12)'"
+         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(44,31,20,0.08)'">
+
+        <div style="
+          display:inline-flex;align-items:center;gap:6px;
+          padding:4px 10px;border-radius:999px;
+          background:rgba(61,90,128,0.08);
+          margin-bottom:18px;width:fit-content;
+        ">
+          <span style="
+            font-family:'Libre Franklin',sans-serif;font-size:10.5px;
+            font-weight:600;color:var(--slate);
+          ">Trước: [cảm xúc trước]</span>
+        </div>
+
+        <div style="
+          font-family:'Libre Baskerville',serif;font-size:52px;line-height:1;
+          color:rgba(192,85,61,0.10);user-select:none;pointer-events:none;
+          margin-bottom:-8px;
+        ">"</div>
+
+        <p style="
+          font-family:'Libre Baskerville',serif;font-style:italic;
+          font-size:15.5px;line-height:1.65;color:var(--ink);
+          margin:0 0 20px;flex:1;
+        ">
+          [Quote 2 — câu chuyện riêng của người này. Ưu tiên cảm xúc: cô đơn, mất kết nối, sợ hãi, sau đó là khoảnh khắc thay đổi.]
+        </p>
+
+        <p style="
+          font-family:'Nunito Sans',sans-serif;font-weight:300;
+          font-size:13px;line-height:1.60;color:var(--body);
+          margin:0 0 20px;padding:12px;
+          background:rgba(107,143,113,0.07);border-radius:10px;
+          border-left:3px solid rgba(107,143,113,0.30);
+        ">
+          <span style="font-weight:600;color:var(--sage)">Bây giờ:</span>
+          [Mô tả sau — cụ thể và ấm áp, không phải chung chung.]
+        </p>
+
+        <div style="
+          display:flex;align-items:center;gap:12px;
+          padding-top:16px;border-top:1px dashed var(--faint);
+        ">
+          <div style="
+            width:38px;height:38px;border-radius:50%;flex-shrink:0;
+            background:linear-gradient(135deg,rgba(192,85,61,0.18),rgba(107,143,113,0.12));
+            border:2px solid rgba(192,85,61,0.20);
+            display:flex;align-items:center;justify-content:center;
+          ">
+            <span style="font-family:'Libre Franklin',sans-serif;font-size:14px;font-weight:600;color:var(--accent)">[?]</span>
+          </div>
+          <div>
+            <p style="font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink);margin:0">[Tên]</p>
+            <p style="font-family:'Libre Franklin',sans-serif;font-size:11px;color:var(--subtle);margin:2px 0 0">Thành viên cộng đồng từ [năm]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div style="
+        background:var(--raised);border-radius:18px;padding:28px;
+        box-shadow:0 4px 20px rgba(44,31,20,0.08);border:1px solid var(--faint);
+        display:flex;flex-direction:column;transition:all 0.3s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(44,31,20,0.12)'"
+         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(44,31,20,0.08)'">
+
+        <div style="
+          display:inline-flex;align-items:center;gap:6px;
+          padding:4px 10px;border-radius:999px;
+          background:rgba(61,90,128,0.08);
+          margin-bottom:18px;width:fit-content;
+        ">
+          <span style="
+            font-family:'Libre Franklin',sans-serif;font-size:10.5px;
+            font-weight:600;color:var(--slate);
+          ">Trước: [cảm xúc trước]</span>
+        </div>
+
+        <div style="
+          font-family:'Libre Baskerville',serif;font-size:52px;line-height:1;
+          color:rgba(192,85,61,0.10);user-select:none;pointer-events:none;
+          margin-bottom:-8px;
+        ">"</div>
+
+        <p style="
+          font-family:'Libre Baskerville',serif;font-style:italic;
+          font-size:15.5px;line-height:1.65;color:var(--ink);
+          margin:0 0 20px;flex:1;
+        ">
+          [Quote 3 — câu chuyện của người thứ ba. Có thể khác thể loại hơn: từ kiệt sức nghề nghiệp, mối quan hệ khó khăn, hay cảm giác không đủ tốt.]
+        </p>
+
+        <p style="
+          font-family:'Nunito Sans',sans-serif;font-weight:300;
+          font-size:13px;line-height:1.60;color:var(--body);
+          margin:0 0 20px;padding:12px;
+          background:rgba(107,143,113,0.07);border-radius:10px;
+          border-left:3px solid rgba(107,143,113,0.30);
+        ">
+          <span style="font-weight:600;color:var(--sage)">Bây giờ:</span>
+          [Mô tả sau.]
+        </p>
+
+        <div style="
+          display:flex;align-items:center;gap:12px;
+          padding-top:16px;border-top:1px dashed var(--faint);
+        ">
+          <div style="
+            width:38px;height:38px;border-radius:50%;flex-shrink:0;
+            background:linear-gradient(135deg,rgba(107,143,113,0.15),rgba(61,90,128,0.12));
+            border:2px solid var(--faint);
+            display:flex;align-items:center;justify-content:center;
+          ">
+            <span style="font-family:'Libre Franklin',sans-serif;font-size:14px;font-weight:600;color:var(--subtle)">[?]</span>
+          </div>
+          <div>
+            <p style="font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink);margin:0">[Tên]</p>
+            <p style="font-family:'Libre Franklin',sans-serif;font-size:11px;color:var(--subtle);margin:2px 0 0">Thành viên cộng đồng từ [năm]</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      .testi-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (min-width: 769px) and (max-width: 960px) {
+      .testi-grid { grid-template-columns: repeat(2,1fr) !important; }
+    }
+  </style>
+
+</section>

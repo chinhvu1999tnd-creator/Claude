@@ -1,0 +1,80 @@
+<!--
+  feature-rows.html — Alternating feature rows (image + text)
+  Layout:     2-col grid alternating · image left/right · gap-16 · max-w-5xl
+  Background: var(--bg) · even rows have subtle surface tint
+  Elements:   accent icon · H3 feature title · body description · optional bullet list · CTA link
+  Visuals:    mockup screenshot OR SVG illustration placeholder · blob glow behind image
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-5xl mx-auto px-6 space-y-24">
+
+    <!-- Row 1 — image left -->
+    <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+      <!-- Visual -->
+      <div class="relative">
+        <div class="absolute inset-0 rounded-2xl blur-3xl opacity-20" style="background:radial-gradient(circle,var(--accent),transparent 70%)"></div>
+        <div class="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-surface aspect-[4/3] flex items-center justify-center">
+          <!-- Replace with <img> or actual mockup -->
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="12" fill="rgba(182,255,0,0.06)"/>
+            <path d="M20 44 L32 20 L44 44" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="32" cy="20" r="3" fill="var(--accent)"/>
+          </svg>
+        </div>
+      </div>
+      <!-- Text -->
+      <div>
+        <span class="section-label">Tính năng 01</span>
+        <h3 class="font-display font-bold text-ink mb-4" style="font-size:clamp(1.25rem,2.5vw,1.75rem);line-height:1.2">Tiêu đề tính năng chính ở đây</h3>
+        <p class="text-subtle leading-relaxed mb-6">Mô tả ngắn 2–3 câu về lợi ích cụ thể mà tính năng này mang lại. Tập trung vào kết quả, không phải tính năng.</p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2.5 text-sm text-body">
+            <svg class="w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bullet point lợi ích 1
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-body">
+            <svg class="w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bullet point lợi ích 2
+          </li>
+        </ul>
+        <a href="#" class="inline-flex items-center gap-1.5 text-sm font-medium" style="color:var(--accent)">
+          Tìm hiểu thêm
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7.5 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Row 2 — image right -->
+    <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+      <!-- Text -->
+      <div class="md:order-first">
+        <span class="section-label">Tính năng 02</span>
+        <h3 class="font-display font-bold text-ink mb-4" style="font-size:clamp(1.25rem,2.5vw,1.75rem);line-height:1.2">Tiêu đề tính năng thứ hai</h3>
+        <p class="text-subtle leading-relaxed mb-6">Mô tả ngắn 2–3 câu. Tập trung vào transformation — trước và sau khi dùng tính năng này.</p>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2.5 text-sm text-body">
+            <svg class="w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bullet point lợi ích 1
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-body">
+            <svg class="w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bullet point lợi ích 2
+          </li>
+        </ul>
+      </div>
+      <!-- Visual -->
+      <div class="relative md:order-last">
+        <div class="absolute inset-0 rounded-2xl blur-3xl opacity-15" style="background:radial-gradient(circle,var(--cyan),transparent 70%)"></div>
+        <div class="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-surface aspect-[4/3] flex items-center justify-center">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="12" fill="rgba(0,194,255,0.06)"/>
+            <rect x="16" y="24" width="32" height="4" rx="2" fill="var(--cyan)" opacity="0.6"/>
+            <rect x="16" y="32" width="24" height="4" rx="2" fill="var(--cyan)" opacity="0.4"/>
+            <rect x="16" y="40" width="28" height="4" rx="2" fill="var(--cyan)" opacity="0.3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

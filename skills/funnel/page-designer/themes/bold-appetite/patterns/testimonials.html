@@ -1,0 +1,340 @@
+<!--
+  PATTERN: testimonials
+  THEME:   bold-appetite
+  USE:     Food critic style quotes — fork ratings, dark cards, orange border on featured
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --yellow: #f5c842; --cream: #f5ead8;
+    --bg: #1a1008; --surface: #231608; --raised: #2e1e0a;
+    --faint: #3d2d1a; --body: #d4c4a8; --subtle: #8a7560;
+    --rim: rgba(232,116,42,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .testimonials-section {
+    background: var(--surface);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonials-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .testi-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+  .testi-card {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .testi-card:hover {
+    transform: translateY(-2px);
+  }
+  .testi-card.featured {
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 4px 24px rgba(232,116,42,0.20);
+  }
+  .testi-card.featured .testi-card-inner {
+    /* shift content to account for left border visual weight */
+    padding-left: 4px;
+  }
+  /* Open quote mark */
+  .quote-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 5rem;
+    line-height: 0.6;
+    color: rgba(232,116,42,0.15);
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fork-rating {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .fork-icon {
+    width: 13px;
+    height: 20px;
+    color: var(--yellow);
+  }
+  .fork-icon.empty { color: var(--faint); }
+  .testi-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--cream);
+    line-height: 1.65;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .testi-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--faint);
+    padding-top: 16px;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--surface);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    color: var(--accent);
+    border: 1.5px solid var(--faint);
+    overflow: hidden;
+  }
+  .reviewer-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--cream);
+  }
+  .reviewer-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+  .verified-badge {
+    margin-left: auto;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--subtle);
+    background: rgba(138,117,96,0.1);
+    border: 1px solid var(--faint);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  /* Highlight dish mentioned */
+  .testi-quote .dish-name {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  /* Summary bar */
+  .rating-summary {
+    text-align: center;
+    margin-top: 48px;
+    padding: 24px;
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .rating-big {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 3rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .rating-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+  }
+  .rating-platforms {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .platform-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--body);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .platform-score {
+    color: var(--yellow);
+    font-weight: 600;
+  }
+  @media (max-width: 768px) {
+    .testi-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- Fork SVG symbol -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="fork" viewBox="0 0 14 22">
+    <line x1="3" y1="2" x2="3" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="7" y1="2" x2="7" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="11" y1="2" x2="11" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M3 8 C3 11 11 11 11 8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <line x1="7" y1="10" x2="7" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<section class="testimonials-section">
+  <div class="testi-inner">
+    <div class="section-header">
+      <span class="section-tag">Thực Khách Nói Gì</span>
+      <h2 class="section-title">Những Trải Nghiệm Đáng Nhớ</h2>
+    </div>
+
+    <div class="testi-grid">
+
+      <!-- FEATURED testimonial -->
+      <div class="testi-card featured">
+        <div class="quote-mark">"</div>
+        <div class="fork-rating">
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+        </div>
+        <p class="testi-quote">
+          Món <span class="dish-name">Bò Lúc Lắc Tiêu Kampot</span> ở đây là thứ tôi
+          đã tìm kiếm suốt nhiều năm. Thịt mềm, vị tiêu thơm nồng, không thể trách
+          vì sao họ được Michelin ghi nhận.
+        </p>
+        <div class="testi-footer">
+          <div class="avatar">T</div>
+          <div>
+            <div class="reviewer-name">Trần Minh Khoa</div>
+            <div class="reviewer-meta">Food Critic · Dùng bữa ngày 15/04/2025</div>
+          </div>
+          <span class="verified-badge">✓ Xác thực</span>
+        </div>
+      </div>
+
+      <!-- Standard testimonial 2 -->
+      <div class="testi-card">
+        <div class="quote-mark">"</div>
+        <div class="fork-rating">
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+        </div>
+        <p class="testi-quote">
+          Chef's Table 7 món là một hành trình ẩm thực thực sự. Từng món được
+          giới thiệu với câu chuyện riêng — tôi cảm nhận được tình yêu
+          trong từng chi tiết nhỏ.
+        </p>
+        <div class="testi-footer">
+          <div class="avatar">N</div>
+          <div>
+            <div class="reviewer-name">Nguyễn Thu Hà</div>
+            <div class="reviewer-meta">Food Blogger · Dùng bữa ngày 02/05/2025</div>
+          </div>
+          <span class="verified-badge">✓ Xác thực</span>
+        </div>
+      </div>
+
+      <!-- Standard testimonial 3 -->
+      <div class="testi-card">
+        <div class="quote-mark">"</div>
+        <div class="fork-rating">
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon" viewBox="0 0 14 22"><use href="#fork"/></svg>
+          <svg class="fork-icon empty" viewBox="0 0 14 22"><use href="#fork"/></svg>
+        </div>
+        <p class="testi-quote">
+          Không gian ấm áp, nhạc vừa phải, phục vụ chu đáo.
+          <span class="dish-name">Súp Cua Bắp</span> đậm đà không tưởng.
+          Sẽ quay lại mỗi tháng.
+        </p>
+        <div class="testi-footer">
+          <div class="avatar">P</div>
+          <div>
+            <div class="reviewer-name">Phạm Quốc Bảo</div>
+            <div class="reviewer-meta">Doanh nhân · Dùng bữa ngày 28/04/2025</div>
+          </div>
+          <span class="verified-badge">✓ Xác thực</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Rating summary -->
+    <div class="rating-summary">
+      <div>
+        <div class="rating-big">4.9</div>
+        <div class="rating-label">Đánh giá trung bình</div>
+      </div>
+      <div style="width:1px;height:40px;background:var(--faint);"></div>
+      <div class="rating-platforms">
+        <div class="platform-item">
+          <span>Google</span>
+          <span class="platform-score">4.9 ★</span>
+          <span style="color:var(--subtle);font-size:0.72rem;">(2,400)</span>
+        </div>
+        <div class="platform-item">
+          <span>TripAdvisor</span>
+          <span class="platform-score">4.8 ★</span>
+          <span style="color:var(--subtle);font-size:0.72rem;">(840)</span>
+        </div>
+        <div class="platform-item">
+          <span>Foody</span>
+          <span class="platform-score">9.2 / 10</span>
+          <span style="color:var(--subtle);font-size:0.72rem;">(380)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

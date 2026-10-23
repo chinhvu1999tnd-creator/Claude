@@ -1,0 +1,132 @@
+<!--
+  PATTERN: announcement-bar
+  THEME:   warm-authority
+  USE:     Top-of-page — cohort enrollment, limited seats, warm cream bar
+  Design:  Warm cream bg + amber left border (3px) + Lora italic message
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --bg: #fdf9f4; --surface: #f7f1e8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+    --warm-red: #9b2335;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .announcement-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--faint);
+    border-left: 3px solid var(--accent);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Very subtle paper grain */
+  .announcement-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bar-badge {
+    background: rgba(181,115,42,0.10);
+    border: 1px solid rgba(181,115,42,0.25);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .bar-message {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--body);
+  }
+  .bar-message .highlight {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .bar-message .seats {
+    font-family: 'Source Sans 3', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--warm-red);
+  }
+  .bar-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--faint);
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .bar-cta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid rgba(181,115,42,0.30);
+    border-radius: 6px;
+    padding: 3px 12px;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .bar-cta:hover { background: rgba(181,115,42,0.08); border-color: var(--accent); }
+  .bar-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--subtle);
+    font-size: 1rem;
+    line-height: 1;
+    padding: 4px;
+    z-index: 2;
+    transition: color 0.2s;
+  }
+  .bar-close:hover { color: var(--ink); }
+  @media (max-width: 600px) {
+    .bar-divider { display: none; }
+    .announcement-bar { padding-right: 40px; }
+  }
+</style>
+
+<div class="announcement-bar" id="announcement-bar" role="banner">
+  <div class="bar-inner">
+    <span class="bar-badge">Mở đăng ký</span>
+    <span class="bar-message">
+      <span class="highlight">Cohort 5</span> — Chương trình
+      <span class="highlight">12 tuần</span> ·
+      <span class="seats">Còn 4 suất</span>
+    </span>
+    <span class="bar-divider"></span>
+    <a href="#dang-ky" class="bar-cta">Đăng ký ngay →</a>
+  </div>
+  <button class="bar-close" onclick="document.getElementById('announcement-bar').style.display='none'" aria-label="Đóng">✕</button>
+</div>

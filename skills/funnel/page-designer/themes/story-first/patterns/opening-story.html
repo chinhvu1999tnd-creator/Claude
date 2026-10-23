@@ -1,0 +1,172 @@
+<!--
+  PATTERN: opening-story.html — Story First (KEY PATTERN — personal brand specific)
+  Purpose: THE emotional entry point — must appear FIRST on page, before hero section
+  Structure: Editorial-style narrative section
+    - 2-3 paragraph honest personal story (failure/struggle → turning point)
+    - Large pull quote in Baskerville italic with terracotta left border
+    - Closing line that bridges to hero/offer: "Đây là lý do tôi làm điều này →"
+  Tone: Honest, vulnerable, warm — NOT promotional, NOT summarizing achievements
+  Design: Clean editorial, generous whitespace, literary typography
+-->
+<section style="
+  background: var(--bg);
+  padding: 72px 24px 64px;
+  position: relative;
+  overflow: hidden;
+">
+
+  <!-- Leaf accent — top left corner -->
+  <div style="position:absolute; top:32px; left:28px; pointer-events:none; opacity:0.6">
+    <svg width="64" height="56" viewBox="0 0 64 56" fill="none">
+      <path d="M5 50C5 50 18 28 35 22C52 16 60 32 48 42C38 50 12 54 5 50Z"
+            fill="rgba(107,143,113,0.12)" stroke="rgba(107,143,113,0.28)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M5 50L30 30" stroke="rgba(107,143,113,0.20)" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 3"/>
+    </svg>
+  </div>
+
+  <!-- Concentric circle accent — bottom right -->
+  <div style="position:absolute; bottom:-10px; right:20px; pointer-events:none; opacity:0.4">
+    <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="46" stroke="rgba(192,85,61,0.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <circle cx="50" cy="50" r="32" stroke="rgba(192,85,61,0.09)" stroke-width="1" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+
+  <div style="
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  ">
+
+    <!-- Section label — like a chapter heading in a book -->
+    <div style="
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:36px;
+    ">
+      <div style="
+        width:32px; height:1.5px;
+        background:var(--accent);
+        flex-shrink:0;
+      "></div>
+      <span style="
+        font-family:'Libre Franklin',sans-serif;
+        font-size:11px;
+        font-weight:600;
+        color:var(--accent);
+        letter-spacing:0.12em;
+        text-transform:uppercase;
+      ">Câu chuyện của tôi</span>
+    </div>
+
+    <!-- Opening paragraph — the honest beginning -->
+    <p style="
+      font-family:'Nunito Sans',sans-serif;
+      font-weight:300;
+      font-size:17px;
+      line-height:1.80;
+      color:var(--body);
+      margin:0 0 24px;
+    ">
+      [Năm XXXX, tôi...] — <em style="font-family:'Libre Baskerville',serif;font-style:italic;color:var(--ink)">[câu mở đầu thật thà, nói thẳng vào khoảnh khắc khủng hoảng hoặc mất phương hướng].</em> Không phải thất bại nhẹ nhàng mà ai cũng có thể dễ dàng kể lại — mà là loại cảm giác [mô tả cụ thể, chân thật: "không biết mình là ai," "sợ mở mắt vào buổi sáng," "cứ nghĩ mọi người đang làm tốt hơn mình rất nhiều"]. Tôi đã [hành động — nghỉ việc / rời bỏ / thay đổi lớn], dù không biết điều gì sẽ đến tiếp theo.
+    </p>
+
+    <!-- Second paragraph — the journey, the turning point -->
+    <p style="
+      font-family:'Nunito Sans',sans-serif;
+      font-weight:300;
+      font-size:17px;
+      line-height:1.80;
+      color:var(--body);
+      margin:0 0 36px;
+    ">
+      [Và rồi tôi bắt đầu...] — không phải một kế hoạch vĩ đại, mà chỉ là [hành động nhỏ đầu tiên: viết, đi bộ, gọi điện cho một người bạn, đọc sách]. Từ đó, dần dần, tôi tìm lại được [điều cốt lõi — sự bình yên, bản sắc, mục đích sống]. Và điều tôi học được trong hành trình đó không phải là công thức — mà là [insight chân thật, đơn giản, có thể áp dụng được]. Tôi muốn chia sẻ điều đó với nhiều người hơn.
+    </p>
+
+    <!-- Pull quote — THE emotional center of this section -->
+    <!-- Always Baskerville italic, always terracotta left border -->
+    <blockquote style="
+      border-left: 5px solid var(--accent);
+      margin: 0 0 36px;
+      padding: 20px 28px;
+      background: var(--surface);
+      border-radius: 0 18px 18px 0;
+      position: relative;
+    ">
+      <!-- Oversized decorative quotation mark -->
+      <div style="
+        position:absolute;
+        top:8px; left:18px;
+        font-family:'Libre Baskerville',serif;
+        font-size:56px; line-height:1;
+        color:rgba(192,85,61,0.10);
+        user-select:none;
+        pointer-events:none;
+      ">"</div>
+
+      <p style="
+        font-family:'Libre Baskerville',serif;
+        font-style:italic;
+        font-size:clamp(1.1875rem,2.5vw,1.5rem);
+        line-height:1.55;
+        color:var(--ink);
+        margin:0 0 16px;
+        position:relative;
+        z-index:1;
+        padding-top:4px;
+      ">
+        [Câu quote trung tâm — phải là câu chân thật nhất, sâu sắc nhất trong toàn bộ trang. Không phải một slogan marketing. Ví dụ: "Phát triển bản thân không phải là trở thành người khác — mà là trở về với chính mình."]
+      </p>
+
+      <!-- Source attribution -->
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:10px;
+      ">
+        <div style="
+          width:24px; height:1.5px;
+          background:var(--accent);
+          flex-shrink:0;
+        "></div>
+        <span style="
+          font-family:'Libre Franklin',sans-serif;
+          font-size:12px;
+          font-weight:600;
+          color:var(--accent);
+          letter-spacing:0.04em;
+        ">[Tên bạn] — [nguồn: Podcast/Sách/Bài viết]</span>
+      </div>
+    </blockquote>
+
+    <!-- Bridge line — connects story to what they offer -->
+    <div style="
+      display:flex;
+      align-items:center;
+      gap:16px;
+    ">
+      <a href="#offer" style="
+        font-family:'Libre Baskerville',serif;
+        font-size:15.5px;
+        font-weight:400;
+        color:var(--accent);
+        text-decoration:none;
+        border-bottom:1.5px solid rgba(192,85,61,0.30);
+        padding-bottom:2px;
+        transition:all 0.2s ease;
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+      " onmouseover="this.style.borderColor='var(--accent)'"
+         onmouseout="this.style.borderColor='rgba(192,85,61,0.30)'">
+        Đây là lý do tôi làm điều này
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 2l5 5-5 5M2 7h10" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

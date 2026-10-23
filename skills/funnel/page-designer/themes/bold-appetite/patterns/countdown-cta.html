@@ -1,0 +1,340 @@
+<!--
+  PATTERN: countdown-cta
+  THEME:   bold-appetite
+  USE:     Real-time seat availability — organic dots, no digital timer
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --yellow: #f5c842; --cream: #f5ead8; --alert: #c0392b;
+    --bg: #1a1008; --surface: #231608; --raised: #2e1e0a;
+    --faint: #3d2d1a; --body: #d4c4a8; --subtle: #8a7560;
+    --rim: rgba(232,116,42,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .avail-section {
+    background: var(--bg);
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .avail-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .avail-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .avail-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  /* Live indicator dot */
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    display: inline-block;
+    position: relative;
+  }
+  .live-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: rgba(34,197,94,0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50%       { transform: scale(1.4); opacity: 0; }
+  }
+  .avail-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .avail-headline .seat-count {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .avail-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--subtle);
+    margin-bottom: 36px;
+  }
+  /* Seat dots grid */
+  .seat-grid-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .seat-grid-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--subtle);
+    letter-spacing: 0.05em;
+  }
+  .seat-dots {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .seat-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .seat-dot:hover { transform: scale(1.1); }
+  .seat-dot.taken {
+    background: rgba(192,57,43,0.15);
+    border-color: rgba(192,57,43,0.3);
+  }
+  .seat-dot.taken .dot-inner {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(192,57,43,0.5);
+  }
+  .seat-dot.available {
+    background: rgba(232,116,42,0.08);
+    border-color: rgba(232,116,42,0.35);
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+  .seat-dot.available .dot-inner {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.85;
+  }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: none; }
+    50% { box-shadow: 0 0 8px rgba(232,116,42,0.3); }
+  }
+  /* Legend */
+  .seat-legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .legend-dot.avail { background: var(--accent); }
+  .legend-dot.taken { background: rgba(192,57,43,0.5); }
+  /* Tonight count */
+  .tonight-card {
+    background: var(--raised);
+    border: 1px solid var(--rim);
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .tonight-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 2.8rem;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 500;
+  }
+  .tonight-text {
+    text-align: left;
+  }
+  .tonight-main {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+  .tonight-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--subtle);
+    margin-top: 3px;
+  }
+  /* CTA button */
+  .avail-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 36px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+  }
+  .avail-cta:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 24px rgba(232,116,42,0.4);
+    transform: translateY(-2px);
+  }
+  .avail-secondary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+  }
+  .avail-secondary a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232,116,42,0.3);
+  }
+</style>
+
+<section class="avail-section">
+  <div class="avail-inner">
+
+    <div class="avail-eyebrow">
+      <span class="live-dot"></span>
+      Cập nhật thực tế
+    </div>
+
+    <h2 class="avail-headline">
+      Tối Nay Còn
+      <span class="seat-count" id="seat-number">8</span>
+      Bàn Trống
+    </h2>
+    <p class="avail-sub">Thứ Ba · 12/05/2026 · Từ 18:00 đến 21:30</p>
+
+    <!-- Tonight summary card -->
+    <div class="tonight-card">
+      <div class="tonight-number" id="count-display">8</div>
+      <div class="tonight-text">
+        <div class="tonight-main">bàn còn trống tối nay</div>
+        <div class="tonight-sub">trên tổng 10 bàn phục vụ buổi tối</div>
+      </div>
+    </div>
+
+    <!-- Seat dots (10 total, 2 taken = 8 available) -->
+    <div class="seat-grid-wrap">
+      <div class="seat-grid-label">Sơ đồ bàn — Buổi Tối</div>
+      <div class="seat-dots" id="seat-dots-container">
+        <!-- filled by JS -->
+      </div>
+      <div class="seat-legend">
+        <div class="legend-item">
+          <div class="legend-dot avail"></div>
+          Bàn trống
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot taken"></div>
+          Đã đặt
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <a href="#dat-ban" class="avail-cta">
+        Đặt Bàn Ngay →
+      </a>
+      <br>
+      <span class="avail-secondary">
+        Xác nhận ngay · Hoặc gọi
+        <a href="tel:02812345678">028 xxxx xxxx</a>
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    // Config: total seats and taken count
+    var TOTAL_SEATS = 10;
+    var TAKEN = 2;  // adjust dynamically via API in production
+
+    var available = TOTAL_SEATS - TAKEN;
+
+    // Update headline numbers
+    document.getElementById('seat-number').textContent = available;
+    document.getElementById('count-display').textContent = available;
+
+    // Render seat dots
+    var container = document.getElementById('seat-dots-container');
+    for (var i = 0; i < TOTAL_SEATS; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'seat-dot ' + (i < TAKEN ? 'taken' : 'available');
+      var inner = document.createElement('div');
+      inner.className = 'dot-inner';
+      dot.appendChild(inner);
+
+      // Tooltip
+      dot.title = i < TAKEN ? 'Bàn đã đặt' : 'Bàn trống — nhấn để đặt';
+      if (i >= TAKEN) {
+        dot.style.cursor = 'pointer';
+        dot.addEventListener('click', function() {
+          document.getElementById('dat-ban') &&
+            document.getElementById('dat-ban').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+      container.appendChild(dot);
+    }
+
+    // Stagger animation
+    container.querySelectorAll('.seat-dot').forEach(function(dot, idx) {
+      dot.style.opacity = '0';
+      dot.style.transform = 'scale(0.5)';
+      dot.style.transition = 'opacity 0.3s ease ' + (idx * 0.06) + 's, transform 0.3s ease ' + (idx * 0.06) + 's';
+      requestAnimationFrame(function() {
+        setTimeout(function() {
+          dot.style.opacity = '1';
+          dot.style.transform = 'scale(1)';
+        }, 50);
+      });
+    });
+  })();
+</script>

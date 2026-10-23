@@ -1,0 +1,80 @@
+<!--
+  bento-grid.html — Bento grid features (unequal cell sizes)
+  Layout:     CSS grid 12-col · large featured cell + smaller cells · gap-3
+  Background: var(--bg)
+  Elements:   label + H2 + bento cells each with: icon · title · description · optional visual
+  Visuals:    each cell has unique accent icon · featured cell has gradient bg or mockup
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-14 reveal">
+      <span class="section-label">Tính năng</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.1;letter-spacing:-0.03em">Mọi thứ bạn cần<br><span style="color:var(--accent)">trong một nơi</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 auto-rows-auto gap-3 reveal">
+
+      <!-- Featured large cell — col-span-2 -->
+      <div class="md:col-span-2 relative rounded-2xl overflow-hidden p-8 flex flex-col justify-between min-h-[260px]" style="background:linear-gradient(135deg,rgba(182,255,0,0.08) 0%,rgba(0,194,255,0.05) 100%);border:1px solid rgba(255,255,255,0.08)">
+        <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.5) 39px,rgba(255,255,255,0.5) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.5) 39px,rgba(255,255,255,0.5) 40px)"></div>
+        <div class="relative">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(182,255,0,0.12)">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-ink text-xl mb-2">Tính năng nổi bật chính</h3>
+          <p class="text-subtle text-sm leading-relaxed max-w-sm">Mô tả dài hơn cho tính năng quan trọng nhất. 2–3 câu mô tả giá trị cốt lõi mà người dùng nhận được.</p>
+        </div>
+        <div class="relative flex items-center gap-2 mt-4">
+          <span class="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-full" style="background:rgba(182,255,0,0.10);color:var(--accent)">
+            <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
+            Đang hoạt động
+          </span>
+        </div>
+      </div>
+
+      <!-- Small cell -->
+      <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(0,194,255,0.10)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v14M2 9h14" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem]">Tính năng 2</h3>
+        <p class="text-subtle text-sm leading-relaxed">Mô tả ngắn 1–2 câu về lợi ích.</p>
+      </div>
+
+      <!-- Small cell -->
+      <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(240,34,106,0.10)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5L11.25 6.75H17L12.375 10L14.25 15.5L9 12.25L3.75 15.5L5.625 10L1 6.75H6.75L9 1.5Z" stroke="var(--alert)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem]">Tính năng 3</h3>
+        <p class="text-subtle text-sm leading-relaxed">Mô tả ngắn 1–2 câu về lợi ích.</p>
+      </div>
+
+      <!-- Wide cell — col-span-2 -->
+      <div class="md:col-span-2 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(182,255,0,0.10)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="var(--accent)" stroke-width="1.5"/><path d="M6 9h6M9 6v6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-ink text-[0.9375rem] mb-1">Tính năng span rộng</h3>
+          <p class="text-subtle text-sm leading-relaxed">Mô tả cho tính năng chiếm 2 cột — phù hợp với tính năng cần giải thích thêm hoặc có con số ấn tượng.</p>
+        </div>
+        <div class="shrink-0 ml-auto">
+          <span class="font-mono font-black text-2xl" style="color:var(--accent)">10×</span>
+          <p class="text-subtle text-xs text-center">nhanh hơn</p>
+        </div>
+      </div>
+
+      <!-- Small cell -->
+      <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(182,255,0,0.10)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="var(--accent)" stroke-width="1.5"/><path d="M9 5v4l3 3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem]">Tính năng 5</h3>
+        <p class="text-subtle text-sm leading-relaxed">Mô tả ngắn 1–2 câu.</p>
+      </div>
+
+    </div>
+  </div>
+</section>

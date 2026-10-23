@@ -1,0 +1,134 @@
+<!--
+  OVERRIDE: pricing-card.html — Trust Navy
+  vs shared: single vertical card · neon glow
+  vs bright-learn: single vertical card · soft shadow
+  Override: 3-COL HORIZONTAL COMPARISON TABLE — feature rows vs. plan columns
+  Layout change: MAJOR — table replaces single card
+  Rule: Row = feature · Col = plan · Gold border on recommended column
+-->
+<section class="py-20" style="background:var(--bg)">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <p class="font-mono text-[10px] uppercase tracking-widest mb-3" style="color:var(--subtle)">Investment plans</p>
+      <h2 class="font-display font-semibold" style="font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.2;letter-spacing:-0.02em;color:var(--ink)">
+        Chọn chương trình phù hợp
+      </h2>
+    </div>
+
+    <!-- Comparison table -->
+    <div style="border:1px solid var(--faint);border-radius:6px;overflow:hidden">
+
+      <!-- Column headers -->
+      <div class="grid grid-cols-4" style="background:var(--raised);border-bottom:1px solid var(--faint)">
+        <div class="px-5 py-4" style="border-right:1px solid var(--faint)">
+          <p class="font-mono text-[9px] uppercase tracking-widest" style="color:var(--subtle)">Features</p>
+        </div>
+
+        <!-- Plan 1 -->
+        <div class="px-5 py-4 text-center" style="border-right:1px solid var(--faint)">
+          <p class="font-body font-semibold text-sm mb-1" style="color:var(--ink)">[Plan 1]</p>
+          <p class="font-mono font-bold text-lg" style="color:var(--body)">[PRICE]</p>
+          <p class="font-mono text-[9px]" style="color:var(--subtle)">[billing]</p>
+        </div>
+
+        <!-- Plan 2 — recommended -->
+        <div class="px-5 py-4 text-center relative" style="border-right:1px solid var(--rim);border-left:1px solid var(--rim);background:rgba(201,168,76,0.04)">
+          <div class="absolute top-0 inset-x-0 h-0.5" style="background:var(--accent)"></div>
+          <p class="font-mono text-[9px] uppercase tracking-widest mb-1" style="color:var(--accent)">Recommended</p>
+          <p class="font-body font-semibold text-sm mb-1" style="color:var(--ink)">[Plan 2]</p>
+          <p class="font-mono font-bold text-lg" style="color:var(--accent)">[PRICE]</p>
+          <p class="font-mono text-[9px]" style="color:var(--subtle)">[billing]</p>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="px-5 py-4 text-center">
+          <p class="font-body font-semibold text-sm mb-1" style="color:var(--ink)">[Plan 3]</p>
+          <p class="font-mono font-bold text-lg" style="color:var(--body)">[PRICE]</p>
+          <p class="font-mono text-[9px]" style="color:var(--subtle)">[billing]</p>
+        </div>
+      </div>
+
+      <!-- Feature rows -->
+      <!-- Row template — repeat for each feature -->
+      <div class="grid grid-cols-4" style="border-bottom:1px solid var(--faint)">
+        <div class="px-5 py-3.5 flex items-center" style="border-right:1px solid var(--faint)">
+          <span class="font-body text-sm" style="color:var(--body)">[Feature name]</span>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center" style="border-right:1px solid var(--faint)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="var(--positive)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center" style="border-right:1px solid var(--rim);border-left:1px solid var(--rim);background:rgba(201,168,76,0.04)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="var(--positive)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Row 2 — partial feature -->
+      <div class="grid grid-cols-4" style="border-bottom:1px solid var(--faint)">
+        <div class="px-5 py-3.5 flex items-center" style="border-right:1px solid var(--faint)">
+          <span class="font-body text-sm" style="color:var(--body)">[Feature name]</span>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center" style="border-right:1px solid var(--faint)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8" stroke="var(--subtle)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center" style="border-right:1px solid var(--rim);border-left:1px solid var(--rim);background:rgba(201,168,76,0.04)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="var(--positive)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="grid grid-cols-4" style="border-bottom:1px solid var(--faint)">
+        <div class="px-5 py-3.5 flex items-center" style="border-right:1px solid var(--faint)">
+          <span class="font-body text-sm" style="color:var(--body)">[Feature name]</span>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center" style="border-right:1px solid var(--faint)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 4l6 6M10 4l-6 6" stroke="var(--faint)" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center" style="border-right:1px solid var(--rim);border-left:1px solid var(--rim);background:rgba(201,168,76,0.04)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="px-5 py-3.5 flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="var(--positive)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- CTA row -->
+      <div class="grid grid-cols-4" style="background:var(--raised)">
+        <div class="px-5 py-4" style="border-right:1px solid var(--faint)"></div>
+        <div class="px-4 py-4 flex items-center justify-center" style="border-right:1px solid var(--faint)">
+          <a href="[ORDER_URL_1]"
+             class="w-full text-center py-2.5 font-body font-semibold text-sm transition-all hover:border-accent"
+             style="border:1px solid var(--faint);border-radius:4px;color:var(--body)">
+            Enroll
+          </a>
+        </div>
+        <div class="px-4 py-4 flex items-center justify-center" style="border-right:1px solid var(--rim);border-left:1px solid var(--rim);background:rgba(201,168,76,0.04)">
+          <a href="[ORDER_URL_2]"
+             class="w-full text-center py-2.5 font-body font-semibold text-sm transition-all hover:brightness-110"
+             style="background:var(--accent);color:var(--accent-text);border-radius:4px">
+            Enroll
+          </a>
+        </div>
+        <div class="px-4 py-4 flex items-center justify-center">
+          <a href="[ORDER_URL_3]"
+             class="w-full text-center py-2.5 font-body font-semibold text-sm transition-all hover:border-accent"
+             style="border:1px solid var(--faint);border-radius:4px;color:var(--body)">
+            Enroll
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="font-mono text-[10px] text-center mt-4" style="color:var(--subtle)">
+      * All plans include [guarantee]. Prices in VND, inclusive of VAT.
+    </p>
+
+  </div>
+</section>

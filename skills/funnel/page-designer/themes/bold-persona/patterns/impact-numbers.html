@@ -1,0 +1,341 @@
+<!--
+  PATTERN: impact-numbers
+  THEME:   bold-persona
+  USE:     Social media authority display — platform icons + big follower counts
+           Instagram · YouTube · TikTok · LinkedIn + total community number
+  NEW:     Personal brand specific — shows digital platform authority at scale
+  Rule:    Numbers in Space Mono 700 · Platform names capitalized · Syne 800 section heading
+           Background: white (--bg) · Cards: surface with bottom coral accent on featured
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --accent-rgb: 232,83,58;
+    --electric: #1a56db; --electric-rgb: 26,86,219;
+    --bg: #ffffff; --surface: #f9fafb; --raised: #f3f4f6;
+    --ink: #111827; --body: #374151; --subtle: #9ca3af; --faint: #e5e7eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .impact-section {
+    background: var(--bg);
+    padding: 88px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Dot grid accent — top left area */
+  .impact-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 240px; height: 240px;
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .impact-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Section header */
+  .impact-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .impact-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .impact-eyebrow::before,
+  .impact-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1.5px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+  .impact-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .impact-heading .accent { color: var(--accent); }
+  .impact-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--body);
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Community total — big hero number */
+  .community-total {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 32px;
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid var(--faint);
+    position: relative;
+    overflow: hidden;
+  }
+  .community-total::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--accent), rgba(232,83,58,0.3));
+  }
+  .community-total-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .community-total-num {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .community-total-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--body);
+    margin-top: 8px;
+  }
+
+  /* Platform cards grid */
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .platform-card {
+    background: var(--raised);
+    border-radius: 14px;
+    border: 1px solid var(--faint);
+    padding: 28px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .platform-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--faint);
+    transition: background 0.2s ease;
+  }
+  .platform-card:hover {
+    background: var(--bg);
+    border-color: rgba(232,83,58,0.25);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+  }
+  .platform-card:hover::before {
+    background: var(--accent);
+  }
+
+  /* Platform icon wrapper */
+  .platform-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border: 1px solid var(--faint);
+  }
+  .platform-card:hover .platform-icon-wrap {
+    background: rgba(232,83,58,0.06);
+    border-color: rgba(232,83,58,0.2);
+  }
+  .platform-icon-wrap svg {
+    color: var(--subtle);
+    transition: color 0.2s;
+  }
+  .platform-card:hover .platform-icon-wrap svg {
+    color: var(--accent);
+  }
+
+  .platform-count {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .platform-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .platform-growth {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #16a34a;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .platform-growth::before { content: '↑'; }
+
+  /* Scroll reveal */
+  .platform-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .platform-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .platform-card:nth-child(1) { transition-delay: 0s; }
+  .platform-card:nth-child(2) { transition-delay: 0.1s; }
+  .platform-card:nth-child(3) { transition-delay: 0.2s; }
+  .platform-card:nth-child(4) { transition-delay: 0.3s; }
+
+  @media (max-width: 720px) {
+    .platforms-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .platforms-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .platform-card { padding: 20px 14px; }
+  }
+</style>
+
+<section class="impact-section">
+  <div class="impact-inner">
+
+    <!-- Header -->
+    <div class="impact-header">
+      <p class="impact-eyebrow">Cộng đồng</p>
+      <h2 class="impact-heading">
+        Hơn <span class="accent">[N]K Người</span><br>Theo Dõi Hành Trình Này
+      </h2>
+      <p class="impact-sub">
+        Từ những buổi livestream đầu tiên đến hôm nay — mỗi con số là một người đã tin tưởng và thay đổi.
+      </p>
+    </div>
+
+    <!-- Total community number -->
+    <div class="community-total">
+      <p class="community-total-label">Tổng cộng đồng trên tất cả nền tảng</p>
+      <div class="community-total-num">[N]K+</div>
+      <p class="community-total-desc">Người đang theo dõi và học hỏi mỗi tuần</p>
+    </div>
+
+    <!-- Platform breakdown -->
+    <div class="platforms-grid" id="platformsGrid">
+
+      <!-- Instagram -->
+      <div class="platform-card">
+        <div class="platform-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5.5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="platform-count">[N]K</div>
+        <div class="platform-name">Instagram</div>
+        <div class="platform-growth">[N]% tháng này</div>
+      </div>
+
+      <!-- YouTube -->
+      <div class="platform-card">
+        <div class="platform-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="4"/>
+            <path d="M10 9.5l5 2.5-5 2.5V9.5z" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="platform-count">[N]K</div>
+        <div class="platform-name">YouTube</div>
+        <div class="platform-growth">[N]K subs/tháng</div>
+      </div>
+
+      <!-- TikTok -->
+      <div class="platform-card">
+        <div class="platform-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+          </svg>
+        </div>
+        <div class="platform-count">[N]K</div>
+        <div class="platform-name">TikTok</div>
+        <div class="platform-growth">[N]M views/tháng</div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="platform-card">
+        <div class="platform-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="4"/>
+            <line x1="7" y1="10" x2="7" y2="17"/>
+            <line x1="7" y1="7" x2="7" y2="7.5" stroke-width="2.8"/>
+            <path d="M11 17v-4a2 2 0 0 1 4 0v4"/>
+            <line x1="11" y1="10" x2="11" y2="17"/>
+          </svg>
+        </div>
+        <div class="platform-count">[N]K</div>
+        <div class="platform-name">LinkedIn</div>
+        <div class="platform-growth">[N]K impressions</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.platform-card').forEach(c => c.classList.add('visible'));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  const grid = document.getElementById('platformsGrid');
+  if (grid) observer.observe(grid);
+</script>

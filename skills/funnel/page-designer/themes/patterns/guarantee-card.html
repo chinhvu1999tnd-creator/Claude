@@ -1,0 +1,57 @@
+<!--
+  guarantee-card.html — Money-back guarantee card
+  Layout:     centered card · max-w-xl · flex items-center
+  Background: gradient border (accent) on surface card
+  Elements:   shield icon · guarantee headline · duration + conditions · signature line
+  Visuals:    large shield SVG · accent gradient border · subtle grid bg
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Shield/seal icon (SVG)
+  · Duration label (e.g. "30 Ngày")
+  · Guarantee headline
+  · Promise description — điều kiện cụ thể
+  · Signature line — tên + chức danh người ký
+  Elements tùy chọn:
+  · 3 commitment points (bulleted)
+  DEFAULT LAYOUT (Mode A):
+  Centered card · max-w-xl · gradient border · shield centered top
+  ─────────────────────────────────────────────────────────────────────
+-->
+<section class="py-16 bg-canvas">
+  <div class="max-w-xl mx-auto px-6 reveal">
+
+    <div class="relative p-px rounded-2xl overflow-hidden">
+      <!-- Gradient border -->
+      <div class="absolute inset-0 rounded-2xl" style="background:linear-gradient(135deg,rgba(182,255,0,0.4),rgba(0,194,255,0.2),rgba(182,255,0,0.1))"></div>
+      <!-- Card body -->
+      <div class="relative rounded-2xl p-8 text-center" style="background:var(--surface)">
+
+        <!-- Shield icon -->
+        <div class="w-16 h-16 mx-auto mb-5 flex items-center justify-center rounded-full" style="background:rgba(182,255,0,0.08);border:1px solid rgba(182,255,0,0.2)">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 3L5 8v8c0 7 4.8 13.5 11 15 6.2-1.5 11-8 11-15V8L16 3z" stroke="var(--accent)" stroke-width="1.75" stroke-linejoin="round" fill="rgba(182,255,0,0.06)"/>
+            <path d="M11 16l3.5 3.5L21 13" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <p class="text-[10px] font-mono tracking-widest uppercase mb-2" style="color:var(--accent)">Cam kết hoàn tiền</p>
+        <h3 class="font-display font-black text-ink text-2xl mb-3">Bảo đảm 7 ngày<br>hoàn tiền 100%</h3>
+        <p class="text-subtle text-sm leading-relaxed max-w-sm mx-auto mb-6">Nếu sau 7 ngày học bạn không hài lòng vì bất kỳ lý do gì, chỉ cần gửi email — chúng tôi hoàn tiền ngay, không hỏi thêm câu nào.</p>
+
+        <!-- Divider -->
+        <div class="border-t mb-4" style="border-color:rgba(255,255,255,0.07)"></div>
+
+        <!-- Signature area -->
+        <div class="flex items-center justify-center gap-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style="background:rgba(182,255,0,0.12);color:var(--accent)">TG</div>
+          <div class="text-left">
+            <p class="text-ink text-sm font-medium">Tên Giảng Viên</p>
+            <p class="text-subtle text-xs">Founder · Brand Name</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

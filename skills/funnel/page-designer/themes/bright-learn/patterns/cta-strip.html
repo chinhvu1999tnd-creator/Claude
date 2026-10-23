@@ -1,0 +1,98 @@
+<!--
+  OVERRIDE: cta-strip.html — Bright Learn
+  vs shared: centered stacked · dark-on-neon inverted button · oversized blobs
+  Override: 2-COLUMN — text + trust left · registration box right · purple bg
+  Layout change: MAJOR — split form layout replaces centered CTA
+  Rule: Form box right = highest-converting position for course registration
+-->
+<section class="relative py-16 sm:py-20 overflow-hidden" style="background:var(--accent)">
+
+  <!-- Soft blob decorations — teal + orange, not dark -->
+  <div class="absolute w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
+       style="background:var(--teal);top:-100px;right:-60px"></div>
+  <div class="absolute w-80 h-80 rounded-full blur-3xl opacity-15 pointer-events-none"
+       style="background:var(--orange);bottom:-80px;left:-40px"></div>
+
+  <div class="relative max-w-4xl mx-auto px-6">
+    <div class="grid sm:grid-cols-2 gap-10 items-center">
+
+      <!-- LEFT — headline + trust signals -->
+      <div>
+        <span class="inline-block font-display font-semibold text-[11px] uppercase tracking-wider mb-4 px-3 py-1 rounded-full"
+              style="background:rgba(255,255,255,0.2);color:white;letter-spacing:0.06em">
+          [Label — e.g. Khai giảng Thứ 2]
+        </span>
+
+        <h2 class="font-display font-extrabold text-white mb-4"
+            style="font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.05;letter-spacing:-0.035em">
+          [CTA Headline —<br>Verb + Outcome]
+        </h2>
+
+        <p class="font-body text-base mb-8" style="color:rgba(255,255,255,0.8)">[Sub — 1 câu xác nhận quyết định đúng]</p>
+
+        <!-- Trust checklist -->
+        <ul class="space-y-2.5">
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(255,255,255,0.2)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-body text-sm" style="color:rgba(255,255,255,0.85)">Hoàn tiền 30 ngày — không câu hỏi</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(255,255,255,0.2)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-body text-sm" style="color:rgba(255,255,255,0.85)">Xem lại video không giới hạn</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(255,255,255,0.2)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-body text-sm" style="color:rgba(255,255,255,0.85)">Chứng chỉ hoàn thành khóa học</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(255,255,255,0.2)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-body text-sm" style="color:rgba(255,255,255,0.85)">Hỗ trợ qua group + live Q&A</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RIGHT — registration box -->
+      <div class="rounded-2xl p-7" style="background:var(--bg);box-shadow:0 8px 40px rgba(0,0,0,0.15)">
+
+        <h3 class="font-display font-bold mb-1" style="font-size:1.1rem;color:var(--ink)">Đăng ký ngay hôm nay</h3>
+        <p class="font-body text-sm mb-5" style="color:var(--body)">Còn <strong style="color:var(--orange)">[N] suất</strong> học phí ưu đãi</p>
+
+        <!-- Form fields -->
+        <div class="space-y-3 mb-5">
+          <input type="text" placeholder="Họ và tên"
+                 class="w-full px-4 py-3 rounded-xl font-body text-sm outline-none transition-all"
+                 style="border:1.5px solid var(--faint);background:var(--bg);color:var(--ink)"
+                 onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--faint)'">
+          <input type="email" placeholder="Email của bạn"
+                 class="w-full px-4 py-3 rounded-xl font-body text-sm outline-none transition-all"
+                 style="border:1.5px solid var(--faint);background:var(--bg);color:var(--ink)"
+                 onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--faint)'">
+          <input type="tel" placeholder="Số điện thoại (nhận link Zalo)"
+                 class="w-full px-4 py-3 rounded-xl font-body text-sm outline-none transition-all"
+                 style="border:1.5px solid var(--faint);background:var(--bg);color:var(--ink)"
+                 onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--faint)'">
+        </div>
+
+        <button type="submit"
+                class="w-full py-3.5 rounded-xl font-display font-bold text-sm text-white transition-all hover:-translate-y-0.5"
+                style="background:var(--accent);box-shadow:0 4px 20px rgba(108,71,255,0.35)">
+          [CTA TEXT] →
+        </button>
+
+        <p class="font-body text-xs text-center mt-3" style="color:var(--subtle)">
+          🔒 Thông tin của bạn được bảo mật tuyệt đối
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+</section>

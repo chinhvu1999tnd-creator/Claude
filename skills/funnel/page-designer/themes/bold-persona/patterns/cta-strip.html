@@ -1,0 +1,247 @@
+<!--
+  PATTERN: cta-strip
+  THEME:   bold-persona
+  USE:     Final CTA section — WHITE bg (saves coral energy for button only)
+           Large Syne 800 headline + coral primary CTA + electric blue ghost CTA
+           Clean, confident, no clutter
+  Rule:    Background MUST be white (--bg) — NOT coral. Coral only on button.
+           Two CTAs: primary coral + secondary electric blue ghost
+           Keep headline under 8 words · Sub under 20 words
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --accent-rgb: 232,83,58;
+    --electric: #1a56db; --electric-rgb: 26,86,219;
+    --bg: #ffffff; --surface: #f9fafb; --raised: #f3f4f6;
+    --ink: #111827; --body: #374151; --subtle: #9ca3af; --faint: #e5e7eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .cta-section {
+    background: var(--bg);
+    padding: 88px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Dot grid — both sides, quiet */
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 200px;
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 200px;
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Eyebrow */
+  .cta-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .cta-eyebrow::before,
+  .cta-eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 1.5px;
+    background: var(--accent);
+    opacity: 0.35;
+  }
+
+  /* Headline */
+  .cta-headline {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 5.5vw, 3.75rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .cta-headline .accent { color: var(--accent); }
+
+  /* Accent underline on key word */
+  .cta-headline .underline-accent {
+    position: relative;
+    display: inline-block;
+  }
+  .cta-headline .underline-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.35;
+  }
+
+  /* Sub */
+  .cta-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: var(--body);
+    line-height: 1.65;
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+
+  /* CTA buttons */
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 16px 36px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(232,83,58,0.30);
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 6px 28px rgba(232,83,58,0.42);
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--electric);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 15px 32px;
+    border-radius: 8px;
+    border: 1.5px solid var(--electric);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    background: rgba(26,86,219,0.06);
+    transform: translateY(-1px);
+  }
+
+  /* Trust micro-copy */
+  .cta-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cta-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--subtle);
+  }
+  .cta-trust-item svg { color: var(--accent); flex-shrink: 0; }
+  .trust-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+
+  @media (max-width: 560px) {
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+    .cta-trust { gap: 12px; }
+  }
+</style>
+
+<section class="cta-section">
+  <div class="cta-inner">
+
+    <p class="cta-eyebrow">Bắt đầu hôm nay</p>
+
+    <h2 class="cta-headline">
+      Đừng Để<br>
+      <span class="underline-accent">Cơ Hội Này</span>
+      <span class="accent"> Trôi Qua</span>
+    </h2>
+
+    <p class="cta-sub">
+      [N]K người đã bắt đầu — và họ không hối hận. Câu hỏi duy nhất là bạn có tham gia không.
+    </p>
+
+    <div class="cta-buttons">
+      <a href="#dang-ky" class="btn-primary">
+        [Primary CTA — e.g. Tham gia cộng đồng miễn phí] →
+      </a>
+      <a href="#chuong-trinh" class="btn-secondary">
+        [Secondary — e.g. Xem chương trình]
+      </a>
+    </div>
+
+    <!-- Trust items -->
+    <div class="cta-trust">
+      <div class="cta-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+        </svg>
+        Bảo đảm 30 ngày
+      </div>
+      <span class="trust-sep"></span>
+      <div class="cta-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Truy cập ngay sau đăng ký
+      </div>
+      <span class="trust-sep"></span>
+      <div class="cta-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        [N]K+ thành viên
+      </div>
+    </div>
+
+  </div>
+</section>

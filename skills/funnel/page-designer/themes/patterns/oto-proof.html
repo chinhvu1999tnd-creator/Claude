@@ -1,0 +1,66 @@
+<!--
+  oto-proof.html — Quick proof strip for OTO page
+  Layout:     centered · max-w-2xl · 2–3 compact testimonial cards
+  Slots:      [PERSON] 1:1 circular — ảnh mặt người testimonial (optional)
+  Elements:   Section label · 2–3 cards · Each: avatar + quote + name + result tag
+  Rule:       Testimonial phải liên quan đến OTO offer cụ thể, không phải offer chính.
+              Ngắn gọn — tối đa 2 câu mỗi quote.
+-->
+<div class="max-w-2xl mx-auto px-6 pb-8">
+
+  <p class="font-mono text-[11px] uppercase tracking-wider text-center mb-5" style="color:var(--subtle)">
+    Những người đã nâng cấp nói gì
+  </p>
+
+  <div class="grid sm:grid-cols-2 gap-4">
+
+    <!-- Testimonial 1 -->
+    <div class="rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="flex items-center gap-3 mb-3">
+        <!-- [PERSON] avatar — replace with real photo -->
+        <div class="media-slot shrink-0 rounded-full" style="width:40px;height:40px;border-radius:50%;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;" data-role="PERSON">
+          <span style="font-size:1.5rem;opacity:0.4">👤</span>
+        </div>
+        <div>
+          <p class="font-body text-sm font-semibold text-ink">[Tên khách hàng]</p>
+          <p class="font-mono text-[10px]" style="color:var(--subtle)">[Chức danh / ngành]</p>
+        </div>
+      </div>
+      <p class="font-body text-sm leading-relaxed mb-3" style="color:var(--body)">
+        "[Quote ngắn 1–2 câu — kết quả cụ thể từ OTO offer này]"
+      </p>
+      <!-- Result tag -->
+      <span class="inline-block font-mono text-[10px] px-2 py-0.5 rounded-full"
+        style="background:rgba(var(--accent-rgb),.10);color:var(--accent)">
+        [Kết quả cụ thể: "+X% doanh thu" / "xong trong 3 ngày" ...]
+      </span>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="media-slot shrink-0 rounded-full" style="width:40px;height:40px;border-radius:50%;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;" data-role="PERSON">
+          <span style="font-size:1.5rem;opacity:0.4">👤</span>
+        </div>
+        <div>
+          <p class="font-body text-sm font-semibold text-ink">[Tên khách hàng]</p>
+          <p class="font-mono text-[10px]" style="color:var(--subtle)">[Chức danh / ngành]</p>
+        </div>
+      </div>
+      <p class="font-body text-sm leading-relaxed mb-3" style="color:var(--body)">
+        "[Quote ngắn 1–2 câu — kết quả cụ thể từ OTO offer này]"
+      </p>
+      <span class="inline-block font-mono text-[10px] px-2 py-0.5 rounded-full"
+        style="background:rgba(var(--accent-rgb),.10);color:var(--accent)">
+        [Kết quả cụ thể]
+      </span>
+    </div>
+
+    <!-- [OPTIONAL: Testimonial 3] — uncomment nếu muốn 3 cards (col-span full width)
+    <div class="rounded-xl p-4 sm:col-span-2" style="background:var(--surface);border:1px solid var(--rim)">
+      ... same structure ...
+    </div>
+    END [OPTIONAL: Testimonial 3] -->
+
+  </div>
+</div>

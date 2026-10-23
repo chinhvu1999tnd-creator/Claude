@@ -1,0 +1,82 @@
+<!--
+  OVERRIDE: pricing-card.html — Bright Learn
+  vs shared: neon box-shadow glow + price text-shadow + dark surface
+  Override: white card + purple 2px border + soft shadow + teal checkmarks — no glow
+  Layout: cùng vertical card — visual treatment khác hoàn toàn
+-->
+<section class="py-20" style="background:radial-gradient(ellipse 60% 40% at 50% 100%,rgba(255,159,67,0.07) 0%,transparent 70%),var(--surface)">
+  <div class="max-w-sm mx-auto px-6">
+
+    <!-- Featured card -->
+    <div class="relative rounded-2xl overflow-hidden"
+         style="background:var(--bg);border:2px solid var(--accent);box-shadow:0 8px 40px rgba(108,71,255,0.12),0 2px 8px rgba(0,0,0,0.04)">
+
+      <!-- Top accent bar -->
+      <div class="h-1.5 w-full" style="background:linear-gradient(90deg,var(--accent),var(--teal))"></div>
+
+      <div class="p-8">
+
+        <!-- Badge — in-flow, không absolute (tránh bị clip bởi grid container) -->
+        <div class="flex justify-center mb-5">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+             style="background:rgba(255,159,67,0.12);border:1px solid rgba(255,159,67,0.25)">
+          <span class="text-xs">⭐</span>
+          <span class="font-display font-semibold text-[11px] uppercase tracking-wider" style="color:var(--orange)">[BADGE — e.g. Phổ biến nhất]</span>
+        </div>
+
+        <h3 class="font-display font-bold mb-1.5" style="font-size:1.25rem;color:var(--ink)">[PLAN NAME]</h3>
+        <p class="font-body text-sm mb-6" style="color:var(--body)">[Mô tả ngắn — 1 câu]</p>
+
+        <!-- Price — no glow, clean -->
+        <div class="flex items-baseline gap-1 mb-1.5">
+          <span class="font-mono text-base font-medium" style="color:var(--subtle)">₫</span>
+          <span class="font-mono font-bold leading-none" style="font-size:clamp(2.25rem,5vw,3rem);color:var(--accent)">[PRICE]</span>
+        </div>
+        <p class="font-body text-xs line-through mb-1" style="color:var(--subtle)">[Original price nếu có]</p>
+        <p class="font-mono text-[11px] uppercase tracking-wider mb-8" style="color:var(--subtle)">[Billing — e.g. thanh toán 1 lần]</p>
+
+        <!-- Features with teal checks -->
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(0,184,169,0.12)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-body text-sm" style="color:var(--body)">[Feature 1]</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(0,184,169,0.12)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-body text-sm" style="color:var(--body)">[Feature 2]</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(0,184,169,0.12)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-body text-sm" style="color:var(--body)">[Feature 3]</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(108,71,255,0.10)">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="font-display font-semibold text-sm" style="color:var(--accent)">[Bonus item]</span>
+          </li>
+        </ul>
+
+        <!-- CTA — no glow, solid -->
+        <a href="[ORDER_URL]"
+           class="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-display font-bold text-sm text-white transition-all hover:-translate-y-0.5"
+           style="background:var(--accent);box-shadow:0 4px 20px rgba(108,71,255,0.30)">
+          [CTA TEXT] →
+        </a>
+
+        <!-- Micro trust -->
+        <p class="font-body text-xs text-center mt-4" style="color:var(--subtle)">
+          🔒 Hoàn tiền 30 ngày · Không cần thẻ tín dụng
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>

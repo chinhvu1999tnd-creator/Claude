@@ -1,0 +1,86 @@
+<!--
+  OVERRIDE: pricing-card.html — Warm Earth
+  vs shared: neon glow dark card
+  Override: warm card + terracotta 2px border + stamp badge + dashed option items
+-->
+<section class="py-20" style="background:var(--surface)">
+  <div class="max-w-xs mx-auto px-6">
+
+    <div class="relative rounded-2xl overflow-hidden"
+         style="background:var(--bg);border:2px solid var(--accent);box-shadow:0 6px 28px rgba(42,31,20,0.10)">
+
+      <!-- Top warm stripe -->
+      <div class="h-1.5 w-full" style="background:linear-gradient(90deg,var(--accent),var(--sand))"></div>
+
+      <div class="p-7">
+
+        <!-- Stamp badge — in flow, centered -->
+        <div class="flex justify-center mb-5">
+          <div class="relative flex items-center justify-center w-28 h-10">
+            <!-- Stamp shape SVG -->
+            <svg class="absolute inset-0" viewBox="0 0 112 40" fill="none">
+              <rect x="1" y="1" width="110" height="38" rx="19" fill="rgba(212,168,83,0.15)" stroke="var(--sand)" stroke-width="1.5" stroke-dasharray="3 2"/>
+            </svg>
+            <span class="relative font-display font-bold text-[11px] uppercase tracking-wider" style="color:var(--sand)">🌿 [BADGE TEXT]</span>
+          </div>
+        </div>
+
+        <h3 class="font-display font-bold mb-1.5" style="font-size:1.2rem;color:var(--ink)">[Plan Name]</h3>
+        <p class="font-body text-sm mb-5" style="color:var(--body)">[Mô tả ngắn]</p>
+
+        <!-- Price -->
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="font-mono text-base" style="color:var(--subtle)">₫</span>
+          <span class="font-mono font-bold leading-none" style="font-size:clamp(2.25rem,5vw,3rem);color:var(--accent)">[PRICE]</span>
+        </div>
+        <p class="font-body text-xs line-through mb-7" style="color:var(--subtle)">[Original nếu có]</p>
+
+        <!-- Included features — solid green check -->
+        <ul class="space-y-3 mb-4">
+          <li class="flex items-center gap-3">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="flex-shrink-0">
+              <circle cx="9" cy="9" r="8" fill="rgba(90,122,58,0.12)"/>
+              <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-body text-sm" style="color:var(--body)">[Feature 1]</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="flex-shrink-0">
+              <circle cx="9" cy="9" r="8" fill="rgba(90,122,58,0.12)"/>
+              <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-body text-sm" style="color:var(--body)">[Feature 2]</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="flex-shrink-0">
+              <circle cx="9" cy="9" r="8" fill="rgba(90,122,58,0.12)"/>
+              <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-body text-sm font-semibold" style="color:var(--accent)">[Bonus item]</span>
+          </li>
+        </ul>
+
+        <!-- Optional add-on — dashed border -->
+        <div class="flex items-center gap-3 mb-7 p-3 rounded-xl" style="border:1.5px dashed var(--faint)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="flex-shrink-0">
+            <path d="M8 3v10M3 8h10" stroke="var(--subtle)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="font-body text-sm" style="color:var(--subtle)">[Add-on tùy chọn — e.g. +Gói đóng gói quà]</span>
+        </div>
+
+        <!-- CTA -->
+        <a href="[ORDER_URL]"
+           class="w-full flex items-center justify-center gap-2 py-3.5 font-display font-bold text-sm text-white transition-all hover:-translate-y-0.5"
+           style="background:var(--accent);border-radius:8px;box-shadow:0 4px 16px rgba(196,92,46,0.28)">
+          [CTA TEXT] →
+        </a>
+
+        <p class="font-body text-xs text-center mt-3" style="color:var(--subtle)">
+          🌿 [Micro trust — e.g. Hoàn tiền 7 ngày nếu không hài lòng]
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,52 @@
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  CONTENT WIREFRAME — Booking Call Funnel: Not-A-Fit Page         ║
+║  File: not-a-fit.html                                             ║
+║                                                                   ║
+║  Hiện ra khi applicant không đủ điều kiện (Q6 = option C).      ║
+║  Mục tiêu: redirect gracefully, không shame, offer alternative.  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+PAGE STRUCTURE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[S1] graceful-redirect
+  Intent: Honest, không làm reader cảm thấy bị từ chối hay xấu hổ
+  Data slots:
+    - {{REDIRECT_HEADLINE}} : "Cảm ơn bạn đã điền application!"
+    - {{REDIRECT_HONEST}}   : giải thích thẳng thắn, không blame
+      VD: "Dựa trên những gì bạn chia sẻ, thời điểm này có vẻ chưa phù hợp
+           để đặt lịch tư vấn — buổi gọi sẽ chưa mang lại nhiều giá trị
+           cho bạn ngay lúc này."
+    - {{REDIRECT_POSITIVE}} : reframe tích cực
+      VD: "Khi bạn đã sẵn sàng hơn, application luôn mở."
+
+[S2] alternative-offer
+  Intent: Không để reader rời tay không — offer thứ gì đó phù hợp hơn
+  Data slots:
+    - {{ALT_HEADLINE}}    : "Trong khi đó, đây có thể phù hợp với bạn ngay lúc này:"
+    - {{ALT_1_TITLE}}     : tên resource/offer alternative (free)
+    - {{ALT_1_DESC}}      : mô tả ngắn — tại sao phù hợp với người ở giai đoạn này
+    - {{ALT_1_URL}}       : link đến resource
+    - {{ALT_2_TITLE}}     : optional — alternative thứ 2
+    - {{ALT_2_URL}}       : link
+
+[S3] stay-connected (optional)
+  Intent: Giữ kết nối nhẹ nhàng — không pushy
+  Data slots:
+    - {{FOLLOW_TEXT}}     : "Follow để cập nhật khi có tài liệu mới:"
+    - {{SOCIAL_LINKS}}    : Facebook / Zalo OA / YouTube
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TONE RULES:
+  - Không blame reader ("bạn chưa đủ điều kiện" → xấu)
+  - Không over-apologize ("rất tiếc..." → weak)
+  - Honest + respectful: "thời điểm chưa phù hợp" — đó là sự thật
+  - Alternative offer phải THẬT SỰ phù hợp — không phải trick để giữ reader
+
+DESIGN:
+  - Page ngắn — không cần nhiều sections
+  - Tone: calm, không dramatic
+  - Không có countdown, không có scarcity — không cần convert ở đây
+-->

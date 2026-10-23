@@ -1,0 +1,95 @@
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  CONTENT WIREFRAME — Booking Call Funnel: Application Survey     ║
+║  File: survey.html                                                ║
+║                                                                   ║
+║  Step-by-step form — 1 câu hỏi mỗi màn hình.                    ║
+║  JS navigation: prev/next buttons, progress bar.                  ║
+║  Routing logic: Q6 answer → thank-you.html hoặc not-a-fit.html  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+PAGE STRUCTURE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[HEADER] — Fixed, luôn visible
+  - Brand name: {{BRAND_NAME}}
+  - Progress bar: step X / total steps
+  - Label: "Application — {{OFFER_NAME}}"
+
+[INTRO STEP] — Trước câu hỏi đầu tiên (optional)
+  - {{FORM_HEADLINE}}    : "Điền application để đặt lịch tư vấn"
+  - {{FORM_SUB}}         : "Mất khoảng 3 phút. Câu trả lời giúp buổi gọi đi thẳng vào vấn đề thật."
+  - Button: "Bắt đầu →"
+
+[Q1] — Tên
+  Type: text input
+  Label: "Họ và tên của bạn?"
+  Placeholder: "Nguyễn Văn A"
+
+[Q2] — Liên lạc
+  Type: text input
+  Label: "Số Zalo hoặc email để xác nhận lịch?"
+  Placeholder: "0901234567 hoặc email@example.com"
+  Note: "Dùng để gửi xác nhận lịch — không spam"
+
+[Q3] — Vai trò / Business
+  Type: text input (hoặc select nếu có options cụ thể)
+  Label: "Bạn đang ở vị trí nào?"
+  Placeholder: "VD: Marketing Manager tại công ty X, chủ agency Y..."
+
+[Q4] — Team size
+  Type: radio buttons
+  Label: "Team của bạn hiện có bao nhiêu người?"
+  Options:
+    - "1–2 người (chỉ có mình hoặc cộng sự)"
+    - "3–5 người"
+    - "6–15 người"
+    - "15+ người"
+
+[Q5] — Pain point / Current situation
+  Type: textarea
+  Label: "Hiện tại team đang gặp vấn đề gì lớn nhất với marketing?"
+  Placeholder: "Mô tả ngắn — không cần hoàn hảo, viết tự nhiên..."
+  Min chars: 50 (gentle suggestion, không block)
+
+[Q6] — Investment readiness (qualification gate)
+  Type: radio buttons
+  Label: "Nếu buổi tư vấn cho thấy có giải pháp phù hợp, bạn sẵn sàng?"
+  Options:
+    A: "Sẵn sàng implement trong 1–2 tháng tới" → qualify → thank-you.html
+    B: "Cần thêm thời gian tìm hiểu (3–6 tháng)" → borderline → thank-you.html
+    C: "Đang khám phá, chưa có kế hoạch cụ thể" → disqualify → not-a-fit.html
+
+[Q7] — Expectation (optional, dùng nếu Q6 = A hoặc B)
+  Type: textarea
+  Label: "Bạn muốn đạt được điều gì cụ thể sau 3 tháng implement AI Agent?"
+  Placeholder: "VD: Giảm 50% thời gian làm content, tự động hóa báo cáo..."
+
+[SUBMIT STEP]
+  - Review: "Kiểm tra lại thông tin trước khi gửi"
+  - Summary: hiện tóm tắt Q1, Q2, Q3
+  - Button: "Gửi Application →"
+  - Micro-copy: "Sau khi gửi, bạn sẽ được xem xét trong 24h và xác nhận qua Zalo/email"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROUTING LOGIC (JavaScript):
+  Q6 === option C → redirect not-a-fit.html (sau delay 1.5s)
+  Q6 === option A hoặc B → submit form → redirect thank-you.html
+
+FORM SUBMISSION:
+  POST data đến {{CRM_WEBHOOK_URL}} (từ .env)
+  Fields: name, contact, role, team_size, pain_point, readiness, expectation
+
+NAVIGATION:
+  - Next: validate current field (không blank) → slide sang Q tiếp theo
+  - Prev: slide về Q trước
+  - Progress bar: cập nhật per step
+  - Keyboard: Enter = next step
+
+VISUAL RULES:
+  - 1 câu hỏi trên 1 màn hình — không scroll để thấy câu tiếp theo
+  - Progress bar luôn visible (fixed header hoặc top of content)
+  - Transition: slide ngang hoặc fade (translateX hoặc opacity)
+  - Error state: inline, gentle — không blocking modal
+-->

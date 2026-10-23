@@ -1,0 +1,60 @@
+<!--
+  OVERRIDE: guarantee-card.html — Bright Learn
+  vs shared: centered card · pulsing neon ring behind shield · animated dark border
+  Override: 2-COLUMN — seal/icon left · text right · teal palette · no animation
+  Layout change: MAJOR — horizontal replaces centered stacked
+-->
+<section class="py-16" style="background:var(--surface)">
+  <div class="max-w-2xl mx-auto px-6">
+
+    <div class="rounded-2xl p-8 sm:p-10"
+         style="background:var(--bg);border:1.5px solid rgba(0,184,169,0.25);box-shadow:0 4px 24px rgba(0,184,169,0.08)">
+
+      <div class="grid sm:grid-cols-[auto_1fr] gap-8 items-center">
+
+        <!-- LEFT — seal -->
+        <div class="flex flex-col items-center text-center flex-shrink-0">
+          <!-- Shield seal -->
+          <div class="relative w-24 h-24 flex items-center justify-center rounded-2xl mb-3"
+               style="background:rgba(0,184,169,0.10);border:2px solid rgba(0,184,169,0.30)">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+              <path d="M22 4L6 11v13c0 8.5 7 15.5 16 17.5 9-2 16-9 16-17.5V11L22 4Z"
+                    fill="rgba(0,184,169,0.15)" stroke="var(--teal)" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M15 22l5.5 5.5 8.5-8.5" stroke="var(--teal)" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="font-display font-extrabold leading-none" style="font-size:1.5rem;color:var(--teal)">[N]</p>
+          <p class="font-body text-xs" style="color:var(--subtle)">ngày hoàn tiền</p>
+        </div>
+
+        <!-- RIGHT — text -->
+        <div>
+          <p class="font-display font-semibold text-xs uppercase tracking-wider mb-2" style="color:var(--teal)">Cam kết hoàn tiền</p>
+          <h2 class="font-display font-bold mb-3"
+              style="font-size:clamp(1.125rem,2.5vw,1.5rem);line-height:1.2;letter-spacing:-0.02em;color:var(--ink)">
+            Bảo Đảm [N] Ngày — Không Câu Hỏi
+          </h2>
+          <p class="font-body text-sm leading-relaxed mb-5" style="color:var(--body)">
+            [Mô tả bảo đảm cụ thể — VD: Nếu sau [N] ngày học bạn không thấy cải thiện, chúng tôi hoàn lại 100% học phí. Chỉ cần gửi một email, xử lý trong 24 giờ.]
+          </p>
+          <div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--faint)">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                 style="background:rgba(0,184,169,0.10);border:1px solid rgba(0,184,169,0.2)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1.5L2 4v5c0 3.5 2.5 6.5 6 7.5 3.5-1 6-4 6-7.5V4L8 1.5Z" fill="rgba(0,184,169,0.12)" stroke="var(--teal)" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M5.5 8l2 2 3-3" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-display font-semibold text-sm" style="color:var(--ink)">[Tên người ký]</p>
+              <p class="font-body text-xs" style="color:var(--subtle)">[Chức danh] · [Tên khóa học / thương hiệu]</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

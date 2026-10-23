@@ -1,0 +1,92 @@
+<!--
+  oto-offer.html — Single offer block for OTO page
+  Layout:     centered · max-w-xl · gradient border card
+  Slots:      [PRODUCT] 4:3 — offer visual / mockup (optional, left of checklist)
+  Elements:   Label · Offer title · What's inside checklist · Price anchor · Value stack
+  Rule:       Chỉ 1 offer — không có lựa chọn. Nhấn mạnh "chỉ dành riêng cho khách vừa mua".
+-->
+<div class="max-w-xl mx-auto px-6 pb-8">
+  <div class="rounded-xl p-6" style="background:var(--surface);border:1px solid var(--rim-strong)">
+
+    <!-- Offer label -->
+    <div class="flex items-center gap-2 mb-4">
+      <span class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full"
+        style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2)">
+        Nâng cấp đặc biệt
+      </span>
+      <span class="font-mono text-[10px]" style="color:var(--subtle)">Chỉ dành riêng cho bạn</span>
+    </div>
+
+    <!-- Offer title -->
+    <h2 class="font-display font-black text-ink mb-2" style="font-size:clamp(1.25rem,3vw,1.75rem);line-height:1.2;letter-spacing:-0.025em">
+      [Tên OTO offer — 1 câu mô tả kết quả]
+    </h2>
+    <p class="font-body mb-5" style="color:var(--body);font-size:0.9375rem;line-height:1.65">
+      [1–2 câu: tại sao offer này là bước tự nhiên tiếp theo sau những gì họ vừa mua]
+    </p>
+
+    <!-- Optional product visual -->
+    <div class="relative media-slot rounded-lg mb-5" style="aspect-ratio:4/3;background:var(--surface);border:2px dashed var(--faint)" data-role="PRODUCT">
+      <!-- Replace: <img src="oto-offer.jpg" class="slot-img" alt="[Tên offer]"> -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+        <span style="font-size:2rem;opacity:0.35">📸</span>
+        <p class="font-body text-xs font-medium" style="color:var(--subtle)">Offer visual · 4:3</p>
+        <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+      </div>
+    </div>
+
+    <!-- What's inside checklist -->
+    <div class="space-y-2.5 mb-6">
+      <p class="font-mono text-[11px] uppercase tracking-wider mb-3" style="color:var(--subtle)">Bao gồm trong offer này:</p>
+      <div class="flex items-start gap-3">
+        <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.12)"/>
+          <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <p class="font-body text-sm font-semibold text-ink">[Item 1 — tên cụ thể]</p>
+          <p class="font-body text-xs mt-0.5" style="color:var(--body)">[Mô tả ngắn lợi ích]</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.12)"/>
+          <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <p class="font-body text-sm font-semibold text-ink">[Item 2 — tên cụ thể]</p>
+          <p class="font-body text-xs mt-0.5" style="color:var(--body)">[Mô tả ngắn lợi ích]</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.12)"/>
+          <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <p class="font-body text-sm font-semibold text-ink">[Item 3 — tên cụ thể]</p>
+          <p class="font-body text-xs mt-0.5" style="color:var(--body)">[Mô tả ngắn lợi ích]</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Price anchor + divider -->
+    <div class="pt-5" style="border-top:1px solid var(--rim)">
+      <div class="flex items-end justify-between">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-wider mb-1" style="color:var(--subtle)">Giá OTO đặc biệt</p>
+          <div class="flex items-baseline gap-2">
+            <span class="font-mono font-black" style="font-size:2rem;color:var(--accent);letter-spacing:-0.04em">[Giá OTO]</span>
+            <span class="font-mono text-sm line-through" style="color:var(--faint)">[Giá gốc]</span>
+          </div>
+          <p class="font-mono text-[10px] mt-1" style="color:var(--subtle)">Tiết kiệm [số tiền] — chỉ hôm nay</p>
+        </div>
+        <div class="text-right">
+          <p class="font-mono text-[10px]" style="color:var(--subtle)">Tổng giá trị</p>
+          <p class="font-mono font-bold text-ink line-through text-sm">[Tổng value]</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

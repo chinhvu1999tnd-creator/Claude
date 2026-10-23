@@ -1,0 +1,93 @@
+<!--
+  PATTERN: announcement-bar
+  THEME: clean-clinic
+  USE: Top-of-page credential / info bar
+  STYLE: White bg, 3px teal left border, teal text
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --accent-rgb: 15, 163, 127;
+    --accent-text: #ffffff;
+    --blue: #2563eb;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+    --ink: #0d2b24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ANNOUNCEMENT BAR — white bg, teal left border, medical-grade message -->
+<div style="
+  background: #ffffff;
+  border-left: 3px solid var(--accent);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+">
+  <div style="
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--body);
+    font-family: 'Inter', sans-serif;
+  ">
+    <!-- Checkmark items separated by dot dividers -->
+    <span style="display:flex;align-items:center;gap:6px;">
+      <svg width="14" height="14" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="2,7 6,11 12,4"/>
+      </svg>
+      <span>Phòng khám được Bộ Y Tế cấp phép</span>
+    </span>
+    <span style="color:var(--faint);font-size:1.2em;">·</span>
+    <span style="display:flex;align-items:center;gap:6px;">
+      <svg width="14" height="14" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="2,7 6,11 12,4"/>
+      </svg>
+      <span>Tiêu chuẩn ISO 9001:2015</span>
+    </span>
+    <span style="color:var(--faint);font-size:1.2em;">·</span>
+    <span style="display:flex;align-items:center;gap:6px;">
+      <svg width="14" height="14" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="2,7 6,11 12,4"/>
+      </svg>
+      <span>Hotline tư vấn miễn phí:
+        <a href="tel:1800xxxx" style="color:var(--accent);font-weight:600;text-decoration:none;">1800 xxxx</a>
+      </span>
+    </span>
+  </div>
+
+  <!-- Optional: dismiss button -->
+  <button onclick="this.closest('[data-announcement]').remove()" style="
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--subtle);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1;
+    position: absolute;
+    right: 16px;
+  " aria-label="Đóng thông báo">×</button>
+</div>
+<!-- END: announcement-bar -->
+
+<!--
+  USAGE NOTES:
+  - Keep text under 120 characters total for mobile
+  - Show ONLY credential facts (no promotional claims)
+  - Phone number should be a real clickable tel: link
+  - Add data-announcement attr to enable JS dismiss
+  - Border-left 3px teal is the signature of this pattern
+-->

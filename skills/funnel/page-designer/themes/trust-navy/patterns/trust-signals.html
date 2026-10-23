@@ -1,0 +1,83 @@
+<!--
+  NEW PATTERN: trust-signals.html — Trust Navy only
+  Use: Credentials / certifications / media mentions / regulatory compliance bar
+  Layout: horizontal row — logo/badge slots + credential text
+  Elements: Section label · credential badges · media mentions · regulatory note
+  Rule: Đặt ngay SAU Hero hoặc SAU Instructor section
+        Tối thiểu 4, tối đa 8 items
+        Logos = grayscale (opacity 0.5) bình thường, full color khi hover
+        Quan trọng nhất: CFA, CFP, regulatory licenses — đặt đầu tiên
+  Dùng cho: Trust Navy theme · Finance · Law · Healthcare · Enterprise B2B
+-->
+<section class="py-8" style="background:var(--surface);border-top:1px solid var(--faint);border-bottom:1px solid var(--faint)">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="flex flex-col sm:flex-row items-center gap-6">
+
+      <!-- Label -->
+      <p class="font-mono text-[9px] uppercase tracking-[0.14em] flex-shrink-0" style="color:var(--subtle)">
+        Certifications &<br>As seen in
+      </p>
+
+      <div class="w-px h-8 flex-shrink-0 hidden sm:block" style="background:var(--faint)"></div>
+
+      <!-- Credentials row -->
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-4 flex-1">
+
+        <!-- Credential badge 1 — certification -->
+        <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+          <div class="w-7 h-7 flex items-center justify-center flex-shrink-0"
+               style="background:rgba(201,168,76,0.10);border:1px solid var(--rim);border-radius:3px">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 1L8.5 5H13L9.5 7.5 11 11.5 7 9 3 11.5 4.5 7.5 1 5H5.5L7 1Z" fill="var(--accent)" opacity="0.8"/>
+            </svg>
+          </div>
+          <span class="font-mono text-[11px] font-bold uppercase tracking-wider" style="color:var(--ink)">[CERT — e.g. CFA]</span>
+        </div>
+
+        <!-- Credential badge 2 -->
+        <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+          <div class="w-7 h-7 flex items-center justify-center flex-shrink-0"
+               style="background:rgba(201,168,76,0.10);border:1px solid var(--rim);border-radius:3px">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="2" y="2" width="10" height="10" rx="1" stroke="var(--accent)" stroke-width="1.2" fill="none"/>
+              <path d="M5 7l1.5 1.5L9 5" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="font-mono text-[11px] font-bold uppercase tracking-wider" style="color:var(--ink)">[CERT 2]</span>
+        </div>
+
+        <!-- Separator -->
+        <span class="w-px h-5 hidden sm:block" style="background:var(--faint)"></span>
+
+        <!-- Media mention 1 -->
+        <div class="opacity-40 hover:opacity-70 transition-opacity">
+          <p class="font-display font-bold text-sm" style="color:var(--ink)">[Media name — e.g. CafeF]</p>
+        </div>
+
+        <!-- Media mention 2 -->
+        <div class="opacity-40 hover:opacity-70 transition-opacity">
+          <p class="font-display font-bold text-sm" style="color:var(--ink)">[Media name — e.g. VnExpress]</p>
+        </div>
+
+        <!-- Media mention 3 -->
+        <div class="opacity-40 hover:opacity-70 transition-opacity">
+          <p class="font-display font-bold text-sm" style="color:var(--ink)">[Media name]</p>
+        </div>
+
+        <!-- Separator -->
+        <span class="w-px h-5 hidden sm:block" style="background:var(--faint)"></span>
+
+        <!-- Regulatory note -->
+        <div class="flex items-center gap-1.5 opacity-50">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1L2 3v4c0 2.5 1.8 4.5 4 5 2.2-.5 4-2.5 4-5V3L6 1Z" stroke="var(--silver)" stroke-width="1" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <p class="font-mono text-[9px] uppercase tracking-wider" style="color:var(--subtle)">[Regulatory — e.g. Licensed by SSC]</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

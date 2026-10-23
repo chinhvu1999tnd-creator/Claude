@@ -1,0 +1,416 @@
+<!--
+  PATTERN: testimonials
+  THEME:   bold-persona
+  USE:     Client transformation cards — BEFORE → AFTER · short quote · coral left border on featured
+           Bold result numbers in Space Mono · Real outcomes, specific revenue/metrics
+  Rule:    Always show BEFORE state (pain) + AFTER result (metric) + quote + name/biz type
+           Featured card: coral left border 4px · Others: standard card
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --accent-rgb: 232,83,58;
+    --electric: #1a56db;
+    --bg: #ffffff; --surface: #f9fafb; --raised: #f3f4f6;
+    --ink: #111827; --body: #374151; --subtle: #9ca3af; --faint: #e5e7eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .testimonials-section {
+    background: var(--surface);
+    padding: 88px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonials-section::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .testimonials-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Section header */
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1.5px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+  .section-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .section-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--body);
+    max-width: 440px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Cards grid */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  /* Transformation card */
+  .transform-card {
+    background: var(--bg);
+    border-radius: 14px;
+    border: 1px solid var(--faint);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s, -webkit-transform 0.2s;
+  }
+  .transform-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .transform-card:nth-child(1) { transition-delay: 0s; }
+  .transform-card:nth-child(2) { transition-delay: 0.12s; }
+  .transform-card:nth-child(3) { transition-delay: 0.24s; }
+
+  .transform-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    transform: translateY(-3px);
+  }
+  /* Featured card: coral left border */
+  .transform-card.featured {
+    border-left: 4px solid var(--accent);
+  }
+
+  /* BEFORE section */
+  .card-before {
+    padding: 18px 20px 14px;
+    background: var(--raised);
+    border-bottom: 1px solid var(--faint);
+    flex-shrink: 0;
+  }
+  .before-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .before-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.87rem;
+    color: var(--body);
+    line-height: 1.55;
+  }
+
+  /* AFTER section */
+  .card-after {
+    padding: 14px 20px 18px;
+    flex-shrink: 0;
+  }
+  .after-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .after-result {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .after-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.87rem;
+    color: var(--body);
+    line-height: 1.55;
+  }
+
+  /* Quote */
+  .card-quote {
+    padding: 0 20px 16px;
+    flex: 1;
+  }
+  .quote-mark {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: -8px;
+    opacity: 0.5;
+  }
+  .quote-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--body);
+    line-height: 1.6;
+  }
+
+  /* Person footer */
+  .card-person {
+    padding: 14px 20px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--faint);
+  }
+  .person-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--raised);
+    border: 1.5px solid var(--faint);
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .person-avatar svg { opacity: 0.3; }
+  .person-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .person-biz {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+    margin-top: 1px;
+  }
+  .verified-badge {
+    margin-left: auto;
+    flex-shrink: 0;
+    background: rgba(232,83,58,0.08);
+    border: 1px solid rgba(232,83,58,0.2);
+    border-radius: 9999px;
+    padding: 3px 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* Overall rating strip */
+  .rating-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px 32px;
+    background: var(--bg);
+    border-radius: 14px;
+    border: 1px solid var(--faint);
+  }
+  .rating-stars {
+    display: flex;
+    gap: 4px;
+  }
+  .star {
+    font-size: 1.2rem;
+    color: var(--accent);
+  }
+  .rating-num {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--ink);
+  }
+  .rating-sep { width: 1px; height: 24px; background: var(--faint); }
+  .rating-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--body);
+  }
+  .rating-desc strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .transform-card:nth-child(3) { display: none; }
+  }
+  @media (max-width: 580px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .transform-card:nth-child(3) { display: flex; }
+    .rating-strip { flex-wrap: wrap; gap: 12px; }
+  }
+</style>
+
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+
+    <!-- Header -->
+    <div class="section-header">
+      <p class="section-eyebrow">Kết quả thực tế</p>
+      <h2 class="section-heading">Học viên Đã Làm Được Gì?</h2>
+      <p class="section-sub">
+        Không phải cam kết — là bằng chứng. Con số thật từ người thật.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="testimonials-grid" id="testimonialsGrid">
+
+      <!-- Card 1 — FEATURED -->
+      <div class="transform-card featured">
+        <div class="card-before">
+          <div class="before-label">Trước khi học</div>
+          <p class="before-text">[Before state — pain point cụ thể, e.g. "Chạy ads 3 tháng, tiêu 15 triệu, không có đơn nào ra"]</p>
+        </div>
+        <div class="card-after">
+          <div class="after-label">Sau [X] tháng</div>
+          <div class="after-result">[RESULT — e.g. 120M]</div>
+          <p class="after-text">[After result cụ thể — e.g. "Doanh thu tháng đầu sau khi áp dụng system"]</p>
+        </div>
+        <div class="card-quote">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">[Short quote — 1-2 câu. Cụ thể, cảm xúc thật, không sáo rỗng.]</p>
+        </div>
+        <div class="card-person">
+          <div class="person-avatar">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" stroke="#9ca3af" stroke-width="1.5"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="person-name">[Họ Tên]</div>
+            <div class="person-biz">[Lĩnh vực — e.g. Chủ shop thời trang online]</div>
+          </div>
+          <span class="verified-badge">✓ Verified</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="transform-card">
+        <div class="card-before">
+          <div class="before-label">Trước khi học</div>
+          <p class="before-text">[Before state 2 — e.g. "Freelancer loay hoay với khách giá thấp, không biết cách định giá"]</p>
+        </div>
+        <div class="card-after">
+          <div class="after-label">Sau [X] tháng</div>
+          <div class="after-result">[RESULT — e.g. $8,000/tháng]</div>
+          <p class="after-text">[After result — e.g. "Chốt được 3 khách enterprise, tăng giá 4x"]</p>
+        </div>
+        <div class="card-quote">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">[Quote 2 — xác thực và ngắn gọn]</p>
+        </div>
+        <div class="card-person">
+          <div class="person-avatar">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" stroke="#9ca3af" stroke-width="1.5"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="person-name">[Họ Tên]</div>
+            <div class="person-biz">[Lĩnh vực]</div>
+          </div>
+          <span class="verified-badge">✓ Verified</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="transform-card">
+        <div class="card-before">
+          <div class="before-label">Trước khi học</div>
+          <p class="before-text">[Before state 3 — e.g. "Không có personal brand, không ai biết đến ngoài gia đình"]</p>
+        </div>
+        <div class="card-after">
+          <div class="after-label">Sau [X] tháng</div>
+          <div class="after-result">[RESULT — e.g. 50K Followers]</div>
+          <p class="after-text">[After result — e.g. "Ra mắt khóa học đầu tiên, thu về 180 triệu trong 7 ngày"]</p>
+        </div>
+        <div class="card-quote">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">[Quote 3]</p>
+        </div>
+        <div class="card-person">
+          <div class="person-avatar">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" stroke="#9ca3af" stroke-width="1.5"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="person-name">[Họ Tên]</div>
+            <div class="person-biz">[Lĩnh vực]</div>
+          </div>
+          <span class="verified-badge">✓ Verified</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Overall rating -->
+    <div class="rating-strip">
+      <div class="rating-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="rating-num">[N]★</div>
+      <div class="rating-sep"></div>
+      <p class="rating-desc"><strong>[N]+ đánh giá</strong> trung bình từ học viên thực tế</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.transform-card').forEach(c => c.classList.add('visible'));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  const grid = document.getElementById('testimonialsGrid');
+  if (grid) observer.observe(grid);
+</script>

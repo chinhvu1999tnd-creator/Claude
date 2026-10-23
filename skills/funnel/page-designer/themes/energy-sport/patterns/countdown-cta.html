@@ -1,0 +1,490 @@
+<!--
+  PATTERN: Countdown CTA — Energy Sport Theme
+  "OFFER ENDS IN" + large Barlow Condensed countdown boxes (red border, dark bg)
+  + "LOCK IN YOUR RATE" CTA. Aggressive urgency.
+-->
+<style>
+  :root {
+    --accent:      #ff2d2d;
+    --accent-rgb:  255, 45, 45;
+    --yellow:      #f5c500;
+    --bg:          #0e0e0e;
+    --surface:     #141414;
+    --raised:      #1e1e1e;
+    --ink:         #ffffff;
+    --body:        #cccccc;
+    --subtle:      #888888;
+    --faint:       #2a2a2a;
+    --rim:         rgba(255,45,45,0.25);
+    --font-display:'Barlow Condensed', sans-serif;
+    --font-body:   'Barlow', sans-serif;
+    --font-label:  'Barlow Semi Condensed', sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .countdown-section {
+    background-color: var(--bg);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Red glow from bottom */
+  .countdown-section::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse at center bottom, rgba(255,45,45,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .countdown-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Label above timer */
+  .countdown-label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .countdown-label-line {
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  /* Main message */
+  .countdown-headline {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+
+  .countdown-headline span { color: var(--accent); }
+
+  /* ── TIMER BOXES ────────────────────────────── */
+  .countdown-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--raised);
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 20px 28px;
+    min-width: 120px;
+    position: relative;
+    box-shadow: 0 0 0 1px var(--rim), 0 8px 32px rgba(255,45,45,0.15);
+    overflow: hidden;
+  }
+
+  /* Flip animation on number change */
+  .countdown-box.tick .countdown-digits {
+    animation: tickFlip 0.3s ease;
+  }
+
+  @keyframes tickFlip {
+    0%   { transform: translateY(-4px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Carbon texture inside box */
+  .countdown-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg,
+      rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px,
+      transparent 1px, transparent 8px);
+    pointer-events: none;
+  }
+
+  /* Red top accent line */
+  .countdown-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .countdown-digits {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+    min-width: 2ch;
+    text-align: center;
+  }
+
+  .countdown-unit {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--subtle);
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Colon separator */
+  .countdown-sep {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 20px; /* offset for label */
+    animation: sepPulse 1s step-end infinite;
+  }
+
+  @keyframes sepPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+  }
+
+  /* ── OFFER DETAILS ──────────────────────────── */
+  .countdown-offer {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 6px;
+    padding: 20px 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .offer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .offer-item__value {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--yellow);
+    line-height: 1;
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  .offer-item__new {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .offer-item__label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subtle);
+  }
+
+  .offer-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--faint);
+  }
+
+  /* CTA button */
+  .countdown-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 4px;
+    padding: 18px 48px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255,45,45,0.35);
+    transition: all 0.2s ease;
+    margin-bottom: 14px;
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(255,45,45,0.35); }
+    50%       { box-shadow: 0 4px 40px rgba(255,45,45,0.6); }
+  }
+
+  .countdown-cta-btn:hover {
+    transform: translateY(-2px);
+    animation: none;
+    box-shadow: 0 8px 40px rgba(255,45,45,0.6);
+  }
+
+  .countdown-micro {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--subtle);
+    display: block;
+  }
+
+  /* Spots remaining bar */
+  .countdown-spots {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .spots-label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--subtle);
+  }
+
+  .spots-label span { color: var(--accent); }
+
+  .spots-track {
+    width: 240px;
+    height: 6px;
+    background: var(--faint);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .spots-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #ff5252);
+    border-radius: 2px;
+    width: 72%; /* 72% full = 28% remaining */
+    transition: width 1s ease;
+  }
+
+  .spots-remaining {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+</style>
+
+<section class="countdown-section" id="countdown">
+  <div class="countdown-inner">
+
+    <div class="countdown-label">
+      <span class="countdown-label-line"></span>
+      TIME-SENSITIVE OFFER
+      <span class="countdown-label-line"></span>
+    </div>
+
+    <h2 class="countdown-headline">
+      OFFER ENDS IN <span>—</span> LOCK IN YOUR RATE
+    </h2>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-timer" id="countdown-timer">
+      <div class="countdown-box" id="box-hours">
+        <span class="countdown-digits" id="hours">23</span>
+        <span class="countdown-unit">Hours</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-box" id="box-minutes">
+        <span class="countdown-digits" id="minutes">47</span>
+        <span class="countdown-unit">Minutes</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-box" id="box-seconds">
+        <span class="countdown-digits" id="seconds">33</span>
+        <span class="countdown-unit">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Offer summary -->
+    <div class="countdown-offer">
+      <div class="offer-item">
+        <span class="offer-item__label">Regular Price</span>
+        <span class="offer-item__value">$79/mo</span>
+      </div>
+      <div class="offer-divider"></div>
+      <div class="offer-item">
+        <span class="offer-item__label">Today's Price</span>
+        <span class="offer-item__new">$49/mo</span>
+      </div>
+      <div class="offer-divider"></div>
+      <div class="offer-item">
+        <span class="offer-item__label">You Save</span>
+        <span class="offer-item__new" style="color:var(--yellow)">$360/yr</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="#pricing" class="countdown-cta-btn">
+      LOCK IN MY RATE NOW →
+    </a>
+    <span class="countdown-micro">30-day money back guarantee · No contracts</span>
+
+    <!-- Spots bar -->
+    <div class="countdown-spots">
+      <div class="spots-label">Membership spots: <span id="spots-remaining-count">27</span> remaining at this price</div>
+      <div class="spots-track">
+        <div class="spots-fill" id="spots-fill-bar"></div>
+      </div>
+      <div class="spots-remaining">72% CLAIMED — ACT FAST</div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  // ── COUNTDOWN TIMER ──────────────────────────
+  // Stores end time in sessionStorage so it persists across page refreshes
+  let endTime = sessionStorage.getItem('countdownEnd');
+  if (!endTime) {
+    // Set 24 hours from now
+    endTime = Date.now() + (23 * 3600 + 47 * 60 + 33) * 1000;
+    sessionStorage.setItem('countdownEnd', endTime);
+  }
+  endTime = parseInt(endTime);
+
+  const hoursEl   = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  const boxH = document.getElementById('box-hours');
+  const boxM = document.getElementById('box-minutes');
+  const boxS = document.getElementById('box-seconds');
+
+  function pad(n) { return String(Math.max(0, Math.floor(n))).padStart(2, '0'); }
+
+  function animateBox(box) {
+    box.classList.remove('tick');
+    void box.offsetWidth; // reflow
+    box.classList.add('tick');
+  }
+
+  let prevSeconds = null;
+  let prevMinutes = null;
+  let prevHours   = null;
+
+  function tick() {
+    const remaining = Math.max(0, endTime - Date.now());
+    const totalSeconds = Math.floor(remaining / 1000);
+
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+
+    if (s !== prevSeconds) {
+      hoursEl.textContent   = pad(h);
+      minutesEl.textContent = pad(m);
+      secondsEl.textContent = pad(s);
+      animateBox(boxS);
+      if (m !== prevMinutes) animateBox(boxM);
+      if (h !== prevHours)   animateBox(boxH);
+      prevSeconds = s;
+      prevMinutes = m;
+      prevHours   = h;
+    }
+
+    if (remaining > 0) {
+      setTimeout(tick, 250);
+    } else {
+      // Offer expired — replace with new message
+      document.getElementById('countdown-timer').innerHTML =
+        '<div style="font-family:var(--font-display);font-weight:900;font-size:2rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;">OFFER EXPIRED — CONTACT US FOR CURRENT RATES</div>';
+    }
+  }
+
+  tick();
+
+  // ── SPOTS DECREMENT ─────────────────────────
+  let spots = parseInt(sessionStorage.getItem('spotsLeft') || '27');
+  const spotsEl = document.getElementById('spots-remaining-count');
+  const fillEl  = document.getElementById('spots-fill-bar');
+
+  function updateSpots() {
+    if (spotsEl) spotsEl.textContent = spots;
+    if (fillEl) {
+      const total = 100;
+      const taken = total - spots;
+      const pct   = Math.min(99, Math.round((taken / total) * 100));
+      fillEl.style.width = pct + '%';
+    }
+  }
+  updateSpots();
+
+  function decrementSpots() {
+    if (spots > 3 && Math.random() < 0.4) {
+      spots--;
+      sessionStorage.setItem('spotsLeft', spots);
+      updateSpots();
+    }
+    setTimeout(decrementSpots, 60000 + Math.random() * 120000);
+  }
+  setTimeout(decrementSpots, 90000);
+})();
+</script>

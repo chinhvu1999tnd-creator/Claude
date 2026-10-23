@@ -1,0 +1,128 @@
+<!--
+  challenge-for-not-for.html — Qualification: who this IS for / NOT for
+  Layout:     centered · max-w-3xl · 2-col grid
+  Elements:   Section label · FOR list (green check) · NOT FOR list (red X)
+  Rule:       "For" list = profile + pain của ideal participant (3–5 items)
+              "Not for" list = disqualifiers thật, không sợ mất người (2–3 items)
+              "Not for" tạo scarcity psychology — người fit sẽ muốn đăng ký hơn
+              Đặt SAU Days Preview, TRƯỚC Host
+  Dùng cho:   Challenge registration page · Webinar registration page (variant)
+-->
+<section class="py-16" style="border-top:1px solid var(--rim)">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-10">
+      <p class="font-mono text-[11px] uppercase tracking-wider mb-3" style="color:var(--subtle);letter-spacing:.12em">
+        Challenge này dành cho ai?
+      </p>
+      <h2 class="font-display font-black text-ink"
+        style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.1;letter-spacing:-0.03em">
+        Phù hợp với bạn không?<br>
+        <span style="color:var(--accent)">Xem trước khi đăng ký</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-5">
+
+      <!-- FOR -->
+      <div class="rounded-xl p-6" style="background:rgba(var(--accent-rgb),.04);border:1px solid rgba(var(--accent-rgb),.2)">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+            style="background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.25)">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="6" fill="rgba(var(--accent-rgb),.15)"/>
+              <path d="M4 7l2.5 2.5 3.5-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="font-display font-bold text-sm" style="color:var(--accent)">Challenge này DÀNH CHO bạn nếu...</p>
+        </div>
+
+        <div class="space-y-3.5">
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.08)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Profile 1 — VD: Bạn đang chạy business online hoặc muốn bắt đầu]</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.08)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Profile 2 — VD: Bạn tốn nhiều giờ làm marketing mà kết quả không như mong đợi]</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.08)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Profile 3 — VD: Bạn muốn học AI thực chiến, không phải lý thuyết]</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.08)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Profile 4 — VD: Bạn sẵn sàng bỏ 20 phút/ngày để xây hệ thống tiết kiệm 10 giờ/tuần]</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.08)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Profile 5 — VD: Bạn muốn kết quả cụ thể, không phải thêm kiến thức để rồi không làm gì]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOT FOR -->
+      <div class="rounded-xl p-6" style="background:rgba(var(--alert-rgb),.03);border:1px solid rgba(var(--alert-rgb),.15)">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+            style="background:rgba(var(--alert-rgb),.08);border:1px solid rgba(var(--alert-rgb),.18)">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="6" fill="rgba(var(--alert-rgb),.10)"/>
+              <path d="M4.5 4.5l5 5M9.5 4.5l-5 5" stroke="var(--alert)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="font-display font-bold text-sm" style="color:var(--alert)">KHÔNG phù hợp nếu...</p>
+        </div>
+
+        <div class="space-y-3.5">
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--alert-rgb),.07)"/>
+              <path d="M5 5l6 6M11 5l-6 6" stroke="var(--alert)" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Disqualifier 1 — thật, không phải để sợ. VD: Bạn không có 20 phút/ngày trong 5 ngày liên tiếp]</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--alert-rgb),.07)"/>
+              <path d="M5 5l6 6M11 5l-6 6" stroke="var(--alert)" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Disqualifier 2 — VD: Bạn muốn "xem thôi" mà không muốn làm assignment]</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(var(--alert-rgb),.07)"/>
+              <path d="M5 5l6 6M11 5l-6 6" stroke="var(--alert)" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)">[Disqualifier 3 — VD: Bạn đang tìm giải pháp "làm một lần xong mãi mãi" — AI cần người dùng tương tác]</p>
+          </div>
+        </div>
+
+        <!-- Re-include message -->
+        <div class="mt-5 pt-4" style="border-top:1px solid rgba(var(--alert-rgb),.12)">
+          <p class="font-body text-xs" style="color:var(--subtle)">
+            Nếu chưa đúng lúc — không sao. Challenge sẽ chạy lại vào <strong class="text-ink">[Ngày cohort tiếp theo]</strong>.
+            <a href="[WAITLIST_URL]" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">Nhận thông báo</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

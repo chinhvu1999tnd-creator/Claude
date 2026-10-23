@@ -1,0 +1,266 @@
+<!--
+  challenge-ty.html — Challenge registration thank you page
+  ─────────────────────────────────────────────────────────────────────────────
+  DEFAULT (luôn có):
+    - Xác nhận đăng ký + ngày bắt đầu
+    - Lịch challenge (Day 1 → Day N)
+    - Zalo Group join (PRIMARY)
+    - Show-up tips
+
+  [OPTIONAL: VIP Upsell] — chỉ thêm khi user yêu cầu:
+    "thêm VIP upsell", "upsell sau đăng ký", "cover ad spend", "VIP upgrade"
+    Vị trí: NGAY TRÊN Zalo Group join — convert rate cao nhất
+  ─────────────────────────────────────────────────────────────────────────────
+  VIP Upsell benchmark: 15–30% registrants · cover 40–70% ad spend
+-->
+
+<!-- ── Confirmed header ── -->
+<div class="relative text-center py-14 px-6 overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[480px] h-56 pointer-events-none"
+    style="background:radial-gradient(ellipse,rgba(var(--accent-rgb),.13) 0%,transparent 70%);filter:blur(44px)"></div>
+
+  <div class="relative max-w-xl mx-auto">
+
+    <!-- Checkmark -->
+    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+      style="background:rgba(var(--accent-rgb),.10);border:2px solid rgba(var(--accent-rgb),.3)">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path d="M9 18l6.5 6.5L27 11" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5"
+      style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.25)">
+      <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--accent)">Đăng ký thành công</span>
+    </div>
+
+    <h1 class="font-display font-black text-ink mb-3"
+      style="font-size:clamp(1.875rem,5vw,2.75rem);line-height:1.08;letter-spacing:-0.035em">
+      Hẹn gặp bạn tại<br>
+      <span style="color:var(--accent)">[Tên Challenge]!</span>
+    </h1>
+
+    <p class="font-body mx-auto" style="color:var(--body);font-size:1rem;max-width:420px;line-height:1.75">
+      Bắt đầu ngày <strong class="text-ink">[Ngày bắt đầu]</strong>.
+      Thông tin chi tiết đã gửi về email.
+    </p>
+
+  </div>
+</div>
+
+<!-- ── [OPTIONAL: VIP Upsell] ─────────────────────────────────────────────
+  Uncomment TOÀN BỘ block này khi user yêu cầu VIP upsell.
+  Đặt ở đây — TRƯỚC Zalo Group join — vị trí convert cao nhất.
+  ─────────────────────────────────────────────────────────────────────────
+
+<div class="max-w-xl mx-auto px-4 sm:px-6 pb-6">
+  <div class="rounded-xl overflow-hidden" style="background:var(--surface);border:2px solid rgba(var(--accent-rgb),.3)">
+
+    <div class="px-5 py-3 flex items-center gap-2" style="border-bottom:1px solid var(--rim);background:rgba(var(--accent-rgb),.06)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1l1.5 3.5L12 5l-2.5 2 .8 3.5L7 9 3.7 10.5 4.5 7 2 5l3.5-.5L7 1z"
+          stroke="var(--accent)" stroke-width="1.1" stroke-linejoin="round"/>
+      </svg>
+      <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--accent)">
+        Nâng cấp VIP — Chỉ xuất hiện một lần
+      </span>
+    </div>
+
+    <div class="p-5">
+      <h3 class="font-display font-bold text-ink mb-2" style="font-size:1.125rem;letter-spacing:-0.02em">
+        Nâng cấp trải nghiệm của bạn lên VIP
+      </h3>
+      <p class="font-body text-sm mb-4" style="color:var(--body);line-height:1.7">
+        [1–2 câu: VIP members nhận được gì thêm — recordings, workbook, Q&A access, bonus cụ thể]
+      </p>
+
+      Checklist VIP benefits
+      <div class="space-y-2 mb-5">
+        <div class="flex items-center gap-2.5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.10)"/>
+            <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-body text-sm text-ink">[VIP benefit 1 — VD: Recordings đầy đủ]</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.10)"/>
+            <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-body text-sm text-ink">[VIP benefit 2 — VD: Workbook + template]</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" fill="rgba(var(--accent-rgb),.10)"/>
+            <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-body text-sm text-ink">[VIP benefit 3 — VD: Live Q&A với host]</span>
+        </div>
+      </div>
+
+      Price
+      <div class="flex items-baseline gap-2 mb-4">
+        <span class="font-mono font-black" style="font-size:1.75rem;color:var(--accent);letter-spacing:-0.04em">[VIP Price]đ</span>
+        <span class="font-mono text-sm line-through" style="color:var(--faint)">[Original price]đ</span>
+        <span class="font-mono text-[10px] px-2 py-0.5 rounded-full"
+          style="background:rgba(var(--accent-rgb),.10);color:var(--accent)">Chỉ lần này</span>
+      </div>
+
+      VIP CTA
+      <a href="[VIP_PAYMENT_URL]"
+        class="btn-glow flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-btn font-display font-bold text-sm mb-3"
+        style="background:var(--accent);color:var(--bg);text-decoration:none">
+        Nâng cấp VIP ngay — [VIP Price]đ
+      </a>
+
+      Skip link
+      <a href="#join-group"
+        class="block font-mono text-[11px] text-center underline underline-offset-4 transition-opacity hover:opacity-60"
+        style="color:var(--faint)">
+        Không, tôi chỉ dùng gói miễn phí
+      </a>
+    </div>
+  </div>
+</div>
+
+END [OPTIONAL: VIP Upsell] ── -->
+
+<!-- ── Zalo Group join (DEFAULT — luôn có) ── -->
+<div id="join-group" class="max-w-xl mx-auto px-4 sm:px-6 pb-6">
+  <div class="rounded-xl p-6 text-center" style="background:var(--surface);border:1px solid var(--rim)">
+
+    <div class="w-11 h-11 rounded-xl flex items-center justify-center mx-auto mb-4"
+      style="background:rgba(var(--cyan-rgb),.10);border:1px solid rgba(var(--cyan-rgb),.2)">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="2" y="2" width="16" height="16" rx="4.5" stroke="var(--cyan)" stroke-width="1.3"/>
+        <path d="M7 14V9.5a3.5 3.5 0 017 0V14M7 11.5h7" stroke="var(--cyan)" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h3 class="font-display font-bold text-ink mb-1" style="font-size:1.125rem;letter-spacing:-0.015em">
+      Bước 1: Vào nhóm Zalo ngay
+    </h3>
+    <p class="font-body text-sm mb-5" style="color:var(--body);max-width:340px;margin:0 auto 1.25rem">
+      Nhóm sẽ gửi training mỗi ngày, nhắc nhở và assignment. Không có trong nhóm = bỏ lỡ mọi thứ.
+    </p>
+
+    <a href="[ZALO_GROUP_URL]" target="_blank"
+      class="btn-glow inline-flex items-center justify-center gap-2.5 w-full py-3.5 px-5 rounded-btn font-display font-bold text-sm"
+      style="background:rgba(var(--cyan-rgb),.12);color:var(--cyan);border:1px solid rgba(var(--cyan-rgb),.3);text-decoration:none">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <rect x="2" y="2" width="16" height="16" rx="4.5" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M7 14V9.5a3.5 3.5 0 017 0V14M7 11.5h7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Vào nhóm Zalo challenge
+    </a>
+
+  </div>
+</div>
+
+<!-- ── Challenge schedule (DEFAULT) ── -->
+<div class="max-w-xl mx-auto px-4 sm:px-6 pb-6">
+  <p class="font-mono text-[11px] uppercase tracking-wider mb-4 text-center" style="color:var(--subtle);letter-spacing:.12em">
+    Lịch challenge của bạn
+  </p>
+  <div class="space-y-2">
+
+    <div class="flex items-center gap-3 rounded-lg px-4 py-3" style="background:var(--surface);border:1px solid rgba(var(--accent-rgb),.2)">
+      <span class="font-mono font-black text-xs shrink-0" style="color:var(--accent)">D1</span>
+      <div class="flex-1">
+        <p class="font-body text-sm font-semibold text-ink">[Ngày] · [Topic Day 1]</p>
+      </div>
+      <span class="font-mono text-[10px]" style="color:var(--subtle)">[Giờ]</span>
+    </div>
+
+    <div class="flex items-center gap-3 rounded-lg px-4 py-3" style="background:var(--surface);border:1px solid var(--rim)">
+      <span class="font-mono font-black text-xs shrink-0" style="color:var(--subtle)">D2</span>
+      <p class="font-body text-sm text-ink flex-1">[Ngày] · [Topic Day 2]</p>
+      <span class="font-mono text-[10px]" style="color:var(--subtle)">[Giờ]</span>
+    </div>
+
+    <div class="flex items-center gap-3 rounded-lg px-4 py-3" style="background:var(--surface);border:1px solid var(--rim)">
+      <span class="font-mono font-black text-xs shrink-0" style="color:var(--subtle)">D3</span>
+      <p class="font-body text-sm text-ink flex-1">[Ngày] · [Topic Day 3]</p>
+      <span class="font-mono text-[10px]" style="color:var(--subtle)">[Giờ]</span>
+    </div>
+
+    <div class="flex items-center gap-3 rounded-lg px-4 py-3" style="background:var(--surface);border:1px solid var(--rim)">
+      <span class="font-mono font-black text-xs shrink-0" style="color:var(--subtle)">D4</span>
+      <p class="font-body text-sm text-ink flex-1">[Ngày] · [Topic Day 4]</p>
+      <span class="font-mono text-[10px]" style="color:var(--subtle)">[Giờ]</span>
+    </div>
+
+    <div class="flex items-center gap-3 rounded-lg px-4 py-3"
+      style="background:rgba(var(--accent-rgb),.05);border:1px solid rgba(var(--accent-rgb),.2)">
+      <span class="font-mono font-black text-xs shrink-0" style="color:var(--accent)">D5</span>
+      <p class="font-body text-sm font-semibold text-ink flex-1">[Ngày] · [Topic Day 5]</p>
+      <span class="font-mono text-[10px]" style="color:var(--subtle)">[Giờ]</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Show-up tips (DEFAULT) ── -->
+<div class="max-w-xl mx-auto px-4 sm:px-6 pb-12">
+  <p class="font-mono text-[11px] uppercase tracking-wider text-center mb-4" style="color:var(--subtle);letter-spacing:.12em">
+    Chuẩn bị để có 5 ngày tốt nhất
+  </p>
+  <div class="grid sm:grid-cols-2 gap-3">
+
+    <div class="flex items-start gap-3 rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
+        style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.18)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1" y="2" width="12" height="11" rx="2" stroke="var(--accent)" stroke-width="1.2"/>
+          <path d="M1 6h12M5 1v2M9 1v2" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-body font-semibold text-sm text-ink mb-0.5">Block 20 phút/ngày</p>
+        <p class="font-body text-xs" style="color:var(--body)">[Ngày bắt đầu] đến [Ngày kết thúc], lúc [giờ].</p>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3 rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
+        style="background:rgba(var(--cyan-rgb),.10);border:1px solid rgba(var(--cyan-rgb),.18)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="var(--cyan)" stroke-width="1.2"/>
+          <path d="M5 7V5.5a2 2 0 014 0V7M5 7h4" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-body font-semibold text-sm text-ink mb-0.5">Bật thông báo nhóm Zalo</p>
+        <p class="font-body text-xs" style="color:var(--body)">Assignment và training gửi qua đây hàng ngày.</p>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3 rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
+        style="background:rgba(var(--purple-rgb),.10);border:1px solid rgba(var(--purple-rgb),.18)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 2l1.5 3L12 5.5l-2.5 2 .8 3L7 9 3.7 10.5l.8-3L2 5.5l3.5-.5L7 2z" stroke="var(--purple)" stroke-width="1.1" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-body font-semibold text-sm text-ink mb-0.5">Hoàn thành assignment mỗi ngày</p>
+        <p class="font-body text-xs" style="color:var(--body)">Người share kết quả trong nhóm tiến nhanh hơn 3x.</p>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3 rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
+        style="background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.14)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 4h10M2 7h7M2 10h8" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-body font-semibold text-sm text-ink mb-0.5">Chuẩn bị 1 câu hỏi</p>
+        <p class="font-body text-xs" style="color:var(--body)">Ghi sẵn điều muốn giải quyết nhất trong [X] ngày này.</p>
+      </div>
+    </div>
+
+  </div>
+</div>

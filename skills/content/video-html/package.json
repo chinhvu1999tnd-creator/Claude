@@ -1,0 +1,10 @@
+{
+  "name": "video-html",
+  "version": "3.0.0",
+  "description": "video-html skill v3 — hyperframes dependency for MP4 render",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "hyperframes": "^0.6.40"
+  }
+}

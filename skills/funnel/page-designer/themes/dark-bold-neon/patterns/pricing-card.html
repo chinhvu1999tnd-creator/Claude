@@ -1,0 +1,79 @@
+<!--
+  OVERRIDE: pricing-card.html — Dark Bold Neon
+  vs shared: gradient border wrapper + surface card body
+  Override: neon box-shadow glow on border + price text-shadow glow + shimmer badge + scanlines
+  Visual:   electric, pulsing desire vs. clean gradient border
+-->
+<section class="relative py-20 overflow-hidden" style="background:var(--bg)">
+  <!-- Center glow -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background:radial-gradient(ellipse 60% 50% at 50% 60%,rgba(182,255,0,0.07) 0%,transparent 70%)"></div>
+
+  <div class="max-w-sm mx-auto px-6 relative">
+
+    <!-- Neon glow wrapper -->
+    <div class="relative rounded-2xl p-px"
+         style="background:linear-gradient(135deg,rgba(182,255,0,0.6),rgba(0,194,255,0.3),rgba(182,255,0,0.1));
+                box-shadow:0 0 40px rgba(182,255,0,0.2),0 0 80px rgba(182,255,0,0.08)">
+
+      <div class="relative rounded-2xl overflow-hidden" style="background:var(--surface)">
+        <!-- Inner scanlines -->
+        <div class="absolute inset-0 pointer-events-none opacity-[0.025]"
+             style="background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,1) 3px,rgba(255,255,255,1) 4px)"></div>
+        <!-- Top gradient bar -->
+        <div class="h-1 w-full" style="background:linear-gradient(90deg,#B6FF00,#00C2FF)"></div>
+
+        <div class="p-8 relative">
+
+          <!-- Badge with shimmer -->
+          <div class="inline-flex items-center gap-1.5 mb-6 px-3 py-1.5 rounded-full relative overflow-hidden"
+               style="background:rgba(182,255,0,0.12);border:1px solid rgba(182,255,0,0.3)">
+            <span class="w-1.5 h-1.5 rounded-full animate-ping absolute"
+                  style="background:var(--accent);left:12px;opacity:0.6"></span>
+            <span class="w-1.5 h-1.5 rounded-full relative" style="background:var(--accent)"></span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.12em] font-bold" style="color:var(--accent)">[BADGE — e.g. Phổ biến nhất]</span>
+          </div>
+
+          <h3 class="font-display font-black text-ink mb-2" style="font-size:1.25rem;line-height:1.1;letter-spacing:-0.02em">[PLAN NAME]</h3>
+          <p class="font-body text-sm mb-6" style="color:var(--body)">[Mô tả ngắn — 1 câu]</p>
+
+          <!-- Price with glow -->
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="font-mono text-sm font-medium" style="color:var(--subtle)">₫</span>
+            <span class="font-mono font-black tracking-tight leading-none"
+                  style="font-size:clamp(2.5rem,6vw,3.5rem);color:var(--accent);text-shadow:0 0 30px rgba(182,255,0,0.5)">[PRICE]</span>
+          </div>
+          <p class="font-mono text-[11px] uppercase tracking-widest mb-8" style="color:var(--subtle)">[Billing — e.g. thanh toán 1 lần]</p>
+
+          <!-- Features -->
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm" style="color:var(--body)">
+              <svg class="shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" fill="rgba(182,255,0,0.1)"/>
+                <path d="M5 8l2 2 4-4" stroke="#B6FF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>[Feature 1]</li>
+            <li class="flex items-center gap-3 text-sm" style="color:var(--body)">
+              <svg class="shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" fill="rgba(182,255,0,0.1)"/>
+                <path d="M5 8l2 2 4-4" stroke="#B6FF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>[Feature 2]</li>
+            <li class="flex items-center gap-3 text-sm" style="color:var(--body)">
+              <svg class="shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" fill="rgba(182,255,0,0.1)"/>
+                <path d="M5 8l2 2 4-4" stroke="#B6FF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>[Feature 3]</li>
+          </ul>
+
+          <!-- CTA -->
+          <a href="order.html"
+             class="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-display font-black text-sm transition-all duration-200 hover:brightness-110 hover:scale-[1.02]"
+             style="background:var(--accent);color:#0d0d0c;box-shadow:0 4px 24px rgba(182,255,0,0.35)">
+            [CTA TEXT] →
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

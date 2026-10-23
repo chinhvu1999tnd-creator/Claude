@@ -1,0 +1,405 @@
+<!--
+  PATTERN: Pricing Card — Horizontal Layout
+  THEME: prestige-dark
+  Layout: 3 tiers as horizontal table rows (Tier | Price | Features | CTA)
+  Gold top border (2px) on recommended tier ONLY
+  Clean, minimal — no decorative elements
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: Pricing Card — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:  #c9a84c;
+      --bg:      #0c0c0a;
+      --surface: #141412;
+      --raised:  #1c1c19;
+      --ink:     #f5f0e8;
+      --body:    #c8c4b8;
+      --subtle:  #7a7870;
+      --faint:   #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+      color: var(--body);
+      padding: 80px 64px;
+    }
+
+    /* ─── Section wrapper ───────────────────────────────────────────── */
+    .pricing {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .pricing__eyebrow {
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .pricing__title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .pricing__title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ─── Table structure ───────────────────────────────────────────── */
+    .pricing__table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* Column header row */
+    .pricing__col-headers {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 3fr 1.5fr;
+      gap: 0;
+      padding: 0 0 16px;
+      border-bottom: 1px solid var(--faint);
+      margin-bottom: 0;
+    }
+
+    .pricing__col-header {
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      padding: 0 20px;
+    }
+
+    .pricing__col-header:first-child { padding-left: 28px; }
+    .pricing__col-header:last-child  { padding-right: 28px; text-align: right; }
+
+    /* ─── Single pricing row (= one tier) ──────────────────────────── */
+    .pricing__row {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 3fr 1.5fr;
+      align-items: center;
+      gap: 0;
+      background: var(--raised);
+      border: 1px solid var(--faint);
+      border-top: none;
+      transition: border-color 350ms;
+    }
+
+    .pricing__row:first-of-type {
+      border-top: 1px solid var(--faint);
+    }
+
+    .pricing__row + .pricing__row {
+      margin-top: 0;
+      border-top: 1px solid var(--faint);
+    }
+
+    /* Recommended row — gold top border, slightly elevated */
+    .pricing__row--recommended {
+      border-top: 2px solid var(--accent) !important;
+      background: var(--raised);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Cell: Tier name ───────────────────────────────────────────── */
+    .pricing__tier {
+      padding: 28px 20px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .pricing__tier-badge {
+      font-weight: 400;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: none; /* Only shown on recommended */
+    }
+
+    .pricing__row--recommended .pricing__tier-badge {
+      display: block;
+    }
+
+    .pricing__tier-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.375rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .pricing__tier-sub {
+      font-weight: 300;
+      font-size: 12px;
+      color: var(--subtle);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Cell: Price ───────────────────────────────────────────────── */
+    .pricing__price {
+      padding: 28px 20px;
+    }
+
+    .pricing__amount {
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--ink);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .pricing__row--recommended .pricing__amount {
+      color: var(--accent);
+    }
+
+    .pricing__period {
+      font-weight: 300;
+      font-size: 11px;
+      color: var(--subtle);
+      margin-top: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── Cell: Features ────────────────────────────────────────────── */
+    .pricing__features {
+      padding: 28px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .pricing__feature {
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--body);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .pricing__feature::before {
+      content: '';
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--subtle);
+      flex-shrink: 0;
+    }
+
+    .pricing__row--recommended .pricing__feature::before {
+      background: rgba(201,168,76,0.5);
+    }
+
+    /* ─── Cell: CTA ─────────────────────────────────────────────────── */
+    .pricing__cta-cell {
+      padding: 28px 28px 28px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .pricing__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border: 1px solid var(--faint);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--body);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 350ms, color 350ms, background 350ms;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .pricing__btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Gold ghost button for recommended tier */
+    .pricing__row--recommended .pricing__btn {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .pricing__row--recommended .pricing__btn:hover {
+      background: rgba(201,168,76,0.08);
+      color: var(--ink);
+    }
+
+    /* ─── Footer note ───────────────────────────────────────────────── */
+    .pricing__note {
+      text-align: center;
+      margin-top: 24px;
+      font-weight: 300;
+      font-size: 12px;
+      color: var(--subtle);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      body { padding: 60px 24px; }
+
+      .pricing__col-headers { display: none; }
+
+      .pricing__row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .pricing__row + .pricing__row {
+        border-top: none;
+        margin-top: 16px;
+        border: 1px solid var(--faint);
+      }
+
+      .pricing__row--recommended {
+        border: 1px solid rgba(201,168,76,0.35) !important;
+        border-top: 2px solid var(--accent) !important;
+      }
+
+      .pricing__cta-cell {
+        justify-content: flex-start;
+        padding: 0 28px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <section class="pricing">
+
+    <p class="pricing__eyebrow">Bảng Giá</p>
+    <h2 class="pricing__title">Lựa Chọn <em>Phù Hợp</em> Cho Bạn</h2>
+
+    <!-- Column headers -->
+    <div class="pricing__col-headers">
+      <div class="pricing__col-header">Loại Căn</div>
+      <div class="pricing__col-header">Giá</div>
+      <div class="pricing__col-header">Tiện Ích Bao Gồm</div>
+      <div class="pricing__col-header"></div>
+    </div>
+
+    <!-- Tier 1: Studio -->
+    <div class="pricing__row">
+      <div class="pricing__tier">
+        <span class="pricing__tier-name">Studio</span>
+        <span class="pricing__tier-sub">45 – 52 m²</span>
+      </div>
+      <div class="pricing__price">
+        <div class="pricing__amount">3.2 Tỷ</div>
+        <div class="pricing__period">Từ / căn</div>
+      </div>
+      <div class="pricing__features">
+        <span class="pricing__feature">Hồ bơi tầng 8</span>
+        <span class="pricing__feature">Gym & Spa</span>
+        <span class="pricing__feature">Bảo vệ 24/7</span>
+        <span class="pricing__feature">Bãi đỗ xe</span>
+      </div>
+      <div class="pricing__cta-cell">
+        <a href="#inquire" class="pricing__btn">Tư Vấn →</a>
+      </div>
+    </div>
+
+    <!-- Tier 2: 2 Phòng Ngủ — RECOMMENDED -->
+    <div class="pricing__row pricing__row--recommended">
+      <div class="pricing__tier">
+        <span class="pricing__tier-badge">Phổ Biến Nhất</span>
+        <span class="pricing__tier-name">2 Phòng Ngủ</span>
+        <span class="pricing__tier-sub">75 – 95 m²</span>
+      </div>
+      <div class="pricing__price">
+        <div class="pricing__amount">7.8 Tỷ</div>
+        <div class="pricing__period">Từ / căn</div>
+      </div>
+      <div class="pricing__features">
+        <span class="pricing__feature">Toàn bộ tiện ích</span>
+        <span class="pricing__feature">Concierge riêng</span>
+        <span class="pricing__feature">View hồ Tây</span>
+        <span class="pricing__feature">2 chỗ đỗ xe</span>
+      </div>
+      <div class="pricing__cta-cell">
+        <a href="#inquire" class="pricing__btn">Đặt Lịch →</a>
+      </div>
+    </div>
+
+    <!-- Tier 3: Penthouse -->
+    <div class="pricing__row">
+      <div class="pricing__tier">
+        <span class="pricing__tier-name">Penthouse</span>
+        <span class="pricing__tier-sub">320 – 480 m²</span>
+      </div>
+      <div class="pricing__price">
+        <div class="pricing__amount">32 Tỷ</div>
+        <div class="pricing__period">Từ / căn</div>
+      </div>
+      <div class="pricing__features">
+        <span class="pricing__feature">Tầng 40 – 42</span>
+        <span class="pricing__feature">Sân thượng riêng</span>
+        <span class="pricing__feature">Butler service</span>
+        <span class="pricing__feature">Garage 4 xe</span>
+      </div>
+      <div class="pricing__cta-cell">
+        <a href="#inquire" class="pricing__btn">Liên Hệ →</a>
+      </div>
+    </div>
+
+    <p class="pricing__note">
+      Giá chưa bao gồm VAT · Hỗ trợ vay 70% · Ân hạn lãi suất 24 tháng
+    </p>
+
+  </section>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • The gold top border (2px) goes only on the recommended row.
+    • HORIZONTAL layout is intentional — it allows feature comparison.
+    • Never stack these into vertical cards — use property-showcase.html
+      for card-based layouts.
+    • Prices use DM Mono — reads as data/precision, not decoration.
+    • Max 3 tiers. 4 tiers break the visual balance.
+    • The "Phổ Biến Nhất" badge is shown via .pricing__row--recommended
+      class — it hides the badge on non-recommended rows automatically.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

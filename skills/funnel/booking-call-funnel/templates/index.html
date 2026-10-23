@@ -1,0 +1,96 @@
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  CONTENT WIREFRAME — Booking Call Funnel: VSL Landing Page       ║
+║  File: index.html                                                 ║
+║                                                                   ║
+║  Đây là CONTENT WIREFRAME, không phải visual design.             ║
+║  Designer skill quyết định toàn bộ aesthetic (fonts, colors,    ║
+║  layout, motion). Wireframe này chỉ định nghĩa:                  ║
+║  - Sections nào cần có và thứ tự                                  ║
+║  - Data slots cần fill từ copy brief                              ║
+║  - Intent của mỗi section                                         ║
+║                                                                   ║
+║  KHÔNG copy HTML này — generate fresh từ aesthetic direction.     ║
+╚══════════════════════════════════════════════════════════════════╝
+
+PAGE STRUCTURE (7 sections):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[S1] hero-claim
+  Intent: Transformation promise — reader gật đầu trong 3 giây đầu
+  Data slots:
+    - {{EYEBROW}}         : "MIỄN PHÍ · 45 PHÚT · [X] SLOT CÒN LẠI"
+    - {{HEADLINE}}        : transformation promise chính
+    - {{SUB_HEADLINE}}    : ai dành cho, what they get
+    - {{CTA_PRIMARY}}     : "Điền Application →"
+    - {{MICRO_COPY}}      : friction removal ("không phải sales call...")
+    - {{PROOF_CHIP_1-3}}  : credibility micro-signals (năm, số team, etc.)
+
+[S2] video-section
+  Intent: Video thuyết phục trước khi reader điền application
+  Data slots:
+    - {{VIDEO_EMBED_URL}} : YouTube/Vimeo embed src
+    - {{PRE_WATCH_NOTE}}  : "Xem hết trước khi điền application"
+    - {{FASCINATION_1-4}} : 4 bullets — những gì reader sẽ biết từ video
+    - {{INSIGHT_QUOTE}}   : pull quote / key insight từ video
+
+[S3] application-gate
+  Intent: Biến "đăng ký" thành "được chọn" — exclusivity + transparency
+  Data slots:
+    - {{GATE_HEADLINE}}   : "Tại sao có application form?"
+    - {{GATE_EXPLANATION}}: lý do có gate, framed as benefit cho reader
+    - {{STEP_1_TITLE}}    : "Điền application"
+    - {{STEP_1_DESC}}     : "(khoảng 3 phút)"
+    - {{STEP_2_TITLE}}    : "Xem xét trong 24h"
+    - {{STEP_2_DESC}}     : "đọc thật sự, không auto-approve"
+    - {{STEP_3_TITLE}}    : "Xác nhận qua Zalo"
+    - {{STEP_3_DESC}}     : "lịch + link trong 24h"
+    - {{CTA_PRIMARY}}     : "Điền Application →"
+    - {{URGENCY_NOTE}}    : slot/deadline urgency
+
+[S4] comparison (NOT FOR / FOR)
+  Intent: Reader tự qualify — thấy mình clearly ở cột đúng
+  Data slots:
+    NOT FOR (3 items):
+    - {{NOT_1}}, {{NOT_2}}, {{NOT_3}}
+    FOR (3 items):
+    - {{FOR_1}}, {{FOR_2}}, {{FOR_3}}
+
+[S5] deliverables
+  Intent: Làm offer cụ thể — reader hình dung được 45 phút đó
+  Data slots:
+    - {{DELIVERABLES_HEADLINE}}: "Sau 45 phút, bạn sẽ ra khỏi với:"
+    - {{DELIVERABLE_1_TITLE}}, {{DELIVERABLE_1_DESC}}
+    - {{DELIVERABLE_2_TITLE}}, {{DELIVERABLE_2_DESC}}
+    - {{DELIVERABLE_3_TITLE}}, {{DELIVERABLE_3_DESC}}
+    - {{DELIVERABLE_4_TITLE}}, {{DELIVERABLE_4_DESC}}
+
+[S6] stats-row
+  Intent: Credibility numbers — trust signal nhanh
+  Data slots:
+    - {{STAT_1_NUM}}, {{STAT_1_LABEL}}  : "10+" / "Năm Marketing Online"
+    - {{STAT_2_NUM}}, {{STAT_2_LABEL}}  : "3+" / "Năm AI Thực Chiến"
+    - {{STAT_3_NUM}}, {{STAT_3_LABEL}}  : "50+" / "Team Đã Implement"
+    - {{STAT_4_NUM}}, {{STAT_4_LABEL}}  : "45'" / "Mỗi Buổi Tư Vấn"
+
+[S7] cta-strip
+  Intent: Close — convert reader đã được warm up
+  Data slots:
+    - {{CLOSE_HEADLINE}}  : urgency/scarcity statement
+    - {{SOCIAL_PROOF}}    : "50+ team đã implement..."
+    - {{CTA_PRIMARY}}     : "Điền Application — Mất khoảng 3 phút →"
+    - {{PRIVACY_NOTE}}    : "Thông tin chỉ dùng để chuẩn bị..."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONVERSION RULES cho page này:
+- CTA xuất hiện ít nhất 3 lần: S1 (hero), S3 (gate), S7 (close)
+- S7 background: dramatic contrast với phần còn lại (full color, dark, etc.)
+- Video section: video phải là thứ dominant nhất — không có gì cạnh tranh
+- Comparison section: 2 cột phải trông KHÁC NHAU về màu/style, không chỉ content
+- Trust chips ở hero: cụ thể (số năm, số team) — không vague
+
+LINKS:
+- Tất cả CTA → survey.html
+- not-a-fit redirect → not-a-fit.html (từ survey.html, không từ page này)
+-->

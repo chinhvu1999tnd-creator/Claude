@@ -1,0 +1,60 @@
+<!--
+  OVERRIDE: guarantee-card.html — Warm Earth
+  vs shared: pulsing neon ring + dark animated border
+  Override: CIRCULAR STAMP SEAL — SVG stamp design + terracotta palette + handmade feel
+  Layout: centered — stamp icon prominent, text below
+-->
+<section class="py-16" style="background:var(--surface)">
+  <div class="max-w-lg mx-auto px-6 text-center">
+
+    <!-- SVG Stamp Seal -->
+    <div class="flex justify-center mb-6">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+        <!-- Outer dashed ring -->
+        <circle cx="60" cy="60" r="56" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <!-- Inner solid ring -->
+        <circle cx="60" cy="60" r="48" fill="rgba(196,92,46,0.06)" stroke="var(--accent)" stroke-width="2"/>
+        <!-- Center badge bg -->
+        <circle cx="60" cy="60" r="38" fill="rgba(196,92,46,0.10)"/>
+        <!-- Shield / check mark -->
+        <path d="M60 30L42 38v16c0 11 8 20.5 18 23 10-2.5 18-12 18-23V38L60 30Z"
+              fill="rgba(196,92,46,0.15)" stroke="var(--accent)" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M52 58l6 6 10-10" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Text around circle — top arc -->
+        <path id="topArc" d="M 20 60 A 40 40 0 0 1 100 60" fill="none"/>
+        <text font-family="Nunito,sans-serif" font-size="9" font-weight="800" fill="var(--accent)" letter-spacing="2">
+          <textPath href="#topArc" startOffset="10%">CAM KẾT HOÀN TIỀN</textPath>
+        </text>
+        <!-- Text around circle — bottom arc -->
+        <path id="botArc" d="M 20 62 A 40 40 0 0 0 100 62" fill="none"/>
+        <text font-family="Nunito,sans-serif" font-size="9" font-weight="800" fill="var(--accent)" letter-spacing="2">
+          <textPath href="#botArc" startOffset="12%">[N] NGÀY · 100%</textPath>
+        </text>
+        <!-- Small leaves decoration -->
+        <path d="M28 48C28 48 30 42 34 43C38 44 37 50 34 50" fill="rgba(90,122,58,0.2)" stroke="var(--green)" stroke-width="1" stroke-linecap="round"/>
+        <path d="M92 48C92 48 90 42 86 43C82 44 83 50 86 50" fill="rgba(90,122,58,0.2)" stroke="var(--green)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <p class="font-body font-semibold text-xs uppercase tracking-wider mb-2" style="color:var(--accent)">Cam kết hoàn tiền</p>
+    <h2 class="font-display font-bold mb-4"
+        style="font-size:clamp(1.25rem,3vw,1.75rem);line-height:1.2;letter-spacing:-0.01em;color:var(--ink)">
+      Bảo Đảm [N] Ngày Hoàn Tiền 100%
+    </h2>
+
+    <p class="font-body text-base leading-relaxed mb-6" style="color:var(--body);max-width:400px;margin-left:auto;margin-right:auto">
+      [Mô tả cam kết — ngôn ngữ ấm áp, gần gũi. VD: Nếu anh/chị không hài lòng với sản phẩm trong vòng [N] ngày, chúng tôi hoàn lại 100% — không hỏi lý do.]
+    </p>
+
+    <!-- Signature -->
+    <div class="inline-flex items-center gap-3 px-5 py-3 rounded-xl" style="background:var(--bg);border:1.5px dashed var(--faint)">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center font-display font-bold text-sm"
+           style="background:rgba(196,92,46,0.12);color:var(--accent)">[INI]</div>
+      <div class="text-left">
+        <p class="font-display font-semibold text-sm" style="color:var(--ink)">[Tên người cam kết]</p>
+        <p class="font-body text-xs" style="color:var(--subtle)">[Chủ cơ sở] · [Tên thương hiệu]</p>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,154 @@
+<!--
+  PATTERN: Announcement Bar
+  THEME: prestige-dark
+  Usage: Top of page, before the nav. Replace placeholder text with actual project info.
+  Height: ~44px. No padding tricks — single line of content only.
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: Announcement Bar — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:      #c9a84c;
+      --accent-rgb:  201, 168, 76;
+      --bg:          #0c0c0a;
+      --surface:     #141412;
+      --ink:         #f5f0e8;
+      --body:        #c8c4b8;
+      --subtle:      #7a7870;
+      --faint:       #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+    }
+
+    /* ─── Announcement Bar ─────────────────────────────────────────── */
+    .announcement-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--faint);
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 0 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .announcement-bar__text {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--body);
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .announcement-bar__text strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .announcement-bar__dot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin: 0 12px;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    .announcement-bar__cta {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+      padding-bottom: 1px;
+      transition: color 350ms, border-color 350ms;
+      white-space: nowrap;
+    }
+
+    .announcement-bar__cta:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    /* Dismiss button (optional — uncomment to use) */
+    /*
+    .announcement-bar__close {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--subtle);
+      line-height: 1;
+      font-size: 14px;
+      padding: 4px;
+      transition: color 350ms;
+    }
+    .announcement-bar__close:hover { color: var(--ink); }
+    */
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <div class="announcement-bar" id="announcement-bar">
+
+    <!-- Left group — project name or key info -->
+    <span class="announcement-bar__text">
+      <strong>Dự Án Mới</strong>
+    </span>
+
+    <span class="announcement-bar__dot"></span>
+
+    <!-- Center — main message -->
+    <span class="announcement-bar__text">
+      The Grand Residences — Đăng ký tham quan:
+    </span>
+
+    <span class="announcement-bar__dot"></span>
+
+    <!-- Right — CTA or contact -->
+    <a href="tel:0888000000" class="announcement-bar__cta">
+      0888 xxx xxx
+    </a>
+
+  </div>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • Replace "Dự Án Mới" with current project phase or campaign label.
+    • Replace "The Grand Residences" with actual project name.
+    • Replace "0888 xxx xxx" with real phone number.
+    • The gold top border (1px) is the visual anchor of this theme.
+    • Keep text under 100 characters total — one clean line.
+    • No countdown timers in this theme — too aggressive for the luxury mood.
+    • If using a dismiss button, add JS: document.getElementById('announcement-bar')
+      .style.display = 'none' on click, and store in sessionStorage.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

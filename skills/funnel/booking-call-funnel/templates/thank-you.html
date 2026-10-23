@@ -1,0 +1,61 @@
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  CONTENT WIREFRAME — Booking Call Funnel: Thank You Page         ║
+║  File: thank-you.html                                             ║
+║                                                                   ║
+║  Hiện ra sau khi submit application (qualified leads).            ║
+║  Mục tiêu: xác nhận, set expectation, prime cho buổi call.       ║
+╚══════════════════════════════════════════════════════════════════╝
+
+PAGE STRUCTURE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[S1] confirmation-hero
+  Intent: Xác nhận đã nhận, giảm anxiety, set expectation rõ
+  Data slots:
+    - {{CONFIRM_ICON}}    : checkmark visual (SVG hoặc emoji large)
+    - {{CONFIRM_HEADLINE}}: "Application của bạn đã được nhận!"
+    - {{CONFIRM_SUB}}     : "Chúng tôi sẽ xem xét và xác nhận lịch qua Zalo/email trong 24 giờ."
+    - {{APPLICANT_NAME}}  : nếu có (từ form data)
+
+[S2] what-happens-next
+  Intent: Transparent về process — không để reader tự đoán
+  Data slots:
+    - {{NEXT_HEADLINE}}   : "Bước tiếp theo:"
+    Steps (3 items):
+    - Step 1: "Xem xét application (trong 24h)"
+    - Step 2: "Xác nhận lịch qua Zalo/email + gửi link họp"
+    - Step 3: "Chuẩn bị cho buổi tư vấn (xem homework dưới)"
+
+[S3] homework
+  Intent: Pre-call priming — reader chuẩn bị tốt hơn, show-up rate cao hơn
+  Data slots:
+    - {{HOMEWORK_HEADLINE}}: "Trong khi chờ xác nhận, hãy chuẩn bị:"
+    - {{HOMEWORK_1}}       : task cụ thể phù hợp với offer
+      VD: "Liệt kê 5 task lặp lại nhất của team, ước tính giờ/tuần cho mỗi task"
+    - {{HOMEWORK_2}}       : task cụ thể thứ 2
+      VD: "Ghi ra 1 quy trình đang làm tốn nhiều thời gian nhất — bước 1 đến bước cuối"
+    - {{HOMEWORK_NOTE}}    : "Homework này giúp buổi tư vấn đi thẳng vào vấn đề thật của team bạn"
+
+[S4] indoctrination-video (optional — nếu có video series)
+  Intent: Tăng commitment và understanding trước call
+  Data slots:
+    - {{VIDEO_1_TITLE}}   : "Video 1: [Tên video]"
+    - {{VIDEO_1_URL}}     : embed URL
+    - {{VIDEO_1_TEASER}}  : 1 câu mô tả nội dung
+
+[S5] contact-info
+  Intent: Reader biết cách liên lạc nếu cần
+  Data slots:
+    - {{ZALO_NUMBER}}     : số Zalo chính
+    - {{EMAIL}}           : email backup
+    - {{RESPONSE_TIME}}   : "Phản hồi trong 24 giờ"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTES:
+  - Không có CTA "mua thêm" hay upsell ở trang này
+  - Tone: warm, reassuring, confident — không hype
+  - Page này không cần nhiều sections — keep focused
+  - Homework phải CỤTHỂ và liên quan đến offer — không generic
+-->

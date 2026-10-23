@@ -1,0 +1,162 @@
+<!--
+  PATTERN: Final CTA Strip (S21)
+  Theme: dark-bold-neon · Tailwind
+  Sig: deep bg + blobs + grid + gradient headline + countdown + glow button + P.S.
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Eyebrow label (mono, uppercase)
+  · Headline — verb + outcome
+  · Sub — 1 câu xác nhận quyết định đúng
+  · Primary CTA button
+  · Urgency line (slots remaining / deadline)
+  Elements tùy chọn:
+  · Micro trust row — 3 trust signals (guarantee · no credit card · support)
+  · P.S. line
+  DEFAULT LAYOUT (Mode A):
+  Full-width · accent bg · centered · max-w-2xl · blobs
+  ─────────────────────────────────────────────────────────────────────
+-->
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT A: Centered Dark Canvas with Countdown (DEFAULT)
+     Dùng khi: dark-bold-neon · high-urgency · has countdown timer
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 px-6 overflow-hidden"
+         style="background:linear-gradient(135deg,#1c1c1a 0%,#141413 100%);">
+
+  <!-- Blobs -->
+  <div class="absolute w-96 h-96 rounded-full opacity-[0.10] blur-3xl bg-accent-DEFAULT top-0 left-1/4 animate-blob pointer-events-none"></div>
+  <div class="absolute w-72 h-72 rounded-full opacity-[0.07] blur-3xl bg-cyan-DEFAULT bottom-0 right-1/4 animate-blob-2 pointer-events-none"></div>
+
+  <!-- Grid -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background-image:linear-gradient(rgba(182,255,0,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(182,255,0,0.02) 1px,transparent 1px);background-size:60px 60px;"></div>
+
+  <div class="relative z-10 max-w-2xl mx-auto text-center">
+
+    <p class="font-mono text-[10px] uppercase tracking-widest text-subtle mb-5">Bắt đầu hôm nay</p>
+
+    <h2 class="font-display font-black text-ink tracking-tight mb-5"
+        style="font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-0.03em;">
+      [LINE 1]<br>[LINE 2]<br>
+      <span class="text-gradient">[LINE 3]</span>
+    </h2>
+
+    <p class="text-subtle text-lg leading-relaxed max-w-md mx-auto mb-8">
+      [SUB — social proof + promise.]
+    </p>
+
+    <!-- Countdown -->
+    <div class="mb-8">
+      <p class="font-mono text-[10px] uppercase tracking-widest text-faint mb-3">Ưu đãi kết thúc sau</p>
+      <div class="flex items-end justify-center gap-2">
+        <div class="text-center">
+          <span class="font-display font-black text-3xl text-ink block px-4 py-2 rounded-xl min-w-[56px]"
+                style="background:#222220;border:1px solid rgba(255,255,255,0.06);" id="hrs">08</span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-faint mt-1.5 block">giờ</span>
+        </div>
+        <span class="font-display font-black text-3xl text-faint pb-5">:</span>
+        <div class="text-center">
+          <span class="font-display font-black text-3xl text-ink block px-4 py-2 rounded-xl min-w-[56px]"
+                style="background:#222220;border:1px solid rgba(255,255,255,0.06);" id="min">47</span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-faint mt-1.5 block">phút</span>
+        </div>
+        <span class="font-display font-black text-3xl text-faint pb-5">:</span>
+        <div class="text-center">
+          <span class="font-display font-black text-3xl text-ink block px-4 py-2 rounded-xl min-w-[56px]"
+                style="background:#222220;border:1px solid rgba(255,255,255,0.06);" id="sec">33</span>
+          <span class="font-mono text-[9px] uppercase tracking-widest text-faint mt-1.5 block">giây</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="order.html"
+       class="btn-glow inline-flex items-center gap-2 bg-accent-DEFAULT text-accent-text font-display font-bold text-lg px-12 py-5 rounded-2xl min-h-[58px] cursor-pointer transition-colors duration-250 hover:brightness-110 mb-4">
+      [CTA TEXT] — [PRICE]
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+
+    <p class="font-mono text-[10px] uppercase tracking-widest text-faint mb-8">
+      🛡️ Bảo đảm hoàn tiền [N] ngày · Truy cập ngay
+    </p>
+
+    <!-- P.S. (Halbert mandatory) -->
+    <div class="border-t border-rim pt-7">
+      <p class="font-display font-medium italic text-sm leading-relaxed max-w-md mx-auto text-left"
+         style="color:rgba(240,240,236,0.35);">
+        <strong class="not-italic" style="color:rgba(240,240,236,0.55);">P.S.</strong> —
+        [P.S. — tóm tắt case study + giá + guarantee. Dành cho người kéo xuống đọc cuối.]
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT B: 2-Col Split — Copy Left, CTA Right
+     Dùng khi: bright-learn · warm-authority · khi không có countdown · softer close
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="relative py-20 px-6 overflow-hidden" style="background:var(--surface);border-top:1px solid var(--faint);">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal">
+
+    <!-- Left: copy + trust signals -->
+    <div>
+      <p class="font-mono text-[10px] uppercase tracking-widest mb-4" style="color:var(--subtle)">[EYEBROW — e.g. Sẵn sàng bắt đầu?]</p>
+      <h2 class="font-display font-black text-ink mb-4" style="font-size:clamp(1.75rem,3.5vw,2.75rem);line-height:1.05;letter-spacing:-0.03em;">[HEADLINE]</h2>
+      <p class="leading-relaxed mb-6" style="color:var(--subtle)">[SUB — 1-2 câu. Reinforce benefit or outcome.]</p>
+      <div class="flex flex-wrap gap-4">
+        <span class="flex items-center gap-1.5 text-xs font-mono" style="color:var(--subtle);">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L2 3.5v4C2 10 3.8 11.5 6 12c2.2-.5 4-2 4-4.5v-4L6 1z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          Hoàn tiền [N] ngày
+        </span>
+        <span class="flex items-center gap-1.5 text-xs font-mono" style="color:var(--subtle);">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" stroke-width="1.2"/><path d="M4 6l1.5 1.5L8 4" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Truy cập ngay
+        </span>
+        <span class="flex items-center gap-1.5 text-xs font-mono" style="color:var(--subtle);">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" stroke-width="1.2"/><path d="M6 3v3l2 2" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Hỗ trợ [N] ngày
+        </span>
+      </div>
+    </div>
+
+    <!-- Right: price + CTA -->
+    <div class="flex flex-col items-start lg:items-end gap-4">
+      <div class="w-full lg:max-w-xs">
+        <div class="flex items-baseline gap-2 mb-4">
+          <span class="font-mono font-black leading-none" style="font-size:2.5rem;color:var(--accent)">[PRICE]</span>
+          <span class="font-mono text-sm line-through" style="color:var(--subtle)">[ORIGINAL]</span>
+        </div>
+        <a href="#checkout" class="btn-glow w-full flex items-center justify-center gap-2 font-display font-black text-sm py-4 mb-3" style="background:var(--accent);color:var(--bg);border-radius:var(--radius-btn,4px);">
+          [CTA TEXT]
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="text-xs text-center font-mono" style="color:var(--faint)">[URGENCY — e.g. Chỉ còn [N] suất / Giá tăng sau [DATE]]</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT C: Minimal Stark — Accent Solid Background
+     Dùng khi: signal theme · minimal-mono · bất kỳ theme khi muốn hard close
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="relative py-20 px-6 overflow-hidden" style="background:var(--accent);">
+  <div class="max-w-2xl mx-auto text-center reveal">
+
+    <p class="font-mono text-[10px] uppercase tracking-[0.14em] mb-6" style="color:rgba(0,0,0,0.45)">[EYEBROW]</p>
+
+    <h2 class="font-display font-black mb-5" style="font-size:clamp(2rem,5vw,3.5rem);line-height:1.02;letter-spacing:-0.03em;color:var(--bg)">[HEADLINE — VERB + OUTCOME]</h2>
+
+    <p class="text-sm leading-relaxed mb-8 max-w-md mx-auto" style="color:rgba(0,0,0,0.6)">[SUB — 1 câu. Social proof hoặc guarantee.]</p>
+
+    <a href="#checkout" class="inline-flex items-center gap-2 font-display font-black text-base px-10 py-4 min-h-[52px]" style="background:var(--bg);color:var(--accent);border-radius:var(--radius-btn,4px);">
+      [CTA TEXT]
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+
+    <p class="mt-5 text-xs font-mono" style="color:rgba(0,0,0,0.4)">[URGENCY / GUARANTEE — e.g. Bảo đảm hoàn tiền 7 ngày · Không cần lý do]</p>
+
+  </div>
+</section>

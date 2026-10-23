@@ -1,0 +1,119 @@
+<!--
+  PATTERN: milestone-timeline.html — Personal Brand shared
+  Use: Hành trình / story section — milestones theo timeline dọc
+  Layout: Single col · max-w-2xl · vertical timeline với connector line
+  Elements: Section label · Intro quote · Timeline items (year + event + outcome)
+  Rule: Timeline phải có ít nhất 1 "low point" (thất bại/khó khăn) — tạo authenticity
+        Năm gần nhất ở cuối với accent highlight
+        Outcome mỗi milestone = kết quả đo được hoặc insight học được
+        Đặt: SAU credibility section, TRƯỚC services/offer
+        Quote dẫn nhập: 1 câu về why — lý do chọn con đường này
+  Dùng cho: warm-authority · bold-persona · story-first · mọi personal brand theme
+-->
+<section class="py-20" style="background:var(--bg)">
+  <div class="max-w-2xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <p class="font-body font-semibold text-[11px] uppercase tracking-wider mb-3" style="color:var(--accent)">Hành trình</p>
+      <h2 class="font-display font-bold mb-5"
+          style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.15;letter-spacing:-0.02em;color:var(--ink)">
+        Từ [Điểm xuất phát] đến [Điểm hiện tại]
+      </h2>
+      <!-- Opening quote — authentic voice -->
+      <p class="font-body text-base leading-relaxed italic mx-auto" style="color:var(--body);max-width:400px">
+        "[Câu quote 1 câu về why — lý do thật sự bắt đầu hành trình này]"
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Vertical line -->
+      <div class="absolute left-[28px] top-3 bottom-3 w-px" style="background:var(--faint)"></div>
+
+      <div class="space-y-8">
+
+        <!-- Milestone 1 — Starting point -->
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-14 text-right">
+            <span class="font-mono font-bold text-sm" style="color:var(--subtle)">[20XX]</span>
+          </div>
+          <div class="flex-shrink-0 w-4 h-4 rounded-full border-2 mt-0.5 z-10"
+               style="background:var(--bg);border-color:var(--faint)"></div>
+          <div class="flex-1 pb-2">
+            <h3 class="font-display font-semibold text-base mb-1" style="color:var(--ink)">[Milestone title]</h3>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">[Mô tả ngắn — 1–2 câu. Bắt đầu từ đâu, hoàn cảnh thế nào.]</p>
+          </div>
+        </div>
+
+        <!-- Milestone 2 — Struggle/low point -->
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-14 text-right">
+            <span class="font-mono font-bold text-sm" style="color:var(--subtle)">[20XX]</span>
+          </div>
+          <div class="flex-shrink-0 w-4 h-4 rounded-full border-2 mt-0.5 z-10"
+               style="background:var(--bg);border-color:var(--subtle)"></div>
+          <div class="flex-1 pb-2">
+            <h3 class="font-display font-semibold text-base mb-1" style="color:var(--ink)">[Thời điểm khó khăn / thất bại]</h3>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">[Honest về thử thách. Điều này tạo authenticity — đừng bỏ qua.]</p>
+          </div>
+        </div>
+
+        <!-- Milestone 3 — Turning point -->
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-14 text-right">
+            <span class="font-mono font-bold text-sm" style="color:var(--subtle)">[20XX]</span>
+          </div>
+          <div class="flex-shrink-0 w-4 h-4 rounded-full border-2 mt-0.5 z-10"
+               style="background:rgba(var(--accent-rgb),0.15);border-color:var(--accent)"></div>
+          <div class="flex-1 pb-2">
+            <div class="inline-block mb-1.5 px-2 py-0.5 rounded-full"
+                 style="background:rgba(var(--accent-rgb),0.10);border:1px solid rgba(var(--accent-rgb),0.2)">
+              <span class="font-body text-[10px] font-semibold uppercase tracking-wider" style="color:var(--accent)">Turning point</span>
+            </div>
+            <h3 class="font-display font-semibold text-base mb-1" style="color:var(--ink)">[Khoảnh khắc bước ngoặt]</h3>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">[Điều gì thay đổi. Insight hoặc quyết định quan trọng.]</p>
+          </div>
+        </div>
+
+        <!-- Milestone 4 — Growth -->
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-14 text-right">
+            <span class="font-mono font-bold text-sm" style="color:var(--subtle)">[20XX]</span>
+          </div>
+          <div class="flex-shrink-0 w-4 h-4 rounded-full border-2 mt-0.5 z-10"
+               style="background:var(--bg);border-color:var(--accent)"></div>
+          <div class="flex-1 pb-2">
+            <h3 class="font-display font-semibold text-base mb-1" style="color:var(--ink)">[Cột mốc tăng trưởng]</h3>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">[Kết quả cụ thể đạt được. Số liệu nếu có.]</p>
+          </div>
+        </div>
+
+        <!-- Milestone 5 — Present (accent highlighted) -->
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-14 text-right">
+            <span class="font-mono font-bold text-sm" style="color:var(--accent)">Nay</span>
+          </div>
+          <div class="flex-shrink-0 w-4 h-4 rounded-full mt-0.5 z-10"
+               style="background:var(--accent)"></div>
+          <div class="flex-1 rounded-xl p-4"
+               style="background:rgba(var(--accent-rgb),0.06);border:1px solid rgba(var(--accent-rgb),0.18)">
+            <h3 class="font-display font-semibold text-base mb-1" style="color:var(--ink)">[Hiện tại — mission statement]</h3>
+            <p class="font-body text-sm leading-relaxed" style="color:var(--body)">[Bây giờ đang làm gì, giúp ai, với mục tiêu gì. 1–2 câu.]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Transition CTA -->
+    <div class="text-center mt-12 pt-8" style="border-top:1px solid var(--faint)">
+      <p class="font-body text-base mb-4" style="color:var(--body)">
+        Hành trình này dạy tôi [insight chính] — và đó là nền tảng của mọi thứ tôi chia sẻ với bạn.
+      </p>
+      <a href="[CTA_URL]" class="font-body font-semibold text-sm" style="color:var(--accent)">
+        Xem tôi có thể giúp gì cho bạn →
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,253 @@
+<!--
+  PATTERN: cta-strip
+  THEME:   bold-appetite
+  USE:     Orange bg booking form — text left + form right
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --cream: #f5ead8; --bg: #1a1008;
+    --surface: #231608; --faint: #3d2d1a; --body: #d4c4a8;
+    --subtle: #8a7560;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .cta-strip {
+    background: var(--accent);
+    padding: 64px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Grain overlay on orange */
+  .cta-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  /* Decorative circle blobs */
+  .cta-strip::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -60px;
+    width: 280px; height: 280px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .cta-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  /* Left — copy */
+  .cta-copy {}
+  .cta-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .cta-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .cta-headline em {
+    font-style: italic;
+    display: block;
+  }
+  .cta-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+  .cta-trust-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .trust-pill {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 5px 12px;
+    white-space: nowrap;
+  }
+  /* Right — booking form */
+  .cta-form-wrap {
+    background: rgba(26,16,8,0.35);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 32px;
+    backdrop-filter: blur(4px);
+  }
+  .form-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .form-row {
+    margin-bottom: 14px;
+  }
+  .form-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+  .form-input,
+  .form-select {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.45); }
+  .form-input:focus,
+  .form-select:focus { border-color: rgba(255,255,255,0.7); }
+  .form-select option { background: #2e1e0a; color: #f5ead8; }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .submit-btn {
+    width: 100%;
+    background: #1a1008;
+    color: var(--accent);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+  .submit-btn:hover {
+    background: #0d0804;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .form-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    margin-top: 10px;
+  }
+  @media (max-width: 768px) {
+    .cta-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>
+
+<section class="cta-strip" id="dat-ban">
+  <div class="cta-inner">
+
+    <!-- Copy (left) -->
+    <div class="cta-copy">
+      <span class="cta-tag">Đặt Bàn Ngay</span>
+      <h2 class="cta-headline">
+        Giữ Chỗ Cho
+        <em>Buổi Tối Đặc Biệt</em>
+      </h2>
+      <p class="cta-body">
+        Chỉ cần 30 giây — nhóm chúng tôi sẽ xác nhận bàn
+        trong vòng 2 tiếng. Đặt bàn trước để có vị trí tốt nhất
+        và ưu đãi Set Menu dành riêng.
+      </p>
+      <div class="cta-trust-items">
+        <span class="trust-pill">✓ Xác nhận trong 2h</span>
+        <span class="trust-pill">✓ Hủy miễn phí trước 4h</span>
+        <span class="trust-pill">✓ Không đặt cọc</span>
+      </div>
+    </div>
+
+    <!-- Booking form (right) -->
+    <div class="cta-form-wrap">
+      <div class="form-title">Thông Tin Đặt Bàn</div>
+
+      <div class="form-row">
+        <label class="form-label">Họ & Tên</label>
+        <input type="text" class="form-input" placeholder="Nguyễn Văn A">
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label">Ngày</label>
+          <input type="date" class="form-input" style="color-scheme:dark;">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Giờ</label>
+          <select class="form-select">
+            <option value="">Chọn giờ</option>
+            <option>11:00</option>
+            <option>11:30</option>
+            <option>12:00</option>
+            <option>12:30</option>
+            <option>18:00</option>
+            <option>18:30</option>
+            <option>19:00</option>
+            <option>19:30</option>
+            <option>20:00</option>
+            <option>20:30</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Số khách</label>
+        <select class="form-select">
+          <option>1 người</option>
+          <option selected>2 người</option>
+          <option>3 người</option>
+          <option>4 người</option>
+          <option>5–6 người</option>
+          <option>7–10 người</option>
+          <option>Trên 10 người</option>
+        </select>
+      </div>
+
+      <button class="submit-btn">Đặt Bàn Ngay →</button>
+      <p class="form-note">Hoặc gọi ngay: <strong style="color:rgba(255,255,255,0.8)">028 xxxx xxxx</strong></p>
+    </div>
+
+  </div>
+</section>

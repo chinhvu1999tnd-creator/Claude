@@ -1,0 +1,102 @@
+<!--
+  ty-booking-header.html — Booking call confirmation header
+  Layout:     centered · max-w-xl
+  Elements:   Confirmed badge · Headline · Call detail card (date/time/platform/host) · Join link
+  Rule:       Không pitch mạnh ở đây — người dùng đã commit, chỉ cần warm up và giảm lo ngại
+              Join link phải xuất hiện ngay tại trang, không chỉ gửi qua email
+  Dùng cho:   Booking call / Strategy session / Consultation thank you page
+-->
+<div class="relative text-center py-14 px-6 overflow-hidden">
+
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 pointer-events-none"
+    style="background:radial-gradient(ellipse,rgba(var(--accent-rgb),.11) 0%,transparent 70%);filter:blur(36px)"></div>
+
+  <div class="relative max-w-xl mx-auto">
+
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+      style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.25)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/>
+        <path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--accent)">Lịch hẹn đã xác nhận</span>
+    </div>
+
+    <h1 class="font-display font-black text-ink mb-2"
+      style="font-size:clamp(1.625rem,4vw,2.375rem);line-height:1.1;letter-spacing:-0.03em">
+      Hẹn gặp anh/chị tại buổi<br>[Tên buổi call]!
+    </h1>
+    <p class="font-body mb-8" style="color:var(--body);font-size:1rem;line-height:1.7">
+      Thông tin đã gửi về email. Lưu thông tin bên dưới để chuẩn bị tốt nhất.
+    </p>
+
+    <!-- Call details card -->
+    <div class="rounded-xl p-5 text-left" style="background:var(--surface);border:1px solid rgba(var(--accent-rgb),.2)">
+
+      <div class="space-y-3 mb-5">
+
+        <!-- Date / Time -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+            style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.18)">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="2" width="12" height="11" rx="2" stroke="var(--accent)" stroke-width="1.2"/>
+              <path d="M1 6h12M5 1v2M9 1v2" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider mb-0.5" style="color:var(--subtle)">Thời gian</p>
+            <p class="font-body font-semibold text-sm text-ink">[Thứ X, DD/MM/YYYY · HH:MM — HH:MM (45 phút)]</p>
+          </div>
+        </div>
+
+        <!-- Platform -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+            style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.18)">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="3" width="9" height="8" rx="1.5" stroke="var(--accent)" stroke-width="1.2"/>
+              <path d="M10 5.5l3-1.5v6l-3-1.5V5.5z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider mb-0.5" style="color:var(--subtle)">Nền tảng</p>
+            <p class="font-body font-semibold text-sm text-ink">[Zoom / Google Meet / Zalo Call]</p>
+          </div>
+        </div>
+
+        <!-- Host -->
+        <div class="flex items-center gap-3">
+          <!-- Replace: <img src="host.jpg" class="slot-img" style="border-radius:9999px" alt="[Tên host]"> -->
+          <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 media-slot" data-role="PERSON"
+            style="background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:1.5rem;opacity:0.4">👤</span>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider mb-0.5" style="color:var(--subtle)">Người tư vấn</p>
+            <p class="font-body font-semibold text-sm text-ink">[Tên host · Chức danh]</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Join link -->
+      <a href="[CALL_LINK]" target="_blank"
+        class="btn-glow flex items-center justify-center gap-2 w-full py-3 px-5 rounded-btn font-display font-bold text-sm"
+        style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.3);text-decoration:none">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <rect x="1" y="3" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M10 6l4-2v7l-4-2V6z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+        Lưu link tham gia call
+      </a>
+
+    </div>
+
+    <p class="font-mono text-[10px] mt-4" style="color:var(--subtle)">
+      Link cũng đã gửi về email · Cần đổi lịch? <a href="[RESCHEDULE_URL]" style="color:var(--subtle);text-decoration:underline">Bấm vào đây</a>
+    </p>
+
+  </div>
+</div>

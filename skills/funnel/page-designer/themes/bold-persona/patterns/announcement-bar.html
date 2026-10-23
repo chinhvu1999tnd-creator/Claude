@@ -1,0 +1,139 @@
+<!--
+  PATTERN: announcement-bar
+  THEME:   bold-persona
+  USE:     Top of page urgency strip — coral bg, live dot, cohort scarcity
+  Rule:    Always first element on page · Coral bg + white Syne text · Live pulsing dot
+           Replace [N] and [DATE] before use
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --electric: #1a56db; --ink: #111827;
+    --bg: #ffffff; --faint: #e5e7eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .announce-bar {
+    background: var(--accent);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle diagonal texture */
+  .announce-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255,255,255,0.04) 10px,
+      rgba(255,255,255,0.04) 11px
+    );
+    pointer-events: none;
+  }
+
+  /* Live pulsing dot */
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: inline-block;
+    flex-shrink: 0;
+    animation: pulse-dot 1.8s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+  .live-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    animation: pulse-ring 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.7; transform: scale(0.85); }
+  }
+  @keyframes pulse-ring {
+    0%    { transform: scale(0.8); opacity: 0.6; }
+    100%  { transform: scale(1.8); opacity: 0; }
+  }
+
+  .announce-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .announce-text .highlight {
+    font-weight: 700;
+    background: rgba(255,255,255,0.18);
+    padding: 1px 8px;
+    border-radius: 4px;
+    margin: 0 2px;
+  }
+  .announce-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    position: relative;
+    z-index: 1;
+  }
+  .announce-cta:hover { opacity: 0.8; }
+
+  .announce-sep {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .announce-close {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.65);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 4px;
+    z-index: 2;
+    transition: color 0.15s;
+  }
+  .announce-close:hover { color: #ffffff; }
+</style>
+
+<div class="announce-bar" id="announcebar">
+  <span class="live-dot"></span>
+  <p class="announce-text">
+    🔥 Cohort mới vừa mở đăng ký —
+    <span class="highlight">còn <span id="seatsLeft">[N]</span> suất cuối</span>
+    · Khai giảng <strong>[DATE]</strong>
+  </p>
+  <span class="announce-sep">·</span>
+  <a href="#dang-ky" class="announce-cta">Đăng ký trước →</a>
+  <button class="announce-close" onclick="document.getElementById('announcebar').style.display='none'" aria-label="Đóng">✕</button>
+</div>

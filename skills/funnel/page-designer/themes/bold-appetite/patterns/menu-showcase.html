@@ -1,0 +1,428 @@
+<!--
+  PATTERN: menu-showcase
+  THEME:   bold-appetite
+  USE:     Menu categories with items — Fraunces italic names, DM Mono prices
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --yellow: #f5c842; --cream: #f5ead8;
+    --bg: #1a1008; --surface: #231608; --raised: #2e1e0a;
+    --faint: #3d2d1a; --body: #d4c4a8; --subtle: #8a7560;
+    --rim: rgba(232,116,42,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .menu-section {
+    background: var(--bg);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .menu-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  /* Category Card */
+  .menu-card {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .menu-card:hover {
+    border-color: var(--rim);
+    box-shadow: 0 4px 24px rgba(232,116,42,0.15);
+  }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--faint);
+  }
+  .category-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(232,116,42,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .category-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--cream);
+  }
+  .category-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+  /* Menu item row */
+  .menu-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--faint);
+    transition: opacity 0.2s;
+  }
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item:hover { opacity: 0.88; }
+  .item-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background: var(--surface);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  /* img slot: replace SVG with <img style="width:100%;height:100%;object-fit:cover;filter:sepia(0.15) saturate(1.2)"> */
+  .item-body { flex: 1; min-width: 0; }
+  .item-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .item-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--subtle);
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .item-badges {
+    display: flex;
+    gap: 4px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 999px;
+  }
+  .badge-hot { background: rgba(192,57,43,0.15); color: #e07060; }
+  .badge-chef { background: rgba(232,116,42,0.12); color: var(--accent); }
+  .badge-new { background: rgba(245,200,66,0.12); color: var(--yellow); }
+  .item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .item-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .add-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(232,116,42,0.12);
+    border: 1px solid rgba(232,116,42,0.25);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .add-btn:hover { background: rgba(232,116,42,0.22); }
+  /* Tab nav */
+  .menu-tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1.5px solid var(--faint);
+    background: transparent;
+    color: var(--subtle);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active,
+  .tab-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232,116,42,0.08);
+  }
+  @media (max-width: 640px) {
+    .menu-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section class="menu-section">
+  <div class="menu-inner">
+
+    <div class="section-header">
+      <span class="section-tag">Thực Đơn</span>
+      <h2 class="section-title">Tinh Hoa Ẩm Thực</h2>
+    </div>
+
+    <!-- Optional tab nav -->
+    <div class="menu-tabs">
+      <button class="tab-btn active">Tất cả</button>
+      <button class="tab-btn">Khai vị</button>
+      <button class="tab-btn">Món chính</button>
+      <button class="tab-btn">Tráng miệng</button>
+    </div>
+
+    <div class="menu-grid">
+
+      <!-- CATEGORY 1: Khai Vị -->
+      <div class="menu-card">
+        <div class="category-header">
+          <div class="category-icon">🥗</div>
+          <div>
+            <div class="category-name">Khai Vị</div>
+            <div class="category-count">4 món · Phần chia sẻ</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><ellipse cx="28" cy="32" rx="18" ry="10" fill="#2e1e0a" stroke="#3d2d1a" stroke-width="1"/><path d="M12 30 C12 22 19 17 28 17 C37 17 44 22 44 30" fill="#1a1008" stroke="#3d2d1a" stroke-width="1"/><ellipse cx="28" cy="18" rx="12" ry="4" fill="#4a6741" opacity="0.6"/><circle cx="24" cy="16" r="2.5" fill="#c0392b" opacity="0.6"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Gỏi Cuốn Tôm Thịt</div>
+            <div class="item-desc">Tôm sú, thịt luộc, bún tươi, rau thơm</div>
+            <div class="item-badges">
+              <span class="badge badge-chef">Chef's Pick</span>
+            </div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">85K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><rect x="12" y="22" width="32" height="18" rx="3" fill="#4a2810"/><path d="M12 22 L16 14 L40 14 L44 22" fill="#3d1f0a" stroke="#3d2d1a" stroke-width="1"/><circle cx="28" cy="18" r="3" fill="#e8742a" opacity="0.5"/><circle cx="20" cy="18" r="2.5" fill="#e8742a" opacity="0.4"/><circle cx="36" cy="18" r="2.5" fill="#e8742a" opacity="0.4"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Chả Giò Cua Biển</div>
+            <div class="item-desc">Cua hoàng đế, nấm mèo, miến, vỏ bánh giòn</div>
+            <div class="item-badges">
+              <span class="badge badge-hot">Bán chạy</span>
+            </div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">75K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><ellipse cx="28" cy="34" rx="20" ry="8" fill="#2e1e0a" stroke="#3d2d1a" stroke-width="1"/><path d="M10 32 C10 24 18 18 28 18 C38 18 46 24 46 32" fill="#1a1008" stroke="#3d2d1a" stroke-width="1"/><circle cx="24" cy="24" r="4" fill="#e8742a" opacity="0.35"/><circle cx="34" cy="22" r="3" fill="#f5c842" opacity="0.4"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Súp Cua Bắp</div>
+            <div class="item-desc">Cua tươi, bắp Đà Lạt, trứng bắc thảo, hành lá</div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">95K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CATEGORY 2: Món Chính -->
+      <div class="menu-card">
+        <div class="category-header">
+          <div class="category-icon">🍖</div>
+          <div>
+            <div class="category-name">Món Chính</div>
+            <div class="category-count">12 món · 1–2 người</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><rect x="10" y="20" width="36" height="22" rx="6" fill="#4a1e08"/><circle cx="18" cy="31" r="5" fill="#8B0000" opacity="0.7"/><circle cx="28" cy="28" r="6" fill="#8B0000" opacity="0.8"/><circle cx="38" cy="31" r="5" fill="#8B0000" opacity="0.7"/><ellipse cx="28" cy="20" rx="14" ry="4" fill="#4a6741" opacity="0.5"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Bò Lúc Lắc Tiêu Kampot</div>
+            <div class="item-desc">Thăn bò Mỹ, tiêu đen Campuchia, rau mầm</div>
+            <div class="item-badges">
+              <span class="badge badge-chef">Chef's Table</span>
+              <span class="badge badge-hot">Signature</span>
+            </div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">285K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><ellipse cx="28" cy="34" rx="18" ry="10" fill="#2e1e0a" stroke="#3d2d1a" stroke-width="1"/><path d="M12 32 C12 24 19 18 28 18 C37 18 44 24 44 32" fill="#3d1a06"/><path d="M18 24 Q28 18 38 24" stroke="#e8742a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Cá Kho Tộ Miền Tây</div>
+            <div class="item-desc">Cá basa tươi, nước dừa, gừng, hành phi</div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">195K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><path d="M14 38 C14 28 20 20 28 20 C36 20 42 28 42 38" fill="#6b3010" stroke="#3d2d1a" stroke-width="1"/><ellipse cx="28" cy="20" rx="10" ry="5" fill="#4a2010"/><path d="M20 30 Q28 24 36 30" stroke="#e8742a" stroke-width="1.5" fill="none" opacity="0.6"/><ellipse cx="28" cy="38" rx="14" ry="4" fill="#2e1e0a"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Gà Nướng Sả Mật Ong</div>
+            <div class="item-desc">Gà thả vườn, sả tươi, mật ong rừng Tây Nguyên</div>
+            <div class="item-badges">
+              <span class="badge badge-new">Mới</span>
+            </div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">245K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CATEGORY 3: Tráng Miệng -->
+      <div class="menu-card">
+        <div class="category-header">
+          <div class="category-icon">🍮</div>
+          <div>
+            <div class="category-name">Tráng Miệng</div>
+            <div class="category-count">6 món · Phần cá nhân</div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><ellipse cx="28" cy="36" rx="16" ry="8" fill="#2e1e0a" stroke="#3d2d1a"/><ellipse cx="28" cy="28" rx="14" ry="5" fill="#c0392b" opacity="0.6"/><ellipse cx="28" cy="22" rx="12" ry="4" fill="#4a6741" opacity="0.7"/><ellipse cx="28" cy="17" rx="10" ry="3.5" fill="#f5c842" opacity="0.6"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Chè Ba Màu</div>
+            <div class="item-desc">Đậu xanh, thạch lá dứa, nước cốt dừa đá bào</div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">65K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><ellipse cx="28" cy="36" rx="14" ry="7" fill="#2e1e0a" stroke="#3d2d1a"/><ellipse cx="28" cy="30" rx="14" ry="9" fill="#c8812a" opacity="0.8"/><circle cx="28" cy="26" r="5" fill="#e8742a" opacity="0.5"/><path d="M28 16 L28 24" stroke="#3d2d1a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Bánh Flan Vani</div>
+            <div class="item-desc">Trứng gà tươi, sữa tươi nguyên kem, caramel</div>
+            <div class="item-badges">
+              <span class="badge badge-chef">Homemade</span>
+            </div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">55K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-img">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#231608" rx="8"/><circle cx="22" cy="28" r="9" fill="#4a6741" opacity="0.7"/><circle cx="34" cy="26" r="8" fill="#e8742a" opacity="0.6"/><circle cx="28" cy="34" r="7" fill="#f5c842" opacity="0.55"/></svg>
+          </div>
+          <div class="item-body">
+            <div class="item-name">Trái Cây Nhiệt Đới</div>
+            <div class="item-desc">Xoài, dưa hấu, thanh long theo mùa</div>
+          </div>
+          <div class="item-right">
+            <span class="item-price">85K</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /menu-grid -->
+
+    <!-- View full menu CTA -->
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#full-menu" style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(232,116,42,0.3);padding-bottom:2px;">
+        Xem thực đơn đầy đủ →
+      </a>
+    </div>
+
+  </div>
+</section>

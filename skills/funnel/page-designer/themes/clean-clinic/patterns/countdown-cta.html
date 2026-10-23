@@ -1,0 +1,262 @@
+<!--
+  PATTERN: countdown-cta
+  THEME: clean-clinic
+  USE: Honest quota/availability display — NOT a countdown timer
+  STYLE: Progress bar showing X/Y slots used (ethical scarcity)
+  NOTE: "Còn N suất" — real availability limit, not manufactured urgency
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --accent-rgb: 15, 163, 127;
+    --alert: #dc2626;
+    --alert-rgb: 220, 38, 38;
+    --positive: #16a34a;
+    --bg: #f8fffe;
+    --surface: #f0faf8;
+    --raised: #e6f7f4;
+    --ink: #0d2b24;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+
+  .quota-section {
+    background: #ffffff;
+    border-top: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+    padding: 56px 24px;
+  }
+  .quota-container {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Slot availability badge */
+  .quota-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1.5px solid var(--faint);
+    border-radius: 99px;
+    padding: 6px 16px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--body);
+    margin-bottom: 20px;
+  }
+  .quota-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .quota-title {
+    font-size: clamp(1.5rem, 3vw, 2.125rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .quota-title span { color: var(--accent); }
+
+  .quota-sub {
+    font-size: 1rem;
+    color: var(--body);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  /* Progress bar */
+  .quota-progress-wrap {
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+  }
+  .quota-numbers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .quota-remaining {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .quota-remaining .count { color: var(--accent); font-size: 1.25rem; font-weight: 800; }
+  .quota-total {
+    font-size: 0.8125rem;
+    color: var(--subtle);
+    font-weight: 500;
+  }
+  .progress-track {
+    height: 10px;
+    background: var(--faint);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--accent);
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* Alert state when < 25% remaining */
+  .progress-fill.near-full { background: var(--alert); }
+
+  .progress-label {
+    font-size: 0.75rem;
+    color: var(--subtle);
+    text-align: right;
+    font-weight: 500;
+  }
+  .progress-label.near-full { color: var(--alert); font-weight: 600; }
+
+  /* CTA Button */
+  .quota-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 12px;
+  }
+  .quota-cta:hover { background: #0d9270; box-shadow: 0 4px 16px rgba(15,163,127,0.30); }
+
+  .quota-note {
+    font-size: 0.8125rem;
+    color: var(--subtle);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- QUOTA CTA -->
+<section class="quota-section" id="slots">
+  <div class="quota-container">
+
+    <!-- Status badge -->
+    <div class="quota-badge">
+      <span class="quota-dot"></span>
+      <!-- SLOT: Month/period -->
+      Cập nhật tháng 6/2025
+    </div>
+
+    <!-- Title -->
+    <h2 class="quota-title">
+      Còn <span id="slotsRemaining">8</span> suất khám miễn phí<br>trong tháng này
+    </h2>
+    <p class="quota-sub">
+      <!-- SLOT: Explain the limit honestly -->
+      Mỗi tháng phòng khám dành <strong>20 suất khám tư vấn miễn phí</strong> cho bệnh nhân mới. Đây là giới hạn thực tế để đảm bảo mỗi ca được chăm sóc đầy đủ.
+    </p>
+
+    <!-- Progress bar -->
+    <div class="quota-progress-wrap">
+      <div class="quota-numbers">
+        <div class="quota-remaining">
+          <span class="count" id="slotsUsed">12</span> / <span id="slotsTotal">20</span> suất đã đăng ký
+        </div>
+        <div class="quota-total">Còn lại: <span id="slotsLeft">8</span> suất</div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width: 60%"></div>
+      </div>
+      <div class="progress-label" id="progressLabel">60% đã được đặt</div>
+    </div>
+
+    <!-- CTA -->
+    <div>
+      <a href="#booking" class="quota-cta">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="10" height="10" rx="1"/>
+          <line x1="8" y1="2" x2="8" y2="5"/>
+          <line x1="3" y1="8" x2="13" y2="8"/>
+        </svg>
+        Đăng Ký Suất Khám Miễn Phí
+      </a>
+      <p class="quota-note">
+        Không cần đặt cọc · Xác nhận trong 2 giờ làm việc
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- END: countdown-cta -->
+
+<script>
+  // QUOTA CONFIGURATION — update these values monthly
+  const CONFIG = {
+    total: 20,     // Total slots per period
+    used: 12,      // Slots already booked (update from CRM)
+  };
+
+  function initQuota() {
+    const remaining = CONFIG.total - CONFIG.used;
+    const pct = Math.round((CONFIG.used / CONFIG.total) * 100);
+    const nearFull = remaining <= (CONFIG.total * 0.25); // < 25% remaining = near full
+
+    // Update numbers
+    document.getElementById('slotsRemaining').textContent = remaining;
+    document.getElementById('slotsUsed').textContent = CONFIG.used;
+    document.getElementById('slotsTotal').textContent = CONFIG.total;
+    document.getElementById('slotsLeft').textContent = remaining;
+
+    // Update progress bar
+    const fill = document.getElementById('progressFill');
+    const label = document.getElementById('progressLabel');
+    fill.style.width = pct + '%';
+
+    if (nearFull) {
+      fill.classList.add('near-full');
+      label.classList.add('near-full');
+      label.textContent = 'Gần đầy — còn ' + remaining + ' suất!';
+    } else {
+      label.textContent = pct + '% đã được đặt';
+    }
+
+    // If fully booked — show waitlist
+    if (remaining <= 0) {
+      document.querySelector('.quota-cta').textContent = 'Đăng Ký Danh Sách Chờ';
+      document.querySelector('.quota-note').textContent = 'Tháng này đã đầy. Đăng ký để nhận thông báo tháng sau.';
+    }
+  }
+
+  initQuota();
+</script>
+
+<!--
+  USAGE NOTES:
+  - Update CONFIG.used monthly from actual CRM data
+  - This is HONEST scarcity — real slot limits
+  - Progress bar turns red only when < 25% slots remain
+  - If fully booked: switch CTA to waitlist mode
+  - NO countdown timers — healthcare ethics require honesty
+  - Never fake the slot numbers
+-->

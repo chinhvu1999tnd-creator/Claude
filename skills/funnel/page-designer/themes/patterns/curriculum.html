@@ -1,0 +1,98 @@
+<!--
+  curriculum.html — Static curriculum module grid (no accordion)
+  Layout:     3-col grid · max-w-4xl · module cards
+  Background: var(--bg)
+  Elements:   label + H2 + module cards (number · title · lesson list · duration)
+  Visuals:    numbered badge per module · accent on active/featured module
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Chương trình</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Lộ trình học <span style="color:var(--accent)">chi tiết</span></h2>
+      <p class="text-subtle mt-3 text-sm">6 module · 30+ bài · Từ cơ bản đến nâng cao</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 reveal">
+
+      <!-- Module 1 — Featured -->
+      <div class="rounded-xl p-5 relative overflow-hidden" style="background:rgba(182,255,0,0.05);border:1px solid rgba(182,255,0,0.2)">
+        <div class="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl opacity-10" style="background:var(--accent);transform:translate(30%,-30%)"></div>
+        <div class="relative">
+          <span class="font-mono font-black text-3xl" style="color:rgba(182,255,0,0.2)">01</span>
+          <h3 class="font-display font-bold text-ink text-[0.9375rem] mt-1 mb-3">Tên Module 1</h3>
+          <div class="space-y-1.5">
+            <p class="text-subtle text-xs flex items-center gap-1.5"><span style="color:var(--accent)">›</span> Bài 1: Tên bài học</p>
+            <p class="text-subtle text-xs flex items-center gap-1.5"><span style="color:var(--accent)">›</span> Bài 2: Tên bài học</p>
+            <p class="text-subtle text-xs flex items-center gap-1.5"><span style="color:var(--accent)">›</span> Bài 3: Tên bài học</p>
+          </div>
+          <p class="text-subtle text-[10px] font-mono mt-3">5 bài · 45 phút</p>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="rounded-xl p-5" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <span class="font-mono font-black text-3xl" style="color:rgba(255,255,255,0.06)">02</span>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem] mt-1 mb-3">Tên Module 2</h3>
+        <div class="space-y-1.5">
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 4: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 5: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 6: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 7: Tên bài học</p>
+        </div>
+        <p class="text-subtle text-[10px] font-mono mt-3">4 bài · 60 phút</p>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="rounded-xl p-5" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <span class="font-mono font-black text-3xl" style="color:rgba(255,255,255,0.06)">03</span>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem] mt-1 mb-3">Tên Module 3</h3>
+        <div class="space-y-1.5">
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 8: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 9: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 10: Tên bài học</p>
+        </div>
+        <p class="text-subtle text-[10px] font-mono mt-3">3 bài · 30 phút</p>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="rounded-xl p-5" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <span class="font-mono font-black text-3xl" style="color:rgba(255,255,255,0.06)">04</span>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem] mt-1 mb-3">Tên Module 4</h3>
+        <div class="space-y-1.5">
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 11: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 12: Tên bài học</p>
+        </div>
+        <p class="text-subtle text-[10px] font-mono mt-3">5 bài · 50 phút</p>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="rounded-xl p-5" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <span class="font-mono font-black text-3xl" style="color:rgba(255,255,255,0.06)">05</span>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem] mt-1 mb-3">Tên Module 5</h3>
+        <div class="space-y-1.5">
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 13: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 14: Tên bài học</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span class="text-subtle">›</span> Bài 15: Tên bài học</p>
+        </div>
+        <p class="text-subtle text-[10px] font-mono mt-3">4 bài · 40 phút</p>
+      </div>
+
+      <!-- Module 6 — Bonus -->
+      <div class="rounded-xl p-5 relative overflow-hidden" style="background:rgba(0,194,255,0.04);border:1px solid rgba(0,194,255,0.15)">
+        <div class="absolute -top-2 right-3">
+          <span class="text-[9px] font-mono px-2 py-0.5 rounded-full" style="background:rgba(0,194,255,0.15);color:var(--cyan)">BONUS</span>
+        </div>
+        <span class="font-mono font-black text-3xl" style="color:rgba(0,194,255,0.15)">06</span>
+        <h3 class="font-display font-bold text-ink text-[0.9375rem] mt-1 mb-3">Bonus Module</h3>
+        <div class="space-y-1.5">
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span style="color:var(--cyan)">›</span> Template pack</p>
+          <p class="text-subtle text-xs flex items-center gap-1.5"><span style="color:var(--cyan)">›</span> Swipe file</p>
+        </div>
+        <p class="text-subtle text-[10px] font-mono mt-3" style="color:rgba(0,194,255,0.5)">Bonus · Tặng thêm</p>
+      </div>
+
+    </div>
+  </div>
+</section>

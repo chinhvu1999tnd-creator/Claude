@@ -1,0 +1,68 @@
+<!--
+  video-hero.html — Video embed / demo section
+  Slots: [PROCESS] video 16:9
+  Fits any business: product demo · course preview · tour video · testimonial video
+  Layout: centered · max-w-4xl · large video frame + caption below
+  Background: bg-canvas
+  Replace: swap .slot-placeholder with <iframe> or <video> tag
+-->
+<section class="py-20 bg-canvas">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-10 reveal">
+      <span class="section-label">Xem demo</span>
+      <h2 class="font-display font-black text-h2 text-ink">Xem <span class="text-accent">trước khi quyết định</span></h2>
+      <p class="font-body text-sm text-subtle mt-3 max-w-lg mx-auto">Tiêu đề phụ mô tả ngắn video này cho thấy điều gì — kết quả, quá trình, hay câu chuyện.</p>
+    </div>
+
+    <!-- Video slot [PROCESS] -->
+    <div class="relative reveal" data-role="PROCESS">
+      <!-- Gradient border frame -->
+      <div class="p-px rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,rgba(var(--accent-rgb),.40) 0%,rgba(var(--cyan-rgb),.20) 50%,rgba(var(--accent-rgb),.08) 100%)">
+        <div class="media-slot aspect-16-9 rounded-2xl relative" style="background:var(--surface);border:2px dashed var(--faint)">
+
+          <!-- PLACEHOLDER — replace this entire block with iframe/video -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+            <span style="font-size:2.5rem;opacity:0.35">▶️</span>
+            <p class="font-body text-xs" style="color:var(--subtle)">[Embed YouTube/Vimeo URL]</p>
+          </div>
+          <!-- END PLACEHOLDER -->
+
+          <!-- Play button overlay (keep even with real video thumbnail) -->
+          <button class="video-play-btn" aria-label="Phát video">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 5l10 5-10 5V5z" fill="var(--accent)"/>
+            </svg>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Caption bar -->
+      <div class="flex items-center justify-between mt-4 px-1">
+        <p class="font-mono text-xs text-subtle">Demo thực tế · Không chỉnh sửa</p>
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full animate-live" style="background:var(--accent)"></span>
+          <span class="font-mono text-xs text-subtle">2:47</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust strip below video -->
+    <div class="flex flex-wrap items-center justify-center gap-6 mt-8 reveal">
+      <span class="flex items-center gap-2 font-mono text-xs text-subtle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L2 3.5v4C2 10 3.8 11.5 7 12c3.2-.5 5-2 5-4.5v-4L7 1z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        Kết quả thật từ người dùng thật
+      </span>
+      <span class="flex items-center gap-2 font-mono text-xs text-subtle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Không có script, không dàn dựng
+      </span>
+      <span class="flex items-center gap-2 font-mono text-xs text-subtle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 3 3.5.5-2.5 2.5.5 3.5L7 9l-3 1.5.5-3.5L2 4.5 5.5 4 7 1z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        500+ người đã xem demo này
+      </span>
+    </div>
+
+  </div>
+</section>

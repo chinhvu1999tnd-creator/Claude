@@ -1,0 +1,97 @@
+<!--
+  OVERRIDE: countdown-cta.html — Warm Earth
+  vs shared: ticking digital clock boxes + dark bg
+  Override: MARKET DAY / HARVEST deadline — calendar date display + seasonal framing
+  Layout: centered warm card — date calendar left + message right
+  Rule: SME/food audience bị turn off bởi aggressive countdown
+        Dùng "kết thúc đợt" hoặc "ngày thu hoạch" thay vì "ưu đãi chớp nhoáng"
+-->
+<section class="py-16" style="background:var(--surface)">
+  <div class="max-w-3xl mx-auto px-6">
+
+    <!-- Linen texture -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background-image:repeating-linear-gradient(45deg,rgba(196,92,46,0.02) 0px,rgba(196,92,46,0.02) 1px,transparent 1px,transparent 12px)"></div>
+
+    <div class="relative rounded-2xl overflow-hidden"
+         style="background:var(--bg);border:1.5px solid var(--faint);box-shadow:0 4px 20px rgba(42,31,20,0.08)">
+
+      <!-- Warm top bar -->
+      <div class="h-1.5" style="background:linear-gradient(90deg,var(--accent),var(--sand))"></div>
+
+      <div class="grid sm:grid-cols-2 gap-0">
+
+        <!-- LEFT — calendar display -->
+        <div class="p-8 flex flex-col items-center justify-center text-center"
+             style="border-right:1.5px dashed var(--faint)">
+
+          <!-- Calendar SVG -->
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="mb-4">
+            <!-- Calendar frame -->
+            <rect x="8" y="16" width="64" height="56" rx="8" fill="rgba(196,92,46,0.08)" stroke="var(--accent)" stroke-width="1.8"/>
+            <!-- Top bar (month) -->
+            <rect x="8" y="16" width="64" height="20" rx="8" fill="rgba(196,92,46,0.15)"/>
+            <rect x="8" y="28" width="64" height="8" fill="rgba(196,92,46,0.15)"/>
+            <!-- Hooks -->
+            <line x1="28" y1="10" x2="28" y2="22" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="52" y1="10" x2="52" y2="22" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Month text -->
+            <text x="40" y="31" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="rgba(255,255,255,0.9)">[MONTH]</text>
+            <!-- Day number -->
+            <text x="40" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-size="26" font-weight="800" fill="var(--accent)">[DD]</text>
+            <!-- Weekday -->
+            <text x="40" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" font-weight="600" fill="var(--subtle)">[Weekday]</text>
+          </svg>
+
+          <p class="font-display font-bold text-lg mb-1" style="color:var(--ink)">[DD/MM/YYYY]</p>
+          <p class="font-body text-sm" style="color:var(--subtle)">[Mô tả — e.g. Ngày cuối nhận đơn đợt này]</p>
+
+          <!-- Days remaining badge -->
+          <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full"
+               style="background:rgba(196,92,46,0.10);border:1.5px solid var(--rim)">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <circle cx="6" cy="6" r="5" stroke="var(--accent)" stroke-width="1.2"/>
+              <path d="M6 3.5v3l2 1.5" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <p class="font-display font-bold text-sm" style="color:var(--accent)" id="days-left">Còn [N] ngày</p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT — message + CTA -->
+        <div class="p-8 flex flex-col justify-center">
+
+          <div class="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full self-start"
+               style="background:rgba(90,122,58,0.10);border:1.5px dashed rgba(90,122,58,0.3)">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 10C2 10 4 6 6 5C8 4 10 5.5 9.5 8C9 9.5 7.5 10.5 5.5 10" stroke="var(--green)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M5.5 10L5 8.5" stroke="var(--green)" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span class="font-body font-semibold text-[11px] uppercase tracking-wider" style="color:var(--green)">[Đợt / Mùa vụ — e.g. Đợt 3 · Mùa xuân 2025]</span>
+          </div>
+
+          <h2 class="font-display font-bold mb-3"
+              style="font-size:clamp(1.25rem,3vw,1.75rem);line-height:1.2;letter-spacing:-0.01em;color:var(--ink)">
+            [Headline — e.g. Đặt hàng trước ngày [DD] để nhận đúng đợt này]
+          </h2>
+          <p class="font-body text-sm leading-relaxed mb-6" style="color:var(--body)">
+            [Lý do thực tế — VD: Nông sản thu hoạch theo mùa, đặt trước để đảm bảo còn hàng. Sau ngày [DD], đợt tiếp theo cần chờ thêm [N] tuần.]
+          </p>
+
+          <a href="[ORDER_URL]"
+             class="inline-flex items-center gap-2 py-3.5 px-8 font-display font-bold text-sm text-white transition-all hover:-translate-y-0.5 self-start"
+             style="background:var(--accent);border-radius:8px;box-shadow:0 4px 16px rgba(196,92,46,0.28)">
+            Đặt hàng ngay →
+          </a>
+
+          <p class="font-body text-xs mt-3" style="color:var(--subtle)">
+            🔄 Đổi trả trong [N] ngày · 🚚 Giao hàng trong [N]–[N] ngày làm việc
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

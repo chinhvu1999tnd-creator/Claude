@@ -1,0 +1,339 @@
+<!--
+  PATTERN: pricing-card.html — Story First
+  Framing: Invitations, not products. 3 tiers:
+    - Free: Cộng đồng miễn phí (podcast + community)
+    - Basic: Khóa học online (structured learning)
+    - Deep: Chương trình 1-1 (intimate coaching)
+  Design: Warm cards, terracotta featured border (middle), sage checkmarks
+  Language: Gentle, no pressure — "Tham gia" / "Bắt đầu" / "Kết nối"
+  Price: VND format. Free tier has no price.
+-->
+<section id="offer" style="
+  background:var(--bg);
+  padding:72px 24px;
+">
+  <div style="max-width:960px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:48px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:24px;height:1.5px;background:var(--accent)"></div>
+        <span style="
+          font-family:'Libre Franklin',sans-serif;font-size:11px;font-weight:600;
+          color:var(--accent);letter-spacing:0.10em;text-transform:uppercase;
+        ">Đồng hành cùng tôi</span>
+        <div style="width:24px;height:1.5px;background:var(--accent)"></div>
+      </div>
+      <h2 style="
+        font-family:'Libre Baskerville',serif;font-weight:400;
+        font-size:clamp(1.75rem,3.5vw,2.75rem);color:var(--ink);
+        margin:0 0 12px;line-height:1.22;
+      ">Chọn cách phù hợp với hành trình của bạn</h2>
+      <p style="
+        font-family:'Nunito Sans',sans-serif;font-weight:300;
+        font-size:16px;line-height:1.70;color:var(--body);
+        max-width:460px;margin:0 auto;
+      ">Không có "đúng" hay "sai" — chỉ có bước nào phù hợp với bạn lúc này.</p>
+    </div>
+
+    <!-- 3-column pricing grid -->
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      align-items:start;
+    " class="pricing-grid">
+
+      <!-- Tier 1: Free — Cộng đồng -->
+      <div style="
+        background:var(--surface);
+        border-radius:18px;
+        padding:28px;
+        border:1px solid var(--faint);
+        box-shadow:0 4px 16px rgba(44,31,20,0.06);
+      ">
+        <!-- Tag -->
+        <div style="
+          display:inline-flex;align-items:center;gap:6px;
+          padding:4px 12px;border-radius:999px;
+          background:rgba(107,143,113,0.10);border:1px solid rgba(107,143,113,0.20);
+          margin-bottom:20px;
+        ">
+          <span style="font-family:'Libre Franklin',sans-serif;font-size:10px;font-weight:600;color:var(--sage);letter-spacing:0.05em;text-transform:uppercase">Miễn phí</span>
+        </div>
+
+        <h3 style="
+          font-family:'Libre Baskerville',serif;font-weight:700;
+          font-size:20px;color:var(--ink);margin:0 0 8px;
+        ">Cộng đồng</h3>
+
+        <p style="
+          font-family:'Nunito Sans',sans-serif;font-weight:300;
+          font-size:14px;line-height:1.65;color:var(--body);margin:0 0 24px;
+        ">Podcast, bài viết, và cộng đồng online — nơi bắt đầu hành trình.</p>
+
+        <!-- Price -->
+        <div style="margin-bottom:24px;">
+          <span style="
+            font-family:'Libre Baskerville',serif;
+            font-style:italic;font-size:32px;
+            color:var(--sage);
+          ">Miễn phí</span>
+          <p style="
+            font-family:'Libre Franklin',sans-serif;font-size:11px;
+            color:var(--subtle);margin:4px 0 0;
+          ">mãi mãi · không cần thẻ tín dụng</p>
+        </div>
+
+        <!-- Features -->
+        <ul style="list-style:none;padding:0;margin:0 0 28px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(107,143,113,0.15)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Toàn bộ tập podcast</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(107,143,113,0.15)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Bài viết hàng tuần</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(107,143,113,0.15)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Nhóm cộng đồng online</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(107,143,113,0.15)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Workshop livestream miễn phí/tháng</span>
+          </li>
+        </ul>
+
+        <!-- CTA -->
+        <a href="[FREE_URL]" style="
+          display:block;text-align:center;
+          padding:13px;border-radius:12px;
+          border:1.5px solid var(--faint);
+          background:transparent;color:var(--body);
+          font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:14.5px;
+          text-decoration:none;transition:all 0.25s ease;
+        " onmouseover="this.style.borderColor='var(--sage)';this.style.color='var(--sage)'"
+           onmouseout="this.style.borderColor='var(--faint)';this.style.color='var(--body)'">
+          Tham gia ngay →
+        </a>
+      </div>
+
+      <!-- Tier 2: Basic — Khóa học (FEATURED) -->
+      <div style="
+        background:var(--bg);
+        border-radius:18px;
+        padding:28px;
+        border:2px solid var(--accent);
+        box-shadow:0 6px 28px rgba(192,85,61,0.16);
+        position:relative;
+      ">
+        <!-- Featured badge -->
+        <div style="
+          position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+          background:var(--accent);color:white;
+          padding:5px 14px;border-radius:999px;
+          font-family:'Libre Franklin',sans-serif;font-size:11px;font-weight:600;
+          letter-spacing:0.03em;white-space:nowrap;
+          box-shadow:0 2px 10px rgba(192,85,61,0.35);
+        ">Được chọn nhiều nhất</div>
+
+        <!-- Tag -->
+        <div style="
+          display:inline-flex;align-items:center;gap:6px;
+          padding:4px 12px;border-radius:999px;
+          background:rgba(192,85,61,0.08);border:1px solid rgba(192,85,61,0.20);
+          margin-bottom:20px;
+        ">
+          <span style="font-family:'Libre Franklin',sans-serif;font-size:10px;font-weight:600;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase">Khóa học</span>
+        </div>
+
+        <h3 style="
+          font-family:'Libre Baskerville',serif;font-weight:700;
+          font-size:20px;color:var(--ink);margin:0 0 8px;
+        ">[Tên Khóa Học]</h3>
+
+        <p style="
+          font-family:'Nunito Sans',sans-serif;font-weight:300;
+          font-size:14px;line-height:1.65;color:var(--body);margin:0 0 24px;
+        ">Chương trình học có cấu trúc — tự học theo nhịp của bạn, có cộng đồng đồng hành.</p>
+
+        <!-- Price -->
+        <div style="margin-bottom:24px;">
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="
+              font-family:'Libre Baskerville',serif;font-weight:700;
+              font-size:36px;color:var(--accent);
+            ">[X.XX]M</span>
+            <span style="font-family:'Libre Franklin',sans-serif;font-size:13px;color:var(--subtle)">VNĐ</span>
+          </div>
+          <p style="font-family:'Libre Franklin',sans-serif;font-size:11px;color:var(--subtle);margin:4px 0 0">một lần · truy cập trọn đời</p>
+        </div>
+
+        <!-- Features -->
+        <ul style="list-style:none;padding:0;margin:0 0 28px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(192,85,61,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">[N] bài học video</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(192,85,61,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Workbook + bài tập thực hành</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(192,85,61,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Nhóm hỗ trợ riêng</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(192,85,61,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">2 buổi Q&A nhóm/tháng</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(192,85,61,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Cập nhật nội dung miễn phí</span>
+          </li>
+        </ul>
+
+        <!-- CTA — primary -->
+        <a href="[COURSE_URL]" style="
+          display:block;text-align:center;
+          padding:14px;border-radius:12px;
+          background:var(--accent);color:white;
+          font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:14.5px;
+          text-decoration:none;
+          box-shadow:0 4px 16px rgba(192,85,61,0.28);
+          transition:all 0.25s ease;
+        " onmouseover="this.style.background='#a8432c';this.style.transform='translateY(-1px)'"
+           onmouseout="this.style.background='var(--accent)';this.style.transform='translateY(0)'">
+          Bắt đầu khóa học →
+        </a>
+      </div>
+
+      <!-- Tier 3: Deep — Coaching 1-1 -->
+      <div style="
+        background:var(--surface);border-radius:18px;padding:28px;
+        border:1px solid var(--faint);box-shadow:0 4px 16px rgba(44,31,20,0.06);
+      ">
+        <!-- Tag -->
+        <div style="
+          display:inline-flex;align-items:center;gap:6px;
+          padding:4px 12px;border-radius:999px;
+          background:rgba(61,90,128,0.08);border:1px solid rgba(61,90,128,0.18);
+          margin-bottom:20px;
+        ">
+          <span style="font-family:'Libre Franklin',sans-serif;font-size:10px;font-weight:600;color:var(--slate);letter-spacing:0.05em;text-transform:uppercase">Coaching 1-1</span>
+        </div>
+
+        <h3 style="
+          font-family:'Libre Baskerville',serif;font-weight:700;
+          font-size:20px;color:var(--ink);margin:0 0 8px;
+        ">[Tên Chương Trình Coaching]</h3>
+
+        <p style="
+          font-family:'Nunito Sans',sans-serif;font-weight:300;
+          font-size:14px;line-height:1.65;color:var(--body);margin:0 0 24px;
+        ">Đồng hành riêng, đi sâu hơn vào hành trình cá nhân của bạn trong [N] tuần.</p>
+
+        <!-- Price -->
+        <div style="margin-bottom:24px;">
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="
+              font-family:'Libre Baskerville',serif;font-weight:700;
+              font-size:36px;color:var(--slate);
+            ">[X.XX]M</span>
+            <span style="font-family:'Libre Franklin',sans-serif;font-size:13px;color:var(--subtle)">VNĐ</span>
+          </div>
+          <p style="font-family:'Libre Franklin',sans-serif;font-size:11px;color:var(--subtle);margin:4px 0 0">[N] tuần · chỉ nhận [N] người/kỳ</p>
+        </div>
+
+        <!-- Features -->
+        <ul style="list-style:none;padding:0;margin:0 0 28px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(61,90,128,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--slate)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">[N] buổi coaching 1-1 (60 phút/buổi)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(61,90,128,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--slate)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Hỗ trợ qua tin nhắn mỗi tuần</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(61,90,128,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--slate)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Kế hoạch phát triển cá nhân hóa</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
+              <circle cx="8" cy="8" r="7" fill="rgba(61,90,128,0.12)"/>
+              <path d="M5 8l2 2 4-4" stroke="var(--slate)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span style="font-family:'Nunito Sans',sans-serif;font-weight:300;font-size:14px;color:var(--body)">Truy cập toàn bộ khóa học</span>
+          </li>
+        </ul>
+
+        <!-- CTA — slate style -->
+        <a href="[COACHING_URL]" style="
+          display:block;text-align:center;
+          padding:13px;border-radius:12px;
+          border:1.5px solid var(--slate);
+          background:transparent;color:var(--slate);
+          font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:14.5px;
+          text-decoration:none;transition:all 0.25s ease;
+        " onmouseover="this.style.background='var(--slate)';this.style.color='white'"
+           onmouseout="this.style.background='transparent';this.style.color='var(--slate)'">
+          Kết nối với tôi →
+        </a>
+        <p style="
+          font-family:'Libre Franklin',sans-serif;font-size:11px;
+          color:var(--subtle);text-align:center;margin:10px 0 0;
+        ">Buổi khám phá miễn phí 30 phút trước khi quyết định</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <style>
+    @media (max-width:768px) {
+      .pricing-grid { grid-template-columns:1fr !important; }
+    }
+    @media (min-width:769px) and (max-width:960px) {
+      .pricing-grid { grid-template-columns:repeat(2,1fr) !important; }
+    }
+  </style>
+
+</section>

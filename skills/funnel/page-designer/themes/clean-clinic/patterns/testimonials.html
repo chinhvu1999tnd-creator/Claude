@@ -1,0 +1,360 @@
+<!--
+  PATTERN: testimonials
+  THEME: clean-clinic
+  USE: Patient story cards — HIPAA-aware layout
+  STYLE: Condition tag + before/after metric + quote + initials only + verified badge
+  LAYOUT: 2-column masonry
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --positive: #16a34a;
+    --bg: #f8fffe;
+    --surface: #f0faf8;
+    --raised: #e6f7f4;
+    --ink: #0d2b24;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+
+  .testimonials-section {
+    background: #ffffff;
+    padding: 80px 24px;
+  }
+  .testimonials-container {
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--subtle);
+    margin-bottom: 48px;
+  }
+
+  /* 2-column masonry layout */
+  .testimonials-grid {
+    columns: 2;
+    column-gap: 20px;
+  }
+
+  .patient-card {
+    background: white;
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(13,43,36,0.06);
+    break-inside: avoid;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s ease;
+  }
+  .patient-card:hover {
+    box-shadow: 0 4px 20px rgba(13,43,36,0.10);
+  }
+
+  /* Top row: condition tag + metric */
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  /* Condition tag — teal pill badge */
+  .condition-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    color: var(--body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 99px;
+    flex-shrink: 0;
+  }
+  .condition-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* Before/after metric */
+  .metric-change {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .metric-before {
+    font-size: 0.75rem;
+    color: var(--subtle);
+    text-decoration: line-through;
+  }
+  .metric-after {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+  }
+
+  /* Quote */
+  .patient-quote {
+    font-size: 0.9375rem;
+    color: var(--body);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 16px;
+    border-left: 2px solid var(--faint);
+    font-style: normal; /* NOT italic — clinical */
+  }
+
+  /* Patient info row */
+  .patient-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .patient-identity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* Avatar: initials only for privacy */
+  .patient-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--raised);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    border: 1px solid var(--faint);
+  }
+  .patient-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .patient-meta {
+    font-size: 0.8125rem;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+
+  /* Verified badge */
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    color: var(--positive);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 99px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .testimonials-grid { columns: 1; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-container">
+    <p class="section-eyebrow">Câu Chuyện Bệnh Nhân</p>
+    <h2 class="section-title">Kết quả thực tế từ bệnh nhân</h2>
+    <p class="section-sub">Chia sẻ trực tiếp — chưa qua chỉnh sửa nội dung</p>
+
+    <div class="testimonials-grid">
+
+      <!-- CARD 1 -->
+      <div class="patient-card" data-reveal>
+        <div class="card-top">
+          <span class="condition-tag">
+            <span class="condition-dot"></span>
+            <!-- SLOT: Condition -->
+            Niềng răng
+          </span>
+          <div class="metric-change">
+            <div class="metric-before">18 tháng dự kiến</div>
+            <div class="metric-after">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              Hoàn thành 14 tháng
+            </div>
+          </div>
+        </div>
+        <p class="patient-quote">
+          <!-- SLOT: Real patient quote — verbatim is best -->
+          "Tôi đã lo lắng về thời gian niềng, nhưng đội ngũ SmileCare điều chỉnh phác đồ rất khoa học. Kết quả vượt mong đợi — răng đều và đúng như mô phỏng 3D ban đầu."
+        </p>
+        <div class="patient-info">
+          <div class="patient-identity">
+            <div class="patient-avatar">NT</div>
+            <div>
+              <!-- SLOT: Initials + treatment year only — NO full name -->
+              <div class="patient-name">N.T.H.</div>
+              <div class="patient-meta">Điều trị: Niềng Invisalign · 2024</div>
+            </div>
+          </div>
+          <span class="verified-badge">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4,8 9,2"/></svg>
+            Verified patient
+          </span>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="patient-card" data-reveal style="transition-delay:0.1s">
+        <div class="card-top">
+          <span class="condition-tag">
+            <span class="condition-dot"></span>
+            Implant răng
+          </span>
+          <div class="metric-change">
+            <div class="metric-before">Mất răng 5 năm</div>
+            <div class="metric-after">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              Phục hồi hoàn toàn
+            </div>
+          </div>
+        </div>
+        <p class="patient-quote">
+          "Tôi trì hoãn implant nhiều năm vì sợ đau. Thực ra quá trình tại SmileCare rất ít đau, bác sĩ giải thích từng bước rõ ràng. Cái răng mới cảm giác như răng thật."
+        </p>
+        <div class="patient-info">
+          <div class="patient-identity">
+            <div class="patient-avatar">LP</div>
+            <div>
+              <div class="patient-name">L.V.P.</div>
+              <div class="patient-meta">Điều trị: Implant 1 răng · 2024</div>
+            </div>
+          </div>
+          <span class="verified-badge">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4,8 9,2"/></svg>
+            Verified patient
+          </span>
+        </div>
+      </div>
+
+      <!-- CARD 3 — taller, more text -->
+      <div class="patient-card" data-reveal style="transition-delay:0.2s">
+        <div class="card-top">
+          <span class="condition-tag">
+            <span class="condition-dot"></span>
+            Tẩy trắng răng
+          </span>
+          <div class="metric-change">
+            <div class="metric-before">Màu B3</div>
+            <div class="metric-after">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              Đạt A1 (sáng 4 tone)
+            </div>
+          </div>
+        </div>
+        <p class="patient-quote">
+          "Kết quả tẩy trắng vượt hẳn mong đợi. Răng sáng tự nhiên, không quá trắng giả tạo. Điều tôi thích nhất là bác sĩ tư vấn thật thà về giới hạn — không hứa hẹn quá mức."
+        </p>
+        <div class="patient-info">
+          <div class="patient-identity">
+            <div class="patient-avatar">TM</div>
+            <div>
+              <div class="patient-name">T.T.M.</div>
+              <div class="patient-meta">Điều trị: Tẩy trắng Laser · 2025</div>
+            </div>
+          </div>
+          <span class="verified-badge">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4,8 9,2"/></svg>
+            Verified patient
+          </span>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="patient-card" data-reveal style="transition-delay:0.3s">
+        <div class="card-top">
+          <span class="condition-tag">
+            <span class="condition-dot"></span>
+            Điều trị tủy
+          </span>
+          <div class="metric-change">
+            <div class="metric-before">Đau dữ dội</div>
+            <div class="metric-after">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              Hoàn toàn hết đau
+            </div>
+          </div>
+        </div>
+        <p class="patient-quote">
+          "Đến SmileCare lúc 10h đêm vì đau răng không chịu được. Bác sĩ trực điều trị ngay, sáng hôm sau đã đỡ 90%. Rất biết ơn vì phòng khám có dịch vụ cấp cứu nha khoa."
+        </p>
+        <div class="patient-info">
+          <div class="patient-identity">
+            <div class="patient-avatar">BQ</div>
+            <div>
+              <div class="patient-name">B.V.Q.</div>
+              <div class="patient-meta">Điều trị: Tủy cấp cứu · 2025</div>
+            </div>
+          </div>
+          <span class="verified-badge">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4,8 9,2"/></svg>
+            Verified patient
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Privacy + results disclaimer -->
+    <p style="text-align:center;font-size:0.75rem;color:var(--subtle);margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.5;">
+      * Tên bệnh nhân được viết tắt để bảo vệ quyền riêng tư. Kết quả có thể khác nhau theo từng trường hợp lâm sàng.
+    </p>
+  </div>
+</section>
+<!-- END: testimonials -->
+
+<!--
+  USAGE NOTES:
+  - NEVER use full patient names — initials only (N.T.H.)
+  - Condition tag = clinical term, not marketing language
+  - Metric: before/after measurement (not "amazing transformation")
+  - Quote: verbatim if possible, no editing to add hype
+  - "Verified patient" badge: only use if you have verification system
+  - Masonry layout: taller quotes naturally create varied heights
+-->

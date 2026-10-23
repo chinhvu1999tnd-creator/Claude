@@ -1,0 +1,60 @@
+<!--
+  ty-access.html — Product access CTA (post-purchase)
+  Layout:     centered · max-w-xl · prominent CTA card
+  Elements:   Primary access button · Backup link · Access method note · Support contact
+  Rule:       Đây là CTA quan trọng nhất trang — to, rõ, không lẫn vào các element khác
+              Dùng ngay sau ty-purchase-header.html
+  Variants:
+    - Digital product  → nút "Truy cập ngay" + link backup
+    - Course platform  → nút "Vào khóa học" + hướng dẫn đăng nhập
+    - File download    → nút "Tải xuống" trực tiếp
+    - Telegram/Zalo    → nút "Vào nhóm học"
+-->
+<div class="max-w-xl mx-auto px-6 pb-10">
+  <div class="rounded-xl p-6 text-center" style="background:var(--surface);border:1px solid var(--rim-strong)">
+
+    <p class="font-mono text-[11px] uppercase tracking-wider mb-5" style="color:var(--subtle);letter-spacing:.12em">
+      Truy cập sản phẩm của bạn
+    </p>
+
+    <!-- Primary CTA -->
+    <a href="[ACCESS_URL]"
+      class="btn-glow inline-flex items-center justify-center gap-3 w-full py-4 px-6 rounded-btn font-display font-black text-base mb-4"
+      style="background:var(--accent);color:var(--bg);text-decoration:none;font-size:1.0625rem">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 3v9M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3 14v1a2 2 0 002 2h10a2 2 0 002-2v-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Truy cập ngay — [Tên sản phẩm]
+    </a>
+
+    <!-- Access method note -->
+    <p class="font-mono text-[11px] mb-5" style="color:var(--subtle)">
+      [Mô tả ngắn: "Nhấn nút → đăng nhập bằng email vừa đặt hàng" / "File tự động tải về" / ...]
+    </p>
+
+    <!-- Divider -->
+    <div class="flex items-center gap-3 mb-5">
+      <div class="flex-1 h-px" style="background:var(--rim)"></div>
+      <span class="font-mono text-[10px]" style="color:var(--faint)">hoặc</span>
+      <div class="flex-1 h-px" style="background:var(--rim)"></div>
+    </div>
+
+    <!-- Backup link -->
+    <p class="font-mono text-[11px] mb-2" style="color:var(--subtle)">Không mở được nút? Copy link này:</p>
+    <div class="flex items-center gap-2 rounded-lg px-3 py-2.5" style="background:var(--raised);border:1px solid var(--rim)">
+      <span class="font-mono text-xs text-ink flex-1 truncate text-left">[ACCESS_URL]</span>
+      <button onclick="navigator.clipboard.writeText('[ACCESS_URL]');this.textContent='✓ Đã copy'"
+        class="font-mono text-[10px] px-2 py-1 rounded shrink-0 transition-colors"
+        style="background:rgba(var(--accent-rgb),.12);color:var(--accent)">
+        Copy
+      </button>
+    </div>
+
+    <!-- Support -->
+    <p class="font-mono text-[10px] mt-5" style="color:var(--faint)">
+      Cần hỗ trợ? Nhắn tin <a href="[SUPPORT_LINK]" style="color:var(--subtle);text-decoration:underline">[Zalo / Email hỗ trợ]</a>
+    </p>
+
+  </div>
+</div>

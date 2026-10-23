@@ -1,0 +1,140 @@
+<!--
+  testimonial-face.html — Testimonials with real face photos
+  Slots: [PERSON] 1:1 circular per testimonial · [RESULT] 4:3 optional proof screenshot
+  Layout: 1 featured (large) + 3 grid cards below
+  Background: bg-surface bg-mesh
+  Graceful: shows styled letter avatar if no photo available
+-->
+<section class="py-24 bg-surface bg-mesh">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Người dùng nói gì</span>
+      <h2 class="font-display font-black text-h2 text-ink">Kết quả từ <span class="text-accent">người dùng thật</span></h2>
+    </div>
+
+    <!-- Featured testimonial — with photo + result screenshot -->
+    <div class="p-7 rounded-2xl mb-5 reveal" style="background:rgba(var(--accent-rgb),.04);border:1px solid rgba(var(--accent-rgb),.15)">
+      <div class="flex flex-col md:flex-row gap-8">
+
+        <!-- Left: person + quote -->
+        <div class="flex-1">
+          <div class="flex items-start gap-4 mb-5">
+            <!-- [PERSON] photo slot — 1:1 circular -->
+            <div class="slot-circle shrink-0" data-role="PERSON">
+              <!-- Replace: <img src="photo.jpg" class="slot-img" style="border-radius:9999px" alt="Tên"> -->
+              <div class="media-slot aspect-1-1 rounded-full" style="width:56px;height:56px;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:1.5rem;opacity:0.4">👤</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-display font-semibold text-ink">Nguyễn Thị A</p>
+              <p class="font-mono text-xs text-subtle">Vai trò · Công ty / Ngành · Địa điểm</p>
+              <div class="flex gap-0.5 mt-1.5">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+              </div>
+            </div>
+          </div>
+          <p class="font-body text-base text-ink leading-relaxed">"Nội dung testimonial dài, cụ thể và có thể đo lường. Mô tả tình trạng trước, những gì đã thay đổi, và kết quả cụ thể đạt được bằng con số. Câu này phải làm người đọc dừng lại."</p>
+        </div>
+
+        <!-- Right: result proof screenshot -->
+        <div class="shrink-0 w-full md:w-56" data-role="RESULT">
+          <p class="font-mono text-[9px] text-subtle uppercase tracking-wider mb-2">Bằng chứng</p>
+          <div class="media-slot aspect-4-3 rounded-xl">
+            <!-- PLACEHOLDER → replace with result screenshot -->
+            <div class="slot-placeholder rounded-xl">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="5" width="24" height="18" rx="3" stroke="currentColor" stroke-width="1.2"/><path d="M2 18l6-5 4 4 4-4 8 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <span class="slot-role">RESULT</span>
+              <span class="slot-label" style="font-size:9px">Screenshot kết quả đạt được</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3 grid cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+
+      <!-- Card with face photo -->
+      <div class="card p-5 rounded-xl flex flex-col gap-3" data-role="PERSON">
+        <div class="flex gap-0.5 mb-1">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+        </div>
+        <p class="font-body text-sm text-ink flex-1 leading-relaxed">"Quote ngắn súc tích 2–3 câu. Kết quả cụ thể nhất trong vài từ."</p>
+        <div class="flex items-center gap-2.5 pt-2" style="border-top:1px solid var(--rim)">
+          <!-- [PERSON] circular photo -->
+          <div class="slot-circle" data-role="PERSON">
+            <!-- Replace: <img src="photo.jpg" class="slot-img" style="border-radius:9999px" alt="Tên"> -->
+            <div class="media-slot aspect-1-1 rounded-full" style="width:32px;height:32px;flex-shrink:0;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:1.5rem;opacity:0.4">👤</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-display font-medium text-ink text-xs">Trần Hoàng B</p>
+            <p class="font-mono text-[10px] text-subtle">Vai trò · Địa điểm</p>
+          </div>
+          <span class="ml-auto font-mono text-[10px] text-accent">✓ Đã xác minh</span>
+        </div>
+      </div>
+
+      <div class="card p-5 rounded-xl flex flex-col gap-3" data-role="PERSON">
+        <div class="flex gap-0.5 mb-1">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+        </div>
+        <p class="font-body text-sm text-ink flex-1 leading-relaxed">"Quote cụ thể và xúc động. Nêu điểm khác biệt so với những gì đã thử trước đây."</p>
+        <div class="flex items-center gap-2.5 pt-2" style="border-top:1px solid var(--rim)">
+          <div class="slot-circle" data-role="PERSON">
+            <!-- Replace: <img src="photo.jpg" class="slot-img" style="border-radius:9999px" alt="Tên"> -->
+            <div class="media-slot aspect-1-1 rounded-full" style="width:32px;height:32px;flex-shrink:0;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:1.5rem;opacity:0.4">👤</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-display font-medium text-ink text-xs">Lê Ngọc C</p>
+            <p class="font-mono text-[10px] text-subtle">Vai trò · Địa điểm</p>
+          </div>
+          <span class="ml-auto font-mono text-[10px] text-accent">✓ Đã xác minh</span>
+        </div>
+      </div>
+
+      <div class="card p-5 rounded-xl flex flex-col gap-3" data-role="PERSON">
+        <div class="flex gap-0.5 mb-1">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z"/></svg>
+        </div>
+        <p class="font-body text-sm text-ink flex-1 leading-relaxed">"Quote ngắn và ấn tượng. Một câu kết quả mạnh nhất."</p>
+        <div class="flex items-center gap-2.5 pt-2" style="border-top:1px solid var(--rim)">
+          <div class="slot-circle" data-role="PERSON">
+            <!-- Replace: <img src="photo.jpg" class="slot-img" style="border-radius:9999px" alt="Tên"> -->
+            <div class="media-slot aspect-1-1 rounded-full" style="width:32px;height:32px;flex-shrink:0;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:1.5rem;opacity:0.4">👤</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-display font-medium text-ink text-xs">Đỗ Minh D</p>
+            <p class="font-mono text-[10px] text-subtle">Vai trò · Địa điểm</p>
+          </div>
+          <span class="ml-auto font-mono text-[10px] text-accent">✓ Đã xác minh</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

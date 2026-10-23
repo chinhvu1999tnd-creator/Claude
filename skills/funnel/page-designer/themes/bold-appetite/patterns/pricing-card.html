@@ -1,0 +1,374 @@
+<!--
+  PATTERN: pricing-card
+  THEME:   bold-appetite
+  USE:     Tasting menu packages — 3 tiers
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --yellow: #f5c842; --cream: #f5ead8;
+    --bg: #1a1008; --surface: #231608; --raised: #2e1e0a;
+    --faint: #3d2d1a; --body: #d4c4a8; --subtle: #8a7560;
+    --rim: rgba(232,116,42,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .pricing-section {
+    background: var(--surface);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .pricing-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .section-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--subtle);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+  .price-card {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .price-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(232,116,42,0.15);
+  }
+  .price-card.featured {
+    border-color: var(--rim);
+    box-shadow: 0 4px 24px rgba(232,116,42,0.20);
+    position: relative;
+  }
+  .featured-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 6px;
+  }
+  .card-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--faint);
+  }
+  .card-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+    margin-bottom: 20px;
+  }
+  .card-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .card-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .card-price-unit {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+  }
+  .card-body { padding: 24px 28px 28px; }
+  .course-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 24px;
+  }
+  .course-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--faint);
+  }
+  .course-item:last-child { border-bottom: none; }
+  .course-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--subtle);
+    width: 18px;
+    flex-shrink: 0;
+  }
+  .course-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--cream);
+    flex: 1;
+  }
+  .course-type {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    color: var(--subtle);
+    white-space: nowrap;
+  }
+  .includes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .include-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--body);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .include-item::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .card-cta {
+    display: block;
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .card-cta:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 16px rgba(232,116,42,0.3);
+    transform: translateY(-1px);
+  }
+  .card-cta.outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid rgba(232,116,42,0.35);
+  }
+  .card-cta.outline:hover {
+    background: rgba(232,116,42,0.08);
+    box-shadow: none;
+  }
+  .card-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.73rem;
+    color: var(--subtle);
+    text-align: center;
+    margin-top: 10px;
+  }
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  }
+</style>
+
+<section class="pricing-section">
+  <div class="pricing-inner">
+    <div class="section-header">
+      <span class="section-tag">Thực Đơn Đặt Trước</span>
+      <h2 class="section-title">Set Menu & Chef's Experience</h2>
+      <p class="section-sub">Đặt trước ít nhất 24 giờ để Chef chuẩn bị tốt nhất</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- TIER 1 -->
+      <div class="price-card">
+        <div class="card-header">
+          <div class="card-name">À La Carte</div>
+          <div class="card-desc">Gọi tự do từ thực đơn — linh hoạt theo khẩu vị</div>
+          <div class="card-price-wrap">
+            <span class="card-price">Tùy chọn</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-num">01</span>
+              <span class="course-name">Khai vị theo lựa chọn</span>
+              <span class="course-type">từ 65K</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">02</span>
+              <span class="course-name">Món chính theo lựa chọn</span>
+              <span class="course-type">từ 195K</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">03</span>
+              <span class="course-name">Tráng miệng theo lựa chọn</span>
+              <span class="course-type">từ 55K</span>
+            </li>
+          </ul>
+          <div class="includes-list">
+            <div class="include-item">Nước lọc không giới hạn</div>
+            <div class="include-item">Bánh mì nướng kèm bơ</div>
+          </div>
+          <a href="#dat-ban" class="card-cta outline">Đặt Bàn</a>
+          <p class="card-note">Không cần đặt trước</p>
+        </div>
+      </div>
+
+      <!-- TIER 2 — FEATURED -->
+      <div class="price-card featured">
+        <div class="featured-badge">⭐ Được Chọn Nhiều Nhất</div>
+        <div class="card-header">
+          <div class="card-name">Set Menu 3 Món</div>
+          <div class="card-desc">Cân bằng — trải nghiệm đầy đủ một bữa tối hoàn hảo</div>
+          <div class="card-price-wrap">
+            <span class="card-price">485K</span>
+            <span class="card-price-unit">/ người</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-num">01</span>
+              <span class="course-name">Súp Cua Bắp đặc biệt</span>
+              <span class="course-type">Khai vị</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">02</span>
+              <span class="course-name">Bò Lúc Lắc Tiêu Kampot</span>
+              <span class="course-type">Món chính</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">03</span>
+              <span class="course-name">Bánh Flan Vani Homemade</span>
+              <span class="course-type">Tráng miệng</span>
+            </li>
+          </ul>
+          <div class="includes-list">
+            <div class="include-item">Nước lọc không giới hạn</div>
+            <div class="include-item">Bánh mì nướng bơ tỏi</div>
+            <div class="include-item">1 ly rượu vang khai vị</div>
+            <div class="include-item">Bàn ưu tiên — view đẹp</div>
+          </div>
+          <a href="#dat-ban" class="card-cta">Đặt Set Menu →</a>
+          <p class="card-note">Đặt trước 24h · Tối thiểu 2 người</p>
+        </div>
+      </div>
+
+      <!-- TIER 3 -->
+      <div class="price-card">
+        <div class="card-header">
+          <div class="card-name">Chef's Table 7 Món</div>
+          <div class="card-desc">Trải nghiệm đỉnh cao — bếp trưởng thuyết trình từng món</div>
+          <div class="card-price-wrap">
+            <span class="card-price">895K</span>
+            <span class="card-price-unit">/ người</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-num">01</span>
+              <span class="course-name">Amuse-bouche của Chef</span>
+              <span class="course-type">Chào vị</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">02</span>
+              <span class="course-name">Gỏi Cuốn Tôm Sú cao cấp</span>
+              <span class="course-type">Khai vị</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">03</span>
+              <span class="course-name">Súp Cua Bắp Đà Lạt</span>
+              <span class="course-type">Súp</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">04</span>
+              <span class="course-name">Granita Chanh Sả</span>
+              <span class="course-type">Palate cleanser</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">05</span>
+              <span class="course-name">Bò Wagyu Nướng Mật Ong</span>
+              <span class="course-type">Chính</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">06</span>
+              <span class="course-name">Cơm Chiên Cua Hoàng Đế</span>
+              <span class="course-type">Cơm</span>
+            </li>
+            <li class="course-item">
+              <span class="course-num">07</span>
+              <span class="course-name">Dessert đặc biệt của Chef</span>
+              <span class="course-type">Tráng miệng</span>
+            </li>
+          </ul>
+          <div class="includes-list">
+            <div class="include-item">Wine pairing 4 loại</div>
+            <div class="include-item">Chef giới thiệu từng món</div>
+            <div class="include-item">Bàn riêng tư Chef's Table</div>
+            <div class="include-item">Tặng recipe card đặc biệt</div>
+          </div>
+          <a href="#dat-ban" class="card-cta outline">Đặt Chef's Table →</a>
+          <p class="card-note">Đặt trước 48h · Tối thiểu 4 người</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

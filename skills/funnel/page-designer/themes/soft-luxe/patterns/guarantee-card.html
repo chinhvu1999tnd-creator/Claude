@@ -1,0 +1,238 @@
+<!-- PATTERN: guarantee-card | Soft Luxe Theme
+     Layout: Oval/pill seal with Playfair headline and floral decoration
+     Elegant, soft, reassuring — not aggressive
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400&display=swap');
+  :root {
+    --accent: #c9956a; --accent-rgb: 201,149,106; --blush: #f0c8b8;
+    --surface: #f8f0eb; --raised: #f2e6df; --ink: #2c2218;
+    --body: #6b5042; --subtle: #a89080; --faint: #e8d5cc;
+    --rim: rgba(201,149,106,0.20);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .sl-guarantee {
+    background: var(--surface);
+    padding: 80px 24px;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sl-guarantee__card {
+    max-width: 640px;
+    width: 100%;
+    background: #ffffff;
+    border: 1.5px solid var(--faint);
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(44,34,24,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    overflow: visible;
+  }
+
+  /* Floral corner decorations */
+  .sl-guarantee__deco {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.25;
+  }
+  .sl-guarantee__deco--tl { top: 16px; left: 16px; }
+  .sl-guarantee__deco--tr { top: 16px; right: 16px; transform: scaleX(-1); }
+  .sl-guarantee__deco--bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+  .sl-guarantee__deco--br { bottom: 16px; right: 16px; transform: scale(-1); }
+
+  /* Oval Seal */
+  .sl-guarantee__seal {
+    width: 120px;
+    height: 140px;
+    border: 2px solid var(--accent);
+    border-radius: 60px / 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 12px;
+    position: relative;
+    background: rgba(201,149,106,0.04);
+    box-shadow: 0 0 0 6px rgba(201,149,106,0.08), 0 4px 20px rgba(44,34,24,0.06);
+  }
+  /* Inner thin ring */
+  .sl-guarantee__seal::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201,149,106,0.30);
+    border-radius: 56px / 66px;
+  }
+
+  .sl-guarantee__seal-icon {
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .sl-guarantee__seal-days {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .sl-guarantee__seal-unit {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+
+  .sl-guarantee__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .sl-guarantee__headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* Thin decorative line */
+  .sl-guarantee__rule {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 0 auto;
+  }
+
+  .sl-guarantee__body {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--body);
+    line-height: 1.8;
+    max-width: 460px;
+  }
+
+  /* Promise items */
+  .sl-guarantee__promises {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 380px;
+    text-align: left;
+  }
+  .sl-guarantee__promise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--body);
+    line-height: 1.5;
+  }
+  .sl-guarantee__promise-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .sl-guarantee__note {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--subtle);
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 400px;
+  }
+
+  @media (max-width: 640px) {
+    .sl-guarantee__card { padding: 40px 24px; }
+    .sl-guarantee__deco--bl,
+    .sl-guarantee__deco--br { display: none; }
+  }
+</style>
+
+<section class="sl-guarantee" aria-label="Cam kết">
+  <div class="sl-guarantee__card">
+
+    <!-- Floral corner decorations -->
+    <svg class="sl-guarantee__deco sl-guarantee__deco--tl" width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+      <path d="M5 55 Q20 30 55 5" stroke="#f0c8b8" stroke-width="1"/>
+      <ellipse cx="16" cy="42" rx="8" ry="3.5" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 16 42)" fill="none"/>
+      <ellipse cx="30" cy="28" rx="7" ry="3" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 30 28)" fill="none"/>
+      <ellipse cx="44" cy="14" rx="6" ry="2.5" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 44 14)" fill="none"/>
+      <circle cx="8" cy="52" r="2" fill="#f0c8b8"/>
+      <circle cx="52" cy="8"  r="1.5" fill="#f0c8b8"/>
+    </svg>
+    <svg class="sl-guarantee__deco sl-guarantee__deco--tr" width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+      <path d="M5 55 Q20 30 55 5" stroke="#f0c8b8" stroke-width="1"/>
+      <ellipse cx="16" cy="42" rx="8" ry="3.5" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 16 42)" fill="none"/>
+      <ellipse cx="30" cy="28" rx="7" ry="3" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 30 28)" fill="none"/>
+      <ellipse cx="44" cy="14" rx="6" ry="2.5" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 44 14)" fill="none"/>
+      <circle cx="8" cy="52" r="2" fill="#f0c8b8"/>
+      <circle cx="52" cy="8"  r="1.5" fill="#f0c8b8"/>
+    </svg>
+    <svg class="sl-guarantee__deco sl-guarantee__deco--bl" width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+      <path d="M5 55 Q20 30 55 5" stroke="#f0c8b8" stroke-width="1"/>
+      <ellipse cx="16" cy="42" rx="8" ry="3.5" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 16 42)" fill="none"/>
+      <ellipse cx="30" cy="28" rx="7" ry="3" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 30 28)" fill="none"/>
+      <circle cx="8" cy="52" r="2" fill="#f0c8b8"/>
+    </svg>
+    <svg class="sl-guarantee__deco sl-guarantee__deco--br" width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+      <path d="M5 55 Q20 30 55 5" stroke="#f0c8b8" stroke-width="1"/>
+      <ellipse cx="16" cy="42" rx="8" ry="3.5" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 16 42)" fill="none"/>
+      <ellipse cx="30" cy="28" rx="7" ry="3" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(-45 30 28)" fill="none"/>
+      <circle cx="8" cy="52" r="2" fill="#f0c8b8"/>
+    </svg>
+
+    <!-- Oval seal -->
+    <div class="sl-guarantee__seal" aria-hidden="true">
+      <div class="sl-guarantee__seal-icon">🌸</div>
+      <div class="sl-guarantee__seal-days">30</div>
+      <div class="sl-guarantee__seal-unit">Ngày bảo đảm</div>
+    </div>
+
+    <h2 class="sl-guarantee__headline">Cam Kết<br><em>Làn Da</em> Của Bạn</h2>
+
+    <div class="sl-guarantee__rule" aria-hidden="true"></div>
+
+    <p class="sl-guarantee__body">
+      Nếu sau 30 ngày sử dụng đúng hướng dẫn mà làn da bạn không có bất kỳ cải thiện nào,
+      chúng tôi sẽ hoàn tiền 100% — không câu hỏi, không phức tạp.
+    </p>
+
+    <div class="sl-guarantee__promises" role="list">
+      <div class="sl-guarantee__promise-item" role="listitem">
+        <div class="sl-guarantee__promise-dot" aria-hidden="true"></div>
+        Hoàn tiền 100% trong 30 ngày nếu không thấy cải thiện
+      </div>
+      <div class="sl-guarantee__promise-item" role="listitem">
+        <div class="sl-guarantee__promise-dot" aria-hidden="true"></div>
+        Không cần gửi trả sản phẩm — giữ lại để dùng tiếp
+      </div>
+      <div class="sl-guarantee__promise-item" role="listitem">
+        <div class="sl-guarantee__promise-dot" aria-hidden="true"></div>
+        Hỗ trợ tư vấn da miễn phí trong suốt quá trình dùng
+      </div>
+    </div>
+
+    <p class="sl-guarantee__note">
+      Áp dụng khi sử dụng đúng theo hướng dẫn đính kèm trong hộp.<br>
+      Điều kiện áp dụng với đơn hàng đầu tiên.
+    </p>
+
+  </div>
+</section>

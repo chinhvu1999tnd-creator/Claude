@@ -1,0 +1,238 @@
+<!--
+  pricing-card.html — Single pricing card (primary offer)
+  Layout:     centered card · max-w-sm · flex col · max-w-md
+  Background: gradient border variant on surface
+  Elements:   offer badge · price (strikethrough + current) · CTA button · what's included list · payment note
+  Visuals:    accent gradient border · checkmarks · payment icons
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Offer badge/label
+  · Plan name + mô tả ngắn
+  · Price (current) + billing note
+  · Features checklist (4-8 items)
+  · Primary CTA button
+  Elements tùy chọn:
+  · Strikethrough price (original)
+  · Payment methods note
+  · Guarantee mini-badge
+  DEFAULT LAYOUT (Mode A):
+  Single card · centered · max-w-sm · gradient border
+  ─────────────────────────────────────────────────────────────────────
+-->
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT A: Single Card Centered (DEFAULT)
+     Dùng khi: Single offer · solo product · all dark themes
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-24 bg-canvas">
+  <div class="max-w-md mx-auto px-6 reveal">
+
+    <div class="relative p-px rounded-2xl overflow-hidden">
+      <div class="absolute inset-0 rounded-2xl" style="background:linear-gradient(160deg,rgba(182,255,0,0.5) 0%,rgba(0,194,255,0.3) 50%,rgba(182,255,0,0.1) 100%)"></div>
+      <div class="relative rounded-2xl p-8" style="background:var(--surface)">
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono mb-4" style="background:rgba(182,255,0,0.12);color:var(--accent);border:1px solid rgba(182,255,0,0.2)">
+          <span class="w-1.5 h-1.5 rounded-full bg-current animate-live"></span>
+          Ưu đãi ra mắt · Còn 48h
+        </div>
+
+        <h3 class="font-display font-black text-ink text-xl mb-1">Tên Gói / Khóa Học</h3>
+        <p class="text-subtle text-sm mb-5">Một câu mô tả giá trị ngắn gọn nhất</p>
+
+        <!-- Price -->
+        <div class="mb-6">
+          <div class="flex items-baseline gap-3">
+            <span class="font-mono font-black text-[2.5rem] leading-none" style="color:var(--accent)">997K</span>
+            <span class="text-subtle line-through font-mono">2.997K</span>
+          </div>
+          <p class="text-subtle text-xs mt-1">Thanh toán một lần · Truy cập trọn đời</p>
+        </div>
+
+        <!-- CTA -->
+        <a href="#checkout" class="btn-glow w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-btn font-display font-black text-sm mb-6" style="background:var(--accent);color:var(--bg)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Đăng ký ngay — 997.000đ
+        </a>
+
+        <!-- Included -->
+        <div class="space-y-2.5 mb-6">
+          <div class="flex items-center gap-2.5 text-sm text-ink">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bao gồm item 1
+          </div>
+          <div class="flex items-center gap-2.5 text-sm text-ink">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bao gồm item 2
+          </div>
+          <div class="flex items-center gap-2.5 text-sm text-ink">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bao gồm item 3 + Bonus đặc biệt
+          </div>
+          <div class="flex items-center gap-2.5 text-sm text-ink">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Hỗ trợ 90 ngày
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t mb-4" style="border-color:rgba(255,255,255,0.07)"></div>
+
+        <!-- Payment methods -->
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <span class="text-subtle text-xs font-mono">Thanh toán qua:</span>
+          <span class="px-2 py-1 rounded text-[10px] font-mono text-subtle" style="background:rgba(255,255,255,0.05)">VietQR</span>
+          <span class="px-2 py-1 rounded text-[10px] font-mono text-subtle" style="background:rgba(255,255,255,0.05)">MoMo</span>
+          <span class="px-2 py-1 rounded text-[10px] font-mono text-subtle" style="background:rgba(255,255,255,0.05)">VNPAY</span>
+          <span class="px-2 py-1 rounded text-[10px] font-mono text-subtle" style="background:rgba(255,255,255,0.05)">Thẻ ATM</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Guarantee note below card -->
+    <p class="text-center text-subtle text-xs mt-4 flex items-center justify-center gap-1.5">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L2 3.5v4C2 10 3.8 11.5 6 12c2.2-.5 4-2 4-4.5v-4L6 1z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      Bảo đảm hoàn tiền 7 ngày · Không cần lý do
+    </p>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT B: 2-Col — Value Pitch Left, Card Right
+     Dùng khi: warm-authority · bright-learn · khi cần giải thích value trước khi show price
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-24 px-6" style="background:var(--surface);">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+    <!-- Left: value pitch -->
+    <div class="reveal">
+      <p class="section-label">GIÁ ĐẦU TƯ</p>
+      <h2 class="font-display font-black text-ink mb-5" style="font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.03em;">[PRICING HEADLINE — why it's worth it]</h2>
+      <p class="leading-relaxed mb-8" style="color:var(--subtle)">[VALUE PITCH — 2-3 câu. What they get, what changes, why now.]</p>
+
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <svg class="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm" style="color:var(--ink)">[VALUE POINT 1]</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm" style="color:var(--ink)">[VALUE POINT 2]</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="text-sm" style="color:var(--ink)">[VALUE POINT 3]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: pricing card -->
+    <div class="reveal" style="transition-delay:.08s;">
+      <div class="relative p-px overflow-hidden" style="border-radius:var(--radius-card,6px);">
+        <div class="absolute inset-0" style="background:linear-gradient(160deg,rgba(var(--accent-rgb),.5) 0%,rgba(0,194,255,.3) 50%,rgba(var(--accent-rgb),.1) 100%);border-radius:inherit;"></div>
+        <div class="relative p-7" style="background:var(--bg);border-radius:inherit;">
+
+          <div class="inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs mb-4" style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2);border-radius:20px;">
+            <span class="w-1.5 h-1.5 rounded-full animate-live" style="background:var(--accent);"></span>
+            [BADGE — e.g. Ưu đãi ra mắt · Còn 48h]
+          </div>
+
+          <p class="font-display font-black text-ink text-lg mb-1">[PLAN NAME]</p>
+
+          <div class="flex items-baseline gap-2 my-4">
+            <span class="font-mono font-black leading-none" style="font-size:2.5rem;color:var(--accent)">[PRICE]</span>
+            <span class="font-mono text-sm line-through" style="color:var(--subtle)">[ORIGINAL]</span>
+          </div>
+
+          <a href="#checkout" class="btn-glow w-full flex items-center justify-center gap-2 py-3.5 font-display font-black text-sm mb-5" style="background:var(--accent);color:var(--bg);border-radius:var(--radius-btn,4px);">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            [CTA TEXT] — [PRICE]
+          </a>
+
+          <div class="space-y-2">
+            <div class="flex items-center gap-2.5 text-sm text-ink">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              [ITEM 1]
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-ink">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              [ITEM 2]
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-ink">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              [ITEM 3]
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="text-center text-xs mt-3 flex items-center justify-center gap-1" style="color:var(--subtle);">
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1L2 3.5v4C2 10 3.8 11.5 6 12c2.2-.5 4-2 4-4.5v-4L6 1z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        Bảo đảm hoàn tiền [N] ngày · Không cần lý do
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT C: Full-Width Horizontal Card
+     Dùng khi: signal theme · minimal-mono · khi muốn pricing nhẹ nhàng, không quá nặng
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6" style="background:var(--bg);">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="p-px reveal" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.4),rgba(0,194,255,.2),rgba(var(--accent-rgb),.1));border-radius:var(--radius-card,6px);">
+      <div class="flex flex-col lg:flex-row items-center gap-8 p-8" style="background:var(--surface);border-radius:calc(var(--radius-card,6px) - 1px);">
+
+        <!-- Price block -->
+        <div class="flex-shrink-0 text-center lg:text-left lg:border-r lg:pr-8" style="border-color:var(--faint);">
+          <p class="font-mono text-[10px] uppercase tracking-widest mb-2" style="color:var(--subtle)">[PLAN NAME]</p>
+          <div class="flex items-baseline gap-2 justify-center lg:justify-start">
+            <span class="font-mono font-black leading-none" style="font-size:3rem;color:var(--accent)">[PRICE]</span>
+            <span class="font-mono text-sm line-through" style="color:var(--subtle)">[ORIGINAL]</span>
+          </div>
+          <p class="text-xs mt-1" style="color:var(--subtle)">[BILLING NOTE — e.g. Thanh toán một lần · Truy cập trọn đời]</p>
+        </div>
+
+        <!-- Features -->
+        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+          <div class="flex items-center gap-2 text-sm" style="color:var(--ink);">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>[ITEM 1]
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--ink);">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>[ITEM 2]
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--ink);">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>[ITEM 3]
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--ink);">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>[ITEM 4]
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--ink);">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>[ITEM 5]
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--ink);">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>[ITEM 6]
+          </div>
+        </div>
+
+        <!-- CTA block -->
+        <div class="flex-shrink-0 flex flex-col items-center gap-2">
+          <a href="#checkout" class="btn-glow inline-flex items-center justify-center gap-2 font-display font-black text-sm px-8 py-4 min-h-[50px]" style="background:var(--accent);color:var(--bg);border-radius:var(--radius-btn,4px);white-space:nowrap;">
+            [CTA TEXT]
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <p class="text-xs flex items-center gap-1" style="color:var(--subtle);">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1L2 3.5v4C2 10 3.8 11.5 6 12c2.2-.5 4-2 4-4.5v-4L6 1z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            Hoàn tiền [N] ngày
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

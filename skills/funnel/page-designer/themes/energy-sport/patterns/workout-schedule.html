@@ -1,0 +1,664 @@
+<!--
+  PATTERN: Workout Schedule Grid — Energy Sport Theme
+  7 days × 3 timeslots. Class name (Barlow Condensed, uppercase) + time +
+  difficulty dots (red/yellow/grey) + "Book" link. Dark table style.
+-->
+<style>
+  :root {
+    --accent:      #ff2d2d;
+    --yellow:      #f5c500;
+    --alert:       #ff6b00;
+    --bg:          #0e0e0e;
+    --surface:     #141414;
+    --raised:      #1e1e1e;
+    --ink:         #ffffff;
+    --body:        #cccccc;
+    --subtle:      #888888;
+    --faint:       #2a2a2a;
+    --font-display:'Barlow Condensed', sans-serif;
+    --font-body:   'Barlow', sans-serif;
+    --font-label:  'Barlow Semi Condensed', sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .schedule-section {
+    background-color: var(--surface);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+    padding: 80px 40px;
+    overflow: hidden;
+  }
+
+  .schedule-section__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .schedule-section__eyebrow {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .schedule-section__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .schedule-section__title span { color: var(--accent); }
+
+  /* ── LEGEND ─────────────────────────────────── */
+  .schedule-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--subtle);
+  }
+
+  .legend-bar {
+    width: 24px;
+    height: 4px;
+    border-radius: 1px;
+  }
+  .legend-bar--hard   { background: var(--accent); }
+  .legend-bar--medium { background: var(--yellow); }
+  .legend-bar--easy   { background: var(--subtle); }
+
+  /* ── TABLE WRAPPER ──────────────────────────── */
+  .schedule-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: 6px;
+    border: 1px solid var(--faint);
+  }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+  }
+
+  /* ── HEADER ROW ─────────────────────────────── */
+  .schedule-table thead tr {
+    background: var(--raised);
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .schedule-th {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subtle);
+    padding: 14px 12px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .schedule-th--time {
+    text-align: left;
+    padding-left: 20px;
+    width: 110px;
+    color: var(--subtle);
+    border-right: 1px solid var(--faint);
+  }
+
+  .schedule-th--weekend { color: var(--accent); }
+
+  /* Today highlight */
+  .schedule-th--today {
+    color: var(--yellow);
+    position: relative;
+  }
+
+  .schedule-th--today::after {
+    content: '◉';
+    font-size: 0.5rem;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: var(--yellow);
+  }
+
+  /* ── BODY ROWS ──────────────────────────────── */
+  .schedule-tr {
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .schedule-tr:last-child { border-bottom: none; }
+  .schedule-tr:nth-child(odd)  { background: var(--bg); }
+  .schedule-tr:nth-child(even) { background: var(--surface); }
+
+  .schedule-td {
+    padding: 6px 8px;
+    vertical-align: top;
+    border-right: 1px solid var(--faint);
+  }
+
+  .schedule-td:last-child { border-right: none; }
+
+  .schedule-td--time {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--subtle);
+    padding-left: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-right: 1px solid var(--faint);
+    background: var(--raised);
+  }
+
+  /* ── CLASS SLOT CARD ────────────────────────── */
+  .class-slot {
+    padding: 10px 12px;
+    border-radius: 4px;
+    background: var(--raised);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    height: 100%;
+    min-height: 84px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  .class-slot:hover {
+    background: var(--grey, #2a2a2a);
+    transform: scale(1.02);
+  }
+
+  /* Difficulty border */
+  .class-slot--hard   { border-left: 3px solid var(--accent); }
+  .class-slot--medium { border-left: 3px solid var(--yellow); }
+  .class-slot--easy   { border-left: 3px solid var(--subtle); }
+
+  /* Full slot (featured class) */
+  .class-slot--featured {
+    background: rgba(255,45,45,0.08);
+    border-left: 3px solid var(--accent);
+    box-shadow: inset 0 0 0 1px var(--rim);
+  }
+
+  .class-slot__name {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .class-slot__time {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--subtle);
+  }
+
+  .class-slot__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 4px;
+  }
+
+  /* Difficulty dots */
+  .diff-dots {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .diff-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  .diff-dot--on-red    { background: var(--accent); }
+  .diff-dot--on-yellow { background: var(--yellow); }
+  .diff-dot--off       { background: var(--faint); }
+
+  /* Book link */
+  .class-slot__book {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--rim);
+    border-radius: 2px;
+    padding: 2px 7px;
+    transition: all 0.15s;
+  }
+
+  .class-slot__book:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* Empty slot */
+  .slot-empty {
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--faint);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── BELOW TABLE ────────────────────────────── */
+  .schedule-footer {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--subtle);
+    padding: 0 4px;
+  }
+
+  .schedule-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+</style>
+
+<section class="schedule-section" id="schedule">
+  <div class="schedule-section__header">
+    <span class="schedule-section__eyebrow">Weekly Class Schedule</span>
+    <h2 class="schedule-section__title">TRAIN EVERY DAY.<br><span>CHOOSE YOUR WEAPON.</span></h2>
+  </div>
+
+  <!-- Difficulty legend -->
+  <div class="schedule-legend">
+    <div class="legend-item"><div class="legend-bar legend-bar--hard"></div>HARD INTENSITY</div>
+    <div class="legend-item"><div class="legend-bar legend-bar--medium"></div>MEDIUM INTENSITY</div>
+    <div class="legend-item"><div class="legend-bar legend-bar--easy"></div>BEGINNER FRIENDLY</div>
+  </div>
+
+  <div class="schedule-wrapper">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th class="schedule-th schedule-th--time">TIME</th>
+          <th class="schedule-th schedule-th--today">MON</th>
+          <th class="schedule-th">TUE</th>
+          <th class="schedule-th">WED</th>
+          <th class="schedule-th">THU</th>
+          <th class="schedule-th">FRI</th>
+          <th class="schedule-th schedule-th--weekend">SAT</th>
+          <th class="schedule-th schedule-th--weekend">SUN</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- MORNING ROW -->
+        <tr class="schedule-tr">
+          <td class="schedule-td schedule-td--time">06:00</td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard class-slot--featured">
+              <div class="class-slot__name">HIIT</div>
+              <div class="class-slot__time">45 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--easy">
+              <div class="class-slot__name">YOGA</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard">
+              <div class="class-slot__name">STRENGTH</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--medium">
+              <div class="class-slot__name">CYCLING</div>
+              <div class="class-slot__time">45 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard">
+              <div class="class-slot__name">CROSSFIT</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard">
+              <div class="class-slot__name">BOOTCAMP</div>
+              <div class="class-slot__time">75 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--easy">
+              <div class="class-slot__name">RECOVERY</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- AFTERNOON ROW -->
+        <tr class="schedule-tr">
+          <td class="schedule-td schedule-td--time">12:00</td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--medium">
+              <div class="class-slot__name">CARDIO MIX</div>
+              <div class="class-slot__time">45 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td"><div class="slot-empty">—</div></td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--easy">
+              <div class="class-slot__name">PILATES</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td"><div class="slot-empty">—</div></td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--medium">
+              <div class="class-slot__name">ZUMBA</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard">
+              <div class="class-slot__name">MUAY THAI</div>
+              <div class="class-slot__time">75 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--medium">
+              <div class="class-slot__name">OPEN GYM</div>
+              <div class="class-slot__time">90 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- EVENING ROW -->
+        <tr class="schedule-tr">
+          <td class="schedule-td schedule-td--time">18:00</td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard">
+              <div class="class-slot__name">STRENGTH</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard class-slot--featured">
+              <div class="class-slot__name">HIIT</div>
+              <div class="class-slot__time">45 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--medium">
+              <div class="class-slot__name">BOXING</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard">
+              <div class="class-slot__name">CROSSFIT</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--easy">
+              <div class="class-slot__name">YOGA FLOW</div>
+              <div class="class-slot__time">60 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-yellow"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td">
+            <div class="class-slot class-slot--hard">
+              <div class="class-slot__name">BOOTCAMP</div>
+              <div class="class-slot__time">75 min</div>
+              <div class="class-slot__meta">
+                <div class="diff-dots">
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--on-red"></div>
+                  <div class="diff-dot diff-dot--off"></div>
+                </div>
+                <a href="#book" class="class-slot__book">BOOK</a>
+              </div>
+            </div>
+          </td>
+          <td class="schedule-td"><div class="slot-empty">CLOSED</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="schedule-footer">
+    <span>* Schedule subject to change · All classes included in membership</span>
+    <a href="#download">DOWNLOAD FULL SCHEDULE →</a>
+  </div>
+</section>

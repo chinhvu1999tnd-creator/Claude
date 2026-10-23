@@ -1,0 +1,206 @@
+<!-- PATTERN: cta-strip | Soft Luxe Theme
+     Layout: Blush bg section with botanical SVG decoration + Playfair italic headline + rose gold CTA
+     NOT white, NOT dark — warm blush section
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400&display=swap');
+  :root {
+    --accent: #c9956a; --accent-rgb: 201,149,106; --blush: #f0c8b8;
+    --surface: #f8f0eb; --ink: #2c2218; --body: #6b5042; --subtle: #a89080; --faint: #e8d5cc;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .sl-cta-strip {
+    background: var(--surface);
+    padding: 100px 24px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+  }
+
+  /* Large botanical SVG — left side */
+  .sl-cta-strip__flora-left {
+    position: absolute;
+    left: -20px;
+    bottom: -20px;
+    pointer-events: none;
+    opacity: 0.25;
+  }
+  /* Large botanical SVG — right side */
+  .sl-cta-strip__flora-right {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    pointer-events: none;
+    opacity: 0.25;
+    transform: scaleX(-1) rotate(180deg);
+  }
+  /* Dot pattern overlay */
+  .sl-cta-strip__dots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(201,149,106,0.12) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+  }
+
+  .sl-cta-strip__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .sl-cta-strip__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sl-cta-strip__label::before,
+  .sl-cta-strip__label::after { content:''; display:block; width:32px; height:1px; background:var(--accent); opacity:0.4; }
+
+  .sl-cta-strip__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4.5vw, 54px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  /* Line 1 normal, line 2 italic rose gold */
+  .sl-cta-strip__headline .line-italic {
+    display: block;
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .sl-cta-strip__sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--body);
+    line-height: 1.75;
+    max-width: 520px;
+  }
+
+  .sl-cta-strip__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sl-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 17px 40px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.35);
+    transition: all 0.25s ease;
+  }
+  .sl-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(var(--accent-rgb), 0.48);
+  }
+
+  .sl-cta-strip__micro {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--subtle);
+    font-style: italic;
+  }
+  .sl-cta-strip__micro a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .sl-cta-strip { padding: 60px 20px; }
+    .sl-cta-strip__flora-left,
+    .sl-cta-strip__flora-right { display: none; }
+  }
+</style>
+
+<section class="sl-cta-strip" aria-labelledby="cta-headline">
+
+  <!-- Dot pattern -->
+  <div class="sl-cta-strip__dots" aria-hidden="true"></div>
+
+  <!-- Left botanical illustration -->
+  <svg class="sl-cta-strip__flora-left" width="200" height="240" viewBox="0 0 200 240" fill="none" aria-hidden="true">
+    <!-- Stem -->
+    <path d="M80 240 Q70 180 90 140 Q110 100 80 60" stroke="#c9956a" stroke-width="1.5" fill="none"/>
+    <!-- Leaves on stem -->
+    <ellipse cx="95" cy="180" rx="22" ry="8" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(20 95 180)" fill="none"/>
+    <ellipse cx="75" cy="155" rx="18" ry="7" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(-25 75 155)" fill="none"/>
+    <ellipse cx="98" cy="125" rx="20" ry="7" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(15 98 125)" fill="none"/>
+    <ellipse cx="72" cy="100" rx="16" ry="6" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(-20 72 100)" fill="none"/>
+    <!-- Rose bloom top -->
+    <ellipse cx="80" cy="50" rx="16" ry="22" stroke="#c9956a" stroke-width="1.2" transform="rotate(0 80 50)" fill="rgba(201,149,106,0.05)"/>
+    <ellipse cx="80" cy="50" rx="12" ry="18" stroke="#f0c8b8" stroke-width="1" transform="rotate(36 80 50)" fill="none"/>
+    <ellipse cx="80" cy="50" rx="8"  ry="14" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(72 80 50)" fill="none"/>
+    <circle cx="80" cy="50" r="4" stroke="#c9956a" stroke-width="1" fill="rgba(201,149,106,0.15)"/>
+    <!-- Small dots -->
+    <circle cx="108" cy="200" r="2.5" fill="#f0c8b8"/>
+    <circle cx="55"  cy="170" r="2"   fill="#f0c8b8"/>
+    <circle cx="105" cy="145" r="1.5" fill="#e8d5cc"/>
+  </svg>
+
+  <!-- Right botanical illustration (mirrored via transform) -->
+  <svg class="sl-cta-strip__flora-right" width="200" height="240" viewBox="0 0 200 240" fill="none" aria-hidden="true">
+    <path d="M80 240 Q70 180 90 140 Q110 100 80 60" stroke="#c9956a" stroke-width="1.5" fill="none"/>
+    <ellipse cx="95" cy="180" rx="22" ry="8" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(20 95 180)" fill="none"/>
+    <ellipse cx="75" cy="155" rx="18" ry="7" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(-25 75 155)" fill="none"/>
+    <ellipse cx="98" cy="125" rx="20" ry="7" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(15 98 125)" fill="none"/>
+    <ellipse cx="72" cy="100" rx="16" ry="6" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(-20 72 100)" fill="none"/>
+    <ellipse cx="80" cy="50" rx="16" ry="22" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.05)"/>
+    <ellipse cx="80" cy="50" rx="12" ry="18" stroke="#f0c8b8" stroke-width="1" transform="rotate(36 80 50)" fill="none"/>
+    <circle  cx="80" cy="50" r="4"   stroke="#c9956a" stroke-width="1" fill="rgba(201,149,106,0.15)"/>
+    <circle cx="108" cy="200" r="2.5" fill="#f0c8b8"/>
+    <circle cx="55"  cy="170" r="2"   fill="#f0c8b8"/>
+  </svg>
+
+  <div class="sl-cta-strip__inner">
+    <div class="sl-cta-strip__label">Dành Cho Bạn</div>
+
+    <h2 class="sl-cta-strip__headline" id="cta-headline">
+      Làn Da Của Bạn
+      <span class="line-italic">Xứng Đáng Điều Tốt Nhất</span>
+    </h2>
+
+    <p class="sl-cta-strip__sub">
+      Hơn 15,000 khách hàng đã tin tưởng Lumière trên hành trình chăm sóc da của họ.
+      Đã đến lúc bạn bắt đầu hành trình của mình.
+    </p>
+
+    <div class="sl-cta-strip__actions">
+      <a href="#pricing" class="sl-btn-primary">Bắt Đầu Hành Trình →</a>
+    </div>
+
+    <p class="sl-cta-strip__micro">
+      Miễn phí vận chuyển · <a href="#guarantee">Bảo đảm 30 ngày</a> · Không paraben
+    </p>
+  </div>
+
+</section>

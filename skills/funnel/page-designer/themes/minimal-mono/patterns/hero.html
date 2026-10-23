@@ -1,0 +1,187 @@
+<!--
+  PATTERN: hero
+  THEME:   minimal-mono
+  USAGE:   Asymmetric editorial hero. Massive headline left column,
+           tall portrait image right column. NO centered layout.
+           Replace [HEADLINE LINE 1/2/3], [SUBTEXT], [CTA] with your content.
+           Replace .hero__image-slot with a real <img> or background-image.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  .mm-hero {
+    background: #ffffff;
+    min-height: 100vh;
+    display: grid;
+    /* 70% content / 30% image — editorial asymmetry */
+    grid-template-columns: 1fr 28vw;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .mm-hero__content {
+    padding: 5rem 3rem 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .mm-hero__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+    margin: 0 0 3rem 0;
+  }
+
+  .mm-hero__headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: #111111;
+    margin: 0 0 auto 0;
+    padding-bottom: 3rem;
+  }
+
+  .mm-hero__headline span {
+    display: block;
+  }
+
+  .mm-hero__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 3rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .mm-hero__subtext {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #555555;
+    max-width: 38ch;
+    margin: 0;
+  }
+
+  .mm-hero__cta {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #111111;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    letter-spacing: 0.01em;
+    transition: text-decoration-thickness 0.2s ease;
+  }
+
+  .mm-hero__cta:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* Image column */
+  .mm-hero__image {
+    position: relative;
+    background: #e0e0e0;
+    overflow: hidden;
+  }
+
+  .mm-hero__image img,
+  .mm-hero__image-slot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(1.1);
+    display: block;
+  }
+
+  /* Grid texture placeholder (when no image) */
+  .mm-hero__image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #d8d8d8;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, #c8c8c8 39px, #c8c8c8 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, #c8c8c8 39px, #c8c8c8 40px);
+  }
+
+  .mm-hero__image-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+  }
+
+  @media (max-width: 768px) {
+    .mm-hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 55vw;
+      min-height: auto;
+    }
+    .mm-hero__content {
+      padding: 3rem 1.5rem 2.5rem;
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .mm-hero__headline {
+      font-size: clamp(3rem, 12vw, 5rem);
+    }
+    .mm-hero__image {
+      height: 55vw;
+    }
+    .mm-hero__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<section class="mm-hero">
+  <!-- Left: content -->
+  <div class="mm-hero__content">
+    <p class="mm-hero__eyebrow">01 &mdash; Collection SS25</p>
+
+    <h1 class="mm-hero__headline">
+      <span>The</span>
+      <span>New</span>
+      <span>Standard</span>
+    </h1>
+
+    <div class="mm-hero__bottom">
+      <p class="mm-hero__subtext">
+        Designed for those who move with intention. Minimal forms, enduring quality, no compromise.
+      </p>
+      <a href="#shop" class="mm-hero__cta">Shop the Collection &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Right: image -->
+  <div class="mm-hero__image">
+    <!--
+      Replace this placeholder with a real image:
+      <img src="/your-image.jpg" alt="Campaign image SS25">
+    -->
+    <div class="mm-hero__image-placeholder"></div>
+    <span class="mm-hero__image-label">SS25 Campaign</span>
+  </div>
+</section>

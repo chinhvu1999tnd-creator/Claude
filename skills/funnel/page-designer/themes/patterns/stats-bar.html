@@ -1,0 +1,112 @@
+<!--
+  stats-bar.html — Social proof numbers row
+  Layout:     4-col horizontal row · gap-px dividers · centered
+  Background: var(--surface) · 1px rim border top/bottom
+  Elements:   4 stat blocks: metric number + label + optional delta badge
+  Visuals:    accent color on numbers · faint dividers · no icons needed
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · 3-4 stat blocks: số metric + label + optional suffix/delta
+  Elements tùy chọn:
+  · Delta badge — tăng/giảm so với kỳ trước
+  · Section label phía trên grid
+  DEFAULT LAYOUT (Mode A):
+  4-col horizontal row · dividers giữa các stat · bg-surface
+  ─────────────────────────────────────────────────────────────────────
+-->
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT A: 4-Col Dividers (DEFAULT)
+     Dùng khi: Most themes · compact social proof · immediately after hero
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-10 border-y border-white/[0.07] bg-surface">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.07]">
+
+      <div class="flex flex-col items-center gap-1 px-6 py-4">
+        <span class="font-mono text-[2rem] font-black tracking-tight leading-none" style="color:var(--accent)">2,400+</span>
+        <span class="text-[11px] text-subtle tracking-widest uppercase font-mono">Học viên</span>
+      </div>
+
+      <div class="flex flex-col items-center gap-1 px-6 py-4">
+        <span class="font-mono text-[2rem] font-black tracking-tight leading-none" style="color:var(--accent)">93%</span>
+        <span class="text-[11px] text-subtle tracking-widest uppercase font-mono">Hài lòng</span>
+      </div>
+
+      <div class="flex flex-col items-center gap-1 px-6 py-4">
+        <span class="font-mono text-[2rem] font-black tracking-tight leading-none" style="color:var(--accent)">33</span>
+        <span class="text-[11px] text-subtle tracking-widest uppercase font-mono">Ngày hoàn thành</span>
+      </div>
+
+      <div class="flex flex-col items-center gap-1 px-6 py-4">
+        <div class="flex items-baseline gap-1.5">
+          <span class="font-mono text-[2rem] font-black tracking-tight leading-none" style="color:var(--accent)">4.9</span>
+          <span class="text-subtle text-sm">/5</span>
+        </div>
+        <span class="text-[11px] text-subtle tracking-widest uppercase font-mono">Đánh giá TB</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT B: Large Centered Metrics
+     Dùng khi: signal theme · editorial · khi muốn numbers trở thành visual element
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6" style="background:var(--bg);">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+
+      <div class="reveal">
+        <span class="font-mono font-black block leading-none mb-2" style="font-size:clamp(3rem,6vw,5rem);color:var(--accent)">[N]+</span>
+        <span class="font-mono text-[11px] uppercase tracking-widest block mb-1" style="color:var(--subtle)">[LABEL]</span>
+        <p class="text-xs" style="color:var(--faint)">[CONTEXT NOTE — e.g. tính đến tháng 5/2026]</p>
+      </div>
+
+      <div class="reveal" style="transition-delay:.06s;">
+        <span class="font-mono font-black block leading-none mb-2" style="font-size:clamp(3rem,6vw,5rem);color:var(--accent)">[N]%</span>
+        <span class="font-mono text-[11px] uppercase tracking-widest block mb-1" style="color:var(--subtle)">[LABEL]</span>
+        <p class="text-xs" style="color:var(--faint)">[CONTEXT NOTE]</p>
+      </div>
+
+      <div class="reveal" style="transition-delay:.12s;">
+        <span class="font-mono font-black block leading-none mb-2" style="font-size:clamp(3rem,6vw,5rem);color:var(--accent)">[N]</span>
+        <span class="font-mono text-[11px] uppercase tracking-widest block mb-1" style="color:var(--subtle)">[LABEL]</span>
+        <p class="text-xs" style="color:var(--faint)">[CONTEXT NOTE]</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT C: Dashboard Dense Rows
+     Dùng khi: trust-navy · B2B · data-heavy context · khi cần compact inline stats
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-8 px-6" style="background:var(--surface);border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-wrap items-center divide-x" style="border-color:var(--faint);">
+
+      <div class="flex items-baseline gap-3 px-6 py-3 reveal">
+        <span class="font-mono font-black text-xl leading-none" style="color:var(--accent)">[N]+</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL]</span>
+      </div>
+
+      <div class="flex items-baseline gap-3 px-6 py-3 reveal" style="transition-delay:.04s;">
+        <span class="font-mono font-black text-xl leading-none" style="color:var(--accent)">[N]%</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL]</span>
+      </div>
+
+      <div class="flex items-baseline gap-3 px-6 py-3 reveal" style="transition-delay:.08s;">
+        <span class="font-mono font-black text-xl leading-none" style="color:var(--accent)">[N]</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL]</span>
+      </div>
+
+      <div class="flex items-baseline gap-3 px-6 py-3 reveal" style="transition-delay:.12s;">
+        <span class="font-mono font-black text-xl leading-none" style="color:var(--accent)">[N]★</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL]</span>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,155 @@
+<!--
+  NEW PATTERN: product-showcase.html — Warm Earth only
+  Use: Product card grid — physical product display (food, craft, handmade, nông sản)
+  Layout: 3-col grid (desktop) · 2-col (tablet) · 1-col (mobile)
+  Visual: Product photo slot + warm badge + price + add-to-cart CTA
+  Rule: Đặt SAU Hero hoặc như section riêng (shop/catalog)
+        Mỗi card: ảnh sản phẩm + badge (Bestseller/Mới/Sắp hết) + tên + mô tả ngắn + giá + CTA
+        Max 6 products per section. "Xem thêm" link nếu có nhiều hơn.
+  Dùng cho: Warm Earth — food, craft, handmade, nông sản, local products
+-->
+<section class="py-20" style="background:var(--bg)">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <p class="font-body font-semibold text-xs uppercase tracking-wider mb-2" style="color:var(--accent)">Sản phẩm</p>
+        <h2 class="font-display font-bold" style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.15;letter-spacing:-0.01em;color:var(--ink)">
+          [Tiêu đề — e.g. Tươi từ vườn, đến tay bạn]
+        </h2>
+      </div>
+      <a href="[SHOP_URL]" class="font-display font-semibold text-sm flex-shrink-0"
+         style="color:var(--accent)">Xem tất cả →</a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Product card 1 — Bestseller -->
+      <div class="rounded-2xl overflow-hidden group cursor-pointer transition-all hover:-translate-y-1"
+           style="background:var(--bg);border:1.5px solid var(--faint);box-shadow:0 2px 12px rgba(42,31,20,0.06)">
+        <!-- Product image slot -->
+        <div class="relative aspect-square overflow-hidden media-slot" data-role="PRODUCT"
+             style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh sản phẩm</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">16:9 · min 1200px wide</p>
+          </div>
+          <!-- Badge -->
+          <div class="absolute top-3 left-3">
+            <span class="font-display font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full text-white"
+                  style="background:var(--accent)">🌿 Bán chạy</span>
+          </div>
+        </div>
+        <!-- Card content -->
+        <div class="p-5">
+          <h3 class="font-display font-bold mb-1" style="font-size:1rem;color:var(--ink)">[Tên sản phẩm 1]</h3>
+          <p class="font-body text-sm mb-3" style="color:var(--body)">[Mô tả ngắn — trọng lượng, đặc điểm]</p>
+          <!-- Stars -->
+          <div class="flex items-center gap-1.5 mb-3">
+            <div class="flex gap-0.5">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            </div>
+            <span class="font-body text-xs" style="color:var(--subtle)">([N] đánh giá)</span>
+          </div>
+          <!-- Price + CTA -->
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-mono font-bold text-lg" style="color:var(--accent)">[PRICE]₫</span>
+              <span class="font-body text-xs ml-1 line-through" style="color:var(--subtle)">[OLD_PRICE]₫</span>
+            </div>
+            <a href="[ORDER_URL]"
+               class="font-display font-bold text-sm py-2 px-4 text-white transition-all hover:brightness-110"
+               style="background:var(--accent);border-radius:8px">
+              Đặt ngay
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product card 2 — Mới -->
+      <div class="rounded-2xl overflow-hidden group cursor-pointer transition-all hover:-translate-y-1"
+           style="background:var(--bg);border:1.5px solid var(--faint);box-shadow:0 2px 12px rgba(42,31,20,0.06)">
+        <div class="relative aspect-square overflow-hidden media-slot" data-role="PRODUCT"
+             style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh sản phẩm</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">16:9 · min 1200px wide</p>
+          </div>
+          <div class="absolute top-3 left-3">
+            <span class="font-display font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full text-white"
+                  style="background:var(--green)">✨ Mới</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-bold mb-1" style="font-size:1rem;color:var(--ink)">[Tên sản phẩm 2]</h3>
+          <p class="font-body text-sm mb-3" style="color:var(--body)">[Mô tả ngắn]</p>
+          <div class="flex items-center gap-1.5 mb-3">
+            <div class="flex gap-0.5">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853" opacity="0.3"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            </div>
+            <span class="font-body text-xs" style="color:var(--subtle)">([N] đánh giá)</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-lg" style="color:var(--accent)">[PRICE]₫</span>
+            <a href="[ORDER_URL]" class="font-display font-bold text-sm py-2 px-4 text-white transition-all hover:brightness-110"
+               style="background:var(--accent);border-radius:8px">Đặt ngay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product card 3 — Sắp hết -->
+      <div class="rounded-2xl overflow-hidden group cursor-pointer transition-all hover:-translate-y-1"
+           style="background:var(--bg);border:1.5px solid var(--faint);box-shadow:0 2px 12px rgba(42,31,20,0.06)">
+        <div class="relative aspect-square overflow-hidden media-slot" data-role="PRODUCT"
+             style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh sản phẩm</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">16:9 · min 1200px wide</p>
+          </div>
+          <div class="absolute top-3 left-3">
+            <span class="font-display font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full text-white"
+                  style="background:var(--alert)">⚡ Sắp hết</span>
+          </div>
+          <!-- Stock indicator -->
+          <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full" style="background:rgba(42,31,20,0.7)">
+            <span class="font-body text-[10px] text-white">Còn [N] phần</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-bold mb-1" style="font-size:1rem;color:var(--ink)">[Tên sản phẩm 3]</h3>
+          <p class="font-body text-sm mb-3" style="color:var(--body)">[Mô tả ngắn]</p>
+          <div class="flex items-center gap-1.5 mb-3">
+            <div class="flex gap-0.5">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            </div>
+            <span class="font-body text-xs" style="color:var(--subtle)">([N] đánh giá)</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-mono font-bold text-lg" style="color:var(--accent)">[PRICE]₫</span>
+            </div>
+            <a href="[ORDER_URL]" class="font-display font-bold text-sm py-2 px-4 text-white transition-all hover:brightness-110"
+               style="background:var(--accent);border-radius:8px">Đặt ngay</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

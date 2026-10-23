@@ -1,0 +1,356 @@
+<!--
+  PATTERN: countdown-cta
+  THEME:   bold-persona
+  USE:     "Chương trình bắt đầu trong" + digital countdown + coral CTA button
+           Coral border on countdown boxes · Dark fill on digit boxes · Dynamic urgency
+  Rule:    Countdown is JS-powered · Set TARGET_DATE below
+           Boxes: dark bg (#111827) + Space Mono 700 white digits + coral border
+           "ĐĂNG KÝ NGAY" coral CTA · Place near bottom of page before footer
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --accent-rgb: 232,83,58;
+    --electric: #1a56db;
+    --bg: #ffffff; --surface: #f9fafb; --raised: #f3f4f6;
+    --ink: #111827; --body: #374151; --subtle: #9ca3af; --faint: #e5e7eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .countdown-section {
+    background: var(--surface);
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--faint);
+  }
+  /* Diagonal accent */
+  .countdown-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(232,83,58,0.025) 20px,
+      rgba(232,83,58,0.025) 21px
+    );
+    pointer-events: none;
+  }
+
+  .countdown-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Eyebrow */
+  .countdown-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .countdown-eyebrow::before,
+  .countdown-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1.5px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  .countdown-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+  .countdown-title .accent { color: var(--accent); }
+
+  /* Countdown boxes */
+  .countdown-display {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .countdown-box {
+    background: var(--ink);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    min-width: 80px;
+    padding: 14px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15), 0 0 0 1px rgba(232,83,58,0.1);
+    transition: box-shadow 0.2s;
+  }
+  .countdown-box:hover {
+    box-shadow: 0 4px 20px rgba(232,83,58,0.25), 0 0 0 1px rgba(232,83,58,0.2);
+  }
+
+  /* Divider line mid-digit */
+  .countdown-box::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(232,83,58,0.2);
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .countdown-digit {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    min-width: 2ch;
+    text-align: center;
+  }
+  .countdown-digit.accent-digit { color: var(--accent); }
+
+  .countdown-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .countdown-separator {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+    padding-top: 14px;
+    opacity: 0.7;
+    animation: blink-sep 1s step-end infinite;
+  }
+  @keyframes blink-sep {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 0.2; }
+  }
+
+  /* Expires note */
+  .countdown-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    animation: pulse-dot 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  /* CTA */
+  .countdown-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .btn-primary-lg {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(232,83,58,0.35);
+    transition: all 0.2s ease;
+  }
+  .btn-primary-lg:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 8px 32px rgba(232,83,58,0.45);
+    transform: translateY(-2px);
+  }
+
+  .seats-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--subtle);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .seats-number {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* Expired state */
+  .countdown-expired {
+    display: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--subtle);
+    padding: 24px;
+    border: 1px solid var(--faint);
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 480px) {
+    .countdown-box { min-width: 64px; padding: 12px 8px 8px; }
+    .countdown-digit { font-size: 2rem; }
+    .countdown-display { gap: 8px; }
+    .countdown-separator { font-size: 1.5rem; padding-top: 12px; }
+  }
+</style>
+
+<section class="countdown-section">
+  <div class="countdown-inner">
+
+    <p class="countdown-eyebrow">Chương trình bắt đầu trong</p>
+
+    <h3 class="countdown-title">
+      Đăng Ký Trước Khi<br>
+      <span class="accent">Hết [N] Suất Cuối</span>
+    </h3>
+
+    <!-- Countdown display -->
+    <div class="countdown-display" id="countdownDisplay">
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-digit accent-digit" id="cdDays">00</span>
+        </div>
+        <span class="countdown-label">Ngày</span>
+      </div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-digit" id="cdHours">00</span>
+        </div>
+        <span class="countdown-label">Giờ</span>
+      </div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-digit" id="cdMinutes">00</span>
+        </div>
+        <span class="countdown-label">Phút</span>
+      </div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-unit">
+        <div class="countdown-box">
+          <span class="countdown-digit" id="cdSeconds">00</span>
+        </div>
+        <span class="countdown-label">Giây</span>
+      </div>
+    </div>
+
+    <!-- Expired fallback -->
+    <div class="countdown-expired" id="countdownExpired">
+      Đăng ký đã kết thúc — xem thông báo cohort tiếp theo bên dưới.
+    </div>
+
+    <p class="countdown-note">
+      <span class="live-dot"></span>
+      Đang cập nhật theo thời gian thực · Khai giảng <strong>[DATE]</strong>
+    </p>
+
+    <!-- CTA -->
+    <div class="countdown-cta-wrap">
+      <a href="#dang-ky" class="btn-primary-lg">
+        Đăng Ký Ngay →
+      </a>
+      <p class="seats-note">
+        Chỉ còn <span class="seats-number">[N]</span> suất — lớp này khi đủ người sẽ đóng đăng ký
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // ── SET TARGET DATE ──────────────────────────────────────────────────────────
+  // Format: new Date('YYYY-MM-DDTHH:MM:SS') in local timezone
+  // Replace with actual cohort start date before going live
+  const TARGET_DATE = new Date('2026-07-01T09:00:00');
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = TARGET_DATE - now;
+
+    if (diff <= 0) {
+      document.getElementById('countdownDisplay').style.display = 'none';
+      document.getElementById('countdownExpired').style.display = 'block';
+      return;
+    }
+
+    const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cdDays').textContent    = pad(days);
+    document.getElementById('cdHours').textContent   = pad(hours);
+    document.getElementById('cdMinutes').textContent = pad(minutes);
+    document.getElementById('cdSeconds').textContent = pad(seconds);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

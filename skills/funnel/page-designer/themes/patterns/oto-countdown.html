@@ -1,0 +1,83 @@
+<!--
+  oto-countdown.html — Urgency countdown for OTO page
+  Layout:     centered · 4-box timer
+  Elements:   Warning label · 4-box (HH MM SS) · Scarcity copy
+  Rule:       Timer chạy từ khi page load. Khi hết giờ → disable YES button + show "Đã hết ưu đãi".
+              Đặt ngay trước oto-cta-qr.html để tăng urgency tại điểm quyết định.
+  Scarcity:   "Trang này biến mất khi bạn rời đi" — không cần giả mạo số lượng
+-->
+<div class="max-w-xl mx-auto px-6 pb-8 text-center">
+
+  <div class="rounded-xl py-5 px-6" style="background:rgba(var(--alert-rgb),.05);border:1px solid rgba(var(--alert-rgb),.15)">
+
+    <p class="font-mono text-[11px] uppercase tracking-wider mb-4 flex items-center justify-center gap-2" style="color:var(--alert)">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Ưu đãi này tự động hết sau
+    </p>
+
+    <!-- Timer boxes -->
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="text-center">
+        <div class="font-mono font-black text-ink rounded-lg px-4 py-3 min-w-[60px]"
+          style="font-size:1.75rem;background:var(--surface);border:1px solid var(--rim);letter-spacing:-0.04em">
+          <span id="oto-hours">00</span>
+        </div>
+        <p class="font-mono text-[9px] uppercase tracking-wider mt-1.5" style="color:var(--subtle)">giờ</p>
+      </div>
+      <span class="font-mono font-black text-ink" style="font-size:1.5rem;opacity:.4;margin-bottom:18px">:</span>
+      <div class="text-center">
+        <div class="font-mono font-black text-ink rounded-lg px-4 py-3 min-w-[60px]"
+          style="font-size:1.75rem;background:var(--surface);border:1px solid var(--rim);letter-spacing:-0.04em">
+          <span id="oto-minutes">14</span>
+        </div>
+        <p class="font-mono text-[9px] uppercase tracking-wider mt-1.5" style="color:var(--subtle)">phút</p>
+      </div>
+      <span class="font-mono font-black text-ink" style="font-size:1.5rem;opacity:.4;margin-bottom:18px">:</span>
+      <div class="text-center">
+        <div class="font-mono font-black text-ink rounded-lg px-4 py-3 min-w-[60px]"
+          style="font-size:1.75rem;background:var(--surface);border:1px solid var(--rim);letter-spacing:-0.04em">
+          <span id="oto-seconds">59</span>
+        </div>
+        <p class="font-mono text-[9px] uppercase tracking-wider mt-1.5" style="color:var(--subtle)">giây</p>
+      </div>
+    </div>
+
+    <p class="font-mono text-[10px]" style="color:var(--subtle)">
+      Trang này sẽ biến mất khi bạn rời đi · Không quay lại được
+    </p>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  /* Đếm ngược từ 15 phút kể từ khi page load */
+  var end = Date.now() + 15 * 60 * 1000;
+  function tick() {
+    var remaining = Math.max(0, end - Date.now());
+    var h = Math.floor(remaining / 3600000);
+    var m = Math.floor((remaining % 3600000) / 60000);
+    var s = Math.floor((remaining % 60000) / 1000);
+    var pad = function(n){ return String(n).padStart(2,'0'); };
+    document.getElementById('oto-hours').textContent   = pad(h);
+    document.getElementById('oto-minutes').textContent = pad(m);
+    document.getElementById('oto-seconds').textContent = pad(s);
+    if (remaining <= 0) {
+      clearInterval(timer);
+      /* Disable YES button when expired */
+      var yesBtn = document.getElementById('oto-yes-btn');
+      if (yesBtn) {
+        yesBtn.disabled = true;
+        yesBtn.style.opacity = '.4';
+        yesBtn.style.cursor = 'not-allowed';
+        yesBtn.querySelector('#oto-yes-label').textContent = 'Ưu đãi đã hết';
+      }
+    }
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+})();
+</script>

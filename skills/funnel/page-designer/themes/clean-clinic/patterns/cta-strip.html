@@ -1,0 +1,298 @@
+<!--
+  PATTERN: cta-strip
+  THEME: clean-clinic
+  USE: Appointment booking form strip
+  STYLE: White bg, teal top border, form: name + phone + treatment + date
+  NOTE: Healthcare — NO aggressive colored strips
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --blue: #2563eb;
+    --bg: #f8fffe;
+    --surface: #f0faf8;
+    --ink: #0d2b24;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+
+  .cta-section {
+    background: #ffffff;
+    border-top: 3px solid var(--accent);
+    padding: 64px 24px;
+  }
+  .cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* Left: copy */
+  .cta-copy {}
+  .cta-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .cta-title {
+    font-size: clamp(1.5rem, 3vw, 2.125rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  .cta-body {
+    font-size: 1rem;
+    color: var(--body);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .cta-trust {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .trust-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--body);
+    font-weight: 500;
+  }
+
+  /* Right: form */
+  .booking-form {
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .form-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+  .form-label .required { color: var(--accent); margin-left: 2px; }
+  .form-input,
+  .form-select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--faint);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: white;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    appearance: none;
+  }
+  .form-input::placeholder { color: var(--subtle); }
+  .form-input:focus,
+  .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(15,163,127,0.20);
+  }
+  /* Custom select arrow */
+  .select-wrap {
+    position: relative;
+  }
+  .select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--subtle);
+    pointer-events: none;
+  }
+  .form-select { padding-right: 36px; cursor: pointer; }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .form-submit:hover { background: #0d9270; box-shadow: 0 4px 16px rgba(15,163,127,0.30); }
+
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--subtle);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .cta-container { grid-template-columns: 1fr; gap: 32px; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- CTA STRIP: Appointment Booking -->
+<section class="cta-section" id="booking">
+  <div class="cta-container">
+
+    <!-- LEFT: Reassuring copy -->
+    <div class="cta-copy">
+      <p class="cta-eyebrow">Đặt Lịch Khám</p>
+      <h2 class="cta-title">
+        <!-- SLOT -->
+        Bắt đầu hành trình<br>điều trị của bạn
+      </h2>
+      <p class="cta-body">
+        <!-- SLOT -->
+        Điền thông tin để chúng tôi liên hệ xác nhận lịch hẹn. Quá trình tư vấn ban đầu hoàn toàn miễn phí, không ràng buộc.
+      </p>
+      <div class="cta-trust">
+        <div class="trust-row">
+          <svg width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+          Xác nhận lịch hẹn trong vòng 2 giờ
+        </div>
+        <div class="trust-row">
+          <svg width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+          Không cần đặt cọc trước
+        </div>
+        <div class="trust-row">
+          <svg width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+          Thông tin cá nhân được bảo mật tuyệt đối
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Booking form -->
+    <div>
+      <form class="booking-form" onsubmit="handleBooking(event)" novalidate>
+        <div class="form-title">Đặt lịch hẹn</div>
+
+        <div class="form-grid">
+          <!-- Name -->
+          <div class="form-group">
+            <label class="form-label">Họ và tên <span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="Nguyễn Văn A" required autocomplete="name">
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label class="form-label">Số điện thoại <span class="required">*</span></label>
+            <input type="tel" class="form-input" placeholder="0912 345 678" required autocomplete="tel">
+          </div>
+
+          <!-- Treatment type -->
+          <div class="form-group full">
+            <label class="form-label">Dịch vụ quan tâm <span class="required">*</span></label>
+            <div class="select-wrap">
+              <select class="form-select form-input" required>
+                <option value="" disabled selected>Chọn dịch vụ...</option>
+                <!-- SLOT: Add your clinic's services -->
+                <option>Khám tổng quát</option>
+                <option>Tẩy trắng răng</option>
+                <option>Niềng răng</option>
+                <option>Implant răng</option>
+                <option>Trám răng</option>
+                <option>Nhổ răng khôn</option>
+                <option>Điều trị tủy</option>
+                <option>Khác (tư vấn)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Date preference -->
+          <div class="form-group full">
+            <label class="form-label">Ngày mong muốn</label>
+            <input type="date" class="form-input" min="">
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="10" height="10" rx="1"/>
+            <line x1="8" y1="2" x2="8" y2="5"/>
+            <line x1="3" y1="8" x2="13" y2="8"/>
+          </svg>
+          Đặt Lịch Ngay
+        </button>
+
+        <p class="form-note">
+          Hoặc gọi trực tiếp: <a href="tel:1800xxxx" style="color:var(--accent);font-weight:600;text-decoration:none;">1800 xxxx</a> (miễn phí)
+        </p>
+      </form>
+    </div>
+
+  </div>
+</section>
+<!-- END: cta-strip -->
+
+<script>
+  // Set min date to today
+  document.querySelector('input[type="date"]').min = new Date().toISOString().split('T')[0];
+
+  function handleBooking(e) {
+    e.preventDefault();
+    // SLOT: Replace with actual form submission logic
+    // e.g., fetch to CRM webhook, Google Sheets, etc.
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Đã gửi — sẽ liên hệ trong 2 giờ';
+    btn.style.background = '#16a34a';
+    btn.disabled = true;
+  }
+</script>
+
+<!--
+  USAGE NOTES:
+  - White bg (NOT colored strip) — healthcare requires calm, trust
+  - Teal border-top 3px is the only color signal
+  - Form: max 4 fields — name, phone, service, date
+  - Always show "confirm in X hours" reassurance
+  - Phone fallback for elderly/less tech-savvy patients
+  - Date input min = today (JS sets it)
+-->

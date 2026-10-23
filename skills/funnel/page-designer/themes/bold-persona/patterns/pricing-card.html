@@ -1,0 +1,425 @@
+<!--
+  PATTERN: pricing-card
+  THEME:   bold-persona
+  USE:     3 program tiers — Online Course / Mentorship / Mastermind
+           Coral featured border on center card · Syne 700 program names
+           Transformation-focused feature list · Space Mono prices · VND
+  Rule:    Middle card = featured (most popular) with coral border + slight scale up
+           Feature list: phrase as outcomes, not features ("Bạn sẽ..." not "Bao gồm...")
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --accent-rgb: 232,83,58;
+    --electric: #1a56db;
+    --bg: #ffffff; --surface: #f9fafb; --raised: #f3f4f6;
+    --ink: #111827; --body: #374151; --subtle: #9ca3af; --faint: #e5e7eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .pricing-section {
+    background: var(--surface);
+    padding: 88px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 160px; height: 160px;
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .pricing-inner { max-width: 1040px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* Header */
+  .pricing-header { text-align: center; margin-bottom: 56px; }
+  .pricing-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .pricing-eyebrow::before, .pricing-eyebrow::after {
+    content: ''; width: 32px; height: 1.5px; background: var(--accent); opacity: 0.4;
+  }
+  .pricing-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    letter-spacing: -0.025em; line-height: 1.1;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .pricing-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem; color: var(--body);
+    max-width: 420px; margin: 0 auto; line-height: 1.6;
+  }
+
+  /* Cards grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: center;
+  }
+
+  .price-card {
+    background: var(--bg);
+    border-radius: 14px;
+    border: 1.5px solid var(--faint);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .price-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    transform: translateY(-3px);
+  }
+
+  /* Featured card */
+  .price-card.featured {
+    border-color: var(--accent);
+    border-width: 2px;
+    box-shadow: 0 4px 24px rgba(232,83,58,0.18);
+    transform: scale(1.03);
+    position: relative;
+  }
+  .price-card.featured:hover {
+    box-shadow: 0 10px 40px rgba(232,83,58,0.25);
+    transform: scale(1.03) translateY(-4px);
+  }
+  .featured-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+
+  /* Card top */
+  .card-tier {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subtle);
+  }
+  .card-tier.coral { color: var(--accent); }
+  .card-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+  .card-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--body);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* Price block */
+  .price-block {
+    padding: 16px 0;
+    border-top: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+  }
+  .price-original {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--subtle);
+    text-decoration: line-through;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1.5px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .price-current {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .price-card.featured .price-current { color: var(--accent); }
+  .price-currency {
+    font-size: 0.6em;
+    font-weight: 400;
+    color: var(--subtle);
+    letter-spacing: 0;
+  }
+  .price-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--subtle);
+    margin-top: 6px;
+  }
+
+  /* Feature list */
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    color: var(--body);
+    line-height: 1.4;
+  }
+  .feature-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(232,83,58,0.1);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .price-card.featured .feature-check {
+    background: var(--accent);
+    color: #fff;
+  }
+  .feature-bold { font-weight: 600; color: var(--ink); }
+
+  /* CTA */
+  .card-cta {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .cta-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--faint);
+  }
+  .cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .cta-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 4px 16px rgba(232,83,58,0.30);
+  }
+  .cta-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 6px 24px rgba(232,83,58,0.40);
+    transform: translateY(-1px);
+  }
+
+  /* Guarantee note */
+  .guarantee-note {
+    text-align: center;
+    margin-top: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .guarantee-note svg { color: var(--accent); flex-shrink: 0; }
+
+  @media (max-width: 900px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    .price-card.featured { transform: none; }
+    .price-card.featured:hover { transform: translateY(-4px); }
+  }
+</style>
+
+<section class="pricing-section">
+  <div class="pricing-inner">
+
+    <!-- Header -->
+    <div class="pricing-header">
+      <p class="pricing-eyebrow">Chương trình</p>
+      <h2 class="pricing-heading">Chọn Con Đường Phù Hợp</h2>
+      <p class="pricing-sub">
+        Ba mức độ hỗ trợ — từ tự học có hướng đến đồng hành 1-1. Kết quả như nhau, tốc độ khác nhau.
+      </p>
+    </div>
+
+    <!-- 3-tier grid -->
+    <div class="pricing-grid">
+
+      <!-- Tier 1: Self-paced -->
+      <div class="price-card">
+        <div>
+          <div class="card-tier">Tự học</div>
+          <div class="card-name">Online Course</div>
+          <p class="card-tagline">Hệ thống đầy đủ, học theo tốc độ của bạn. Trọn đời truy cập.</p>
+        </div>
+        <div class="price-block">
+          <span class="price-original">[ORIGINAL PRICE]đ</span>
+          <div class="price-current">
+            [PRICE]<span class="price-currency">đ</span>
+          </div>
+          <p class="price-note">Thanh toán 1 lần · Trọn đời</p>
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>[N]+ video bài giảng có cấu trúc</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Templates & workbook thực hành</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Truy cập cộng đồng online</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Cập nhật nội dung miễn phí</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Certificate hoàn thành</span>
+          </li>
+        </ul>
+        <a href="#dang-ky" class="card-cta cta-ghost">Đăng ký ngay →</a>
+      </div>
+
+      <!-- Tier 2: FEATURED — Mentorship -->
+      <div class="price-card featured">
+        <span class="featured-badge">Phổ biến nhất</span>
+        <div>
+          <div class="card-tier coral">Đồng hành 1-1</div>
+          <div class="card-name">1-on-1 Mentorship</div>
+          <p class="card-tagline">Học + được coach trực tiếp. Nhanh nhất để đạt kết quả cụ thể.</p>
+        </div>
+        <div class="price-block">
+          <span class="price-original">[ORIGINAL PRICE]đ</span>
+          <div class="price-current">
+            [PRICE]<span class="price-currency">đ</span>
+          </div>
+          <p class="price-note">3 tháng · [N] buổi 1-1 / tháng</p>
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span><span class="feature-bold">Tất cả trong Online Course</span></span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>[N] buổi coaching 1-1 (60 phút mỗi buổi)</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Review công việc thực tế của bạn</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Hotline chat hỗ trợ trong giờ làm việc</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Kế hoạch hành động cá nhân hóa</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Priority access tất cả tài nguyên mới</span>
+          </li>
+        </ul>
+        <a href="#dang-ky" class="card-cta cta-primary">Đăng ký ngay →</a>
+      </div>
+
+      <!-- Tier 3: Mastermind -->
+      <div class="price-card">
+        <div>
+          <div class="card-tier">Cộng đồng elite</div>
+          <div class="card-name">Mastermind Group</div>
+          <p class="card-tagline">Môi trường peer-to-peer chất lượng cao. Grow together.</p>
+        </div>
+        <div class="price-block">
+          <span class="price-original">[ORIGINAL PRICE]đ</span>
+          <div class="price-current">
+            [PRICE]<span class="price-currency">đ</span>
+          </div>
+          <p class="price-note">6 tháng · Giới hạn [N] thành viên</p>
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span><span class="feature-bold">Tất cả trong Mentorship</span></span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Monthly mastermind call cùng toàn nhóm</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Networking với [N]+ doanh nhân cùng level</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>VIP access sự kiện offline</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span>Deal flow & business opportunities chia sẻ nội bộ</span>
+          </li>
+        </ul>
+        <a href="#dang-ky" class="card-cta cta-ghost">Tìm hiểu thêm →</a>
+      </div>
+
+    </div>
+
+    <!-- Guarantee note -->
+    <div class="guarantee-note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+      Bảo đảm hoàn tiền 100% trong 30 ngày nếu không hài lòng — không hỏi lý do
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,109 @@
+<!--
+  pricing-compare.html — Side-by-side pricing comparison (2–3 tiers)
+  Layout:     3-col grid · center card elevated · max-w-4xl
+  Background: var(--bg) · center card has gradient border
+  Elements:   tier name · price · feature list · CTA per tier
+  Visuals:    "Most Popular" badge on center · accent border on recommended
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Bảng giá</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Chọn gói <span style="color:var(--accent)">phù hợp</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch reveal">
+
+      <!-- Tier 1 — Basic -->
+      <div class="rounded-xl p-6 flex flex-col" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <p class="text-subtle text-xs font-mono uppercase tracking-wider mb-3">Cơ bản</p>
+        <div class="mb-4">
+          <span class="font-mono font-black text-3xl text-ink">297K</span>
+          <p class="text-subtle text-xs mt-1">Thanh toán một lần</p>
+        </div>
+        <div class="space-y-2.5 flex-1 mb-6">
+          <div class="flex items-center gap-2 text-sm text-subtle">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Feature cơ bản 1
+          </div>
+          <div class="flex items-center gap-2 text-sm text-subtle">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Feature cơ bản 2
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:rgba(255,255,255,0.2)">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 9l4-4M9 9L5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="line-through">Feature pro (không có)</span>
+          </div>
+        </div>
+        <a href="#" class="w-full py-3 px-6 rounded-btn text-sm font-medium text-center transition-colors" style="background:rgba(255,255,255,0.06);color:var(--ink);border:1px solid rgba(255,255,255,0.1)">
+          Chọn gói Cơ bản
+        </a>
+      </div>
+
+      <!-- Tier 2 — Recommended (center, elevated) -->
+      <div class="relative rounded-xl p-px overflow-hidden -mt-2 mb-2">
+        <div class="absolute inset-0 rounded-xl" style="background:linear-gradient(160deg,rgba(182,255,0,0.5),rgba(0,194,255,0.3),rgba(182,255,0,0.1))"></div>
+        <div class="relative rounded-xl p-6 flex flex-col h-full" style="background:#1e1e1c">
+          <!-- Badge -->
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold" style="background:var(--accent);color:var(--bg)">Phổ biến nhất</span>
+          </div>
+          <p class="text-subtle text-xs font-mono uppercase tracking-wider mb-3 mt-2">Chuyên nghiệp</p>
+          <div class="mb-4">
+            <span class="font-mono font-black text-3xl" style="color:var(--accent)">997K</span>
+            <p class="text-subtle text-xs mt-1">Thanh toán một lần · Tiết kiệm 2M</p>
+          </div>
+          <div class="space-y-2.5 flex-1 mb-6">
+            <div class="flex items-center gap-2 text-sm text-ink">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Tất cả gói Cơ bản
+            </div>
+            <div class="flex items-center gap-2 text-sm text-ink">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Feature pro 1
+            </div>
+            <div class="flex items-center gap-2 text-sm text-ink">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Feature pro 2
+            </div>
+            <div class="flex items-center gap-2 text-sm text-ink">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Hỗ trợ ưu tiên 90 ngày
+            </div>
+          </div>
+          <a href="#checkout" class="btn-glow w-full py-3 px-6 rounded-btn text-sm font-black text-center" style="background:var(--accent);color:var(--bg)">
+            Chọn gói Pro
+          </a>
+        </div>
+      </div>
+
+      <!-- Tier 3 — VIP -->
+      <div class="rounded-xl p-6 flex flex-col" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <p class="text-subtle text-xs font-mono uppercase tracking-wider mb-3">VIP</p>
+        <div class="mb-4">
+          <span class="font-mono font-black text-3xl text-ink">1.997K</span>
+          <p class="text-subtle text-xs mt-1">Thanh toán một lần</p>
+        </div>
+        <div class="space-y-2.5 flex-1 mb-6">
+          <div class="flex items-center gap-2 text-sm text-ink">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--cyan)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Tất cả gói Pro
+          </div>
+          <div class="flex items-center gap-2 text-sm text-ink">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--cyan)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            1-1 coaching session
+          </div>
+          <div class="flex items-center gap-2 text-sm text-ink">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--cyan)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Private community access
+          </div>
+        </div>
+        <a href="#" class="w-full py-3 px-6 rounded-btn text-sm font-medium text-center transition-colors" style="background:rgba(0,194,255,0.08);color:var(--cyan);border:1px solid rgba(0,194,255,0.2)">
+          Chọn gói VIP
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

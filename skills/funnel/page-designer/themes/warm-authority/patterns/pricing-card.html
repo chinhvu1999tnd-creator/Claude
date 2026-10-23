@@ -1,0 +1,398 @@
+<!--
+  PATTERN: pricing-card
+  THEME:   warm-authority
+  USE:     3 tiers: Tư vấn 1-1 / Nhóm nhỏ / Chương trình toàn diện
+  Design:  Amber featured border, Lora program names, forest green checkmarks, warm palette
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --accent-rgb: 181,115,42;
+    --forest: #2d5016; --warm-red: #9b2335;
+    --bg: #fdf9f4; --surface: #f7f1e8; --raised: #efe6d8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+    --rim: rgba(181,115,42,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .pricing-section {
+    background: var(--bg);
+    padding: 88px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .pricing-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-tag {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.68rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); display: block; margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Lora', serif; font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    color: var(--ink); line-height: 1.12; margin-bottom: 12px;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+  .section-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300; font-size: 1rem;
+    color: var(--subtle); max-width: 480px;
+    margin: 0 auto; line-height: 1.7;
+  }
+  /* Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+  .price-card {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .price-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(30,22,10,0.10);
+  }
+  /* Featured card */
+  .price-card.featured {
+    border-color: var(--rim);
+    box-shadow: 0 4px 24px rgba(30,22,10,0.08);
+    position: relative;
+  }
+  /* Featured top banner */
+  .featured-banner {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 7px;
+  }
+  /* Card header */
+  .card-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--faint);
+  }
+  /* Lora serif program name */
+  .card-name {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .card-tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .card-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  /* Source Code Pro for prices */
+  .card-price {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .card-price-unit {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--subtle);
+  }
+  .card-price-note {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.74rem;
+    color: var(--subtle);
+    margin-top: 6px;
+  }
+  /* Card body */
+  .card-body { padding: 24px 28px 28px; }
+  .card-desc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    color: var(--body);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  /* Checklist with forest green checkmarks */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    color: var(--body);
+    line-height: 1.45;
+  }
+  .check-icon {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: rgba(45,80,22,0.10);
+    border: 1px solid rgba(45,80,22,0.25);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Not included — muted */
+  .check-item.not-included { color: var(--subtle); }
+  .check-item.not-included .check-icon {
+    background: rgba(138,117,96,0.08);
+    border-color: rgba(138,117,96,0.20);
+  }
+  /* CTA button */
+  .card-cta {
+    display: block;
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-align: center;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(181,115,42,0.20);
+  }
+  .card-cta:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 20px rgba(181,115,42,0.30);
+    transform: translateY(-1px);
+  }
+  .card-cta.outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid rgba(181,115,42,0.30);
+    box-shadow: none;
+  }
+  .card-cta.outline:hover {
+    background: rgba(181,115,42,0.06);
+    box-shadow: none;
+  }
+  .card-note {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--subtle);
+    text-align: center;
+    margin-top: 10px;
+  }
+  /* Seat urgency */
+  .seats-left {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.72rem;
+    color: var(--warm-red);
+    text-align: center;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .seats-left::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--warm-red);
+    display: inline-block;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+
+  @media (max-width: 860px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<!-- Forest green checkmark SVG symbol -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="check-yes" viewBox="0 0 16 16">
+    <circle cx="8" cy="8" r="7.5" fill="rgba(45,80,22,0.10)" stroke="rgba(45,80,22,0.25)"/>
+    <path d="M5 8 L7 10 L11 6" stroke="#2d5016" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="check-no" viewBox="0 0 16 16">
+    <circle cx="8" cy="8" r="7.5" fill="rgba(138,117,96,0.08)" stroke="rgba(138,117,96,0.20)"/>
+    <path d="M6 10 L10 6 M10 10 L6 6" stroke="#8a7560" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<section class="pricing-section" id="chuong-trinh">
+  <div class="pricing-inner">
+    <div class="section-header">
+      <span class="section-tag">Chương trình</span>
+      <h2 class="section-title">Chọn Hình Thức <em>Phù Hợp</em> Với Bạn</h2>
+      <p class="section-sub">Tất cả chương trình đều có buổi tư vấn miễn phí 30 phút trước khi quyết định.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- TIER 1: Tư vấn 1-1 -->
+      <div class="price-card">
+        <div class="card-header">
+          <div class="card-name">Tư Vấn 1-1</div>
+          <div class="card-tagline">Linh hoạt, theo nhu cầu thực tế</div>
+          <div class="card-price-wrap">
+            <span class="card-price">15M</span>
+            <span class="card-price-unit">/ tháng</span>
+          </div>
+          <p class="card-price-note">Tối thiểu 3 tháng · Thanh toán đầu tháng</p>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Phù hợp với CEO/Founder muốn có cố vấn chiến lược đồng hành định kỳ.</p>
+          <ul class="checklist">
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              2 buổi call 1-1 (60 phút) mỗi tháng
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              Review tài liệu & kế hoạch không giới hạn
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              Hỗ trợ qua email trong 48h làm việc
+            </li>
+            <li class="check-item not-included">
+              <svg class="check-icon" width="16" height="16"><use href="#check-no"/></svg>
+              Đào tạo đội ngũ
+            </li>
+            <li class="check-item not-included">
+              <svg class="check-icon" width="16" height="16"><use href="#check-no"/></svg>
+              Kết nối mạng lưới đối tác
+            </li>
+          </ul>
+          <a href="#dang-ky" class="card-cta outline">Bắt Đầu Tư Vấn →</a>
+          <p class="card-note">Không ràng buộc sau tháng đầu</p>
+        </div>
+      </div>
+
+      <!-- TIER 2: Nhóm nhỏ — FEATURED -->
+      <div class="price-card featured">
+        <div class="featured-banner">★ Được Chọn Nhiều Nhất</div>
+        <div class="card-header">
+          <div class="card-name">Nhóm Nhỏ</div>
+          <div class="card-tagline">Học cùng peer group, tiết kiệm hơn</div>
+          <div class="card-price-wrap">
+            <span class="card-price">45M</span>
+            <span class="card-price-unit">/ khóa</span>
+          </div>
+          <p class="card-price-note">8 tuần · 10–15 thành viên · Cohort tiếp theo: 20/06</p>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Chương trình nhóm nhỏ chuyên sâu — học cùng CEO/Founder cùng quy mô và giai đoạn.</p>
+          <ul class="checklist">
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              8 buổi workshop nhóm (3 tiếng/buổi)
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              2 buổi coaching 1-1 trong khóa
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              Tài liệu, template, playbook đầy đủ
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              Cộng đồng alumni sau khi tốt nghiệp
+            </li>
+            <li class="check-item not-included">
+              <svg class="check-icon" width="16" height="16"><use href="#check-no"/></svg>
+              Đào tạo đội ngũ nội bộ
+            </li>
+          </ul>
+          <a href="#dang-ky" class="card-cta">Đăng Ký Cohort 5 →</a>
+          <p class="seats-left">Còn 4 suất trống</p>
+        </div>
+      </div>
+
+      <!-- TIER 3: Chương trình toàn diện -->
+      <div class="price-card">
+        <div class="card-header">
+          <div class="card-name">Chương Trình Toàn Diện</div>
+          <div class="card-tagline">Cam kết dài hạn, kết quả toàn diện</div>
+          <div class="card-price-wrap">
+            <span class="card-price">120M</span>
+            <span class="card-price-unit">/ 6 tháng</span>
+          </div>
+          <p class="card-price-note">Trả 2 lần · Bao gồm đào tạo đội ngũ</p>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Giải pháp toàn diện cho doanh nghiệp: tư vấn chiến lược + đào tạo team + kết nối đối tác.</p>
+          <ul class="checklist">
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              4 buổi coaching 1-1 mỗi tháng
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              2 workshop đào tạo đội ngũ (toàn bộ team)
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              Hỗ trợ ưu tiên — phản hồi trong 24h
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              Kết nối mạng lưới đối tác & nhà đầu tư
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" width="16" height="16"><use href="#check-yes"/></svg>
+              Báo cáo tiến độ hàng tháng
+            </li>
+          </ul>
+          <a href="#dang-ky" class="card-cta outline">Trao Đổi Về Chương Trình →</a>
+          <p class="card-note">Giới hạn 3 khách hàng mới / quý</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

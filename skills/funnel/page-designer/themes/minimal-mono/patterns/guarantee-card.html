@@ -1,0 +1,137 @@
+<!--
+  PATTERN: guarantee-card
+  THEME:   minimal-mono
+  USAGE:   Plain centered text — "RETURN POLICY" uppercase label + policy text.
+           No graphic. Just typography on white.
+           Replace text content to match your own guarantee/revision policy.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  .mm-guarantee {
+    background: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 6rem 4rem;
+  }
+
+  .mm-guarantee__inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mm-guarantee__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+    margin: 0 0 2rem 0;
+  }
+
+  /* Thin horizontal rule as section divider above eyebrow */
+  .mm-guarantee__rule {
+    width: 2.5rem;
+    height: 1px;
+    background: #111111;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+
+  .mm-guarantee__title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    color: #111111;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .mm-guarantee__body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #555555;
+    margin: 0 0 2.5rem 0;
+  }
+
+  /* Policy items — minimal list */
+  .mm-guarantee__list {
+    list-style: none;
+    margin: 0 0 2.5rem 0;
+    padding: 0;
+    text-align: left;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .mm-guarantee__item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.5;
+  }
+
+  .mm-guarantee__item::before {
+    content: attr(data-index);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: #888888;
+    flex-shrink: 0;
+    min-width: 1.5rem;
+  }
+
+  .mm-guarantee__signature {
+    font-family: 'Space Grotesk', sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: #888888;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .mm-guarantee {
+      padding: 4rem 1.5rem;
+    }
+  }
+</style>
+
+<section class="mm-guarantee">
+  <div class="mm-guarantee__inner">
+    <span class="mm-guarantee__rule"></span>
+    <p class="mm-guarantee__eyebrow">Our Commitment</p>
+    <h2 class="mm-guarantee__title">Revision &amp; Return Policy</h2>
+    <p class="mm-guarantee__body">
+      We are committed to delivering work that genuinely serves your brand. If at any stage the output does not meet the agreed brief, we revise — without argument, without extra charge.
+    </p>
+
+    <ul class="mm-guarantee__list">
+      <li class="mm-guarantee__item" data-index="01">
+        Three rounds of revisions included in all packages at no additional cost.
+      </li>
+      <li class="mm-guarantee__item" data-index="02">
+        If we cannot meet the agreed deliverables, a full refund of any unused portion is issued within 7 business days.
+      </li>
+      <li class="mm-guarantee__item" data-index="03">
+        All brand files are yours on final delivery — no licensing, no lock-in.
+      </li>
+      <li class="mm-guarantee__item" data-index="04">
+        Feedback windows of 14 days are granted at each milestone. Unused revision rounds expire 90 days post-delivery.
+      </li>
+    </ul>
+
+    <p class="mm-guarantee__signature">
+      We stand behind every project we take on. &mdash; The FORM Studio Team
+    </p>
+  </div>
+</section>

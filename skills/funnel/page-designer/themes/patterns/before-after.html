@@ -1,0 +1,69 @@
+<!--
+  before-after.html — Before/After transformation split
+  Layout:     2-col grid · max-w-4xl · each side is a state card
+  Background: left before = subtle red tint · right after = accent tint
+  Elements:   "Trước khi" header + state description + pain points / "Sau khi" + results + wins
+  Visuals:    arrow icon center · different icon styling per side
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Transformation</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Trước và sau khi <span style="color:var(--accent)">tham gia</span></h2>
+    </div>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
+
+      <!-- Arrow divider (desktop) -->
+      <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center" style="background:var(--bg);border:2px solid rgba(255,255,255,0.1)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 5l4 3-4 3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- Before -->
+      <div class="rounded-xl p-6" style="background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.12)">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-xs font-mono uppercase tracking-widest" style="color:rgba(239,68,68,0.7)">Trước đây</span>
+        </div>
+        <h3 class="font-display font-bold text-ink text-lg mb-4">Tình trạng hiện tại</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(239,68,68,0.06)">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M8 3v6M8 11v1.5" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p class="text-subtle text-sm">Vấn đề / nỗi đau cụ thể số 1</p>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(239,68,68,0.06)">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M8 3v6M8 11v1.5" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p class="text-subtle text-sm">Vấn đề / nỗi đau cụ thể số 2</p>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(239,68,68,0.06)">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M8 3v6M8 11v1.5" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p class="text-subtle text-sm">Vấn đề / nỗi đau cụ thể số 3</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- After -->
+      <div class="rounded-xl p-6" style="background:rgba(182,255,0,0.04);border:1px solid rgba(182,255,0,0.15)">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-xs font-mono uppercase tracking-widest" style="color:var(--accent)">Sau 33 ngày</span>
+        </div>
+        <h3 class="font-display font-bold text-ink text-lg mb-4">Sau khi hoàn thành</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(182,255,0,0.06)">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-ink text-sm">Kết quả / win cụ thể số 1</p>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(182,255,0,0.06)">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-ink text-sm">Kết quả / win cụ thể số 2</p>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(182,255,0,0.06)">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-ink text-sm">Kết quả / win cụ thể số 3</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

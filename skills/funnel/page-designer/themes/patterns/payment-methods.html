@@ -1,0 +1,87 @@
+<!--
+  payment-methods.html — Payment methods & security badges (sales page / footer)
+  DEFAULT: VietQR only
+  ─────────────────────────────────────────────────────────────────────────────
+  To ADD more methods, user must explicitly request:
+    "thêm MoMo"          → uncomment [OPTIONAL: MoMo pill]
+    "thêm VNPAY"         → uncomment [OPTIONAL: VNPAY pill]
+    "thêm thẻ ngân hàng" → uncomment [OPTIONAL: Card pill]
+    "thêm chuyển khoản"  → uncomment [OPTIONAL: Bank transfer pill]
+  ─────────────────────────────────────────────────────────────────────────────
+  Layout:     centered · flex wrap · gap-3
+  Elements:   Security label + VietQR pill + security badges
+-->
+<section class="py-10 bg-canvas">
+  <div class="max-w-2xl mx-auto px-6 text-center reveal">
+
+    <p class="text-subtle text-xs font-mono uppercase tracking-widest mb-5 flex items-center justify-center gap-2">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <rect x="2" y="5" width="8" height="6" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M4 5V3.5a2 2 0 114 0V5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Thanh toán bảo mật 100%
+    </p>
+
+    <!-- Payment method pills -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-5">
+
+      <!-- DEFAULT: VietQR (always shown) -->
+      <div class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono" style="background:var(--surface);border:1px solid rgba(var(--accent-rgb),.2);color:var(--accent)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="2" width="5" height="5" rx="0.8" stroke="currentColor" stroke-width="1.2"/>
+          <rect x="9" y="2" width="5" height="5" rx="0.8" stroke="currentColor" stroke-width="1.2"/>
+          <rect x="2" y="9" width="5" height="5" rx="0.8" stroke="currentColor" stroke-width="1.2"/>
+          <rect x="10" y="10" width="2" height="2" rx="0.3" fill="currentColor"/>
+          <path d="M9 10h1M10 9v1M13 10h1M10 13v1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        VietQR
+      </div>
+
+      <!-- [OPTIONAL: MoMo] — uncomment when user requests
+      <div class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono text-subtle" style="background:var(--surface);border:1px solid var(--rim)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#A50064" stroke-width="1.2"/><text x="5" y="11.5" font-size="6" fill="#A50064" font-weight="bold">M</text></svg>
+        MoMo
+      </div>
+      END [OPTIONAL: MoMo] -->
+
+      <!-- [OPTIONAL: VNPAY] — uncomment when user requests
+      <div class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono text-subtle" style="background:var(--surface);border:1px solid var(--rim)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><text x="2" y="11" font-size="5.5" fill="currentColor" font-weight="bold">VNPAY</text></svg>
+        VNPAY
+      </div>
+      END [OPTIONAL: VNPAY] -->
+
+      <!-- [OPTIONAL: Thẻ ngân hàng] — uncomment when user requests
+      <div class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono text-subtle" style="background:var(--surface);border:1px solid var(--rim)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><circle cx="5.5" cy="8" r="2.5" stroke="#EB001B" stroke-width="1"/><circle cx="10.5" cy="8" r="2.5" stroke="#F79E1B" stroke-width="1"/></svg>
+        Thẻ ngân hàng
+      </div>
+      END [OPTIONAL: Thẻ ngân hàng] -->
+
+      <!-- [OPTIONAL: Chuyển khoản] — uncomment when user requests
+      <div class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono text-subtle" style="background:var(--surface);border:1px solid var(--rim)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M4 8h8M8 5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Chuyển khoản
+      </div>
+      END [OPTIONAL: Chuyển khoản] -->
+
+    </div>
+
+    <!-- Security badges -->
+    <div class="flex items-center justify-center gap-4 flex-wrap">
+      <span class="flex items-center gap-1.5 text-[10px] font-mono" style="color:var(--subtle)">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L2 2.5v3C2 7.5 3.3 9 5 9.5 6.7 9 8 7.5 8 5.5v-3L5 1z" stroke="var(--accent)" stroke-width="1"/></svg>
+        SSL Secured
+      </span>
+      <span class="flex items-center gap-1.5 text-[10px] font-mono" style="color:var(--subtle)">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="var(--accent)" stroke-width="1"/><path d="M3.5 5l1 1 2-2" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        256-bit Encryption
+      </span>
+      <span class="flex items-center gap-1.5 text-[10px] font-mono" style="color:var(--subtle)">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1l1.5 2.5L9 4l-2 2 .5 2.5L5 7.5 2.5 8.5 3 6 1 4l2.5-.5L5 1z" stroke="var(--accent)" stroke-width="1" stroke-linejoin="round"/></svg>
+        Hoàn tiền 7 ngày
+      </span>
+    </div>
+
+  </div>
+</section>

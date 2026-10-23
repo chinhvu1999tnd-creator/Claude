@@ -1,0 +1,108 @@
+<!--
+  OVERRIDE: countdown-cta.html — Bright Learn
+  vs shared: stacked centered · dark grid bg · all boxes glow · seconds pulse neon
+  Override: SIDE-BY-SIDE — timer left · headline + CTA right · white bg · no glow
+  Layout change: MAJOR — horizontal split replaces stacked center
+-->
+<section class="py-16" style="background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(255,159,67,0.08) 0%,transparent 70%),var(--surface)">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="rounded-2xl p-8 sm:p-10"
+         style="background:var(--bg);border:1px solid var(--faint);box-shadow:0 4px 32px rgba(0,0,0,0.06)">
+
+      <div class="grid sm:grid-cols-2 gap-8 items-center">
+
+        <!-- LEFT — countdown timer -->
+        <div>
+          <div class="flex items-center gap-2 mb-5">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-live" style="background:var(--orange)"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full" style="background:var(--orange)"></span>
+            </span>
+            <p class="font-display font-semibold text-xs uppercase tracking-wider" style="color:var(--orange)">Ưu đãi kết thúc sau</p>
+          </div>
+
+          <div class="flex items-start gap-2" id="countdown-display">
+
+            <div class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center font-mono font-bold"
+                   style="font-size:1.875rem;background:var(--surface);border:1.5px solid var(--faint);color:var(--ink)"
+                   id="cd-days">02</div>
+              <span class="font-body text-[10px] mt-1.5 uppercase tracking-wider" style="color:var(--subtle)">Ngày</span>
+            </div>
+
+            <span class="font-mono text-2xl font-bold mt-3" style="color:var(--faint)">:</span>
+
+            <div class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center font-mono font-bold"
+                   style="font-size:1.875rem;background:var(--surface);border:1.5px solid var(--faint);color:var(--ink)"
+                   id="cd-hours">23</div>
+              <span class="font-body text-[10px] mt-1.5 uppercase tracking-wider" style="color:var(--subtle)">Giờ</span>
+            </div>
+
+            <span class="font-mono text-2xl font-bold mt-3" style="color:var(--faint)">:</span>
+
+            <div class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center font-mono font-bold"
+                   style="font-size:1.875rem;background:var(--surface);border:1.5px solid var(--faint);color:var(--ink)"
+                   id="cd-mins">59</div>
+              <span class="font-body text-[10px] mt-1.5 uppercase tracking-wider" style="color:var(--subtle)">Phút</span>
+            </div>
+
+            <span class="font-mono text-2xl font-bold mt-3" style="color:var(--faint)">:</span>
+
+            <!-- Seconds — accent highlight only, không glow -->
+            <div class="flex flex-col items-center">
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center font-mono font-bold"
+                   style="font-size:1.875rem;background:rgba(108,71,255,0.06);border:1.5px solid var(--accent);color:var(--accent)"
+                   id="cd-secs">00</div>
+              <span class="font-body text-[10px] mt-1.5 uppercase tracking-wider" style="color:var(--accent)">Giây</span>
+            </div>
+
+          </div>
+
+          <p class="font-body text-xs mt-4" style="color:var(--subtle)">Sau khi đồng hồ về 0, giá tăng trở lại.</p>
+        </div>
+
+        <!-- RIGHT — headline + CTA -->
+        <div>
+          <h2 class="font-display font-bold mb-3"
+              style="font-size:clamp(1.25rem,3vw,1.75rem);line-height:1.15;letter-spacing:-0.02em;color:var(--ink)">
+            [Urgency headline —<br>e.g. Đừng để cơ hội này<br>qua đi lần nữa]
+          </h2>
+          <p class="font-body text-sm mb-6" style="color:var(--body)">[1 câu nhắc về tổn thất nếu chần chừ]</p>
+
+          <a href="[ORDER_URL]"
+             class="inline-flex items-center gap-2 py-3.5 px-8 rounded-xl font-display font-bold text-sm text-white transition-all hover:-translate-y-0.5"
+             style="background:var(--accent);box-shadow:0 4px 20px rgba(108,71,255,0.30)">
+            [CTA TEXT] →
+          </a>
+
+          <div class="flex items-center gap-3 mt-4">
+            <span class="font-body text-xs" style="color:var(--subtle)">✓ Hoàn tiền 30 ngày</span>
+            <span class="w-px h-3" style="background:var(--faint)"></span>
+            <span class="font-body text-xs" style="color:var(--subtle)">✓ Truy cập ngay lập tức</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const deadline = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000);
+  function tick() {
+    const diff = Math.max(0, deadline - Date.now());
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>

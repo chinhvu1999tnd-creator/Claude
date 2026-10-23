@@ -1,0 +1,241 @@
+<!--
+  PATTERN: Testimonials — Large Quote Layout
+  THEME: prestige-dark
+  Layout: 3 testimonials stacked vertically, NO cards
+  Quote: Massive Cormorant italic, clamp(1.75rem)
+  Name: Jost tracking-wide uppercase
+  Dividers: 1px gold between testimonials
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: Testimonials — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:  #c9a84c;
+      --bg:      #0c0c0a;
+      --surface: #141412;
+      --ink:     #f5f0e8;
+      --body:    #c8c4b8;
+      --subtle:  #7a7870;
+      --faint:   #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+      color: var(--body);
+    }
+
+    /* ─── Section ───────────────────────────────────────────────────── */
+    .testimonials {
+      background: var(--surface);
+      padding: 96px 64px;
+      border-top: 1px solid var(--faint);
+      border-bottom: 1px solid var(--faint);
+    }
+
+    .testimonials__inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Section header */
+    .testimonials__eyebrow {
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .testimonials__heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 64px;
+    }
+
+    .testimonials__heading em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ─── List ──────────────────────────────────────────────────────── */
+    .testimonials__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ─── Single testimonial ────────────────────────────────────────── */
+    .testimonial {
+      padding: 48px 0;
+      position: relative;
+    }
+
+    /* Gold divider between testimonials */
+    .testimonial + .testimonial {
+      border-top: 1px solid rgba(201,168,76,0.25);
+    }
+
+    /* Opening quotation mark — decorative */
+    .testimonial__mark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 5rem;
+      line-height: 0.6;
+      color: rgba(201,168,76,0.2);
+      display: block;
+      margin-bottom: 16px;
+      user-select: none;
+    }
+
+    /* The quote itself — the dominant element */
+    .testimonial__quote {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    /* Attribution row */
+    .testimonial__attribution {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Name — Jost tracked uppercase */
+    .testimonial__name {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* Role / property context */
+    .testimonial__role {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--subtle);
+    }
+
+    /* Star rating — optional, minimal */
+    .testimonial__stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial__star {
+      width: 12px;
+      height: 12px;
+      color: var(--accent);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .testimonials {
+        padding: 64px 24px;
+      }
+
+      .testimonial__quote {
+        font-size: clamp(1.375rem, 4vw, 1.75rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <section class="testimonials">
+    <div class="testimonials__inner">
+
+      <p class="testimonials__eyebrow">Cư Dân Nói Gì</p>
+      <h2 class="testimonials__heading">
+        Những Trải Nghiệm<br><em>Không Thể Quên</em>
+      </h2>
+
+      <div class="testimonials__list">
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial">
+          <span class="testimonial__mark" aria-hidden="true">"</span>
+          <blockquote class="testimonial__quote">
+            Từ ngày chuyển về The Grand, mỗi buổi sáng nhìn ra hồ Tây
+            tôi mới thực sự hiểu thế nào là sống đúng nghĩa. Không gian
+            không chỉ là nơi ở — nó là cách bạn định nghĩa bản thân mình.
+          </blockquote>
+          <div class="testimonial__attribution">
+            <span class="testimonial__name">Nguyễn Minh Khoa</span>
+            <span class="testimonial__role">CEO · Căn 2PN tầng 38 · Cư dân từ 2024</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial">
+          <span class="testimonial__mark" aria-hidden="true">"</span>
+          <blockquote class="testimonial__quote">
+            Chúng tôi đã xem qua hơn 20 dự án trước khi quyết định.
+            The Grand là nơi duy nhất tôi không cần thuyết phục vợ —
+            cô ấy nhìn thấy và nói ngay: đây rồi.
+          </blockquote>
+          <div class="testimonial__attribution">
+            <span class="testimonial__name">Trần Đức Anh</span>
+            <span class="testimonial__role">Giám Đốc Tài Chính · Penthouse tầng 42</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial">
+          <span class="testimonial__mark" aria-hidden="true">"</span>
+          <blockquote class="testimonial__quote">
+            Dịch vụ concierge ở đây khiến tôi cảm thấy như đang sống
+            trong một khách sạn 5 sao mỗi ngày. Nhưng đây là nhà của tôi.
+            Đó mới là điều khác biệt thực sự.
+          </blockquote>
+          <div class="testimonial__attribution">
+            <span class="testimonial__name">Lê Phương Anh</span>
+            <span class="testimonial__role">Chủ doanh nghiệp · Studio tầng 25 · Cư dân từ 2023</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • NO cards — testimonials float on the section background.
+    • The gold divider lines between testimonials are at 0.25 opacity.
+    • The opening quote mark is purely decorative — aria-hidden="true".
+    • Quote text is in Cormorant italic — the emotional voice of this theme.
+    • Name: uppercase, tracked, weight 500. Role: lowercase, weight 300.
+    • Keep quotes between 30–70 words. Long quotes lose impact.
+    • Stars are intentionally removed from this pattern — they feel
+      too "e-commerce" for a luxury context. Add only if essential.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

@@ -1,0 +1,986 @@
+/*
+ * base.css — dark-bold-neon shared stylesheet
+ *
+ * SINGLE SOURCE RULES:
+ *   Colors      → CSS vars defined in :root (page <style> block)
+ *   Tokens      → Tailwind config (spacing, radius, font names)
+ *   Utilities   → This file only — things Tailwind can't do:
+ *                 backdrop-filter, gradient-text, background patterns,
+ *                 scroll reveal, custom animations
+ *
+ * DO NOT hardcode hex here. Use var(--token) exclusively.
+ * DO NOT define font-size or spacing here. Use Tailwind classes.
+ */
+
+/* ═══════════════════════════════════════════════════
+   1. CSS VARIABLES — single source of truth
+   Override in page <style>:root to theme-swap instantly
+   ═══════════════════════════════════════════════════ */
+:root {
+  /* ── Palette ── */
+  --accent:       #B6FF00;  --accent-rgb:  182, 255, 0;
+  --cyan:         #00C2FF;  --cyan-rgb:    0, 194, 255;
+  --purple:       #A855F7;  --purple-rgb:  168, 85, 247;
+  --alert:        #ef4444;  --alert-rgb:   239, 68, 68;
+  --bg:           #141413;  --bg-rgb:      20, 20, 19;
+  --surface:      #1c1c1a;
+  --raised:       #222220;
+  --ink:          #f0f0ec;
+  --body:         #d6d5ca;   /* was #c8c7bc — brightened for dark bg */
+  --subtle:       #8a8a82;   /* was #6b6b63 — brightened for readability */
+  --faint:        #3a3a34;
+
+  /* ── Derived (auto, do not override) ── */
+  --rim:          rgba(255,255,255,0.06);
+  --rim-strong:   rgba(255,255,255,0.12);
+  --accent-dim:   rgba(var(--accent-rgb), 0.08);
+  --accent-glow:  rgba(var(--accent-rgb), 0.22);
+  --cyan-dim:     rgba(var(--cyan-rgb), 0.08);
+  --purple-dim:   rgba(var(--purple-rgb), 0.08);
+  --alert-dim:    rgba(var(--alert-rgb), 0.07);
+  --alert-border: rgba(var(--alert-rgb), 0.18);
+
+  /* ── Typography tokens — override per theme ── */
+  --font-display:    "Inter Tight", Inter, sans-serif;
+  --font-body:       Inter, sans-serif;
+  --font-mono:       "JetBrains Mono", "Roboto Mono", monospace;
+  --font-editorial:  "Playfair Display", serif;
+  --base-font-sz:    16px;
+  --base-line-h:     1.75;
+  --label-size:      11px;
+  --label-hint-size: 9px;
+}
+
+/* ═══════════════════════════════════════════════════
+   2. GLOBAL RESETS
+   ═══════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--base-font-sz);
+  line-height: var(--base-line-h);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain overlay — bắt buộc trên mọi trang dark-bold-neon */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.028;
+}
+
+/* Top precision bar */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  z-index: 9001;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 30%, var(--cyan) 70%, transparent 100%);
+  opacity: 0.5;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--rim-strong); border-radius: 9999px; }
+
+/* ═══════════════════════════════════════════════════
+   3. TYPOGRAPHY UTILITIES
+   ═══════════════════════════════════════════════════ */
+
+/* Section eyebrow label */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  margin-bottom: 12px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-purple {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-danger {
+  background: linear-gradient(135deg, var(--alert) 0%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════
+   4. COMPONENT UTILITIES
+   ═══════════════════════════════════════════════════ */
+
+/* Glass card */
+.glass {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--rim-strong);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.2s, border-color 0.2s;
+}
+.glass:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.14);
+}
+
+/* Glow button */
+.btn-glow {
+  transition:
+    box-shadow 0.25s cubic-bezier(0.16,1,0.3,1),
+    transform  0.20s cubic-bezier(0.16,1,0.3,1);
+}
+.btn-glow:hover {
+  box-shadow: 0 0 32px 6px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* Gradient border card */
+.gradient-border {
+  position: relative;
+  padding: 1px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-rgb), 0.50) 0%,
+    rgba(var(--cyan-rgb),   0.25) 50%,
+    rgba(var(--accent-rgb), 0.10) 100%
+  );
+}
+.gradient-border > * { position: relative; }
+
+/* ═══════════════════════════════════════════════════
+   5. BACKGROUND PATTERNS
+   ═══════════════════════════════════════════════════
+
+   Usage: add class to section or div, combine with bg color.
+   Example: <section class="bg-surface bg-grid-lines py-24">
+
+   ═══════════════════════════════════════════════════ */
+
+/* ── 5a. Grid lines ─────────────────────────────── */
+/* Fine grid — 40px cells, very subtle */
+.bg-grid {
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px),
+    repeating-linear-gradient(90deg,  transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px);
+}
+/* Coarse grid — 64px cells */
+.bg-grid-lg {
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px),
+    repeating-linear-gradient(90deg,  transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px);
+}
+/* Horizontal lines only */
+.bg-scanlines {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 7px, var(--rim) 7px, var(--rim) 8px);
+}
+/* Diagonal stripes — 45deg */
+.bg-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 12px,
+    var(--rim) 12px, var(--rim) 13px
+  );
+}
+
+/* ── 5b. Dot grids ──────────────────────────────── */
+/* Classic dot grid — 24px pitch */
+.bg-dots {
+  background-image: radial-gradient(circle, var(--rim-strong) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* Larger dot grid — 40px pitch */
+.bg-dots-lg {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
+}
+/* Cross/plus grid (alternative to dots) */
+.bg-cross {
+  background-image:
+    radial-gradient(circle, var(--rim-strong) 1px, transparent 1px),
+    radial-gradient(circle, var(--rim-strong) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* ── 5b+. Fade variants — pattern với gradient mask ─
+   Dùng mask-image để pattern mờ dần ở viền,
+   không bị "cứng" như plain pattern.
+   ─────────────────────────────────────────────── */
+
+/* Grid fade — radial (hero, CTA sections) */
+/* Pattern hiện rõ ở giữa, mờ dần ra 4 góc */
+.bg-grid-fade {
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px),
+    repeating-linear-gradient(90deg,  transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px);
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 30%, transparent 100%);
+  mask-image:         radial-gradient(ellipse 85% 85% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* Grid large fade — linear top+bottom (mid sections) */
+/* Pattern mờ ở top/bottom, rõ ở giữa */
+.bg-grid-lg-fade {
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px),
+    repeating-linear-gradient(90deg,  transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%);
+  mask-image:         linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%);
+}
+
+/* Dots fade — radial (testimonials, about sections) */
+.bg-dots-fade {
+  background-image: radial-gradient(circle, var(--rim-strong) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+  mask-image:         radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+}
+
+/* Dots large fade — linear (feature sections) */
+.bg-dots-lg-fade {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+  mask-image:         linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+/* ── 5b++. Stacked backgrounds — semantic, theme-aware ──
+   Gradient layer ON TOP of grid/dot pattern.
+   Dùng CSS vars thay hardcode → tự đổi màu theo theme.
+   Đặt tên theo VAI TRÒ (hero/section/cta), không theo màu.
+
+   Requires: --accent-rgb, --cyan-rgb, --rim-strong defined in :root.
+   ─────────────────────────────────────────────────────── */
+
+/* Hero — accent glow top-center + dot grid */
+/* Dùng cho: Hero section chính */
+.bg-stack-hero {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(var(--accent-rgb), 0.14) 0%, transparent 70%),
+    radial-gradient(circle, var(--rim-strong) 1px, transparent 1px);
+  background-size: auto, 24px 24px;
+}
+
+/* Hero với gridlines thay dots */
+.bg-stack-hero-grid {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%,  rgba(var(--accent-rgb), 0.12) 0%, transparent 70%),
+    repeating-linear-gradient(0deg,   transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px),
+    repeating-linear-gradient(90deg,  transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px);
+}
+
+/* Section giữa — accent glow nhẹ từ top + dots */
+/* Dùng cho: Problem, Solution, Features */
+.bg-stack-section {
+  background-color: var(--surface);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% 0%,   rgba(var(--accent-rgb), 0.07) 0%, transparent 65%),
+    radial-gradient(circle, var(--rim-strong) 1px, transparent 1px);
+  background-size: auto, 24px 24px;
+}
+
+/* Section với gridlines */
+.bg-stack-section-grid {
+  background-color: var(--surface);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% 0%,  rgba(var(--accent-rgb), 0.07) 0%, transparent 65%),
+    repeating-linear-gradient(0deg,   transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px),
+    repeating-linear-gradient(90deg,  transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px);
+}
+
+/* Dual glow — accent top-left + cyan bottom-right + dots */
+/* Dùng cho: Feature grid, What's Included */
+.bg-stack-dual {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 55% 45% at 15% 0%,   rgba(var(--accent-rgb), 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 100%, rgba(var(--cyan-rgb),   0.08) 0%, transparent 60%),
+    radial-gradient(circle, var(--rim-strong) 1px, transparent 1px);
+  background-size: auto, auto, 24px 24px;
+}
+
+/* Dual với gridlines */
+.bg-stack-dual-grid {
+  background-color: var(--surface);
+  background-image:
+    radial-gradient(ellipse 55% 45% at 15% 0%,   rgba(var(--accent-rgb), 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 85% 100%, rgba(var(--cyan-rgb),   0.06) 0%, transparent 55%),
+    repeating-linear-gradient(0deg,   transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px),
+    repeating-linear-gradient(90deg,  transparent, transparent 63px, var(--rim) 63px, var(--rim) 64px);
+}
+
+/* CTA / Pricing — accent glow mạnh từ center + grid */
+/* Dùng cho: Pricing, Guarantee, Final CTA */
+.bg-stack-cta {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 70% 60% at 50% 50%,  rgba(var(--accent-rgb), 0.12) 0%, transparent 70%),
+    repeating-linear-gradient(0deg,   transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px),
+    repeating-linear-gradient(90deg,  transparent, transparent 39px, var(--rim) 39px, var(--rim) 40px);
+}
+
+/* Trust / Testimonial — glow từ bottom-center + dots */
+/* Dùng cho: Testimonials, Social proof, Reviews */
+.bg-stack-trust {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(var(--accent-rgb), 0.10) 0%, transparent 65%),
+    radial-gradient(circle, var(--rim-strong) 1px, transparent 1px);
+  background-size: auto, 24px 24px;
+}
+
+/* ── 5c. Radial glows ───────────────────────────── */
+/* Accent glow from top-center (hero default) */
+.bg-glow-top {
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    rgba(var(--accent-rgb), 0.12) 0%,
+    transparent 70%
+  );
+}
+/* Accent glow centered */
+.bg-glow-center {
+  background-image: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    rgba(var(--accent-rgb), 0.10) 0%,
+    transparent 70%
+  );
+}
+/* Cyan glow top-right */
+.bg-glow-cyan-tr {
+  background-image: radial-gradient(
+    ellipse 50% 40% at 80% 0%,
+    rgba(var(--cyan-rgb), 0.14) 0%,
+    transparent 65%
+  );
+}
+/* Purple glow top-left (hero dramatic) */
+.bg-glow-purple-tl {
+  background-image: radial-gradient(
+    ellipse 60% 50% at 20% 0%,
+    rgba(var(--purple-rgb), 0.18) 0%,
+    transparent 65%
+  );
+}
+/* Dual glow — accent top-left + cyan bottom-right */
+.bg-glow-dual {
+  background-image:
+    radial-gradient(ellipse 50% 40% at 20% 0%,    rgba(var(--accent-rgb), 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 100%,  rgba(var(--cyan-rgb),   0.08) 0%, transparent 60%);
+}
+
+/* ── 5d. Animated blobs ─────────────────────────── */
+/* Blob base — position absolute inside relative container */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  animation: blob-drift 10s ease-in-out infinite;
+  pointer-events: none;
+}
+.blob-accent  { background: rgba(var(--accent-rgb), 0.15); }
+.blob-cyan    { background: rgba(var(--cyan-rgb),   0.12); }
+.blob-purple  { background: rgba(var(--purple-rgb), 0.15); }
+.blob-alert   { background: rgba(var(--alert-rgb),  0.10); }
+
+.blob-sm  { width: 200px; height: 200px; }
+.blob-md  { width: 350px; height: 350px; }
+.blob-lg  { width: 500px; height: 500px; }
+.blob-xl  { width: 700px; height: 700px; }
+
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.08); }
+  66%       { transform: translate(-28px, 20px) scale(0.94); }
+}
+
+/* ── 5e. Dot grow / pulse rings ─────────────────── */
+/* Single pulsing dot — add to a small circle element */
+.dot-pulse {
+  position: relative;
+}
+.dot-pulse::before,
+.dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  animation: ring-expand 2s ease-out infinite;
+}
+.dot-pulse::after {
+  inset: -12px;
+  border-color: rgba(var(--accent-rgb), 0.2);
+  animation-delay: 0.6s;
+}
+@keyframes ring-expand {
+  0%   { transform: scale(0.7); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Floating orb — absolute positioned glowing circle */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.orb-accent  { background: radial-gradient(circle, rgba(var(--accent-rgb), 0.30) 0%, transparent 70%); }
+.orb-cyan    { background: radial-gradient(circle, rgba(var(--cyan-rgb),   0.25) 0%, transparent 70%); }
+.orb-purple  { background: radial-gradient(circle, rgba(var(--purple-rgb), 0.28) 0%, transparent 70%); }
+
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0px)  scale(1); }
+  50%       { transform: translateY(-20px) scale(1.05); }
+}
+.orb-float { animation: orb-float 6s ease-in-out infinite; }
+
+/* ── 5f. Mesh gradient ──────────────────────────── */
+/* Static mesh — 4-point gradient map */
+.bg-mesh {
+  background-image:
+    radial-gradient(at 20% 20%, rgba(var(--purple-rgb), 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(var(--cyan-rgb),   0.12) 0px, transparent 50%),
+    radial-gradient(at 70% 80%, rgba(var(--accent-rgb), 0.10) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, rgba(var(--purple-rgb), 0.08) 0px, transparent 50%);
+}
+/* Animated mesh shift */
+.bg-mesh-animated {
+  background-image:
+    radial-gradient(at 20% 20%, rgba(var(--purple-rgb), 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(var(--cyan-rgb),   0.12) 0px, transparent 50%),
+    radial-gradient(at 70% 80%, rgba(var(--accent-rgb), 0.10) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, rgba(var(--purple-rgb), 0.08) 0px, transparent 50%);
+  animation: mesh-shift 12s ease-in-out infinite alternate;
+}
+@keyframes mesh-shift {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(15deg) brightness(1.05); }
+}
+
+/* ── 5g. Card backgrounds ───────────────────────── */
+/* Default card */
+.card-base {
+  background: var(--surface);
+  border: 1px solid var(--rim);
+  transition: border-color 0.2s;
+}
+.card-base:hover { border-color: var(--rim-strong); }
+
+/* Accent-tinted card */
+.card-accent {
+  background: rgba(var(--accent-rgb), 0.05);
+  border: 1px solid rgba(var(--accent-rgb), 0.15);
+}
+/* Danger-tinted card */
+.card-danger {
+  background: rgba(var(--alert-rgb), 0.05);
+  border: 1px solid var(--alert-border);
+}
+/* Cyan-tinted card */
+.card-cyan {
+  background: rgba(var(--cyan-rgb), 0.05);
+  border: 1px solid rgba(var(--cyan-rgb), 0.15);
+}
+/* Raised card (slightly higher than surface) */
+.card-raised {
+  background: var(--raised);
+  border: 1px solid var(--rim);
+}
+/* Gradient border card (featured/highlighted) */
+.card-featured {
+  position: relative;
+  padding: 1px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.card-featured::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-rgb), 0.45) 0%,
+    rgba(var(--cyan-rgb),   0.22) 50%,
+    rgba(var(--accent-rgb), 0.10) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── 5h. Composite hero presets ─────────────────── */
+/* Purple hero (product launch, AI tools) */
+.hero-purple {
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -5%,  rgba(var(--purple-rgb), 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 80%,  rgba(var(--cyan-rgb),   0.10) 0%, transparent 55%),
+    var(--bg);
+}
+/* Accent hero (CTA sections, final push) */
+.hero-accent {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(var(--accent-rgb), 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 85% 90%,  rgba(var(--cyan-rgb),   0.08) 0%, transparent 55%),
+    var(--bg);
+}
+/* Dual-tone hero */
+.hero-dual {
+  background:
+    radial-gradient(ellipse 50% 45% at 15% 20%,  rgba(var(--purple-rgb), 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 85% 20%,  rgba(var(--cyan-rgb),   0.14) 0%, transparent 60%),
+    var(--bg);
+}
+
+/* ═══════════════════════════════════════════════════
+   6. SCROLL REVEAL
+   ═══════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.on { opacity: 1; transform: none; }
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+.delay-4 { transition-delay: 0.32s; }
+.delay-5 { transition-delay: 0.40s; }
+
+/* ═══════════════════════════════════════════════════
+   7. ANIMATION KEYFRAMES
+   ═══════════════════════════════════════════════════ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.animate-fade-up  { animation: fade-up  0.6s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-live     { animation: live-pulse 2s ease-in-out infinite; }
+.animate-spin-slow{ animation: spin-slow 8s linear infinite; }
+.animate-shimmer  {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--raised) 50%, var(--surface) 75%);
+  background-size: 200% auto;
+  animation: shimmer 1.8s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════
+   8. NAV BEHAVIOR
+   ═══════════════════════════════════════════════════ */
+#ann-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 60;
+  overflow: hidden;
+  transition: height 0.35s cubic-bezier(0.16,1,0.3,1),
+              opacity 0.25s ease;
+}
+#ann-bar.collapsed {
+  height: 0 !important;
+  opacity: 0;
+}
+
+#site-nav {
+  position: fixed;
+  left: 0; right: 0;
+  z-index: 50;
+  transition:
+    top        0.35s cubic-bezier(0.16,1,0.3,1),
+    background 0.25s ease,
+    border-color 0.25s ease;
+  border-bottom: 1px solid transparent;
+}
+#site-nav.nav-scrolled {
+  background: rgba(var(--bg-rgb), 0.92) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--rim) !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   9. COLOR UTILITY CLASSES
+   Maps CSS var tokens to class names so HTML stays clean.
+   These replace Tailwind color classes — fully themeable.
+
+   Usage: class="text-accent bg-surface" (same API as Tailwind)
+         but backed by CSS vars, not hardcoded hex.
+   ═══════════════════════════════════════════════════ */
+
+/* Text */
+.text-ink    { color: var(--ink); }
+.text-body   { color: var(--body); }
+.text-subtle { color: var(--subtle); }
+.text-faint  { color: var(--faint); }
+.text-accent { color: var(--accent); }
+.text-cyan   { color: var(--cyan); }
+.text-purple { color: var(--purple); }
+.text-alert  { color: var(--alert); }
+
+/* Backgrounds */
+.bg-canvas   { background-color: var(--bg); }
+.bg-surface  { background-color: var(--surface); }
+.bg-raised   { background-color: var(--raised); }
+
+/* Borders */
+.border-rim        { border-color: var(--rim); }
+.border-rim-strong { border-color: var(--rim-strong); }
+.border-accent     { border-color: var(--accent); }
+.border-cyan       { border-color: var(--cyan); }
+.border-alert      { border-color: var(--alert); }
+
+/* ═══════════════════════════════════════════════════
+   10. SEMANTIC MEDIA SLOTS
+   ═══════════════════════════════════════════════════
+
+   Universal visual containers. Works for any business type.
+   Each slot has a role (PRODUCT / PERSON / RESULT / PROCESS / CONTEXT)
+   and a defined aspect ratio.
+
+   Usage:
+     <div class="media-slot aspect-16-9" data-role="RESULT" data-hint="Screenshot kết quả">
+       <div class="slot-placeholder">...</div>
+       <!-- Replace entire inner div with <img src="..." alt="..."> when ready -->
+     </div>
+
+   When image is ready:
+     <div class="media-slot aspect-16-9">
+       <img src="result.jpg" alt="..." class="slot-img">
+     </div>
+   ═══════════════════════════════════════════════════ */
+
+/* ── Base slot container ── */
+.media-slot {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* ── Aspect ratios ── */
+.aspect-16-9  { aspect-ratio: 16 / 9; }
+.aspect-4-3   { aspect-ratio: 4  / 3; }
+.aspect-3-4   { aspect-ratio: 3  / 4; }
+.aspect-1-1   { aspect-ratio: 1  / 1; }
+.aspect-3-2   { aspect-ratio: 3  / 2; }
+.aspect-9-16  { aspect-ratio: 9  / 16; }
+
+/* ── Real image (after replacing placeholder) ── */
+.slot-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Placeholder — looks intentional, not broken ── */
+.slot-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--raised);
+  border: 1.5px dashed rgba(255,255,255,0.10);
+  border-radius: inherit;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.slot-placeholder:hover {
+  border-color: rgba(var(--accent-rgb), 0.30);
+  background: rgba(var(--accent-rgb), 0.03);
+}
+.slot-placeholder svg {
+  opacity: 0.25;
+  flex-shrink: 0;
+}
+.slot-placeholder .slot-role {
+  font-family: var(--font-mono);
+  font-size: var(--label-hint-size);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.6;
+}
+.slot-placeholder .slot-label {
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  color: var(--subtle);
+  text-align: center;
+  max-width: 160px;
+  line-height: 1.5;
+}
+.slot-placeholder .slot-hint {
+  font-family: var(--font-mono);
+  font-size: var(--label-hint-size);
+  color: var(--faint);
+  text-align: center;
+}
+
+/* ── Slot type color coding ── */
+[data-role="PRODUCT"]  .slot-placeholder { border-color: rgba(var(--accent-rgb),  0.12); }
+[data-role="PERSON"]   .slot-placeholder { border-color: rgba(var(--cyan-rgb),    0.12); }
+[data-role="RESULT"]   .slot-placeholder { border-color: rgba(var(--purple-rgb),  0.12); }
+[data-role="PROCESS"]  .slot-placeholder { border-color: rgba(var(--accent-rgb),  0.10); }
+[data-role="CONTEXT"]  .slot-placeholder { border-color: rgba(255,255,255,        0.08); }
+
+[data-role="PRODUCT"]  .slot-role { color: var(--accent); }
+[data-role="PERSON"]   .slot-role { color: var(--cyan);   }
+[data-role="RESULT"]   .slot-role { color: var(--purple); }
+[data-role="PROCESS"]  .slot-role { color: var(--accent); }
+[data-role="CONTEXT"]  .slot-role { color: var(--subtle); }
+
+/* ── Person slot — circular ── */
+.slot-circle .media-slot {
+  border-radius: 9999px;
+}
+.slot-circle .slot-placeholder {
+  border-radius: 9999px;
+}
+
+/* ── Video overlay (play button) ── */
+.video-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px; height: 56px;
+  border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(var(--bg-rgb), 0.80);
+  border: 1.5px solid var(--rim-strong);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  z-index: 2;
+}
+.video-play-btn:hover {
+  background: rgba(var(--accent-rgb), 0.15);
+  border-color: rgba(var(--accent-rgb), 0.40);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.video-play-btn svg { margin-left: 3px; }
+
+/* ── Social proof toast ── */
+.proof-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--raised);
+  border: 1px solid var(--rim-strong);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  pointer-events: none;
+  max-width: 280px;
+}
+
+/* ═══════════════════════════════════════════════════
+   11. MOTION UTILITIES
+   Theme-agnostic. Theme's DESIGN.md specifies WHICH
+   elements get WHICH animation — base.css defines HOW.
+   ═══════════════════════════════════════════════════ */
+
+/* ── 11a. Flow light — traveling beam ────────────── */
+/* Vertical (timeline line) */
+@keyframes flow-down {
+  0%   { top: -30%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+.flow-line-v {
+  position: relative;
+  overflow: hidden;
+}
+.flow-line-v::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(var(--accent-rgb), 0.8) 40%,
+    rgba(var(--cyan-rgb),   0.6) 60%,
+    transparent 100%);
+  filter: blur(3px);
+  animation: flow-down 3s ease-in-out infinite;
+  pointer-events: none;
+}
+/* Stagger for multiple parallel lines */
+.flow-line-v.delay-flow-1::after { animation-delay: 0.8s; }
+.flow-line-v.delay-flow-2::after { animation-delay: 1.6s; }
+
+/* Horizontal (workflow arrows / connector lines) */
+@keyframes flow-right {
+  0%   { left: -25%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 110%; opacity: 0; }
+}
+.flow-line-h {
+  position: relative;
+  overflow: hidden;
+}
+.flow-line-h::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 48px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(var(--accent-rgb), 0.9) 40%,
+    rgba(var(--cyan-rgb),   0.7) 60%,
+    transparent 100%);
+  filter: blur(2px);
+  animation: flow-right 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+.flow-line-h.delay-flow-1::after { animation-delay: 0.6s; }
+.flow-line-h.delay-flow-2::after { animation-delay: 1.2s; }
+
+/* ── 11b. Float — gentle vertical oscillation ────── */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes float-sm {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+@keyframes float-lg {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
+}
+.float-gentle { animation: float-gentle 5s ease-in-out infinite; }
+.float-sm     { animation: float-sm     4s ease-in-out infinite; }
+.float-lg     { animation: float-lg     6s ease-in-out infinite; }
+.float-delay-1 { animation-delay: 0.5s; }
+.float-delay-2 { animation-delay: 1.0s; }
+.float-delay-3 { animation-delay: 1.5s; }
+.float-delay-4 { animation-delay: 2.0s; }
+
+/* ── 11c. Card hover lift ─────────────────────────── */
+.card-lift {
+  transition:
+    transform   0.25s cubic-bezier(0.16,1,0.3,1),
+    box-shadow  0.25s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.2s;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.45), 0 0 0 1px var(--rim-strong);
+}
+.card-lift-accent:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.40), 0 0 24px rgba(var(--accent-rgb), 0.12);
+  border-color: rgba(var(--accent-rgb), 0.3) !important;
+}
+
+/* ── 11d. SVG icon animations ─────────────────────── */
+@keyframes icon-breathe {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.1); opacity: 0.85; }
+}
+@keyframes icon-spin-once {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.icon-breathe { animation: icon-breathe 3s ease-in-out infinite; }
+/* Trigger spin on parent hover */
+.group:hover .icon-spin { animation: icon-spin-once 0.6s cubic-bezier(0.16,1,0.3,1); }
+
+/* ── 11e. Shimmer border (rotating gradient border) ── */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+.shimmer-border {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      var(--accent) 0%, var(--cyan) 25%,
+      var(--purple) 50%, var(--accent) 75%, var(--accent) 100%
+    ) border-box;
+  animation: border-rotate 4s linear infinite;
+}
+.shimmer-border-slow { animation-duration: 8s; }
+
+/* ── 11f. Scan line — tech/data feel ──────────────── */
+@keyframes scan {
+  0%   { top: -4px; opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line {
+  position: absolute;
+  left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(var(--accent-rgb),0.6) 50%, transparent 100%);
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+}

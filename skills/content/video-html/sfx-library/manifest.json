@@ -1,0 +1,135 @@
+[
+  {
+    "id": "chime",
+    "category": "inspiring",
+    "description": "soft gentle chime, single uplifting bell tone, mellow",
+    "file": "chime.mp3",
+    "duration": 0.7
+  },
+  {
+    "id": "ding",
+    "category": "playful",
+    "description": "crisp notification ding, short positive ping, clean tone",
+    "file": "ding.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "pop",
+    "category": "playful",
+    "description": "light playful bubble pop, soft attack, no harsh sub-bass",
+    "file": "pop.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "sparkle",
+    "category": "success",
+    "description": "magical sparkle chime, light bell tones, ASMR-like shimmer",
+    "file": "sparkle.mp3",
+    "duration": 0.8
+  },
+  {
+    "id": "success-chime",
+    "category": "success",
+    "description": "success level-up chime, gentle ascending arpeggio, satisfying",
+    "file": "success-chime.mp3",
+    "duration": 0.9
+  },
+  {
+    "id": "alarm",
+    "category": "alert",
+    "description": "soft notification chime, single gentle ping, mellow attention tone, no harsh edge",
+    "file": "alarm.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "drum-hit",
+    "category": "impact",
+    "description": "soft wood block tap, hollow gentle attention beat, padded attack, no sub-bass",
+    "file": "drum-hit.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "bass-thump",
+    "category": "impact",
+    "description": "soft muted kick, dampened low tap, very gentle, no boom",
+    "file": "bass-thump.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "whoosh-up",
+    "category": "transition",
+    "description": "soft tonal riser, gentle pitch climb, ASMR breath whisper, no air friction",
+    "file": "whoosh-up.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "whoosh-down",
+    "category": "transition",
+    "description": "soft tonal descent, gentle pitch ease down, calm air whisper, no friction",
+    "file": "whoosh-down.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "glitch",
+    "category": "tech",
+    "description": "minimal soft tick, subtle clean data blip, single gentle click, no noise",
+    "file": "glitch.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "beep-glitch",
+    "category": "tech",
+    "description": "soft clean beep, single mellow tone, very short pleasant ping",
+    "file": "beep-glitch.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "dark-rise",
+    "category": "mystery",
+    "description": "gentle warm ambient swell, soft tonal rise, calm pad, no tension drone",
+    "file": "dark-rise.mp3",
+    "duration": 1
+  },
+  {
+    "id": "layer-in",
+    "category": "transition",
+    "description": "very soft air whisper reveal, gentle ASMR-like fade-in, no fricative, calm",
+    "file": "layer-in.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "layer-out",
+    "category": "transition",
+    "description": "very soft air whisper fade away, gentle hide tone, calm decay, ASMR",
+    "file": "layer-out.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "slide-soft",
+    "category": "transition",
+    "description": "soft paper slide, gentle whoosh-tap, smooth horizontal motion, no harshness",
+    "file": "slide-soft.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "bloom",
+    "category": "transition",
+    "description": "subtle bloom expand, soft tonal swell rising then fading, gentle scale-in feel",
+    "file": "bloom.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "tap-tick",
+    "category": "transition",
+    "description": "minimal soft tick, gentle finger tap on cardboard, ASMR-like, very short",
+    "file": "tap-tick.mp3",
+    "duration": 0.5
+  },
+  {
+    "id": "breath",
+    "category": "transition",
+    "description": "single soft breath out, gentle calm exhale, ASMR pause beat, no voice",
+    "file": "breath.mp3",
+    "duration": 0.5
+  }
+]

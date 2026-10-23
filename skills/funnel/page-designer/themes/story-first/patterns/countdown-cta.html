@@ -1,0 +1,141 @@
+<!--
+  PATTERN: countdown-cta.html — Story First
+  Frame: Community availability, NOT scarcity/urgency marketing
+  Copy: "Chương trình tháng [Month] — còn [N] chỗ" — honest availability, not fake countdown
+  Background: Terracotta card (one of the rare places this theme uses accent as bg)
+  Typography: White Baskerville on terracotta — warm, literary
+  Tone: Honest invitation — "Nếu bạn đã sẵn sàng..." not "LAST CHANCE"
+  Date display: Month + remaining spots — human format, no countdown timer ticking
+-->
+<div style="
+  background: var(--accent);
+  border-radius: 18px;
+  padding: 32px 36px;
+  box-shadow: 0 6px 28px rgba(192,85,61,0.28);
+  position: relative;
+  overflow: hidden;
+  max-width: 640px;
+  margin: 0 auto;
+">
+
+  <!-- Organic blob decoration — lighter terracotta within the card -->
+  <div style="
+    position:absolute;top:-30px;right:-30px;
+    width:140px;height:140px;
+    border-radius:40% 60% 55% 45%;
+    background:rgba(255,255,255,0.06);
+    pointer-events:none;
+  "></div>
+  <div style="
+    position:absolute;bottom:-20px;left:-20px;
+    width:100px;height:100px;
+    border-radius:60% 40% 45% 55%;
+    background:rgba(255,255,255,0.04);
+    pointer-events:none;
+  "></div>
+
+  <div style="position:relative;z-index:1;">
+
+    <!-- Label -->
+    <div style="
+      display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;
+    ">
+      <!-- Calendar icon -->
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <rect x="1" y="3" width="12" height="10" rx="2" fill="none" stroke="rgba(255,255,255,0.60)" stroke-width="1.2"/>
+        <path d="M1 6.5h12" stroke="rgba(255,255,255,0.50)" stroke-width="1.2"/>
+        <path d="M4 1.5v3M10 1.5v3" stroke="rgba(255,255,255,0.60)" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="4.5" cy="9.5" r="0.8" fill="rgba(255,255,255,0.70)"/>
+        <circle cx="7" cy="9.5" r="0.8" fill="rgba(255,255,255,0.70)"/>
+      </svg>
+      <span style="
+        font-family:'Libre Franklin',sans-serif;font-size:11px;font-weight:600;
+        color:rgba(255,255,255,0.75);letter-spacing:0.10em;text-transform:uppercase;
+      ">Kỳ tiếp theo</span>
+    </div>
+
+    <!-- Month + Program name -->
+    <h3 style="
+      font-family:'Libre Baskerville',serif;font-weight:400;
+      font-size:clamp(1.375rem,3vw,1.875rem);
+      color:white;margin:0 0 8px;line-height:1.25;
+    ">Chương trình tháng <em style="font-style:italic">[Tháng / Năm]</em></h3>
+
+    <!-- Program name italic -->
+    <p style="
+      font-family:'Libre Baskerville',serif;font-style:italic;
+      font-size:15px;color:rgba(255,255,255,0.80);
+      margin:0 0 20px;
+    ">[Tên chương trình — vd: Hành Trình 8 Tuần]</p>
+
+    <!-- Availability display — honest, human -->
+    <div style="
+      display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+      padding:14px 18px;border-radius:12px;
+      background:rgba(255,255,255,0.12);
+      margin-bottom:20px;
+    ">
+      <!-- Spots remaining -->
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="display:flex;gap:4px;">
+          <!-- Dot indicators for remaining spots (up to 8 visual dots) -->
+          <span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.90);display:inline-block"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.90);display:inline-block"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.90);display:inline-block"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.90);display:inline-block"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.40);display:inline-block"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.40);display:inline-block"></span>
+        </div>
+      </div>
+      <div>
+        <p style="
+          font-family:'Libre Baskerville',serif;font-weight:700;
+          font-size:18px;color:white;margin:0;line-height:1;
+        ">Còn <span id="spots-count">[N]</span> chỗ</p>
+        <p style="font-family:'Libre Franklin',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.65);margin:3px 0 0">trong tổng số [Max] người/kỳ</p>
+      </div>
+    </div>
+
+    <!-- Start date info -->
+    <div style="
+      display:flex;align-items:center;gap:8px;margin-bottom:24px;
+    ">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+        <circle cx="6.5" cy="6.5" r="5.5" stroke="rgba(255,255,255,0.50)" stroke-width="1.2" fill="none"/>
+        <path d="M6.5 3.5v3.5l2 1.5" stroke="rgba(255,255,255,0.60)" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span style="font-family:'Libre Franklin',sans-serif;font-size:12.5px;color:rgba(255,255,255,0.70)">
+        Khai giảng: <strong style="color:rgba(255,255,255,0.90);font-weight:600">[Ngày tháng cụ thể]</strong>
+      </span>
+    </div>
+
+    <!-- CTA -->
+    <a href="[ENROLL_URL]" style="
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 28px;
+      background:white;color:var(--accent);
+      border-radius:12px;
+      font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:15px;
+      text-decoration:none;
+      box-shadow:0 4px 16px rgba(44,31,20,0.15);
+      transition:all 0.25s ease;
+      margin-bottom:12px;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(44,31,20,0.20)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(44,31,20,0.15)'">
+      [CTA — vd: Đăng ký giữ chỗ]
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M3 7H11M8 4l3 3-3 3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <!-- Human reassurance note -->
+    <p style="
+      font-family:'Libre Baskerville',serif;font-style:italic;
+      font-size:12px;color:rgba(255,255,255,0.60);
+      margin:0;display:block;
+    ">
+      Có câu hỏi trước khi quyết định? Nhắn tôi qua <a href="[CONTACT_URL]" style="color:rgba(255,255,255,0.80);text-decoration:underline;text-underline-offset:2px">đây</a>.
+    </p>
+
+  </div>
+</div>

@@ -1,0 +1,209 @@
+<!--
+  PATTERN: countdown-cta
+  THEME:   minimal-mono
+  USAGE:   "COLLECTION ENDS [DATE]" — date in large Space Mono,
+           countdown in plain numbers with colon separators (no boxes).
+           Minimal, editorial. JS auto-calculates from data-deadline attribute.
+           Set data-deadline="YYYY-MM-DDTHH:MM:SS" on .mm-countdown__timer.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  .mm-countdown-section {
+    background: #ffffff;
+    border-top: 1px solid #111111;
+    border-bottom: 1px solid #111111;
+    padding: 5rem 4rem;
+    text-align: center;
+  }
+
+  .mm-countdown__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .mm-countdown__heading {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #111111;
+    margin: 0 0 2.5rem 0;
+  }
+
+  /* The countdown itself — just large numbers + colons */
+  .mm-countdown__timer {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0;
+    margin: 0 0 3rem 0;
+  }
+
+  .mm-countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mm-countdown__digits {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #111111;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    min-width: 2ch;
+    text-align: center;
+    display: block;
+  }
+
+  .mm-countdown__label {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  /* Colon separator */
+  .mm-countdown__sep {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #cccccc;
+    line-height: 1;
+    padding: 0 0.4rem;
+    margin-bottom: 1.4rem; /* align with digits, above label */
+  }
+
+  /* Alert color for the date — urgent */
+  .mm-countdown__deadline-date {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #cc0000;
+    margin-bottom: 3rem;
+  }
+
+  .mm-countdown__cta {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background: #111111;
+    border: 1px solid #111111;
+    padding: 0.9rem 2.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .mm-countdown__cta:hover {
+    background: #ffffff;
+    color: #111111;
+  }
+
+  .mm-countdown__expired-msg {
+    display: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888888;
+  }
+
+  @media (max-width: 640px) {
+    .mm-countdown-section {
+      padding: 4rem 1.5rem;
+    }
+    .mm-countdown__sep {
+      padding: 0 0.2rem;
+    }
+  }
+</style>
+
+<section class="mm-countdown-section">
+  <p class="mm-countdown__eyebrow">Limited Availability</p>
+  <p class="mm-countdown__heading">Inquiry Window Closes</p>
+  <p class="mm-countdown__deadline-date" id="mm-deadline-display">31 July 2025</p>
+
+  <div class="mm-countdown__timer"
+       id="mm-countdown-timer"
+       data-deadline="2025-07-31T23:59:59"
+       aria-live="polite"
+       aria-label="Countdown timer">
+
+    <div class="mm-countdown__unit">
+      <span class="mm-countdown__digits" id="mm-days">00</span>
+      <span class="mm-countdown__label">Days</span>
+    </div>
+    <span class="mm-countdown__sep" aria-hidden="true">:</span>
+
+    <div class="mm-countdown__unit">
+      <span class="mm-countdown__digits" id="mm-hours">00</span>
+      <span class="mm-countdown__label">Hours</span>
+    </div>
+    <span class="mm-countdown__sep" aria-hidden="true">:</span>
+
+    <div class="mm-countdown__unit">
+      <span class="mm-countdown__digits" id="mm-minutes">00</span>
+      <span class="mm-countdown__label">Min</span>
+    </div>
+    <span class="mm-countdown__sep" aria-hidden="true">:</span>
+
+    <div class="mm-countdown__unit">
+      <span class="mm-countdown__digits" id="mm-seconds">00</span>
+      <span class="mm-countdown__label">Sec</span>
+    </div>
+  </div>
+
+  <p class="mm-countdown__expired-msg" id="mm-expired-msg">Inquiry window has closed.</p>
+  <a href="#contact" class="mm-countdown__cta" id="mm-countdown-btn">Inquire Before It Closes</a>
+</section>
+
+<script>
+(function () {
+  var timerEl  = document.getElementById('mm-countdown-timer');
+  var deadline = new Date(timerEl.dataset.deadline).getTime();
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    var now  = Date.now();
+    var diff = deadline - now;
+
+    if (diff <= 0) {
+      document.getElementById('mm-countdown-timer').style.display = 'none';
+      document.getElementById('mm-expired-msg').style.display    = 'block';
+      document.getElementById('mm-countdown-btn').style.display  = 'none';
+      return;
+    }
+
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000)  / 60000);
+    var s = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('mm-days').textContent    = pad(d);
+    document.getElementById('mm-hours').textContent   = pad(h);
+    document.getElementById('mm-minutes').textContent = pad(m);
+    document.getElementById('mm-seconds').textContent = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>

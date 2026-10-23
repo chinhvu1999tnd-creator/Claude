@@ -1,0 +1,105 @@
+<!--
+  PATTERN: hero-portrait.html — Personal Brand shared
+  Use: Hero section với ảnh người là trọng tâm
+  Layout: 2-col — copy + credentials trái · portrait photo phải
+  Elements: Eyebrow credentials · Headline serif · Sub · CTA · Trust strip · Portrait media slot
+  Rule: Portrait slot luôn dùng data-role="PERSON" — real photo của người
+        Không dùng illustration thay portrait — personal brand = con người thật
+        Headline phải mention tên hoặc positioning rõ ràng
+        Trust strip: follower count / media logos / clients count
+        Đặt: Section đầu tiên sau nav
+  Dùng cho: warm-authority · bold-persona · story-first · bất kỳ personal brand theme
+-->
+<section class="relative overflow-hidden py-16 sm:py-24" style="background:var(--bg)">
+
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[55%_45%] gap-10 items-center">
+
+      <!-- LEFT — identity + copy -->
+      <div>
+
+        <!-- Credential eyebrow -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6"
+             style="background:rgba(var(--accent-rgb),0.08);border:1px solid rgba(var(--accent-rgb),0.2);border-radius:var(--radius-pill,9999px)">
+          <span class="font-body font-semibold text-[11px] uppercase tracking-wider" style="color:var(--accent)">[CREDENTIAL — e.g. Business Coach · Speaker · Author]</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-display font-bold mb-5"
+            style="font-size:clamp(2rem,5vw,3.75rem);line-height:1.08;letter-spacing:-0.02em;color:var(--ink)">
+          [Tên] Giúp [Đối tượng]<br>
+          <span style="color:var(--accent)">[Đạt Kết Quả Cụ Thể]</span>
+        </h1>
+
+        <!-- Sub -->
+        <p class="font-body text-lg leading-relaxed mb-8" style="color:var(--body);max-width:460px">
+          [Positioning statement — 2 câu. Ai, giúp ai, kết quả gì. Cụ thể và đo được.]
+        </p>
+
+        <!-- CTA row -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="[CTA_URL]"
+             class="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-white transition-all hover:-translate-y-0.5"
+             style="padding:14px 28px;background:var(--accent);border-radius:var(--radius-btn,8px);box-shadow:0 4px 16px rgba(var(--accent-rgb),0.30)">
+            [Primary CTA] →
+          </a>
+          <a href="[SECONDARY_URL]"
+             class="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm transition-colors"
+             style="padding:14px 24px;color:var(--accent);border:1.5px solid rgba(var(--accent-rgb),0.25);border-radius:var(--radius-btn,8px)">
+            [Secondary — e.g. Xem câu chuyện]
+          </a>
+        </div>
+
+        <!-- Trust strip — social proof numbers -->
+        <div class="flex flex-wrap items-center gap-5 pt-6" style="border-top:1px solid var(--faint)">
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xl" style="color:var(--accent)">[N]K+</span>
+            <span class="font-body text-sm" style="color:var(--body)">Followers</span>
+          </div>
+          <span class="w-px h-5" style="background:var(--faint)"></span>
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xl" style="color:var(--ink)">[N]+</span>
+            <span class="font-body text-sm" style="color:var(--body)">Khách hàng</span>
+          </div>
+          <span class="w-px h-5" style="background:var(--faint)"></span>
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xl" style="color:var(--ink)">[N]+</span>
+            <span class="font-body text-sm" style="color:var(--body)">Buổi chia sẻ</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — portrait photo slot -->
+      <div class="relative hidden lg:flex justify-center">
+
+        <!-- Portrait container -->
+        <div class="relative">
+          <!-- Main portrait — tall 3:4 ratio -->
+          <div class="media-slot w-64 h-80 overflow-hidden"
+               data-role="PERSON"
+               style="border-radius:var(--radius-xl3,20px);background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;">
+            <!-- Replace with: <img src="portrait.jpg" alt="[Name]" style="width:100%;height:100%;object-fit:cover"> -->
+            <span style="font-size:1.5rem;opacity:0.4">👤</span>
+          </div>
+
+          <!-- Credential badge — floating bottom left -->
+          <div class="absolute -left-6 bottom-8 px-4 py-3"
+               style="background:var(--bg);border:1px solid var(--faint);border-radius:var(--radius-card,12px);box-shadow:0 4px 20px rgba(0,0,0,0.08)">
+            <p class="font-body font-semibold text-xs" style="color:var(--ink)">[Achievement — e.g. Forbes 30 Under 30]</p>
+            <p class="font-body text-[10px]" style="color:var(--subtle)">[Year / Publication]</p>
+          </div>
+
+          <!-- Impact number — floating top right -->
+          <div class="absolute -right-6 top-8 text-center px-4 py-3"
+               style="background:var(--accent);border-radius:var(--radius-card,12px);box-shadow:0 4px 16px rgba(var(--accent-rgb),0.35)">
+            <p class="font-mono font-bold text-xl text-white">[N]K</p>
+            <p class="font-body text-[10px] text-white opacity-80">[Impact metric]</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

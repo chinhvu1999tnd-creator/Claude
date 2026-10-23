@@ -1,0 +1,155 @@
+<!--
+  PATTERN: stats-bar
+  THEME:   bold-appetite
+  USE:     Social proof strip — 4 key numbers with labels
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --yellow: #f5c842; --cream: #f5ead8;
+    --bg: #1a1008; --surface: #231608; --faint: #3d2d1a;
+    --body: #d4c4a8; --subtle: #8a7560;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .stats-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+    padding: 48px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+  .stats-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 12px;
+    position: relative;
+  }
+  /* Vertical divider between items */
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 1px;
+    background: var(--faint);
+  }
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .stat-number .unit {
+    font-size: 0.55em;
+    color: var(--yellow);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .stat-divider {
+    width: 28px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, var(--faint), transparent);
+    margin: 6px auto;
+  }
+  .stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--subtle);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .stat-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    color: var(--faint);
+    margin-top: 2px;
+  }
+  @media (max-width: 600px) {
+    .stats-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stat-item:nth-child(2)::after,
+    .stat-item:nth-child(4)::after { display: none; }
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2) {
+      border-bottom: 1px solid var(--faint);
+      padding-bottom: 24px;
+    }
+    .stat-item:nth-child(3),
+    .stat-item:nth-child(4) {
+      padding-top: 24px;
+    }
+  }
+</style>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+
+    <div class="stat-item">
+      <div class="stat-number">
+        12
+        <span class="unit">năm</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Kinh nghiệm</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-number">
+        47
+        <span class="unit">món</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Đặc trưng</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-number">
+        4.9
+        <span class="unit">★</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Google Reviews</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-number">
+        500
+        <span class="unit">+</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Khách / ngày</div>
+    </div>
+
+  </div>
+</div>

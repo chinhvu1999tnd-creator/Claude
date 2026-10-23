@@ -1,0 +1,33 @@
+<!--
+  oto-video.html — VSL (Video Sales Letter) slot for OTO page
+  Layout:     centered · max-w-2xl · 16:9 ratio
+  Slots:      [PROCESS] 16:9 — video demo / testimonial / VSL
+  Elements:   Caption above · Video slot · Watch time hint below
+  Rule:       Optional — chỉ dùng khi user có video. Đặt ngay sau oto-header.
+  Convert tip: Video OTO thường cao hơn text-only 30–60%
+-->
+<div class="max-w-2xl mx-auto px-6 pb-8">
+
+  <p class="font-mono text-[11px] uppercase tracking-wider text-center mb-4" style="color:var(--subtle)">
+    Xem video trước khi quyết định (3 phút)
+  </p>
+
+  <!-- Video slot -->
+  <!--
+    Replace options:
+    A) YouTube embed:  <iframe src="https://www.youtube.com/embed/VIDEO_ID" class="slot-img" allow="autoplay" allowfullscreen></iframe>
+    B) Self-hosted:    <video src="video.mp4" class="slot-img" controls poster="thumb.jpg"></video>
+    C) Vimeo embed:    <iframe src="https://player.vimeo.com/video/VIDEO_ID" class="slot-img" allowfullscreen></iframe>
+  -->
+  <div class="relative media-slot rounded-xl overflow-hidden" style="aspect-ratio:16/9;background:var(--surface);border:2px dashed var(--faint)" data-role="PROCESS">
+    <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+      <span style="font-size:2.5rem;opacity:0.35">▶️</span>
+      <p class="font-body text-xs" style="color:var(--subtle)">[Embed YouTube/Vimeo URL]</p>
+    </div>
+  </div>
+
+  <p class="font-mono text-[10px] text-center mt-3" style="color:var(--subtle)">
+    Tắt tiếng? Bật phụ đề — nhấn CC góc phải màn hình
+  </p>
+
+</div>

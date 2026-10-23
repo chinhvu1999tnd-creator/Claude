@@ -1,0 +1,56 @@
+<!--
+  OVERRIDE: cta-strip.html — Dark Bold Neon
+  vs shared: accent bg + blobs + grid
+  Override: FULL neon accent strip + larger blobs + oversized typography + scan line border top/bottom
+  Visual:   maximum-energy close vs. standard CTA
+-->
+<section class="relative py-20 overflow-hidden" style="background:var(--accent)">
+
+  <!-- Blobs — oversized for dark-bold-neon intensity -->
+  <div class="absolute w-[500px] h-[500px] rounded-full blur-3xl opacity-25 pointer-events-none"
+       style="background:#0d0d0c;top:-150px;left:-120px"></div>
+  <div class="absolute w-[400px] h-[400px] rounded-full blur-3xl opacity-20 pointer-events-none"
+       style="background:#0d0d0c;bottom:-100px;right:-100px"></div>
+
+  <!-- Grid overlay on accent -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.04]"
+       style="background-image:linear-gradient(rgba(0,0,0,1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,1) 1px,transparent 1px);background-size:40px 40px"></div>
+
+  <!-- Top precision line (dark) -->
+  <div class="absolute inset-x-0 top-0 h-px" style="background:rgba(0,0,0,0.3)"></div>
+  <div class="absolute inset-x-0 bottom-0 h-px" style="background:rgba(0,0,0,0.3)"></div>
+
+  <div class="relative max-w-2xl mx-auto px-6 text-center">
+
+    <p class="font-mono text-[10px] uppercase tracking-[0.18em] font-bold mb-4 opacity-60" style="color:#0d0d0c">
+      [Label — e.g. Bắt đầu ngay hôm nay]
+    </p>
+
+    <h2 class="font-display font-black mb-6 tracking-tight"
+        style="font-size:clamp(2rem,5vw,3.5rem);line-height:1.0;letter-spacing:-0.045em;color:#0d0d0c">
+      [CTA Headline —<br>Verb + Outcome]
+    </h2>
+
+    <p class="font-body text-sm mb-8 opacity-70" style="color:#0d0d0c">[Sub — 1 câu xác nhận quyết định đúng]</p>
+
+    <!-- Button — inverted (dark on neon bg) -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="order.html"
+         class="inline-flex items-center gap-2 py-4 px-10 rounded-xl font-display font-black text-sm transition-all hover:opacity-90"
+         style="background:#0d0d0c;color:var(--accent);box-shadow:0 4px 24px rgba(0,0,0,0.4)">
+        [CTA TEXT] →
+      </a>
+      <p class="font-mono text-[11px] opacity-50" style="color:#0d0d0c">[Urgency line — e.g. Chỉ còn [N] suất]</p>
+    </div>
+
+    <!-- Micro trust -->
+    <div class="flex items-center justify-center gap-5 mt-8 opacity-50">
+      <span class="font-mono text-[10px] uppercase tracking-wider" style="color:#0d0d0c">✓ Hoàn tiền 30 ngày</span>
+      <span class="w-px h-3" style="background:#0d0d0c"></span>
+      <span class="font-mono text-[10px] uppercase tracking-wider" style="color:#0d0d0c">✓ Không cần thẻ tín dụng</span>
+      <span class="w-px h-3" style="background:#0d0d0c"></span>
+      <span class="font-mono text-[10px] uppercase tracking-wider" style="color:#0d0d0c">✓ Hỗ trợ 24/7</span>
+    </div>
+
+  </div>
+</section>

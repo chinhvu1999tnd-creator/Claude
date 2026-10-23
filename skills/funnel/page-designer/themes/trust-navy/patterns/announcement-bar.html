@@ -1,0 +1,19 @@
+<!--
+  OVERRIDE: announcement-bar.html — Trust Navy
+  vs shared: colored bg strip
+  Override: navy bg + gold left border accent + mono text — institutional, minimal
+  Layout: full-width flex · gold left border instead of bg color
+-->
+<div class="w-full py-2.5 px-6 flex items-center justify-center gap-4 flex-wrap relative"
+     style="background:var(--surface);border-bottom:1px solid var(--faint);border-left:3px solid var(--accent)">
+  <div class="flex items-center gap-2.5">
+    <span class="relative flex h-1.5 w-1.5 flex-shrink-0">
+      <span class="absolute inline-flex h-full w-full rounded-full opacity-60 animate-live" style="background:var(--accent)"></span>
+      <span class="relative inline-flex h-1.5 w-1.5 rounded-full" style="background:var(--accent)"></span>
+    </span>
+    <p class="font-mono text-[11px] uppercase tracking-widest" style="color:var(--accent)">[OFFER TEXT — e.g. Enrollment closes [DATE] · [N] spots remaining]</p>
+  </div>
+  <span class="w-px h-3" style="background:var(--faint)"></span>
+  <a href="[CTA_URL]" class="font-mono text-[11px] uppercase tracking-widest transition-opacity hover:opacity-70"
+     style="color:var(--body)">Apply now →</a>
+</div>

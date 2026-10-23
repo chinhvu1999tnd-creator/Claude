@@ -1,0 +1,217 @@
+<!--
+  PATTERN: Announcement Bar — Energy Sport Theme
+  Usage: Top-of-page flash sale / urgency strip
+  Colors: Red bg, white Barlow Condensed 900 uppercase
+-->
+<style>
+  :root {
+    --accent:      #ff2d2d;
+    --accent-rgb:  255, 45, 45;
+    --accent-text: #ffffff;
+    --yellow:      #f5c500;
+    --bg:          #0e0e0e;
+    --ink:         #ffffff;
+    --body:        #cccccc;
+    --subtle:      #888888;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+  .ann-bar {
+    background: var(--accent);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(0,0,0,0.08) 0px,
+      rgba(0,0,0,0.08) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+    padding: 10px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated shimmer bar */
+  .ann-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+  }
+
+  .ann-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ann-bar__text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  .ann-bar__sep {
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .ann-bar__highlight {
+    color: var(--yellow);
+    font-size: 1.15rem;
+  }
+
+  .ann-bar__spots {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,0,0,0.25);
+    padding: 3px 12px;
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+  }
+
+  /* Pulsing live dot */
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulseDot 1.2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .ann-bar__cta {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.9);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .ann-bar__cta:hover { color: #fff; }
+
+  .ann-bar__close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 4px;
+    z-index: 2;
+  }
+  .ann-bar__close:hover { color: #fff; }
+
+  /* Variant: Yellow urgency bar */
+  .ann-bar--yellow {
+    background: var(--yellow);
+  }
+  .ann-bar--yellow .ann-bar__text,
+  .ann-bar--yellow .ann-bar__spots,
+  .ann-bar--yellow .ann-bar__cta {
+    color: #000;
+  }
+  .ann-bar--yellow .ann-bar__highlight { color: var(--accent); }
+  .ann-bar--yellow .ann-bar__sep { color: rgba(0,0,0,0.4); }
+  .ann-bar--yellow .live-dot { background: #000; }
+</style>
+
+<!-- DEFAULT: Red announcement bar -->
+<div class="ann-bar" id="announcementBar">
+  <div class="ann-bar__inner">
+    <span class="ann-bar__text">
+      🔥 <span class="ann-bar__highlight">FLASH SALE</span>
+      <span class="ann-bar__sep">—</span>
+      50% OFF MEMBERSHIP
+      <span class="ann-bar__sep">·</span>
+      TODAY ONLY
+      <span class="ann-bar__sep">·</span>
+    </span>
+    <div class="ann-bar__spots">
+      <span class="live-dot"></span>
+      <span id="spotsCount">47</span> SPOTS LEFT
+    </div>
+    <a href="#pricing" class="ann-bar__cta">CLAIM NOW →</a>
+  </div>
+  <button class="ann-bar__close" onclick="document.getElementById('announcementBar').style.display='none'">×</button>
+</div>
+
+<!-- VARIANT: Yellow urgency bar (uncomment to use) -->
+<!--
+<div class="ann-bar ann-bar--yellow" id="announcementBarYellow">
+  <div class="ann-bar__inner">
+    <span class="ann-bar__text">
+      ⚡ <span class="ann-bar__highlight">LIMITED TIME</span>
+      <span class="ann-bar__sep">—</span>
+      FREE PERSONAL TRAINING SESSION WITH MEMBERSHIP
+      <span class="ann-bar__sep">·</span>
+    </span>
+    <div class="ann-bar__spots">
+      <span class="live-dot"></span>
+      <span>12</span> SPOTS LEFT
+    </div>
+    <a href="#pricing" class="ann-bar__cta">GET IT →</a>
+  </div>
+</div>
+-->
+
+<script>
+  // Spots countdown — decrements randomly to create urgency
+  (function() {
+    const el = document.getElementById('spotsCount');
+    if (!el) return;
+    let spots = parseInt(el.textContent);
+
+    function decrement() {
+      if (spots > 3) {
+        const decrease = Math.random() < 0.3 ? 1 : 0;
+        spots -= decrease;
+        el.textContent = spots;
+      }
+      const nextDecrement = 30000 + Math.random() * 60000; // 30-90s
+      setTimeout(decrement, nextDecrement);
+    }
+
+    // Start after 45 seconds
+    setTimeout(decrement, 45000);
+  })();
+</script>

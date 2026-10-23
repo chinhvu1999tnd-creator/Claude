@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "items": [
+    {
+      "name": "tech-upbeat-60s",
+      "file": "tech-upbeat-60s.mp3",
+      "mood": "tech-upbeat",
+      "duration_ms": 60000,
+      "tags": [
+        "tech",
+        "upbeat",
+        "electronic",
+        "productivity"
+      ],
+      "gen_prompt": "modern tech background music, upbeat electronic, light synth and drums, motivating and productive, instrumental, suitable for short tech video",
+      "gen_at": "2026-05-23T15:13:11.265Z",
+      "cost_usd": 0.3,
+      "size_bytes": 960515,
+      "loopable": true
+    },
+    {
+      "name": "corporate-explainer-90s",
+      "file": "corporate-explainer-90s.mp3",
+      "mood": "corporate-explainer",
+      "duration_ms": 90000,
+      "tags": [
+        "corporate",
+        "b2b",
+        "calm",
+        "explainer"
+      ],
+      "gen_prompt": "corporate explainer background music, calm and professional, soft piano and ambient pads, suitable for B2B presentation, instrumental",
+      "gen_at": "2026-05-23T15:13:27.834Z",
+      "cost_usd": 0.45,
+      "size_bytes": 1440750,
+      "loopable": true
+    },
+    {
+      "name": "cinematic-build-60s",
+      "file": "cinematic-build-60s.mp3",
+      "mood": "cinematic-build",
+      "duration_ms": 60000,
+      "tags": [
+        "cinematic",
+        "dramatic",
+        "epic",
+        "build"
+      ],
+      "gen_prompt": "cinematic build-up music, dramatic strings rising to climax, epic hook video soundtrack, instrumental, no vocals",
+      "gen_at": "2026-05-23T15:13:42.233Z",
+      "cost_usd": 0.3,
+      "size_bytes": 960515,
+      "loopable": true
+    },
+    {
+      "name": "ambient-soft-60s",
+      "file": "ambient-soft-60s.mp3",
+      "mood": "ambient-soft",
+      "duration_ms": 60000,
+      "tags": [
+        "ambient",
+        "calm",
+        "wellness",
+        "story"
+      ],
+      "gen_prompt": "soft ambient background music, gentle piano with light pads, calm and reflective, suitable for story or wellness content, instrumental",
+      "gen_at": "2026-05-23T15:13:57.746Z",
+      "cost_usd": 0.3,
+      "size_bytes": 960515,
+      "loopable": true
+    },
+    {
+      "name": "edm-energetic-60s",
+      "file": "edm-energetic-60s.mp3",
+      "mood": "edm-energetic",
+      "duration_ms": 60000,
+      "tags": [
+        "edm",
+        "energetic",
+        "launch",
+        "celebration"
+      ],
+      "gen_prompt": "energetic EDM background music, electronic dance beat, exciting and celebratory, suitable for product launch announcement, instrumental",
+      "gen_at": "2026-05-23T15:14:12.564Z",
+      "cost_usd": 0.3,
+      "size_bytes": 960515,
+      "loopable": true
+    }
+  ]
+}

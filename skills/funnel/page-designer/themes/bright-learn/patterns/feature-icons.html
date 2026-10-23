@@ -1,0 +1,117 @@
+<!--
+  NEW PATTERN: feature-icons.html — Bright Learn only
+  Use: What's included / Key features section với colorful SVG icons
+  Layout: 3-col grid (desktop) · 2-col (tablet) · 1-col (mobile)
+  Visual: Each card = rounded-square icon bg + inline SVG + title + description
+  Rule: Max 6 items. Icon bg color rotates: accent → teal → orange → accent...
+        Đặt SAU How It Works, TRƯỚC Results
+  Dùng cho: Course landing, Webinar, Lead magnet landing
+-->
+<section class="py-20" style="background:var(--bg)">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <p class="font-display font-semibold text-xs uppercase tracking-wider mb-3" style="color:var(--accent)">Bao gồm trong khóa học</p>
+      <h2 class="font-display font-bold"
+          style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.15;letter-spacing:-0.02em;color:var(--ink)">
+        Trọn bộ — không cần mua thêm gì
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- Feature 1 — Video lessons — accent purple -->
+      <div class="rounded-2xl p-6" style="background:var(--surface);border:1px solid var(--rim)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+             style="background:rgba(108,71,255,0.12)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="16" rx="3" fill="rgba(108,71,255,0.2)" stroke="#6c47ff" stroke-width="1.5"/>
+            <path d="M10 9l5 3-5 3V9Z" fill="#6c47ff"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold mb-2" style="font-size:0.95rem;color:var(--ink)">[N] Video bài học</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:var(--body)">Xem lại không giới hạn. Tốc độ phát 0.5× đến 2×. Phụ đề tiếng Việt.</p>
+      </div>
+
+      <!-- Feature 2 — Live Q&A — teal -->
+      <div class="rounded-2xl p-6" style="background:var(--surface);border:1px solid rgba(0,184,169,0.18)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+             style="background:rgba(0,184,169,0.12)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="10" r="3" fill="rgba(0,184,169,0.2)" stroke="#00b8a9" stroke-width="1.5"/>
+            <path d="M7 20c0-3 2-5 5-5s5 2 5 5" stroke="#00b8a9" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="14" y="4" width="8" height="6" rx="2" fill="rgba(0,184,169,0.15)" stroke="#00b8a9" stroke-width="1.2"/>
+            <path d="M17 7h2M17 9h1" stroke="#00b8a9" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold mb-2" style="font-size:0.95rem;color:var(--ink)">[N] Buổi Live Q&A</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:var(--body)">Hỏi trực tiếp mỗi tuần. Mọi câu hỏi đều được trả lời trước khi buổi kết thúc.</p>
+      </div>
+
+      <!-- Feature 3 — Templates — orange -->
+      <div class="rounded-2xl p-6" style="background:var(--surface);border:1px solid rgba(255,159,67,0.18)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+             style="background:rgba(255,159,67,0.12)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="6" width="16" height="13" rx="2" fill="rgba(255,159,67,0.2)" stroke="#ff9f43" stroke-width="1.5"/>
+            <rect x="4" y="4" width="16" height="4" rx="2" fill="rgba(255,159,67,0.35)" stroke="#ff9f43" stroke-width="1.2"/>
+            <path d="M8 13h8M8 16h5" stroke="#ff9f43" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold mb-2" style="font-size:0.95rem;color:var(--ink)">[N]+ Template & SOP</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:var(--body)">Copy và điền tên vào là dùng được. Không cần bắt đầu từ trang trắng.</p>
+      </div>
+
+      <!-- Feature 4 — Community — accent -->
+      <div class="rounded-2xl p-6" style="background:var(--surface);border:1px solid var(--rim)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+             style="background:rgba(108,71,255,0.12)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="9" cy="8" r="3" fill="rgba(108,71,255,0.2)" stroke="#6c47ff" stroke-width="1.5"/>
+            <circle cx="16" cy="8" r="2.5" fill="rgba(108,71,255,0.15)" stroke="#6c47ff" stroke-width="1.2"/>
+            <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="#6c47ff" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 14c1.7.5 3 2 3 4" stroke="#6c47ff" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold mb-2" style="font-size:0.95rem;color:var(--ink)">Cộng đồng học viên</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:var(--body)">Group riêng [N]+ thành viên. Hỏi bài, chia sẻ kết quả, kết nối đối tác.</p>
+      </div>
+
+      <!-- Feature 5 — Certificate — teal -->
+      <div class="rounded-2xl p-6" style="background:var(--surface);border:1px solid rgba(0,184,169,0.18)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+             style="background:rgba(0,184,169,0.12)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="12" rx="2" fill="rgba(0,184,169,0.15)" stroke="#00b8a9" stroke-width="1.5"/>
+            <path d="M7 10h10M7 13h6" stroke="#00b8a9" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="17" cy="18" r="3" fill="rgba(0,184,169,0.2)" stroke="#00b8a9" stroke-width="1.2"/>
+            <path d="M15.5 18l1 1 2-2" stroke="#00b8a9" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold mb-2" style="font-size:0.95rem;color:var(--ink)">Chứng chỉ hoàn thành</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:var(--body)">Có giá trị khi chia sẻ LinkedIn. Xác nhận kỹ năng đã kiểm chứng.</p>
+      </div>
+
+      <!-- Feature 6 — AI Bonus — orange highlight -->
+      <div class="rounded-2xl p-6 relative overflow-hidden"
+           style="background:rgba(255,159,67,0.06);border:1.5px solid rgba(255,159,67,0.3)">
+        <!-- Bonus tag -->
+        <div class="absolute top-4 right-4">
+          <span class="font-display font-bold text-[10px] uppercase tracking-wider px-2 py-1 rounded-full"
+                style="background:var(--orange);color:white">BONUS</span>
+        </div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+             style="background:rgba(255,159,67,0.15)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l1.5 4.5H18l-3.5 2.5 1.5 4.5L12 12l-4 2.5 1.5-4.5L6 7.5h4.5L12 3Z" fill="rgba(255,159,67,0.3)" stroke="#ff9f43" stroke-width="1.3" stroke-linejoin="round"/>
+            <circle cx="18" cy="17" r="3" fill="rgba(255,159,67,0.2)" stroke="#ff9f43" stroke-width="1.2"/>
+            <circle cx="6" cy="18" r="2" fill="rgba(255,159,67,0.2)" stroke="#ff9f43" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold mb-2" style="font-size:0.95rem;color:var(--ink)">[Bonus name]</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:var(--body)">[Mô tả bonus — trị giá [N]M. Chỉ dành cho học viên đăng ký trong [timeframe].]</p>
+      </div>
+
+    </div>
+  </div>
+</section>

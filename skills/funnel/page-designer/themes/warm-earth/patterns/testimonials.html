@@ -1,0 +1,115 @@
+<!--
+  OVERRIDE: testimonials.html — Warm Earth
+  vs shared: dark 3-col + neon result tags
+  Override: 2-COL WARM CARDS — avatar photo slot + leaf accent + green check results
+  Layout: 2-col grid — featured large card left + 2 stacked right
+-->
+<section class="py-20" style="background:var(--surface)">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <!-- Linen texture -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background-image:repeating-linear-gradient(45deg,rgba(196,92,46,0.02) 0px,rgba(196,92,46,0.02) 1px,transparent 1px,transparent 12px)"></div>
+
+    <div class="text-center mb-12">
+      <!-- Decorative leaf divider -->
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="flex-1 h-px" style="background:var(--faint)"></div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 17C3 17 6 9 10 7C14 5 17 8.5 16 13C15 16 12 17.5 8 17" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M8 17L7 14" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="flex-1 h-px" style="background:var(--faint)"></div>
+      </div>
+      <p class="font-body font-semibold text-xs uppercase tracking-wider mb-3" style="color:var(--green)">Khách hàng nói gì</p>
+      <h2 class="font-display font-bold" style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.15;letter-spacing:-0.01em;color:var(--ink)">
+        Họ tin tưởng — vì sao?
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+
+      <!-- Featured large card -->
+      <div class="rounded-2xl p-6 flex flex-col"
+           style="background:var(--bg);border:2px solid var(--rim);box-shadow:0 4px 20px rgba(42,31,20,0.08)">
+        <!-- Top accent -->
+        <div class="h-1 w-16 rounded-full mb-5" style="background:var(--accent)"></div>
+        <!-- Quote mark — script font -->
+        <p class="font-script mb-2" style="font-size:2.5rem;line-height:1;color:rgba(196,92,46,0.2)">"</p>
+        <p class="font-body text-base leading-relaxed flex-1 mb-5" style="color:var(--body)">
+          "[FULL QUOTE — 3–4 câu. Cụ thể, có kết quả đo được, ngôn ngữ tự nhiên của người Việt]"
+        </p>
+        <!-- Result tag -->
+        <div class="inline-flex items-center gap-2 self-start mb-5 px-3 py-1.5 rounded-full"
+             style="background:rgba(90,122,58,0.10);border:1px solid rgba(90,122,58,0.25)">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6l3 3 5-5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-body font-semibold text-[11px] uppercase tracking-wider" style="color:var(--green)">[RESULT — e.g. Đặt hàng mỗi tuần từ 4 tháng nay]</span>
+        </div>
+        <!-- Author -->
+        <div class="flex items-center gap-3 pt-4" style="border-top:1.5px dashed var(--faint)">
+          <!-- Avatar photo slot -->
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-display font-bold text-sm flex-shrink-0"
+               style="background:rgba(196,92,46,0.12);border:1.5px solid var(--rim);color:var(--accent)">[INI]</div>
+          <div>
+            <p class="font-display font-semibold text-sm" style="color:var(--ink)">[Tên khách hàng]</p>
+            <p class="font-body text-xs" style="color:var(--subtle)">[Nghề nghiệp / Địa phương]</p>
+          </div>
+          <!-- Star rating -->
+          <div class="ml-auto flex gap-0.5">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right stacked cards -->
+      <div class="flex flex-col gap-4">
+        <div class="rounded-xl p-5 flex flex-col" style="background:var(--bg);border:1.5px solid var(--faint);box-shadow:0 2px 10px rgba(42,31,20,0.05)">
+          <p class="font-script mb-2" style="font-size:1.75rem;line-height:1;color:rgba(196,92,46,0.2)">"</p>
+          <p class="font-body text-sm leading-relaxed flex-1 mb-4" style="color:var(--body)">"[QUOTE — 2 câu]"</p>
+          <div class="flex items-center gap-2.5 pt-3" style="border-top:1.5px dashed var(--faint)">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+                 style="background:rgba(90,122,58,0.12);color:var(--green)">[INI]</div>
+            <div class="flex-1">
+              <p class="font-display font-semibold text-xs" style="color:var(--ink)">[Tên]</p>
+              <p class="font-body text-[10px]" style="color:var(--subtle)">[Địa phương]</p>
+            </div>
+            <div class="flex gap-0.5">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl p-5 flex flex-col" style="background:var(--bg);border:1.5px solid var(--faint);box-shadow:0 2px 10px rgba(42,31,20,0.05)">
+          <p class="font-script mb-2" style="font-size:1.75rem;line-height:1;color:rgba(196,92,46,0.2)">"</p>
+          <p class="font-body text-sm leading-relaxed flex-1 mb-4" style="color:var(--body)">"[QUOTE — 2 câu]"</p>
+          <div class="flex items-center gap-2.5 pt-3" style="border-top:1.5px dashed var(--faint)">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+                 style="background:rgba(196,92,46,0.12);color:var(--accent)">[INI]</div>
+            <div class="flex-1">
+              <p class="font-display font-semibold text-xs" style="color:var(--ink)">[Tên]</p>
+              <p class="font-body text-[10px]" style="color:var(--subtle)">[Địa phương]</p>
+            </div>
+            <div class="flex gap-0.5">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="#d4a853"><path d="M6 1l1.2 3.5H11L8.2 6.5 9.5 10 6 7.8 2.5 10 3.8 6.5 1 4.5H4.8L6 1Z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

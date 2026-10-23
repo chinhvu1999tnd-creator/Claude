@@ -1,0 +1,103 @@
+<!--
+  PATTERN: speaker-credibility.html — Personal Brand shared
+  Use: Authority & credibility section — media logos, speaking photos, book cover, podcast
+  Layout: Multi-row: media logos strip → speaking stats → featured items grid
+  Elements: "As seen in" logos · Speaking stats · Book/product showcase · Podcast/YouTube presence
+  Rule: Logos dùng opacity 0.5 + hover full opacity — không dùng màu brand của họ
+        Speaking stats: số liệu cụ thể (số tập podcast, views, buổi nói chuyện)
+        Max 6 media logos, 3 featured items
+        Đặt: Ngay SAU hero, TRƯỚC problem/story
+  Dùng cho: warm-authority · bold-persona · story-first · trust-navy (variant)
+-->
+<section class="py-16" style="background:var(--surface)">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- Media logos strip -->
+    <div class="text-center mb-10">
+      <p class="font-body font-semibold text-[11px] uppercase tracking-wider mb-6" style="color:var(--subtle)">Đã chia sẻ & xuất hiện trên</p>
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        <!-- Logo slots — replace text with SVG logos, use opacity-50 hover:opacity-100 -->
+        <div class="opacity-40 hover:opacity-70 transition-opacity cursor-default">
+          <p class="font-display font-bold text-base" style="color:var(--ink)">[Media 1]</p>
+        </div>
+        <div class="opacity-40 hover:opacity-70 transition-opacity cursor-default">
+          <p class="font-display font-bold text-base" style="color:var(--ink)">[Media 2]</p>
+        </div>
+        <div class="opacity-40 hover:opacity-70 transition-opacity cursor-default">
+          <p class="font-display font-bold text-base" style="color:var(--ink)">[Media 3]</p>
+        </div>
+        <div class="opacity-40 hover:opacity-70 transition-opacity cursor-default">
+          <p class="font-display font-bold text-base" style="color:var(--ink)">[Media 4]</p>
+        </div>
+        <div class="opacity-40 hover:opacity-70 transition-opacity cursor-default">
+          <p class="font-display font-bold text-base" style="color:var(--ink)">[Media 5]</p>
+        </div>
+        <div class="opacity-40 hover:opacity-70 transition-opacity cursor-default">
+          <p class="font-display font-bold text-base" style="color:var(--ink)">[Media 6]</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="h-px mb-10" style="background:var(--faint)"></div>
+
+    <!-- Featured items grid — book / podcast / speaking -->
+    <div class="grid sm:grid-cols-3 gap-5">
+
+      <!-- Item 1 — Book / Course -->
+      <div class="rounded-xl p-5 flex gap-4" style="background:var(--bg);border:1px solid var(--faint)">
+        <!-- Book cover slot -->
+        <div class="w-14 h-20 rounded-lg flex-shrink-0 flex items-center justify-center"
+             style="background:rgba(var(--accent-rgb),0.10);border:1px solid rgba(var(--accent-rgb),0.2)">
+          <svg width="20" height="26" viewBox="0 0 20 26" fill="none">
+            <rect x="1" y="1" width="18" height="24" rx="2" stroke="var(--accent)" stroke-width="1.3" fill="rgba(var(--accent-rgb),0.08)"/>
+            <path d="M5 8h10M5 12h10M5 16h7" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-body font-semibold text-[11px] uppercase tracking-wider mb-1" style="color:var(--subtle)">Sách / Khóa học</p>
+          <p class="font-display font-bold text-sm mb-1" style="color:var(--ink)">[Tên sách / khóa]</p>
+          <p class="font-body text-xs" style="color:var(--subtle)">[N]+ bản / học viên</p>
+        </div>
+      </div>
+
+      <!-- Item 2 — Podcast / YouTube -->
+      <div class="rounded-xl p-5 flex gap-4" style="background:var(--bg);border:1px solid var(--faint)">
+        <!-- Podcast icon slot -->
+        <div class="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center"
+             style="background:rgba(var(--accent-rgb),0.10);border:1px solid rgba(var(--accent-rgb),0.2)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="11" r="9" stroke="var(--accent)" stroke-width="1.3" fill="rgba(var(--accent-rgb),0.08)"/>
+            <circle cx="11" cy="11" r="3" fill="var(--accent)" opacity="0.7"/>
+            <path d="M11 2v3M11 17v3M2 11h3M17 11h3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-body font-semibold text-[11px] uppercase tracking-wider mb-1" style="color:var(--subtle)">Podcast / YouTube</p>
+          <p class="font-display font-bold text-sm mb-1" style="color:var(--ink)">[Tên kênh]</p>
+          <p class="font-body text-xs" style="color:var(--subtle)">[N] tập · [N]K+ lượt nghe</p>
+        </div>
+      </div>
+
+      <!-- Item 3 — Speaking -->
+      <div class="rounded-xl p-5 flex gap-4" style="background:var(--bg);border:1px solid var(--faint)">
+        <!-- Mic icon slot -->
+        <div class="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center"
+             style="background:rgba(var(--accent-rgb),0.10);border:1px solid rgba(var(--accent-rgb),0.2)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="8" y="2" width="6" height="11" rx="3" stroke="var(--accent)" stroke-width="1.3" fill="rgba(var(--accent-rgb),0.08)"/>
+            <path d="M5 10a6 6 0 0012 0" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M11 16v4M8 20h6" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-body font-semibold text-[11px] uppercase tracking-wider mb-1" style="color:var(--subtle)">Speaking</p>
+          <p class="font-display font-bold text-sm mb-1" style="color:var(--ink)">[N]+ sự kiện</p>
+          <p class="font-body text-xs" style="color:var(--subtle)">[N]+ người tham dự</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

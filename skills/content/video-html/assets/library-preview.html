@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<title>video-html v2.1 Library Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0a0a0a; --surface: #1a1a1a; --ink: #faf9f5; --accent: #B6FF00; --muted: #888; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: Inter, sans-serif; padding: 48px; }
+  h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.02em; margin: 0 0 8px; }
+  h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin: 48px 0 16px; padding-top: 24px; border-top: 1px solid #222; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .grid { display: grid; gap: 16px; }
+  .sfx-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .music-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .logo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .card { background: var(--surface); border-radius: 12px; padding: 16px; }
+  .card .label { font-family: JetBrains Mono, monospace; font-size: 12px; color: var(--accent); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .card .meta { font-size: 11px; color: var(--muted); margin-top: 6px; font-family: JetBrains Mono, monospace; }
+  .card .prompt { font-size: 13px; color: #bbb; margin-top: 8px; font-style: italic; }
+  audio { width: 100%; height: 32px; margin-top: 8px; }
+  audio::-webkit-media-controls-panel { background: #2a2a2a; }
+  .logo-card { background: var(--surface); border-radius: 12px; padding: 16px; text-align: center; }
+  .logo-card img { width: 100%; max-width: 160px; height: 160px; display: block; margin: 0 auto; }
+  .logo-card .name { font-size: 12px; color: var(--muted); margin-top: 8px; font-family: JetBrains Mono, monospace; }
+  .summary { background: linear-gradient(135deg, #1a3a1a 0%, #0a1a0a 100%); padding: 24px; border-radius: 16px; margin-bottom: 32px; border: 1px solid var(--accent); }
+  .summary b { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<h1>video-html v2.1 — Library Preview</h1>
+<p class="sub">10 SFX + 5 music tracks + 12 logos đã được seed. Click play để nghe / xem.</p>
+
+<div class="summary">
+  <b>Cost seed:</b> $1.70 ($0.05 SFX + $1.65 music) ·
+  <b>Logos:</b> 12 wordmark generated · có thể replace bằng official brand asset bất cứ lúc nào.
+</div>
+
+<h2>SFX (10)</h2>
+<div class="grid sfx-grid" id="sfx-grid"></div>
+
+<h2>Music Background (5)</h2>
+<div class="grid music-grid" id="music-grid"></div>
+
+<h2>Logos (12)</h2>
+<div class="grid logo-grid" id="logo-grid"></div>
+
+<script>
+async function loadJson(path) { const r = await fetch(path); return r.json() }
+
+async function init() {
+  const sfx = await loadJson('sfx/manifest.json')
+  const music = await loadJson('music/manifest.json')
+  const logos = await loadJson('logos/manifest.json')
+
+  const sfxGrid = document.getElementById('sfx-grid')
+  sfx.items.forEach(i => {
+    sfxGrid.insertAdjacentHTML('beforeend', `
+      <div class="card">
+        <div class="label">${i.name}</div>
+        <div class="meta">${i.duration_ms}ms · $${i.cost_usd} · ${(i.size_bytes/1024).toFixed(0)}KB</div>
+        <audio controls src="sfx/${i.file}"></audio>
+        <div class="prompt">"${i.gen_prompt}"</div>
+      </div>
+    `)
+  })
+
+  const musicGrid = document.getElementById('music-grid')
+  music.items.forEach(i => {
+    musicGrid.insertAdjacentHTML('beforeend', `
+      <div class="card">
+        <div class="label">${i.name}</div>
+        <div class="meta">${i.duration_ms/1000}s · $${i.cost_usd} · ${(i.size_bytes/1024).toFixed(0)}KB · loopable: ${i.loopable}</div>
+        <audio controls src="music/${i.file}"></audio>
+        <div class="prompt">"${i.gen_prompt}"</div>
+      </div>
+    `)
+  })
+
+  const logoGrid = document.getElementById('logo-grid')
+  logos.items.forEach(i => {
+    logoGrid.insertAdjacentHTML('beforeend', `
+      <div class="logo-card">
+        <img src="logos/${i.file}" alt="${i.label}">
+        <div class="name">${i.label}</div>
+      </div>
+    `)
+  })
+}
+init()
+</script>
+
+</body>
+</html>

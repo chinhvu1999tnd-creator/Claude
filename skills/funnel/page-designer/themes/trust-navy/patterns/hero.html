@@ -1,0 +1,156 @@
+<!--
+  OVERRIDE: hero.html — Trust Navy
+  vs shared: centered dark canvas + neon blobs
+  vs bright-learn: text left + floating result cards right
+  Override: 2-COL — serif headline left + PERFORMANCE METRICS PANEL right
+  Layout change: MAJOR — metrics panel replaces floating decorative cards
+  Right panel = dense financial data block (portfolio snapshot / track record)
+-->
+<section class="relative overflow-hidden py-20 sm:py-28"
+         style="background:var(--bg)">
+
+  <!-- Thin grid overlay -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);background-size:60px 60px"></div>
+  <!-- Subtle radial -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background:radial-gradient(ellipse 60% 50% at 0% 50%,rgba(201,168,76,0.05) 0%,transparent 60%)"></div>
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 inset-x-0 h-24 pointer-events-none"
+       style="background:linear-gradient(to bottom,transparent,var(--bg))"></div>
+
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-14 items-center">
+
+      <!-- LEFT — copy -->
+      <div>
+
+        <!-- Credentials pill -->
+        <div class="inline-flex items-center gap-2.5 px-3 py-1.5 mb-8"
+             style="border:1px solid var(--rim);border-radius:4px">
+          <span class="w-1 h-4 flex-shrink-0" style="background:var(--accent)"></span>
+          <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--accent)">[CREDENTIAL — e.g. CFA · 12 năm kinh nghiệm quản lý quỹ]</span>
+        </div>
+
+        <!-- Headline — serif -->
+        <h1 class="font-display font-bold mb-6"
+            style="font-size:clamp(2rem,5vw,4rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink)">
+          [LINE 1]<br>
+          <em style="color:var(--accent);font-style:italic">[Italic accent line]</em><br>
+          [LINE 3]
+        </h1>
+
+        <p class="font-body text-base leading-relaxed mb-8" style="color:var(--body);max-width:480px">
+          [Sub — 2 câu. Kết quả cụ thể + đối tượng phù hợp. Tránh superlative — nói số liệu.]
+        </p>
+
+        <!-- CTA row -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="[CTA_URL]"
+             class="inline-flex items-center justify-center gap-2 py-3.5 px-8 font-body font-semibold text-sm transition-all hover:brightness-110"
+             style="background:var(--accent);color:var(--accent-text);border-radius:4px">
+            [CTA TEXT] →
+          </a>
+          <a href="[SECONDARY_URL]"
+             class="inline-flex items-center justify-center gap-2 py-3.5 px-8 font-body font-semibold text-sm transition-colors hover:border-accent"
+             style="color:var(--body);border:1px solid var(--faint);border-radius:4px">
+            Download prospectus
+          </a>
+        </div>
+
+        <!-- Trust strip — fine print style -->
+        <div class="flex flex-wrap items-center gap-5 pt-6" style="border-top:1px solid var(--faint)">
+          <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">✓ [N] học viên</span>
+          <span class="w-px h-3" style="background:var(--faint)"></span>
+          <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">✓ [N] năm track record</span>
+          <span class="w-px h-3" style="background:var(--faint)"></span>
+          <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">✓ [Guarantee]</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — performance metrics panel -->
+      <div class="hidden lg:block">
+        <div style="border:1px solid var(--rim);border-radius:6px;overflow:hidden">
+
+          <!-- Panel header -->
+          <div class="px-5 py-3 flex items-center justify-between"
+               style="background:var(--raised);border-bottom:1px solid var(--faint)">
+            <p class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[Panel title — e.g. Portfolio Performance]</p>
+            <span class="font-mono text-[9px]" style="color:var(--subtle)">As of [DATE]</span>
+          </div>
+
+          <!-- Mini sparkline chart -->
+          <div class="px-5 py-4" style="background:var(--bg);border-bottom:1px solid var(--faint)">
+            <svg viewBox="0 0 320 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+              <!-- Baseline -->
+              <line x1="0" y1="45" x2="320" y2="45" stroke="var(--faint)" stroke-width="0.75"/>
+              <!-- Area fill -->
+              <path d="M0,45 L30,40 L65,35 L95,38 L130,28 L165,20 L200,24 L240,14 L275,10 L310,8 L320,45 Z"
+                    fill="rgba(76,175,125,0.12)"/>
+              <!-- Gold performance line -->
+              <path d="M0,45 L30,40 L65,35 L95,38 L130,28 L165,20 L200,24 L240,14 L275,10 L310,8"
+                    stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Benchmark dashed -->
+              <path d="M0,45 L30,43 L65,46 L95,48 L130,44 L165,40 L200,43 L240,38 L275,36 L310,33"
+                    stroke="var(--silver)" stroke-width="1.2" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.5"/>
+              <!-- Endpoint labels -->
+              <text x="314" y="11" font-family="'IBM Plex Mono',monospace" font-size="8" font-weight="700" fill="var(--positive)">+49%</text>
+              <text x="314" y="36" font-family="'IBM Plex Mono',monospace" font-size="8" fill="var(--silver)" opacity="0.6">+13%</text>
+            </svg>
+            <div class="flex items-center justify-between mt-1">
+              <span class="font-mono text-[8px]" style="color:var(--subtle)">[Start date]</span>
+              <span class="font-mono text-[8px]" style="color:var(--subtle)">[End date]</span>
+            </div>
+          </div>
+
+          <!-- Metrics rows -->
+          <div style="background:var(--raised)">
+
+            <div class="flex items-center justify-between px-5 py-3.5" style="border-bottom:1px solid var(--faint)">
+              <span class="font-body text-sm" style="color:var(--body)">[Metric 1 label]</span>
+              <div class="flex items-center gap-1.5">
+                <span class="font-mono font-bold text-sm" style="color:var(--positive)">[+XX.X%]</span>
+                <span class="font-mono text-xs" style="color:var(--positive)">▲</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between px-5 py-3.5" style="border-bottom:1px solid var(--faint)">
+              <span class="font-body text-sm" style="color:var(--body)">[Metric 2 label]</span>
+              <span class="font-mono font-bold text-sm" style="color:var(--accent)">[VALUE]</span>
+            </div>
+
+            <div class="flex items-center justify-between px-5 py-3.5" style="border-bottom:1px solid var(--faint)">
+              <span class="font-body text-sm" style="color:var(--body)">[Metric 3 label]</span>
+              <div class="flex items-center gap-1.5">
+                <span class="font-mono font-bold text-sm" style="color:var(--positive)">[+XX.X%]</span>
+                <span class="font-mono text-xs" style="color:var(--positive)">▲</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between px-5 py-3.5" style="border-bottom:1px solid var(--faint)">
+              <span class="font-body text-sm" style="color:var(--body)">[Metric 4 label]</span>
+              <span class="font-mono font-bold text-sm" style="color:var(--ink)">[VALUE]</span>
+            </div>
+
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <span class="font-body text-sm" style="color:var(--body)">[Metric 5 label]</span>
+              <span class="font-mono font-bold text-sm" style="color:var(--accent)">[VALUE]</span>
+            </div>
+
+          </div>
+
+          <!-- Panel footer -->
+          <div class="px-5 py-3" style="background:var(--bg);border-top:1px solid var(--faint)">
+            <p class="font-mono text-[9px]" style="color:var(--subtle)">
+              * Past performance does not guarantee future results.
+              [Disclaimer ngắn gọn nếu cần]
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+<!--
+  OVERRIDE: stats-bar.html — Trust Navy
+  vs shared: 4-col grid · accent numbers
+  Override: DATA PANEL — dense blocks + positive/negative coloring + "as of" timestamp
+  Layout change: DATA PANEL feel — tight borders, mono numbers, date stamp
+-->
+<section class="py-0" style="background:var(--surface);border-top:1px solid var(--faint);border-bottom:1px solid var(--faint)">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x" style="border-color:var(--faint)">
+
+      <!-- Stat 1 — positive return -->
+      <div class="px-6 py-5">
+        <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:var(--subtle)">[LABEL 1]</p>
+        <div class="flex items-baseline gap-1.5">
+          <p class="font-mono font-bold leading-none" style="font-size:clamp(1.5rem,3.5vw,2.25rem);color:var(--positive)">[+STAT 1]</p>
+          <span class="font-mono text-xs font-bold" style="color:var(--positive)">▲</span>
+        </div>
+        <p class="font-mono text-[9px] mt-1.5" style="color:var(--subtle)">[Context — e.g. annualized return]</p>
+      </div>
+
+      <!-- Stat 2 — neutral metric -->
+      <div class="px-6 py-5" style="border-left:1px solid var(--faint)">
+        <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:var(--subtle)">[LABEL 2]</p>
+        <p class="font-mono font-bold leading-none" style="font-size:clamp(1.5rem,3.5vw,2.25rem);color:var(--accent)">[STAT 2]</p>
+        <p class="font-mono text-[9px] mt-1.5" style="color:var(--subtle)">[Context]</p>
+      </div>
+
+      <!-- Stat 3 — neutral metric -->
+      <div class="px-6 py-5" style="border-left:1px solid var(--faint)">
+        <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:var(--subtle)">[LABEL 3]</p>
+        <p class="font-mono font-bold leading-none" style="font-size:clamp(1.5rem,3.5vw,2.25rem);color:var(--accent)">[STAT 3]</p>
+        <p class="font-mono text-[9px] mt-1.5" style="color:var(--subtle)">[Context]</p>
+      </div>
+
+      <!-- Stat 4 — years/track record -->
+      <div class="px-6 py-5" style="border-left:1px solid var(--faint)">
+        <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:var(--subtle)">[LABEL 4]</p>
+        <p class="font-mono font-bold leading-none" style="font-size:clamp(1.5rem,3.5vw,2.25rem);color:var(--ink)">[STAT 4]</p>
+        <p class="font-mono text-[9px] mt-1.5" style="color:var(--subtle)">[Context]</p>
+      </div>
+
+    </div>
+
+    <!-- Timestamp row -->
+    <div class="px-6 py-2 flex items-center gap-2" style="border-top:1px solid var(--faint)">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <circle cx="5" cy="5" r="4" stroke="var(--subtle)" stroke-width="1"/>
+        <path d="M5 3v2.5l1.5 1.5" stroke="var(--subtle)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <p class="font-mono text-[9px]" style="color:var(--subtle)">Data as of [DATE] · Past performance does not guarantee future results</p>
+    </div>
+
+  </div>
+</section>

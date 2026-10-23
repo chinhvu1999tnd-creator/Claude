@@ -1,0 +1,141 @@
+<!--
+  OVERRIDE: hero.html — Warm Earth
+  vs shared: dark centered neon hero
+  Override: ASYMMETRIC — copy trái · product media phải · organic blob bg · warm palette
+  Layout: MAJOR — asymmetric 55/45, organic decorative blobs
+  Visual: dot grid texture + organic blob shapes + product media slot + floating handmade labels
+-->
+<section class="relative overflow-hidden py-16 sm:py-24" style="background:var(--bg)">
+
+  <!-- Dot grid texture -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background-image:radial-gradient(circle,rgba(196,92,46,0.09) 1px,transparent 1px);background-size:22px 22px"></div>
+
+  <!-- Organic blob decorations -->
+  <div class="absolute pointer-events-none"
+       style="width:420px;height:420px;background:rgba(196,92,46,0.07);border-radius:60% 40% 70% 30%/50% 60% 40% 50%;top:-80px;right:-100px;filter:blur(40px)"></div>
+  <div class="absolute pointer-events-none"
+       style="width:280px;height:280px;background:rgba(90,122,58,0.07);border-radius:40% 60% 30% 70%/60% 40% 60% 40%;bottom:-60px;left:-60px;filter:blur(30px)"></div>
+
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[55%_45%] gap-10 items-center">
+
+      <!-- LEFT — copy -->
+      <div>
+
+        <!-- Handmade eyebrow label -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
+             style="background:rgba(90,122,58,0.10);border:1.5px dashed rgba(90,122,58,0.35)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 11C2 11 3.5 6 7 4.5C10.5 3 12.5 5.5 11.5 9C10.8 11 8.5 12 6 12" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5.5 12L5 10" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="font-body font-semibold text-[11px] uppercase tracking-wider" style="color:var(--green)">[AUDIENCE — e.g. Thuần tự nhiên · Không chất bảo quản]</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-display font-extrabold mb-5"
+            style="font-size:clamp(2rem,5vw,3.75rem);line-height:1.08;letter-spacing:-0.02em;color:var(--ink)">
+          [LINE 1]<br>
+          <span style="color:var(--accent)">[ACCENT LINE]</span><br>
+          [LINE 3]
+        </h1>
+
+        <!-- Sub -->
+        <p class="font-body text-lg leading-relaxed mb-8" style="color:var(--body);max-width:460px">
+          [Sub — 2 câu. Nguồn gốc rõ ràng + lợi ích cụ thể cho khách hàng.]
+        </p>
+
+        <!-- CTA row -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-8">
+          <a href="[CTA_URL]"
+             class="inline-flex items-center justify-center gap-2 py-3.5 px-7 font-display font-bold text-sm text-white transition-all hover:-translate-y-0.5"
+             style="background:var(--accent);border-radius:8px;box-shadow:0 4px 16px rgba(196,92,46,0.30)">
+            [CTA TEXT] →
+          </a>
+          <a href="[SECONDARY_URL]"
+             class="inline-flex items-center justify-center gap-2 py-3.5 px-7 font-display font-semibold text-sm transition-colors"
+             style="color:var(--accent);border:1.5px solid var(--faint);border-radius:8px;background:transparent">
+            [Tìm hiểu thêm]
+          </a>
+        </div>
+
+        <!-- Trust strip — local/natural cues -->
+        <div class="flex flex-wrap items-center gap-4 pt-5" style="border-top:1.5px dashed var(--faint)">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2C5 2 3 4.5 3 7.5c0 4 5 7.5 5 7.5s5-3.5 5-7.5C13 4.5 11 2 8 2Z" fill="rgba(90,122,58,0.15)" stroke="var(--green)" stroke-width="1.3"/>
+              <path d="M6 8l1.5 1.5 3-3" stroke="var(--green)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-body text-sm" style="color:var(--body)">[Trust 1 — e.g. 100% thuần tự nhiên]</span>
+          </div>
+          <span class="w-px h-4" style="background:var(--faint)"></span>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6" fill="rgba(196,92,46,0.12)" stroke="var(--accent)" stroke-width="1.3"/>
+              <path d="M5.5 8l2 2 3-3" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-body text-sm" style="color:var(--body)">[Trust 2 — e.g. Ship toàn quốc]</span>
+          </div>
+          <span class="w-px h-4" style="background:var(--faint)"></span>
+          <span class="font-body text-sm" style="color:var(--body)">⭐ <strong class="font-display font-bold" style="color:var(--ink)">[RATING]</strong>/5 · [N]+ đánh giá</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — product media slot + floating labels -->
+      <div class="relative hidden lg:block">
+
+        <!-- Main product image/media slot -->
+        <div class="relative rounded-2xl overflow-hidden"
+             style="background:var(--surface);border:1.5px solid var(--faint);box-shadow:0 8px 32px rgba(42,31,20,0.10);aspect-ratio:4/3">
+
+          <!-- Organic frame decoration — corner leaves -->
+          <svg class="absolute top-3 right-3 pointer-events-none" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M38 2C38 2 25 5 20 15C15 25 20 38 20 38" stroke="rgba(90,122,58,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M30 2C30 2 22 8 20 15" stroke="rgba(90,122,58,0.18)" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+
+          <!-- media-slot — replace with actual product photo -->
+          <div class="media-slot w-full h-full" data-role="PRODUCT" style="background:var(--surface);border:2px dashed var(--faint);position:relative">
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+              <span style="font-size:2rem;opacity:0.35">📸</span>
+              <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh hero — farm/sản phẩm</p>
+              <p class="font-body text-[10px]" style="color:var(--faint)">16:9 · min 1200px wide</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating label 1 — handmade style -->
+        <div class="absolute -left-5 top-8 px-4 py-2.5 animate-float"
+             style="background:var(--bg);border:1.5px dashed var(--faint);border-radius:10px;box-shadow:0 4px 16px rgba(42,31,20,0.08)">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" fill="rgba(90,122,58,0.12)"/>
+              <path d="M5 8l2.5 2.5 3.5-4" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <p class="font-display font-bold text-xs" style="color:var(--ink)">[Highlight 1]</p>
+              <p class="font-body text-[10px]" style="color:var(--subtle)">[e.g. Không chất bảo quản]</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating label 2 — terracotta -->
+        <div class="absolute -right-5 bottom-10 px-4 py-2.5 animate-float-2"
+             style="background:var(--bg);border:1.5px solid var(--rim);border-radius:10px;box-shadow:0 4px 16px rgba(42,31,20,0.08)">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(196,92,46,0.12)">
+              <span style="font-size:14px">⭐</span>
+            </div>
+            <div>
+              <p class="font-display font-bold text-xs" style="color:var(--accent)">[N]+ đánh giá</p>
+              <p class="font-body text-[10px]" style="color:var(--subtle)">[e.g. Khách hài lòng]</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

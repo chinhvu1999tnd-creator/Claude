@@ -1,0 +1,233 @@
+<!--
+  PATTERN: guarantee-card
+  THEME:   bold-persona
+  USE:     Bold centered guarantee — Syne 800 large "KHÔNG HÀI LÒNG → HOÀN TIỀN 100%"
+           Coral border · Confidence framing · Removes purchase risk
+  Rule:    This goes AFTER pricing, BEFORE final CTA · Centered layout
+           Syne 800 for main line · Inter for explanation · NO apology tone — confident
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --accent-rgb: 232,83,58;
+    --bg: #ffffff; --surface: #f9fafb; --raised: #f3f4f6;
+    --ink: #111827; --body: #374151; --subtle: #9ca3af; --faint: #e5e7eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .guarantee-section {
+    background: var(--bg);
+    padding: 64px 24px;
+  }
+  .guarantee-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .guarantee-card {
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: 48px 48px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  /* Coral corner geometric accents */
+  .guarantee-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 80px; height: 80px;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 6px,
+      rgba(232,83,58,0.06) 6px,
+      rgba(232,83,58,0.06) 7px
+    );
+    pointer-events: none;
+  }
+  .guarantee-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 6px,
+      rgba(232,83,58,0.06) 6px,
+      rgba(232,83,58,0.06) 7px
+    );
+    pointer-events: none;
+  }
+
+  /* Shield icon */
+  .guarantee-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(232,83,58,0.08);
+    border: 1.5px solid rgba(232,83,58,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .guarantee-icon svg {
+    color: var(--accent);
+  }
+
+  /* Main guarantee line */
+  .guarantee-main {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .guarantee-main .arrow {
+    color: var(--accent);
+    font-weight: 800;
+    display: inline-block;
+    margin: 0 6px;
+  }
+  .guarantee-main .highlight {
+    color: var(--accent);
+  }
+
+  /* Duration */
+  .guarantee-duration {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  /* Divider */
+  .guarantee-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--faint);
+    margin: 20px auto;
+    border-radius: 1px;
+  }
+
+  /* Explanation */
+  .guarantee-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.97rem;
+    color: var(--body);
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto 24px;
+  }
+  .guarantee-text strong { color: var(--ink); font-weight: 600; }
+
+  /* Confidence points */
+  .guarantee-points {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .guarantee-point {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--body);
+  }
+  .point-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(232,83,58,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Fine print */
+  .guarantee-fine {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 560px) {
+    .guarantee-card { padding: 36px 24px 32px; }
+    .guarantee-points { flex-direction: column; align-items: center; gap: 12px; }
+  }
+</style>
+
+<div class="guarantee-section">
+  <div class="guarantee-inner">
+    <div class="guarantee-card">
+
+      <!-- Shield icon -->
+      <div class="guarantee-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+
+      <!-- Main headline -->
+      <h3 class="guarantee-main">
+        Không Hài Lòng
+        <span class="arrow">→</span>
+        <span class="highlight">Hoàn Tiền 100%</span>
+      </h3>
+      <p class="guarantee-duration">Bảo đảm 30 ngày · Không câu hỏi</p>
+
+      <div class="guarantee-divider"></div>
+
+      <!-- Explanation -->
+      <p class="guarantee-text">
+        Nếu sau <strong>30 ngày học</strong> bạn chưa thấy giá trị rõ ràng — chỉ cần email cho tôi.
+        Tôi sẽ hoàn tiền <strong>đầy đủ trong 48 giờ</strong>, không hỏi lý do, không phiền hà.
+        <br><br>
+        Tôi tin vào hệ thống này đủ để đặt cược danh tiếng của mình vào đó.
+      </p>
+
+      <!-- Confidence points -->
+      <div class="guarantee-points">
+        <div class="guarantee-point">
+          <span class="point-check">✓</span>
+          Hoàn tiền trong 48h
+        </div>
+        <div class="guarantee-point">
+          <span class="point-check">✓</span>
+          Không hỏi lý do
+        </div>
+        <div class="guarantee-point">
+          <span class="point-check">✓</span>
+          Không phiền hà
+        </div>
+      </div>
+
+      <!-- Fine print -->
+      <p class="guarantee-fine">
+        * Áp dụng cho lần mua đầu tiên trong vòng 30 ngày kể từ ngày thanh toán.
+      </p>
+
+    </div>
+  </div>
+</div>

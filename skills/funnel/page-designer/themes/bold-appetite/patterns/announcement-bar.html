@@ -1,0 +1,95 @@
+<!--
+  PATTERN: announcement-bar
+  THEME:   bold-appetite
+  USE:     Top of page — opening hours, reservation prompt
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --cream: #f5ead8; --bg: #1a1008;
+    --surface: #231608; --faint: #3d2d1a; --body: #d4c4a8; --subtle: #8a7560;
+  }
+  .announcement-bar {
+    background: #1e120a;
+    border-bottom: 1px solid var(--faint);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .announcement-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bar-icon {
+    font-size: 0.95rem;
+    animation: sway 4s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-4deg); }
+    50%       { transform: rotate(4deg); }
+  }
+  .bar-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+  }
+  .bar-text .highlight {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .bar-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--faint);
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .bar-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid rgba(232,116,42,0.35);
+    border-radius: 4px;
+    padding: 3px 10px;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .bar-cta:hover { background: rgba(232,116,42,0.1); }
+</style>
+
+<div class="announcement-bar">
+  <div class="bar-inner">
+    <span class="bar-icon">🍃</span>
+    <span class="bar-text">
+      Mở cửa hàng ngày
+      <span class="highlight">11:00–22:00</span>
+    </span>
+    <span class="bar-divider"></span>
+    <span class="bar-text">Đặt bàn trước để có chỗ ngồi tốt nhất</span>
+    <span class="bar-divider"></span>
+    <a href="tel:02812345678" class="bar-cta">📞 028 xxxx xxxx</a>
+  </div>
+</div>

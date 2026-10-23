@@ -1,0 +1,89 @@
+<!--
+  tweet-wall.html — Social proof tweet/post wall
+  Layout:     3-col masonry · max-w-5xl · auto-rows
+  Background: var(--bg)
+  Elements:   label + H2 + tweet cards (avatar · name · handle · tweet text · like count · date)
+  Visuals:    Twitter/X bird icon · verified badge · like heart icon
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Mọi người nói gì</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Cộng đồng <span style="color:var(--accent)">đang buzz</span></h2>
+    </div>
+
+    <div class="columns-1 md:columns-3 gap-4 space-y-4 reveal">
+
+      <!-- Tweet card -->
+      <div class="break-inside-avoid rounded-xl p-4 mb-4" style="background:var(--surface);border:1px solid rgba(255,255,255,0.08)">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0" style="background:rgba(182,255,0,0.12);color:var(--accent)">NT</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-1.5">
+              <p class="text-ink text-sm font-medium leading-none">Nguyễn Thanh</p>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#1D9BF0"/><path d="M5 7l1.5 1.5 3-3" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p class="text-subtle text-xs">@nguyenthanh · 2h</p>
+          </div>
+          <!-- X icon -->
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8.1 6.1L12.5 1h-1.1L7.6 5.4 4.6 1H1l4.6 6.7L1 13h1.1l4-4.7 3.2 4.7H13L8.1 6.1z" fill="rgba(255,255,255,0.3)"/></svg>
+        </div>
+        <p class="text-ink text-sm leading-relaxed mb-3">Nội dung tweet thực tế mô tả kết quả sau khi dùng sản phẩm. 2–3 câu. Cụ thể và có thể đo lường.</p>
+        <div class="flex items-center gap-4 text-subtle text-xs">
+          <span class="flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10.5S1 7.5 1 4a2.5 2.5 0 015 0 2.5 2.5 0 015 0c0 3.5-5 6.5-5 6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            247
+          </span>
+          <span class="flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M9 1H3L1 5v1h1.5L4 10h4l1.5-4H11V5L9 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            38
+          </span>
+        </div>
+      </div>
+
+      <div class="break-inside-avoid rounded-xl p-4 mb-4" style="background:var(--surface);border:1px solid rgba(255,255,255,0.08)">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0" style="background:rgba(0,194,255,0.12);color:var(--cyan)">TL</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-1.5">
+              <p class="text-ink text-sm font-medium leading-none">Trần Linh</p>
+            </div>
+            <p class="text-subtle text-xs">@tranlinh · 5h</p>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8.1 6.1L12.5 1h-1.1L7.6 5.4 4.6 1H1l4.6 6.7L1 13h1.1l4-4.7 3.2 4.7H13L8.1 6.1z" fill="rgba(255,255,255,0.3)"/></svg>
+        </div>
+        <p class="text-ink text-sm leading-relaxed mb-3">Tweet ngắn và mạnh. Một câu kết quả ấn tượng nhất.</p>
+        <div class="flex items-center gap-4 text-subtle text-xs">
+          <span class="flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10.5S1 7.5 1 4a2.5 2.5 0 015 0 2.5 2.5 0 015 0c0 3.5-5 6.5-5 6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            89
+          </span>
+        </div>
+      </div>
+
+      <div class="break-inside-avoid rounded-xl p-4 mb-4" style="background:var(--surface);border:1px solid rgba(255,255,255,0.08)">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0" style="background:rgba(240,34,106,0.12);color:#F0226A">HV</div>
+          <div class="flex-1 min-w-0">
+            <p class="text-ink text-sm font-medium leading-none">Hoàng Văn D</p>
+            <p class="text-subtle text-xs">@hoangvand · 1d</p>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8.1 6.1L12.5 1h-1.1L7.6 5.4 4.6 1H1l4.6 6.7L1 13h1.1l4-4.7 3.2 4.7H13L8.1 6.1z" fill="rgba(255,255,255,0.3)"/></svg>
+        </div>
+        <p class="text-ink text-sm leading-relaxed mb-3">Tweet dài hơn mô tả chuyển đổi trước và sau. 3–4 câu. Thêm cảm xúc vào. Người đọc cảm thấy đây là người thật việc thật.</p>
+        <div class="flex items-center gap-4 text-subtle text-xs">
+          <span class="flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10.5S1 7.5 1 4a2.5 2.5 0 015 0 2.5 2.5 0 015 0c0 3.5-5 6.5-5 6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            312
+          </span>
+          <span class="flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M9 1H3L1 5v1h1.5L4 10h4l1.5-4H11V5L9 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            54
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <rect width="240" height="240" rx="32" fill="#1a1a1a"/>
+  <g transform="translate(120 92)" fill="#ffffff"><path d="M-30-30l60 24-22 8L0 30l-8-22z" transform="scale(0.9)"/></g>
+  <text x="120" y="190" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="22" fill="#faf9f5" text-anchor="middle" letter-spacing="-0.02em">Cursor</text>
+</svg>

@@ -1,0 +1,183 @@
+<!--
+  PATTERN: stats-bar.html — Story First
+  Design: Warm surface bg, 4-metric community bar
+  Numbers: Terracotta italic Libre Baskerville — literary authority, not corporate dashboard
+  Metrics: Community-framing, not vanity (Cộng đồng / Podcast / Học viên / Năm chia sẻ)
+  Layout: 4-col grid on desktop, 2-col on mobile
+-->
+<section style="
+  background: var(--surface);
+  border-top: 1px solid var(--faint);
+  border-bottom: 1px solid var(--faint);
+  padding: 40px 24px;
+">
+  <div style="max-width: 900px; margin: 0 auto;">
+
+    <!-- Section label — subtle, library card feel -->
+    <p style="
+      text-align:center;
+      font-family:'Libre Franklin',sans-serif;
+      font-size:11px;
+      font-weight:600;
+      color:var(--subtle);
+      letter-spacing:0.10em;
+      text-transform:uppercase;
+      margin-bottom:28px;
+    ">Hành trình đến nay</p>
+
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+    " class="stats-grid">
+
+      <!-- Metric 1: Community -->
+      <div style="
+        text-align:center;
+        padding:16px 20px;
+        border-right:1px dashed var(--faint);
+      " class="stat-item">
+        <p style="
+          font-family:'Libre Baskerville',serif;
+          font-style:italic;
+          font-size:clamp(2rem,4vw,3rem);
+          font-weight:400;
+          color:var(--accent);
+          line-height:1;
+          margin:0 0 6px;
+        ">[N]K</p>
+        <p style="
+          font-family:'Libre Franklin',sans-serif;
+          font-weight:600;
+          font-size:11px;
+          color:var(--subtle);
+          letter-spacing:0.06em;
+          text-transform:uppercase;
+          margin:0 0 2px;
+        ">Cộng đồng</p>
+        <p style="
+          font-family:'Nunito Sans',sans-serif;
+          font-weight:300;
+          font-size:12px;
+          color:var(--subtle);
+          margin:0;
+        ">người đang theo dõi</p>
+      </div>
+
+      <!-- Metric 2: Podcast episodes -->
+      <div style="
+        text-align:center;
+        padding:16px 20px;
+        border-right:1px dashed var(--faint);
+      " class="stat-item">
+        <p style="
+          font-family:'Libre Baskerville',serif;
+          font-style:italic;
+          font-size:clamp(2rem,4vw,3rem);
+          font-weight:400;
+          color:var(--slate);
+          line-height:1;
+          margin:0 0 6px;
+        ">[N]</p>
+        <p style="
+          font-family:'Libre Franklin',sans-serif;
+          font-weight:600;
+          font-size:11px;
+          color:var(--subtle);
+          letter-spacing:0.06em;
+          text-transform:uppercase;
+          margin:0 0 2px;
+        ">Tập Podcast</p>
+        <p style="
+          font-family:'Nunito Sans',sans-serif;
+          font-weight:300;
+          font-size:12px;
+          color:var(--subtle);
+          margin:0;
+        ">câu chuyện đã chia sẻ</p>
+      </div>
+
+      <!-- Metric 3: Students / Learners -->
+      <div style="
+        text-align:center;
+        padding:16px 20px;
+        border-right:1px dashed var(--faint);
+      " class="stat-item">
+        <p style="
+          font-family:'Libre Baskerville',serif;
+          font-style:italic;
+          font-size:clamp(2rem,4vw,3rem);
+          font-weight:400;
+          color:var(--sage);
+          line-height:1;
+          margin:0 0 6px;
+        ">[N]+</p>
+        <p style="
+          font-family:'Libre Franklin',sans-serif;
+          font-weight:600;
+          font-size:11px;
+          color:var(--subtle);
+          letter-spacing:0.06em;
+          text-transform:uppercase;
+          margin:0 0 2px;
+        ">Học Viên</p>
+        <p style="
+          font-family:'Nunito Sans',sans-serif;
+          font-weight:300;
+          font-size:12px;
+          color:var(--subtle);
+          margin:0;
+        ">đã hoàn thành khóa học</p>
+      </div>
+
+      <!-- Metric 4: Years sharing -->
+      <div style="
+        text-align:center;
+        padding:16px 20px;
+      " class="stat-item">
+        <p style="
+          font-family:'Libre Baskerville',serif;
+          font-style:italic;
+          font-size:clamp(2rem,4vw,3rem);
+          font-weight:400;
+          color:var(--accent);
+          line-height:1;
+          margin:0 0 6px;
+        ">[N]</p>
+        <p style="
+          font-family:'Libre Franklin',sans-serif;
+          font-weight:600;
+          font-size:11px;
+          color:var(--subtle);
+          letter-spacing:0.06em;
+          text-transform:uppercase;
+          margin:0 0 2px;
+        ">Năm Chia Sẻ</p>
+        <p style="
+          font-family:'Nunito Sans',sans-serif;
+          font-weight:300;
+          font-size:12px;
+          color:var(--subtle);
+          margin:0;
+        ">hành trình liên tục</p>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 600px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .stat-item:nth-child(2n) {
+        border-right: none !important;
+      }
+      .stat-item:nth-child(1),
+      .stat-item:nth-child(2) {
+        border-bottom: 1px dashed var(--faint);
+      }
+    }
+  </style>
+
+</section>

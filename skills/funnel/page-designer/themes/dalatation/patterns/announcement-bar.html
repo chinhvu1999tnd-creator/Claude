@@ -1,0 +1,21 @@
+<!--
+  OVERRIDE: announcement-bar.html — Dalatation
+  vs shared: colored bg strip
+  Override: dark surface + pine green left border + real-time availability message
+-->
+<div class="relative w-full py-2.5 px-6 flex items-center justify-center gap-3 flex-wrap overflow-hidden"
+     style="background:var(--surface);border-bottom:1px solid var(--faint);border-left:3px solid var(--accent)">
+  <div class="flex items-center gap-2.5">
+    <span class="relative flex h-2 w-2 flex-shrink-0">
+      <span class="absolute inline-flex h-full w-full rounded-full opacity-60 animate-live" style="background:var(--accent)"></span>
+      <span class="relative inline-flex h-2 w-2 rounded-full" style="background:var(--accent)"></span>
+    </span>
+    <p class="font-body font-medium text-sm" style="color:var(--body)">
+      🌲 <strong style="color:var(--ink)">[N] cabin còn trống</strong> cuối tuần này ·
+      <span style="color:var(--amber)">[N] lượt đặt trong 24h qua</span>
+    </p>
+  </div>
+  <a href="[BOOKING_URL]"
+     class="font-body font-semibold text-sm transition-opacity hover:opacity-75"
+     style="color:var(--accent)">Đặt phòng ngay →</a>
+</div>

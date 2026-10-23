@@ -1,0 +1,225 @@
+<!--
+  PATTERN: guarantee-card
+  THEME: clean-clinic
+  USE: Medical service guarantee — 2-column layout
+  STYLE: Shield icon left + commitment text right — clean, no animation
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --positive: #16a34a;
+    --bg: #f8fffe;
+    --surface: #f0faf8;
+    --raised: #e6f7f4;
+    --ink: #0d2b24;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+
+  .guarantee-section {
+    background: #ffffff;
+    padding: 80px 24px;
+  }
+  .guarantee-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .guarantee-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 48px;
+  }
+
+  /* Shield icon area */
+  .guarantee-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .guarantee-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    box-shadow: 0 4px 20px rgba(13,43,36,0.08);
+  }
+  .guarantee-icon-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--subtle);
+    text-align: center;
+  }
+
+  /* Text area */
+  .guarantee-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .guarantee-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  .guarantee-body {
+    font-size: 1.0625rem;
+    color: var(--body);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .guarantee-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Terms list */
+  .guarantee-terms {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .guarantee-term {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9375rem;
+    color: var(--body);
+    line-height: 1.5;
+  }
+  .term-icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--accent);
+  }
+
+  /* CTA */
+  .guarantee-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 24px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .guarantee-cta:hover { background: #0d9270; box-shadow: 0 4px 16px rgba(15,163,127,0.30); }
+
+  /* Legal note */
+  .guarantee-legal {
+    font-size: 0.75rem;
+    color: var(--subtle);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .guarantee-card { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px; }
+    .guarantee-icon-wrap { flex-direction: row; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- GUARANTEE CARD -->
+<section class="guarantee-section">
+  <div class="guarantee-container">
+    <div class="guarantee-card">
+
+      <!-- LEFT: Shield icon -->
+      <div class="guarantee-icon-wrap">
+        <div class="guarantee-icon">
+          <!-- Shield with checkmark — guarantee icon -->
+          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 4L8 10v10c0 10.5 6.8 20.4 16 24 9.2-3.6 16-13.5 16-24V10L24 4z"/>
+            <polyline points="18,24 22,28 30,20"/>
+          </svg>
+        </div>
+        <span class="guarantee-icon-label">Cam Kết<br>Chất Lượng</span>
+      </div>
+
+      <!-- RIGHT: Commitment text -->
+      <div class="guarantee-content">
+        <p class="guarantee-eyebrow">Bảo Đảm Kết Quả</p>
+        <h2 class="guarantee-title">
+          <!-- SLOT: Replace with specific guarantee -->
+          Cam kết hoàn tiền nếu không<br>cải thiện sau [N] buổi điều trị
+        </h2>
+        <p class="guarantee-body">
+          <!-- SLOT: Explain the guarantee clearly and honestly -->
+          Chúng tôi tin tưởng vào phác đồ điều trị của mình. Nếu sau <strong>[N] buổi điều trị</strong> theo đúng chỉ định mà bạn không thấy cải thiện, chúng tôi sẽ <strong>hoàn trả toàn bộ phí điều trị</strong> hoặc tiếp tục điều trị miễn phí đến khi có kết quả.
+        </p>
+
+        <!-- Guarantee terms -->
+        <ul class="guarantee-terms">
+          <li class="guarantee-term">
+            <svg class="term-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+            Áp dụng cho tất cả bệnh nhân điều trị theo đúng phác đồ
+          </li>
+          <li class="guarantee-term">
+            <svg class="term-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+            Hoàn tiền trong vòng 7 ngày làm việc
+          </li>
+          <li class="guarantee-term">
+            <svg class="term-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,12 14,4"/></svg>
+            Không cần giải thích lý do — chỉ cần thông báo
+          </li>
+        </ul>
+
+        <a href="#booking" class="guarantee-cta">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="10" height="10" rx="1"/>
+            <line x1="8" y1="2" x2="8" y2="5"/>
+            <line x1="3" y1="8" x2="13" y2="8"/>
+          </svg>
+          Đặt Lịch — Không Rủi Ro
+        </a>
+
+        <p class="guarantee-legal">
+          * Điều kiện áp dụng: bệnh nhân tuân thủ đầy đủ phác đồ và hướng dẫn chăm sóc sau điều trị. Chi tiết xem tại
+          <a href="/chinh-sach" style="color:var(--accent);text-decoration:none;">Chính sách bảo đảm</a>.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- END: guarantee-card -->
+
+<!--
+  USAGE NOTES:
+  - Write guarantee in clinical language — not "money back no questions asked" hype
+  - Always include specific conditions (N sessions, follow protocol)
+  - Legal footnote with link to full policy is required
+  - NO animation — static, solid, trustworthy
+  - 2-col layout: icon ~100px wide, text fills rest
+-->

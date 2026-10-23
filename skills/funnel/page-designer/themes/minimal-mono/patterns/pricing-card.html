@@ -1,0 +1,265 @@
+<!--
+  PATTERN: pricing-card
+  THEME:   minimal-mono
+  USAGE:   Price LIST style (not card grid). Tabular format with horizontal
+           rules between items, prices right-aligned in Space Mono.
+           Fashion retail / consulting pricing aesthetic.
+           Add or remove .mm-price-row items as needed.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  .mm-pricing {
+    background: #ffffff;
+    padding: 7rem 4rem;
+  }
+
+  .mm-pricing__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #111111;
+  }
+
+  .mm-pricing__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .mm-pricing__title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: #111111;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+
+  .mm-pricing__note {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: #999999;
+    text-align: right;
+  }
+
+  /* Table layout */
+  .mm-price-list {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mm-price-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.2s ease;
+  }
+
+  .mm-price-row:hover {
+    background: #f8f8f8;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .mm-price-row--featured {
+    border-left: 3px solid #111111;
+    padding-left: 1.5rem;
+  }
+
+  .mm-price-row__name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #111111;
+    margin: 0 0 0.35rem 0;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .mm-price-row__desc {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
+    grid-column: 1;
+    grid-row: 2;
+    max-width: 55ch;
+    padding-right: 2rem;
+  }
+
+  .mm-price-row__price-wrap {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding-left: 2rem;
+  }
+
+  .mm-price-row__price {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: #111111;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+
+  .mm-price-row__unit {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999999;
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  .mm-price-row__badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid #111111;
+    padding: 0.15rem 0.5rem;
+    color: #111111;
+    margin-left: 0.75rem;
+    vertical-align: middle;
+  }
+
+  .mm-pricing__footer {
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .mm-pricing__footer-note {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    color: #888888;
+    margin: 0;
+  }
+
+  .mm-pricing__cta {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border: 1px solid #111111;
+    background: #111111;
+    color: #ffffff;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .mm-pricing__cta:hover {
+    background: #ffffff;
+    color: #111111;
+  }
+
+  @media (max-width: 640px) {
+    .mm-pricing {
+      padding: 4rem 1.5rem;
+    }
+    .mm-price-row {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .mm-price-row__price-wrap {
+      grid-column: 1;
+      grid-row: 3;
+      align-items: flex-start;
+      padding-left: 0;
+      padding-top: 0.75rem;
+    }
+  }
+</style>
+
+<section class="mm-pricing">
+  <div class="mm-pricing__header">
+    <div>
+      <p class="mm-pricing__eyebrow">Investment</p>
+      <h2 class="mm-pricing__title">Service Pricing</h2>
+    </div>
+    <p class="mm-pricing__note">All prices in VND &mdash; excl. VAT</p>
+  </div>
+
+  <ul class="mm-price-list">
+    <li class="mm-price-row">
+      <h3 class="mm-price-row__name">Brand Audit</h3>
+      <p class="mm-price-row__desc">
+        A thorough review of your existing brand presence — positioning, visual identity, messaging, and digital touchpoints. Delivered as a written report with actionable recommendations.
+      </p>
+      <div class="mm-price-row__price-wrap">
+        <span class="mm-price-row__price">15,000,000</span>
+        <span class="mm-price-row__unit">one-time</span>
+      </div>
+    </li>
+
+    <li class="mm-price-row mm-price-row--featured">
+      <h3 class="mm-price-row__name">
+        Foundation Package
+        <span class="mm-price-row__badge">Popular</span>
+      </h3>
+      <p class="mm-price-row__desc">
+        Brand strategy, core visual identity (logo system, colour, typography), messaging framework, and a 30-day content direction guide. Ideal for founders ready to launch seriously.
+      </p>
+      <div class="mm-price-row__price-wrap">
+        <span class="mm-price-row__price">45,000,000</span>
+        <span class="mm-price-row__unit">one-time</span>
+      </div>
+    </li>
+
+    <li class="mm-price-row">
+      <h3 class="mm-price-row__name">Full Brand Build</h3>
+      <p class="mm-price-row__desc">
+        End-to-end brand development: strategy, visual system, website, content direction, social templates, brand guidelines document, and 60-day post-launch support. Custom scope.
+      </p>
+      <div class="mm-price-row__price-wrap">
+        <span class="mm-price-row__price">120,000,000+</span>
+        <span class="mm-price-row__unit">custom scope</span>
+      </div>
+    </li>
+
+    <li class="mm-price-row">
+      <h3 class="mm-price-row__name">Monthly Retainer</h3>
+      <p class="mm-price-row__desc">
+        Ongoing brand stewardship: monthly content direction, asset creation, brand consistency review, and strategic advisory calls. Minimum 3-month engagement.
+      </p>
+      <div class="mm-price-row__price-wrap">
+        <span class="mm-price-row__price">18,000,000</span>
+        <span class="mm-price-row__unit">per month</span>
+      </div>
+    </li>
+  </ul>
+
+  <div class="mm-pricing__footer">
+    <p class="mm-pricing__footer-note">Prices are starting points. All projects are scoped individually.</p>
+    <a href="#contact" class="mm-pricing__cta">Inquire Now</a>
+  </div>
+</section>

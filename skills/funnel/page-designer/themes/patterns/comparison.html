@@ -1,0 +1,84 @@
+<!--
+  PATTERN: Before / After Split (45% conversion lift)
+  Theme: dark-bold-neon · Tailwind
+  Use: S10 Before→After transformation
+  Sig: gradient border wrap, split grid, muted-before / vibrant-after, CTA footer bar
+-->
+<section class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-10">
+      <p class="section-label">[LABEL — e.g. Visual proof · Before-After]</p>
+      <h2 class="font-display font-black text-ink tracking-tight"
+          style="font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.03em;">
+        [HEADING]<br><span class="text-gradient">[ACCENT]</span>
+      </h2>
+    </div>
+
+    <!-- Gradient border container -->
+    <div class="rounded-3xl overflow-hidden border border-rim-strong reveal">
+      <div class="grid grid-cols-1 sm:grid-cols-2">
+
+        <!-- BEFORE — muted red tint -->
+        <div class="p-8" style="background:#110a0a;border-right:1px solid rgba(255,255,255,0.06);">
+          <p class="font-mono text-[9px] uppercase tracking-[0.12em] flex items-center gap-2 mb-5"
+             style="color:#ef4444;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Trước — [STATE BEFORE]
+          </p>
+          <div class="space-y-3">
+            <div class="flex gap-3 text-sm leading-relaxed" style="color:#6B5050;">
+              <div class="w-1.5 h-1.5 min-w-1.5 rounded-full mt-2 flex-shrink-0" style="background:rgba(239,68,68,0.35);"></div>
+              <span>[BEFORE ITEM 1]</span>
+            </div>
+            <div class="flex gap-3 text-sm leading-relaxed" style="color:#6B5050;">
+              <div class="w-1.5 h-1.5 min-w-1.5 rounded-full mt-2 flex-shrink-0" style="background:rgba(239,68,68,0.35);"></div>
+              <span>[BEFORE ITEM 2]</span>
+            </div>
+            <div class="flex gap-3 text-sm leading-relaxed" style="color:#6B5050;">
+              <div class="w-1.5 h-1.5 min-w-1.5 rounded-full mt-2 flex-shrink-0" style="background:rgba(239,68,68,0.35);"></div>
+              <span>[BEFORE ITEM 3]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AFTER — accent tint -->
+        <div class="p-8 relative" style="background:rgba(182,255,0,0.04);">
+          <div class="absolute top-0 left-0 right-0 h-px"
+               style="background:linear-gradient(90deg,#B6FF00,#00C2FF);"></div>
+          <p class="font-mono text-[9px] uppercase tracking-[0.12em] flex items-center gap-2 mb-5"
+             style="color:#B6FF00;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg>
+            Sau [N] ngày — [STATE AFTER]
+          </p>
+          <div class="space-y-3">
+            <div class="flex gap-3 text-sm leading-relaxed text-ink">
+              <div class="w-1.5 h-1.5 min-w-1.5 rounded-full bg-accent-DEFAULT mt-2 flex-shrink-0"></div>
+              <span>[AFTER ITEM 1]</span>
+            </div>
+            <div class="flex gap-3 text-sm leading-relaxed text-ink">
+              <div class="w-1.5 h-1.5 min-w-1.5 rounded-full bg-accent-DEFAULT mt-2 flex-shrink-0"></div>
+              <span>[AFTER ITEM 2]</span>
+            </div>
+            <div class="flex gap-3 text-sm leading-relaxed text-ink">
+              <div class="w-1.5 h-1.5 min-w-1.5 rounded-full bg-accent-DEFAULT mt-2 flex-shrink-0"></div>
+              <span>[AFTER ITEM 3]</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA footer bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-8 py-5"
+           style="background:rgba(182,255,0,0.10);border-top:1px solid rgba(182,255,0,0.18);">
+        <p class="font-display font-semibold text-ink text-sm">[CTA LEAD — e.g. Bạn muốn kết quả bên phải?]</p>
+        <a href="order.html"
+           class="btn-glow inline-flex items-center gap-2 bg-accent-DEFAULT text-accent-text font-display font-bold text-sm px-6 py-3 rounded-btn min-h-[44px] cursor-pointer transition-colors duration-250">
+          [CTA TEXT] →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

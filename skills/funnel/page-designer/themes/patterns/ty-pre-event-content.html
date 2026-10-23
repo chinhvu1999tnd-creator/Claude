@@ -1,0 +1,74 @@
+<!--
+  ty-pre-event-content.html — Pre-event warm-up content (webinar)
+  Layout:     centered · max-w-xl · 1–2 content cards
+  Elements:   Label · Content card(s): thumbnail + title + type badge + CTA
+  Slots:      [CONTEXT] 16:9 thumbnail — video hoặc article cover
+  Rule:       Tối đa 2 items — mục tiêu là warm up, không phải overwhelming
+              Content phải liên quan trực tiếp đến chủ đề webinar
+  Dùng cho:   Webinar / Event thank you — section sau ty-notification-group-join
+-->
+<div class="max-w-xl mx-auto px-6 pb-10">
+
+  <p class="font-mono text-[11px] uppercase tracking-wider text-center mb-5" style="color:var(--subtle);letter-spacing:.12em">
+    Xem trước khi đến buổi — học nhanh hơn
+  </p>
+
+  <div class="space-y-3">
+
+    <!-- Content item 1 -->
+    <a href="[CONTENT_URL_1]" target="_blank"
+      class="flex items-center gap-4 rounded-xl p-4 transition-colors group"
+      style="background:var(--surface);border:1px solid var(--rim);text-decoration:none">
+
+      <!-- Thumbnail slot -->
+      <!-- Replace: <img src="thumb-1.jpg" class="slot-img" alt="[Tiêu đề]"> -->
+      <div class="media-slot relative shrink-0 rounded-lg overflow-hidden" style="width:72px;height:54px;background:var(--surface);border:2px dashed var(--faint)" data-role="CONTEXT">
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+          <span style="font-size:2rem;opacity:0.35">📸</span>
+          <p class="font-body text-xs font-medium" style="color:var(--subtle)">[Ảnh thumbnail]</p>
+          <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+        </div>
+      </div>
+
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded"
+            style="background:rgba(var(--purple-rgb),.10);color:var(--purple)">Video</span>
+          <span class="font-mono text-[9px]" style="color:var(--faint)">[X phút]</span>
+        </div>
+        <p class="font-body font-semibold text-sm text-ink leading-tight">[Tiêu đề nội dung 1 — liên quan chủ đề webinar]</p>
+      </div>
+
+      <svg class="shrink-0 transition-transform group-hover:translate-x-0.5" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M3 7h8M8 4l3 3-3 3" stroke="var(--subtle)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <!-- [OPTIONAL: Content item 2] — uncomment nếu muốn 2 items
+    <a href="[CONTENT_URL_2]" target="_blank"
+      class="flex items-center gap-4 rounded-xl p-4 transition-colors group"
+      style="background:var(--surface);border:1px solid var(--rim);text-decoration:none">
+      <!-- Replace: <img src="thumb-2.jpg" class="slot-img" alt="[Tiêu đề]"> -->
+      <div class="media-slot relative shrink-0 rounded-lg overflow-hidden" style="width:72px;height:54px;background:var(--surface);border:2px dashed var(--faint)" data-role="CONTEXT">
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+          <span style="font-size:2rem;opacity:0.35">📸</span>
+          <p class="font-body text-xs font-medium" style="color:var(--subtle)">[Ảnh thumbnail]</p>
+          <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+        </div>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded"
+            style="background:rgba(var(--accent-rgb),.08);color:var(--accent)">Bài viết</span>
+          <span class="font-mono text-[9px]" style="color:var(--faint)">[X phút đọc]</span>
+        </div>
+        <p class="font-body font-semibold text-sm text-ink leading-tight">[Tiêu đề nội dung 2]</p>
+      </div>
+      <svg class="shrink-0 transition-transform group-hover:translate-x-0.5" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M3 7h8M8 4l3 3-3 3" stroke="var(--subtle)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    END [OPTIONAL] -->
+
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<!--
+  ty-pre-sell.html — Social proof / case studies while they wait (booking call)
+  Layout:     centered · max-w-xl · 1 featured result + 2 compact testimonials
+  Slots:      [RESULT] 4:3 — screenshot / before-after / metric graph
+              [PERSON] 1:1 circular — ảnh mặt người testimonial
+  Elements:   Label · Featured case study card · 2 compact testimonials
+  Rule:       KHÔNG pitch offer trực tiếp — chỉ build authority và reduce anxiety
+              Proof phải specific: số liệu, timeline, profile người thật
+  Dùng cho:   Booking call thank you — section cuối, trước footer
+-->
+<div class="max-w-xl mx-auto px-6 pb-12">
+
+  <p class="font-mono text-[11px] uppercase tracking-wider text-center mb-5" style="color:var(--subtle);letter-spacing:.12em">
+    Trong khi chờ buổi call — kết quả từ khách hàng
+  </p>
+
+  <!-- Featured case study -->
+  <div class="rounded-xl overflow-hidden mb-4" style="background:var(--surface);border:1px solid var(--rim-strong)">
+
+    <!-- Replace: <img src="case-study-result.jpg" class="slot-img" alt="Kết quả"> -->
+    <div class="relative w-full aspect-video overflow-hidden media-slot" data-role="RESULT" style="background:var(--surface);border:2px dashed var(--faint)">
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+        <span style="font-size:2rem;opacity:0.35">📸</span>
+        <p class="font-body text-xs font-medium" style="color:var(--subtle)">[Case study · screenshot / chart · 16:9]</p>
+        <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+      </div>
+    </div>
+
+    <div class="p-4">
+      <p class="font-mono text-[10px] uppercase tracking-wider mb-1" style="color:var(--accent)">Case study</p>
+      <p class="font-body font-semibold text-sm text-ink mb-1">[Tên / profile khách hàng] — [Kết quả cụ thể]</p>
+      <p class="font-body text-xs leading-relaxed" style="color:var(--body)">[2–3 câu mô tả hành trình và kết quả. Cụ thể: số liệu, timeline, điểm bắt đầu.]</p>
+    </div>
+  </div>
+
+  <!-- 2 compact testimonials -->
+  <div class="grid sm:grid-cols-2 gap-3">
+
+    <div class="rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="flex items-center gap-2.5 mb-3">
+        <!-- Replace: <img src="person.jpg" class="slot-img" style="border-radius:9999px" alt=""> -->
+        <div class="media-slot shrink-0 rounded-full" style="width:36px;height:36px;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;" data-role="PERSON">
+          <span style="font-size:1.5rem;opacity:0.4">👤</span>
+        </div>
+        <div>
+          <p class="font-body text-xs font-semibold text-ink">[Tên]</p>
+          <p class="font-mono text-[9px]" style="color:var(--subtle)">[Ngành / chức vụ]</p>
+        </div>
+      </div>
+      <p class="font-body text-xs leading-relaxed mb-2" style="color:var(--body)">
+        "[Quote ngắn 1–2 câu — kết quả cụ thể]"
+      </p>
+      <span class="font-mono text-[9px] px-2 py-0.5 rounded-full"
+        style="background:rgba(var(--accent-rgb),.08);color:var(--accent)">[Kết quả chính]</span>
+    </div>
+
+    <div class="rounded-xl p-4" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="flex items-center gap-2.5 mb-3">
+        <div class="media-slot shrink-0 rounded-full" style="width:36px;height:36px" data-role="PERSON">
+          <div class="slot-placeholder rounded-full">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M2 13c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <p class="font-body text-xs font-semibold text-ink">[Tên]</p>
+          <p class="font-mono text-[9px]" style="color:var(--subtle)">[Ngành / chức vụ]</p>
+        </div>
+      </div>
+      <p class="font-body text-xs leading-relaxed mb-2" style="color:var(--body)">
+        "[Quote ngắn 1–2 câu — kết quả cụ thể]"
+      </p>
+      <span class="font-mono text-[9px] px-2 py-0.5 rounded-full"
+        style="background:rgba(var(--accent-rgb),.08);color:var(--accent)">[Kết quả chính]</span>
+    </div>
+
+  </div>
+</div>

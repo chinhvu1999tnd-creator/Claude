@@ -1,0 +1,471 @@
+<!--
+  PATTERN: Testimonials / Transformations — Energy Sport Theme
+  BEFORE/AFTER stat panels, large Barlow Condensed numbers,
+  short quote, name + goal badge. Dark cards with red left border on featured.
+-->
+<style>
+  :root {
+    --accent:      #ff2d2d;
+    --yellow:      #f5c500;
+    --bg:          #0e0e0e;
+    --surface:     #141414;
+    --raised:      #1e1e1e;
+    --ink:         #ffffff;
+    --body:        #cccccc;
+    --subtle:      #888888;
+    --faint:       #2a2a2a;
+    --rim:         rgba(255,45,45,0.25);
+    --font-display:'Barlow Condensed', sans-serif;
+    --font-body:   'Barlow', sans-serif;
+    --font-label:  'Barlow Semi Condensed', sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .testimonials-section {
+    background-color: var(--surface);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+    padding: 80px 40px;
+  }
+
+  .testimonials-section__header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .testimonials-section__eyebrow {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .testimonials-section__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .testimonials-section__title span { color: var(--accent); }
+
+  /* ── CARDS GRID ─────────────────────────────── */
+  .testimonials-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .transformation-card {
+    background: var(--raised);
+    border-radius: 6px;
+    border: 1px solid var(--faint);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.015) 0px,
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  }
+
+  .transformation-card:hover { transform: translateY(-4px); }
+
+  .transformation-card--featured {
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 0 0 1px var(--rim), 0 12px 40px rgba(255,45,45,0.12);
+  }
+
+  /* ── BEFORE/AFTER PHOTO AREA ────────────────── */
+  .tf-photos {
+    display: flex;
+    height: 200px;
+    position: relative;
+  }
+
+  .tf-photo {
+    flex: 1;
+    background: var(--grey, #2a2a2a);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    background-image: repeating-linear-gradient(-45deg,
+      rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px,
+      transparent 1px, transparent 8px);
+    overflow: hidden;
+  }
+
+  .tf-photo--before {
+    filter: grayscale(60%);
+    border-right: 1px solid var(--bg);
+  }
+
+  .tf-photo--after {
+    background-image:
+      radial-gradient(circle at 50% 30%, rgba(255,45,45,0.06) 0%, transparent 70%),
+      repeating-linear-gradient(-45deg,
+        rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px,
+        transparent 1px, transparent 8px);
+  }
+
+  .tf-photo-label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 3px 10px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  .tf-photo--before .tf-photo-label { color: var(--subtle); }
+  .tf-photo--after  .tf-photo-label { color: var(--accent); }
+
+  /* Arrow divider */
+  .tf-divider {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 0 16px rgba(255,45,45,0.5);
+  }
+
+  .tf-divider svg {
+    width: 14px;
+    height: 14px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: square;
+  }
+
+  /* ── STAT ROW ───────────────────────────────── */
+  .tf-stats {
+    display: flex;
+    align-items: stretch;
+    border-top: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .tf-stat {
+    flex: 1;
+    padding: 14px 16px;
+    text-align: center;
+    position: relative;
+  }
+
+  .tf-stat + .tf-stat { border-left: 1px solid var(--faint); }
+
+  .tf-stat__label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subtle);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .tf-stat__value {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .tf-stat--before .tf-stat__value { color: var(--subtle); }
+  .tf-stat--after  .tf-stat__value { color: var(--ink); }
+
+  .tf-stat--delta .tf-stat__value {
+    color: var(--accent);
+    font-size: 1.4rem;
+  }
+
+  /* ── QUOTE BODY ─────────────────────────────── */
+  .tf-body { padding: 20px 20px 16px; }
+
+  .tf-quote {
+    font-family: var(--font-body);
+    font-size: 0.925rem;
+    color: var(--body);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .tf-quote::before {
+    content: '"';
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--accent);
+    opacity: 0.4;
+    line-height: 1;
+    position: absolute;
+    top: -8px;
+    left: -4px;
+  }
+
+  .tf-quote p { text-indent: 1.2rem; }
+
+  /* ── FOOTER: Name + badge ───────────────────── */
+  .tf-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid var(--faint);
+  }
+
+  .tf-person { display: flex; flex-direction: column; gap: 2px; }
+
+  .tf-name {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+
+  .tf-meta {
+    font-family: var(--font-body);
+    font-size: 0.775rem;
+    color: var(--subtle);
+  }
+
+  .tf-badge {
+    background: rgba(245,197,0,0.12);
+    border: 1px solid rgba(245,197,0,0.3);
+    color: var(--yellow);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── AGGREGATE SOCIAL PROOF ─────────────────── */
+  .tf-aggregate {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .tf-aggregate__number {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .tf-aggregate__number span { color: var(--accent); }
+
+  .tf-aggregate__label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--subtle);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 900px) {
+    .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  }
+</style>
+
+<section class="testimonials-section" id="testimonials">
+  <div class="testimonials-section__header">
+    <span class="testimonials-section__eyebrow">Real Members · Real Results</span>
+    <h2 class="testimonials-section__title">THEY DID IT.<br><span>SO CAN YOU.</span></h2>
+  </div>
+
+  <div class="testimonials-grid">
+
+    <!-- Card 1 (Featured) -->
+    <div class="transformation-card transformation-card--featured">
+      <div class="tf-photos">
+        <div class="tf-photo tf-photo--before">
+          <!-- <img src="before-1.jpg" alt="Before"> -->
+          <span class="tf-photo-label">BEFORE</span>
+        </div>
+        <div class="tf-divider">
+          <svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+        </div>
+        <div class="tf-photo tf-photo--after">
+          <!-- <img src="after-1.jpg" alt="After"> -->
+          <span class="tf-photo-label">AFTER</span>
+        </div>
+      </div>
+
+      <div class="tf-stats">
+        <div class="tf-stat tf-stat--before">
+          <span class="tf-stat__label">Before</span>
+          <span class="tf-stat__value">92 KG</span>
+        </div>
+        <div class="tf-stat tf-stat--after">
+          <span class="tf-stat__label">After</span>
+          <span class="tf-stat__value">76 KG</span>
+        </div>
+        <div class="tf-stat tf-stat--delta">
+          <span class="tf-stat__label">Lost</span>
+          <span class="tf-stat__value">−16 KG</span>
+        </div>
+      </div>
+
+      <div class="tf-body">
+        <div class="tf-quote">
+          <p>I never thought I'd actually see abs. After 90 days with Coach Nam, I lost 16kg and hit every goal I set. This place changed my life.</p>
+        </div>
+      </div>
+
+      <div class="tf-footer">
+        <div class="tf-person">
+          <span class="tf-name">Minh Tuan, 34</span>
+          <span class="tf-meta">90-Day Transformation Program</span>
+        </div>
+        <div class="tf-badge">GOAL ACHIEVED</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="transformation-card">
+      <div class="tf-photos">
+        <div class="tf-photo tf-photo--before">
+          <span class="tf-photo-label">BEFORE</span>
+        </div>
+        <div class="tf-divider">
+          <svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+        </div>
+        <div class="tf-photo tf-photo--after">
+          <span class="tf-photo-label">AFTER</span>
+        </div>
+      </div>
+
+      <div class="tf-stats">
+        <div class="tf-stat tf-stat--before">
+          <span class="tf-stat__label">Before</span>
+          <span class="tf-stat__value">58 KG</span>
+        </div>
+        <div class="tf-stat tf-stat--after">
+          <span class="tf-stat__label">After</span>
+          <span class="tf-stat__value">66 KG</span>
+        </div>
+        <div class="tf-stat tf-stat--delta">
+          <span class="tf-stat__label">Gained</span>
+          <span class="tf-stat__value">+8 KG</span>
+        </div>
+      </div>
+
+      <div class="tf-body">
+        <div class="tf-quote">
+          <p>Skinny my whole life. In 6 months I added 8kg of muscle and doubled my bench press. The coaches here know what they're doing.</p>
+        </div>
+      </div>
+
+      <div class="tf-footer">
+        <div class="tf-person">
+          <span class="tf-name">Hoang Long, 28</span>
+          <span class="tf-meta">Muscle Building Program</span>
+        </div>
+        <div class="tf-badge">+12 KG BENCH</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="transformation-card">
+      <div class="tf-photos">
+        <div class="tf-photo tf-photo--before">
+          <span class="tf-photo-label">BEFORE</span>
+        </div>
+        <div class="tf-divider">
+          <svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+        </div>
+        <div class="tf-photo tf-photo--after">
+          <span class="tf-photo-label">AFTER</span>
+        </div>
+      </div>
+
+      <div class="tf-stats">
+        <div class="tf-stat tf-stat--before">
+          <span class="tf-stat__label">Body Fat</span>
+          <span class="tf-stat__value">31%</span>
+        </div>
+        <div class="tf-stat tf-stat--after">
+          <span class="tf-stat__label">Body Fat</span>
+          <span class="tf-stat__value">19%</span>
+        </div>
+        <div class="tf-stat tf-stat--delta">
+          <span class="tf-stat__label">Reduced</span>
+          <span class="tf-stat__value">−12%</span>
+        </div>
+      </div>
+
+      <div class="tf-body">
+        <div class="tf-quote">
+          <p>As a mom of two, I thought my fit days were over. The evening classes fit my schedule and the coaches never let me quit. So grateful.</p>
+        </div>
+      </div>
+
+      <div class="tf-footer">
+        <div class="tf-person">
+          <span class="tf-name">Thu Ha, 38</span>
+          <span class="tf-meta">Cardio + Strength Program</span>
+        </div>
+        <div class="tf-badge">BODY RECOMP</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tf-aggregate">
+    <div class="tf-aggregate__number">840<span>+</span></div>
+    <div class="tf-aggregate__label">Transformations tracked · Average 8.4kg lost in 90 days</div>
+  </div>
+</section>

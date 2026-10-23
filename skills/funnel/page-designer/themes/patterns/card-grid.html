@@ -1,0 +1,178 @@
+<!--
+  PATTERN: Card Grid
+  Theme: dark-bold-neon · Tailwind
+  Use: Problems (2-col), Benefits (3-col), Features
+  Sig: glass card + icon wrap (accent/danger) + SVG icon
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Section label + H2 headline
+  · Grid of cards: mỗi card có SVG icon wrap (36-40px) + title + description
+  · Card variant: accent (benefits) hoặc danger (problems)
+  Elements tùy chọn:
+  · Section subheadline
+  · CTA bên dưới grid
+  DEFAULT LAYOUT (Mode A):
+  2-col (problems) hoặc 3-col (benefits) · glass cards · rounded-2xl
+  ─────────────────────────────────────────────────────────────────────
+-->
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT A: Glass Cards Grid (DEFAULT)
+     Dùng khi: Problems (2-col danger) · Benefits (3-col accent) · dark themes
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<!-- 2-col variant (problems) -->
+<section class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-12">
+      <p class="section-label">[SECTION LABEL]</p>
+      <h2 class="font-display font-black text-ink tracking-tight mb-3"
+          style="font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.03em;">
+        [SECTION HEADING]
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+      <!-- Card: Danger variant (problems) -->
+      <div class="glass rounded-2xl p-5 flex gap-4 items-start reveal hover:border-rim-strong transition-all duration-250">
+        <div class="w-9 h-9 min-w-9 rounded-xl flex items-center justify-center flex-shrink-0"
+             style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.20);">
+          <!-- SVG icon 16×16 stroke="#ef4444" -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round">[ICON PATH]</svg>
+        </div>
+        <div>
+          <p class="font-display font-bold text-ink text-sm mb-1">[CARD TITLE]</p>
+          <p class="text-subtle text-xs leading-relaxed">[CARD DESCRIPTION]</p>
+        </div>
+      </div>
+
+      <!-- Card: Accent variant (benefits) -->
+      <div class="glass rounded-2xl p-5 flex gap-4 items-start reveal hover:border-accent-dim transition-all duration-250">
+        <div class="w-9 h-9 min-w-9 rounded-xl flex items-center justify-center flex-shrink-0"
+             style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.20);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B6FF00" stroke-width="1.8" stroke-linecap="round">[ICON PATH]</svg>
+        </div>
+        <div>
+          <p class="font-display font-bold text-ink text-sm mb-1">[CARD TITLE]</p>
+          <p class="text-subtle text-xs leading-relaxed">[CARD DESCRIPTION]</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3-col variant (benefits) — replace grid class with: grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 -->
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT B: Numbered List Rows
+     Dùng khi: signal theme · editorial · process steps · khi muốn numbered sequence
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6" style="background:var(--bg);">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="mb-10 reveal">
+      <p class="section-label">[SECTION LABEL]</p>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.03em;">[SECTION HEADING]</h2>
+    </div>
+
+    <div class="space-y-0">
+
+      <div class="flex gap-8 py-7 items-start reveal" style="border-bottom:1px solid var(--faint);">
+        <span class="font-mono font-black leading-none flex-shrink-0 w-10 pt-1" style="font-size:2.25rem;color:rgba(var(--accent-rgb),.22);">01</span>
+        <div>
+          <h3 class="font-display font-bold text-ink text-base mb-1">[CARD TITLE]</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--subtle)">[DESCRIPTION]</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-7 items-start reveal" style="border-bottom:1px solid var(--faint);transition-delay:.05s;">
+        <span class="font-mono font-black leading-none flex-shrink-0 w-10 pt-1" style="font-size:2.25rem;color:rgba(var(--accent-rgb),.22);">02</span>
+        <div>
+          <h3 class="font-display font-bold text-ink text-base mb-1">[CARD TITLE]</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--subtle)">[DESCRIPTION]</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-7 items-start reveal" style="border-bottom:1px solid var(--faint);transition-delay:.10s;">
+        <span class="font-mono font-black leading-none flex-shrink-0 w-10 pt-1" style="font-size:2.25rem;color:rgba(var(--accent-rgb),.22);">03</span>
+        <div>
+          <h3 class="font-display font-bold text-ink text-base mb-1">[CARD TITLE]</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--subtle)">[DESCRIPTION]</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-7 items-start reveal" style="transition-delay:.15s;">
+        <span class="font-mono font-black leading-none flex-shrink-0 w-10 pt-1" style="font-size:2.25rem;color:rgba(var(--accent-rgb),.22);">04</span>
+        <div>
+          <h3 class="font-display font-bold text-ink text-base mb-1">[CARD TITLE]</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--subtle)">[DESCRIPTION]</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT C: Compact Horizontal Icon-Text Rows (Gap Grid)
+     Dùng khi: Features list · warm themes · khi có nhiều items (6-8) · compact feel
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6" style="background:var(--surface);">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-10 reveal">
+      <p class="section-label">[SECTION LABEL]</p>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.03em;">[SECTION HEADING]</h2>
+    </div>
+
+    <!-- 1px gap between cells creates grid line effect -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-px" style="background:var(--faint);">
+
+      <div class="flex items-start gap-4 p-5 reveal" style="background:var(--bg);">
+        <div class="w-9 h-9 min-w-9 flex items-center justify-center flex-shrink-0" style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.20);border-radius:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <p class="font-display font-bold text-ink text-sm mb-0.5">[TITLE 1]</p>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">[DESC 1]</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4 p-5 reveal" style="background:var(--bg);transition-delay:.04s;">
+        <div class="w-9 h-9 min-w-9 flex items-center justify-center flex-shrink-0" style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.20);border-radius:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <p class="font-display font-bold text-ink text-sm mb-0.5">[TITLE 2]</p>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">[DESC 2]</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4 p-5 reveal" style="background:var(--bg);transition-delay:.08s;">
+        <div class="w-9 h-9 min-w-9 flex items-center justify-center flex-shrink-0" style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.20);border-radius:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <p class="font-display font-bold text-ink text-sm mb-0.5">[TITLE 3]</p>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">[DESC 3]</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4 p-5 reveal" style="background:var(--bg);transition-delay:.12s;">
+        <div class="w-9 h-9 min-w-9 flex items-center justify-center flex-shrink-0" style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.20);border-radius:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <p class="font-display font-bold text-ink text-sm mb-0.5">[TITLE 4]</p>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">[DESC 4]</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- Note: repeat cells to fill the grid. Each cell: same pattern as above. -->
+
+  </div>
+</section>

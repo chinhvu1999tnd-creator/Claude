@@ -1,0 +1,96 @@
+<!--
+  faq.html — FAQ accordion section
+  Layout:     single col · max-w-2xl · stacked Q&A items
+  Background: var(--bg)
+  Elements:   label + H2 + accordion items (question + expand icon + answer)
+  Visuals:    accent icon on expand state · smooth height transition
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Section label + H2
+  · 4-6 accordion items: question text + chevron icon + answer paragraph
+  · JS toggle (one-open-at-a-time)
+  Elements tùy chọn:
+  · CTA sau danh sách FAQ
+  DEFAULT LAYOUT (Mode A):
+  Single col · max-w-2xl · stacked items · border-bottom dividers
+  ─────────────────────────────────────────────────────────────────────
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-2xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">FAQ</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Câu hỏi <span style="color:var(--accent)">thường gặp</span></h2>
+    </div>
+
+    <div class="space-y-2 reveal" id="faq-list">
+
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
+          <span class="text-ink font-medium text-sm">Câu hỏi thường gặp số 1?</span>
+          <svg class="w-4 h-4 shrink-0 transition-transform duration-200 text-subtle" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-5 pb-5" style="display:none">
+          <p class="text-subtle text-sm leading-relaxed">Câu trả lời đầy đủ và cụ thể. Giải quyết lo lắng thực sự của khách hàng. 2–4 câu. Không quá ngắn, không quá dài.</p>
+        </div>
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
+          <span class="text-ink font-medium text-sm">Tôi không có kinh nghiệm thì có học được không?</span>
+          <svg class="w-4 h-4 shrink-0 transition-transform duration-200 text-subtle" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-5 pb-5" style="display:none">
+          <p class="text-subtle text-sm leading-relaxed">Câu trả lời khẳng định. Giải thích tại sao người mới vẫn làm được. Đề cập đến cấu trúc từng bước của khóa học.</p>
+        </div>
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
+          <span class="text-ink font-medium text-sm">Tôi có được hỗ trợ sau khi mua không?</span>
+          <svg class="w-4 h-4 shrink-0 transition-transform duration-200 text-subtle" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-5 pb-5" style="display:none">
+          <p class="text-subtle text-sm leading-relaxed">Mô tả cụ thể các hỗ trợ có sẵn: group, Q&A, email support. Thời gian phản hồi.</p>
+        </div>
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
+          <span class="text-ink font-medium text-sm">Chính sách hoàn tiền như thế nào?</span>
+          <svg class="w-4 h-4 shrink-0 transition-transform duration-200 text-subtle" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-5 pb-5" style="display:none">
+          <p class="text-subtle text-sm leading-relaxed">Hoàn tiền 100% trong 7 ngày nếu không hài lòng. Chỉ cần gửi email, xử lý trong 24h.</p>
+        </div>
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08)">
+        <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
+          <span class="text-ink font-medium text-sm">Học trong bao lâu thì thấy kết quả?</span>
+          <svg class="w-4 h-4 shrink-0 transition-transform duration-200 text-subtle" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-5 pb-5" style="display:none">
+          <p class="text-subtle text-sm leading-relaxed">Đặt kỳ vọng thực tế. Ví dụ: "Phần lớn học viên thấy kết quả đầu tiên trong tuần 2–3 nếu thực hành đúng theo hướng dẫn."</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleFAQ(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('svg');
+  const isOpen = answer.style.display !== 'none';
+  // Close all
+  document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+  document.querySelectorAll('#faq-list button svg').forEach(i => i.style.transform = '');
+  // Open clicked if was closed
+  if (!isOpen) {
+    answer.style.display = 'block';
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+</script>

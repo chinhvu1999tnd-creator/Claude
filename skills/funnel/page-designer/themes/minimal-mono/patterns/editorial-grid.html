@@ -1,0 +1,277 @@
+<!--
+  PATTERN: editorial-grid
+  THEME:   minimal-mono
+  USAGE:   Asymmetric editorial photo/content grid.
+           4 content slots: tall portrait + short landscape + text block + small square.
+           Fashion editorial layout. All media gets greyscale treatment.
+           Replace placeholder divs with <img> tags or background images.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  .mm-editorial-grid {
+    background: #f8f8f8;
+    padding: 7rem 4rem;
+  }
+
+  .mm-editorial-grid__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .mm-editorial-grid__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .mm-editorial-grid__title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: #111111;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .mm-editorial-grid__view-all {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #111111;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    white-space: nowrap;
+  }
+
+  /* Main grid — intentionally asymmetric */
+  .mm-editorial-grid__layout {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1fr;
+    grid-template-rows: 420px 280px;
+    gap: 1px; /* thin editorial gap — almost touching */
+    background: #e0e0e0; /* gap color */
+  }
+
+  /* Slot 1: Tall portrait — spans 2 rows */
+  .mm-editorial-slot--tall {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background: #d0d0d0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Slot 2: Short landscape top */
+  .mm-editorial-slot--wide {
+    grid-column: 2;
+    grid-row: 1;
+    background: #c8c8c8;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Slot 3: Text block — bottom middle */
+  .mm-editorial-slot--text {
+    grid-column: 2;
+    grid-row: 2;
+    background: #ffffff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* Slot 4: Small square — right column, spans both rows */
+  .mm-editorial-slot--square {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    background: #bbbbbb;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Media placeholder — repeating grid texture */
+  .mm-editorial-slot__placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.06) 39px, rgba(0,0,0,0.06) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.06) 39px, rgba(0,0,0,0.06) 40px);
+  }
+
+  /* Real image treatment */
+  .mm-editorial-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(1.1);
+    display: block;
+    transition: filter 0.4s ease;
+  }
+
+  .mm-editorial-slot:hover img {
+    filter: grayscale(100%) contrast(1.2) brightness(0.9);
+  }
+
+  /* Slot meta overlay */
+  .mm-editorial-slot__meta {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .mm-editorial-slot__tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: rgba(17,17,17,0.65);
+    padding: 0.3rem 0.6rem;
+    backdrop-filter: blur(2px);
+  }
+
+  /* Text slot content */
+  .mm-editorial-slot__project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #111111;
+    line-height: 1.2;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .mm-editorial-slot__project-desc {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: #555555;
+    line-height: 1.55;
+    margin: 0;
+    flex: 1;
+  }
+
+  .mm-editorial-slot__project-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #111111;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: 1.5rem;
+    align-self: flex-start;
+  }
+
+  @media (max-width: 900px) {
+    .mm-editorial-grid__layout {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 260px 200px 200px;
+    }
+    .mm-editorial-slot--tall {
+      grid-column: 1;
+      grid-row: 1 / 3;
+    }
+    .mm-editorial-slot--wide {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .mm-editorial-slot--text {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .mm-editorial-slot--square {
+      grid-column: 1 / 3;
+      grid-row: 3;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .mm-editorial-grid {
+      padding: 4rem 1.5rem;
+    }
+    .mm-editorial-grid__layout {
+      grid-template-columns: 1fr;
+      grid-template-rows: 280px 200px auto 220px;
+      gap: 1px;
+    }
+    .mm-editorial-slot--tall   { grid-column: 1; grid-row: 1; }
+    .mm-editorial-slot--wide   { grid-column: 1; grid-row: 2; }
+    .mm-editorial-slot--text   { grid-column: 1; grid-row: 3; }
+    .mm-editorial-slot--square { grid-column: 1; grid-row: 4; }
+  }
+</style>
+
+<section class="mm-editorial-grid">
+  <div class="mm-editorial-grid__header">
+    <div>
+      <p class="mm-editorial-grid__eyebrow">Selected Work</p>
+      <h2 class="mm-editorial-grid__title">Recent Projects</h2>
+    </div>
+    <a href="#work" class="mm-editorial-grid__view-all">View All Work</a>
+  </div>
+
+  <div class="mm-editorial-grid__layout">
+
+    <!-- Slot 1: Tall portrait (hero image) -->
+    <div class="mm-editorial-slot mm-editorial-slot--tall">
+      <!--
+        Replace with: <img src="/work/project-1.jpg" alt="Studio Mây brand identity">
+      -->
+      <div class="mm-editorial-slot__placeholder"></div>
+      <div class="mm-editorial-slot__meta">
+        <span class="mm-editorial-slot__tag">Brand Identity</span>
+      </div>
+    </div>
+
+    <!-- Slot 2: Short landscape (top right area) -->
+    <div class="mm-editorial-slot mm-editorial-slot--wide">
+      <!--
+        Replace with: <img src="/work/project-2.jpg" alt="Atelier Marcus visual system">
+      -->
+      <div class="mm-editorial-slot__placeholder"></div>
+      <div class="mm-editorial-slot__meta">
+        <span class="mm-editorial-slot__tag">Visual System</span>
+      </div>
+    </div>
+
+    <!-- Slot 3: Text block (project description) -->
+    <div class="mm-editorial-slot mm-editorial-slot--text">
+      <div>
+        <h3 class="mm-editorial-slot__project-title">Studio Mây<br>Brand Identity</h3>
+        <p class="mm-editorial-slot__project-desc">
+          A complete brand overhaul for Saigon-based lifestyle studio — from positioning to visual identity and digital presence.
+        </p>
+      </div>
+      <a href="#case-study" class="mm-editorial-slot__project-link">Read Case Study &rarr;</a>
+    </div>
+
+    <!-- Slot 4: Small square (right column) -->
+    <div class="mm-editorial-slot mm-editorial-slot--square">
+      <!--
+        Replace with: <img src="/work/project-3.jpg" alt="Personal brand campaign">
+      -->
+      <div class="mm-editorial-slot__placeholder"></div>
+      <div class="mm-editorial-slot__meta">
+        <span class="mm-editorial-slot__tag">Campaign</span>
+      </div>
+    </div>
+
+  </div>
+</section>

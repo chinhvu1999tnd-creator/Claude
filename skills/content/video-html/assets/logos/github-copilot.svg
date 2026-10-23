@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <rect width="240" height="240" rx="32" fill="#1a1a1a"/>
+  <g transform="translate(120 92)" fill="#ffffff"><path d="M0-36c-18 0-32 14-32 32 0 14 9 26 22 30v-10c-7-2-12-8-12-16 0-10 10-18 22-18s22 8 22 18c0 8-5 14-12 16v10c13-4 22-16 22-30 0-18-14-32-32-32zM-10 14c0 4 4 8 10 8s10-4 10-8" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/></g>
+  <text x="120" y="190" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="22" fill="#faf9f5" text-anchor="middle" letter-spacing="-0.02em">GH Copilot</text>
+</svg>

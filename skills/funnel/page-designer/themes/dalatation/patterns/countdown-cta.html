@@ -1,0 +1,202 @@
+<!-- PATTERN: countdown-cta | Theme: Dalatation | OVERRIDE — Availability calendar (NOT a countdown timer). Shows next 14 days of cabin availability. Weekdays mostly open, weekends mostly full. -->
+
+<section class="font-body py-16 px-4" style="background:var(--surface)">
+  <div class="max-w-2xl mx-auto">
+
+    <!-- Section label + heading -->
+    <div class="text-center mb-8">
+      <span class="font-mono text-xs uppercase tracking-widest" style="color:var(--subtle)">
+        Lịch còn phòng
+      </span>
+      <h2 class="font-display text-3xl md:text-4xl italic font-semibold mt-2" style="color:var(--ink)">
+        Chọn ngày phù hợp
+      </h2>
+    </div>
+
+    <!-- Availability grid: 2 rows × 7 columns = 14 days -->
+    <!--
+      Status legend:
+        available  → pine green dot + green text "Trống"
+        full       → red dot dimmed + subtle text "Đầy"
+        few        → amber dot + amber text "Ít phòng"
+
+      Realistic pattern (today = Monday, May 12 2026):
+        Mon 12 – available   (today)
+        Tue 13 – available
+        Wed 14 – available
+        Thu 15 – available
+        Fri 16 – few         (weekend approaching)
+        Sat 17 – full
+        Sun 18 – full
+        Mon 19 – available
+        Tue 20 – available
+        Wed 21 – available
+        Thu 22 – available
+        Fri 23 – few
+        Sat 24 – full
+        Sun 25 – full
+    -->
+    <div class="grid grid-cols-7 gap-2 mb-6">
+
+      <!-- Day 1 — Mon 12 (Hôm nay) — available -->
+      <div class="relative flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="absolute -top-2 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded-full" style="background:var(--accent);color:#fff">Hôm nay</span>
+        <span class="font-body font-semibold text-sm mt-2" style="color:var(--ink)">12</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T2</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 2 — Tue 13 — available -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">13</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T3</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 3 — Wed 14 — available -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">14</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T4</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 4 — Thu 15 — available -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">15</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T5</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 5 — Fri 16 — few -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">16</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T6</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span>
+          <span class="font-body text-[10px]" style="color:var(--amber)">Ít phòng</span>
+        </span>
+      </div>
+
+      <!-- Day 6 — Sat 17 — full -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center opacity-50" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--body)">17</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T7</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:#c0392b;opacity:0.7"></span>
+          <span class="font-body text-[10px]" style="color:var(--subtle)">Đầy</span>
+        </span>
+      </div>
+
+      <!-- Day 7 — Sun 18 — full -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center opacity-50" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--body)">18</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">CN</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:#c0392b;opacity:0.7"></span>
+          <span class="font-body text-[10px]" style="color:var(--subtle)">Đầy</span>
+        </span>
+      </div>
+
+      <!-- Day 8 — Mon 19 — available -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">19</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T2</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 9 — Tue 20 — available -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">20</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T3</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 10 — Wed 21 — available -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">21</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T4</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 11 — Thu 22 — available -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">22</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T5</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+          <span class="font-body text-[10px]" style="color:var(--accent)">Trống</span>
+        </span>
+      </div>
+
+      <!-- Day 12 — Fri 23 — few -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--ink)">23</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T6</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span>
+          <span class="font-body text-[10px]" style="color:var(--amber)">Ít phòng</span>
+        </span>
+      </div>
+
+      <!-- Day 13 — Sat 24 — full -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center opacity-50" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--body)">24</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">T7</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:#c0392b;opacity:0.7"></span>
+          <span class="font-body text-[10px]" style="color:var(--subtle)">Đầy</span>
+        </span>
+      </div>
+
+      <!-- Day 14 — Sun 25 — full -->
+      <div class="flex flex-col items-center justify-center gap-1 py-3 px-1 rounded-lg text-center opacity-50" style="background:var(--raised);border:1px solid var(--faint)">
+        <span class="font-body font-semibold text-sm" style="color:var(--body)">25</span>
+        <span class="font-body text-[9px] uppercase tracking-wide" style="color:var(--subtle)">CN</span>
+        <span class="flex items-center gap-1 mt-0.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background:#c0392b;opacity:0.7"></span>
+          <span class="font-body text-[10px]" style="color:var(--subtle)">Đầy</span>
+        </span>
+      </div>
+
+    </div>
+    <!-- /grid -->
+
+    <!-- CTA Button -->
+    <div class="flex flex-col items-center gap-3">
+      <a
+        href="[BOOKING_URL]"
+        class="inline-block font-body font-semibold text-base px-8 py-4 rounded-lg transition-opacity hover:opacity-90"
+        style="background:var(--accent);color:#ffffff;text-decoration:none"
+      >
+        Đặt phòng cho ngày này →
+      </a>
+
+      <!-- Real-time note -->
+      <p class="font-mono text-xs text-center" style="color:var(--subtle)">
+        Cập nhật theo thời gian thực · <a href="[BOOKING_URL]" style="color:var(--mist);text-decoration:underline;text-underline-offset:3px">[BOOKING_URL]</a>
+      </p>
+    </div>
+
+  </div>
+</section>

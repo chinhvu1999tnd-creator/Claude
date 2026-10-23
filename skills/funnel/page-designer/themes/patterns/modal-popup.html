@@ -1,0 +1,375 @@
+<!--
+  PATTERN: Modal Popup
+  Theme: Shared — works với mọi theme qua CSS variables
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Trigger type — chọn 1: exit-intent | timed | scroll
+  · Headline — 1 câu, outcome rõ ràng
+  · Body copy — 1-2 câu max, urgency hoặc value prop
+  · Primary CTA — 1 action duy nhất
+  · Close button (X)
+  Elements tùy chọn:
+  · Email input (lead capture)
+  · Countdown timer (urgency)
+  · Image / icon
+  · Secondary link ("Không cảm ơn, bạn bỏ qua")
+  Xưng hô: bạn/tôi — KHÔNG dùng anh/chị
+  Frequency control: localStorage — chỉ show 1 lần / 3 ngày
+  Accessibility: ESC to close · click overlay to close · focus trap
+  ─────────────────────────────────────────────────────────────────────
+-->
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT A: Exit-Intent — Lead Capture
+     Dùng khi: visitor có dấu hiệu rời trang · cần capture email trước khi mất
+     Trigger: mouseleave document (chuột lên trên thanh browser)
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<!-- Overlay -->
+<div id="popup-exit"
+     role="dialog" aria-modal="true" aria-labelledby="popup-exit-title"
+     style="display:none;position:fixed;inset:0;z-index:9999;
+            background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);
+            align-items:center;justify-content:center;padding:1rem;">
+
+  <!-- Card -->
+  <div style="position:relative;background:var(--surface,#1E1E1C);border:1px solid var(--faint,rgba(255,255,255,0.08));
+              border-radius:12px;padding:2.5rem 2rem;max-width:440px;width:100%;
+              box-shadow:0 24px 80px rgba(0,0,0,0.5);">
+
+    <!-- Close -->
+    <button onclick="closePopup('popup-exit')"
+            aria-label="Đóng"
+            style="position:absolute;top:1rem;right:1rem;background:none;border:none;
+                   cursor:pointer;color:var(--subtle,#b0aea5);font-size:1.25rem;line-height:1;padding:4px;">
+      ✕
+    </button>
+
+    <!-- Icon badge -->
+    <div style="width:48px;height:48px;border-radius:50%;background:var(--accent,#B6FF00);
+                display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- Copy -->
+    <h2 id="popup-exit-title"
+        style="font-family:var(--font-display,'Inter');font-weight:800;
+               font-size:clamp(1.25rem,3vw,1.625rem);line-height:1.15;
+               color:var(--ink,#faf9f5);margin:0 0 0.75rem;letter-spacing:-0.02em;">
+      Khoan đã — bạn chưa lấy [TÊN LEAD MAGNET]
+    </h2>
+
+    <p style="font-family:var(--font-body,'Inter');font-size:0.9rem;
+              line-height:1.7;color:var(--subtle,#b0aea5);margin:0 0 1.5rem;">
+      [1-2 câu mô tả value. Ví dụ: Tôi sẽ gửi ngay cho bạn — hoàn toàn miễn phí.]
+    </p>
+
+    <!-- Email form -->
+    <form onsubmit="handlePopupSubmit(event,'popup-exit')" style="display:flex;flex-direction:column;gap:0.75rem;">
+      <input type="email" required placeholder="Email của bạn"
+             style="width:100%;padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--faint,rgba(255,255,255,0.12));
+                    background:var(--bg,#141413);color:var(--ink,#faf9f5);
+                    font-family:var(--font-body,'Inter');font-size:0.9rem;outline:none;box-sizing:border-box;">
+
+      <button type="submit"
+              style="width:100%;padding:0.875rem;border-radius:8px;border:none;cursor:pointer;
+                     background:var(--accent,#B6FF00);color:var(--cta-text,#141413);
+                     font-family:var(--font-display,'Inter');font-weight:700;font-size:0.9rem;
+                     letter-spacing:0.02em;transition:opacity 0.15s;">
+        Gửi cho tôi ngay →
+      </button>
+    </form>
+
+    <!-- Secondary dismiss -->
+    <p style="text-align:center;margin:1rem 0 0;">
+      <a href="#" onclick="closePopup('popup-exit');return false;"
+         style="font-family:var(--font-body,'Inter');font-size:0.75rem;
+                color:var(--faint,rgba(255,255,255,0.3));text-decoration:none;">
+        Không cảm ơn, tôi không cần
+      </a>
+    </p>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var POPUP_ID = 'popup-exit';
+  var STORAGE_KEY = 'popup_exit_shown';
+  var COOLDOWN_DAYS = 3;
+
+  function shouldShow() {
+    var last = localStorage.getItem(STORAGE_KEY);
+    if (!last) return true;
+    return (Date.now() - parseInt(last)) > COOLDOWN_DAYS * 86400000;
+  }
+
+  function showPopup(id) {
+    var el = document.getElementById(id);
+    if (!el || !shouldShow()) return;
+    el.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    // Focus first input
+    var inp = el.querySelector('input,button');
+    if (inp) setTimeout(function(){ inp.focus(); }, 50);
+  }
+
+  // Exit-intent trigger
+  var triggered = false;
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY <= 0 && !triggered) {
+      triggered = true;
+      showPopup(POPUP_ID);
+    }
+  });
+
+  // ESC to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePopup(POPUP_ID);
+  });
+
+  // Click overlay to close
+  var overlay = document.getElementById(POPUP_ID);
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closePopup(POPUP_ID);
+    });
+  }
+})();
+
+function closePopup(id) {
+  var el = document.getElementById(id);
+  if (el) el.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function handlePopupSubmit(e, id) {
+  e.preventDefault();
+  var email = e.target.querySelector('input[type="email"]').value;
+  // TODO: gửi email tới CRM webhook — xem skills/funnel/crm/SKILL.md
+  // fetch(CRM_WEBHOOK_URL, { method:'POST', body: JSON.stringify({ email }) })
+  closePopup(id);
+  // Optional: show thank-you message
+  alert('Cảm ơn bạn! Kiểm tra email ngay nhé.');
+}
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT B: Timed Popup — Offer / Downsell
+     Dùng khi: muốn interrupt sau khi visitor đọc đủ lâu · giới thiệu offer đặc biệt
+     Trigger: setTimeout sau DELAY_SECONDS giây (default 20s)
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<div id="popup-timed"
+     role="dialog" aria-modal="true" aria-labelledby="popup-timed-title"
+     style="display:none;position:fixed;inset:0;z-index:9999;
+            background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);
+            align-items:center;justify-content:center;padding:1rem;">
+
+  <div style="position:relative;background:var(--surface,#1E1E1C);border:1px solid var(--accent,#B6FF00);
+              border-radius:12px;padding:2.5rem 2rem;max-width:480px;width:100%;
+              box-shadow:0 0 60px rgba(182,255,0,0.12),0 24px 80px rgba(0,0,0,0.5);">
+
+    <button onclick="closePopup('popup-timed')" aria-label="Đóng"
+            style="position:absolute;top:1rem;right:1rem;background:none;border:none;
+                   cursor:pointer;color:var(--subtle,#b0aea5);font-size:1.25rem;padding:4px;">
+      ✕
+    </button>
+
+    <!-- Urgency badge -->
+    <div style="display:inline-flex;align-items:center;gap:6px;
+                background:rgba(182,255,0,0.12);border:1px solid var(--accent,#B6FF00);
+                border-radius:999px;padding:4px 12px;margin-bottom:1.25rem;">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--accent,#B6FF00);
+                   animation:pulse 1.5s infinite;display:block;flex-shrink:0;"></span>
+      <span style="font-family:var(--font-mono,'monospace');font-size:0.65rem;
+                   text-transform:uppercase;letter-spacing:0.12em;color:var(--accent,#B6FF00);">
+        Ưu đãi giới hạn
+      </span>
+    </div>
+
+    <h2 id="popup-timed-title"
+        style="font-family:var(--font-display,'Inter');font-weight:800;
+               font-size:clamp(1.375rem,3vw,1.75rem);line-height:1.1;
+               color:var(--ink,#faf9f5);margin:0 0 0.75rem;letter-spacing:-0.02em;">
+      [HEADLINE — Ưu đãi dành riêng cho bạn]
+    </h2>
+
+    <p style="font-family:var(--font-body,'Inter');font-size:0.9rem;
+              line-height:1.7;color:var(--subtle,#b0aea5);margin:0 0 1.5rem;">
+      [Body — mô tả offer ngắn gọn. Ưu đãi này chỉ có trong [X] phút.]
+    </p>
+
+    <!-- Mini countdown -->
+    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;">
+      <span style="font-family:var(--font-mono,'monospace');font-size:0.75rem;
+                   color:var(--subtle,#b0aea5);text-transform:uppercase;letter-spacing:0.1em;">
+        Còn lại:
+      </span>
+      <span id="popup-timed-countdown"
+            style="font-family:var(--font-mono,'monospace');font-weight:700;font-size:1rem;
+                   color:var(--accent,#B6FF00);">
+        10:00
+      </span>
+    </div>
+
+    <a href="#pricing" onclick="closePopup('popup-timed')"
+       style="display:block;text-align:center;padding:0.875rem;border-radius:8px;
+              background:var(--accent,#B6FF00);color:var(--cta-text,#141413);
+              font-family:var(--font-display,'Inter');font-weight:700;font-size:0.9rem;
+              letter-spacing:0.02em;text-decoration:none;">
+      [CTA — Tôi muốn ưu đãi này]
+    </a>
+
+    <p style="text-align:center;margin:1rem 0 0;">
+      <a href="#" onclick="closePopup('popup-timed');return false;"
+         style="font-family:var(--font-body,'Inter');font-size:0.75rem;
+                color:var(--faint,rgba(255,255,255,0.3));text-decoration:none;">
+        Bỏ qua ưu đãi này
+      </a>
+    </p>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var POPUP_ID    = 'popup-timed';
+  var STORAGE_KEY = 'popup_timed_shown';
+  var DELAY_SECS  = 20;       // ← điều chỉnh số giây delay
+  var COOLDOWN    = 3;        // ← ngày không show lại
+  var TIMER_MINS  = 10;       // ← đếm ngược trong popup (phút)
+
+  function shouldShow() {
+    var last = localStorage.getItem(STORAGE_KEY);
+    return !last || (Date.now() - parseInt(last)) > COOLDOWN * 86400000;
+  }
+
+  function startCountdown(secs) {
+    var el = document.getElementById(POPUP_ID + '-countdown');
+    if (!el) return;
+    var remaining = secs;
+    var t = setInterval(function() {
+      remaining--;
+      if (remaining <= 0) { clearInterval(t); closePopup(POPUP_ID); return; }
+      var m = Math.floor(remaining / 60);
+      var s = remaining % 60;
+      el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
+  }
+
+  if (shouldShow()) {
+    setTimeout(function() {
+      var el = document.getElementById(POPUP_ID);
+      if (!el) return;
+      el.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      localStorage.setItem(STORAGE_KEY, Date.now().toString());
+      startCountdown(TIMER_MINS * 60);
+    }, DELAY_SECS * 1000);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePopup(POPUP_ID);
+  });
+  var overlay = document.getElementById(POPUP_ID);
+  if (overlay) overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePopup(POPUP_ID);
+  });
+})();
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT C: Scroll-Triggered — Floating Corner Strip
+     Dùng khi: không muốn interrupt mạnh · remind nhẹ khi visitor đã đọc nhiều
+     Trigger: scroll vượt quá SCROLL_THRESHOLD% chiều cao trang
+     Design: bottom-right corner card, nhỏ gọn, không block content
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<div id="popup-scroll"
+     role="complementary" aria-label="Nhắc nhở"
+     style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:9000;
+            max-width:320px;width:calc(100% - 2rem);">
+
+  <div style="position:relative;background:var(--surface,#1E1E1C);
+              border:1px solid var(--faint,rgba(255,255,255,0.08));
+              border-left:3px solid var(--accent,#B6FF00);
+              border-radius:10px;padding:1.25rem 1rem;
+              box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+
+    <button onclick="closePopup('popup-scroll')" aria-label="Đóng"
+            style="position:absolute;top:0.75rem;right:0.75rem;background:none;border:none;
+                   cursor:pointer;color:var(--subtle,#b0aea5);font-size:1rem;padding:2px;line-height:1;">
+      ✕
+    </button>
+
+    <p style="font-family:var(--font-mono,'monospace');font-size:0.6rem;
+              text-transform:uppercase;letter-spacing:0.12em;
+              color:var(--accent,#B6FF00);margin:0 0 0.5rem;">
+      Dành cho bạn
+    </p>
+
+    <h3 style="font-family:var(--font-display,'Inter');font-weight:700;
+               font-size:1rem;line-height:1.3;
+               color:var(--ink,#faf9f5);margin:0 0 0.5rem;">
+      [HEADLINE ngắn — 1 dòng]
+    </h3>
+
+    <p style="font-family:var(--font-body,'Inter');font-size:0.8rem;
+              line-height:1.6;color:var(--subtle,#b0aea5);margin:0 0 1rem;">
+      [Body — 1 câu.]
+    </p>
+
+    <a href="#pricing"
+       onclick="closePopup('popup-scroll')"
+       style="display:block;text-align:center;padding:0.625rem 1rem;border-radius:6px;
+              background:var(--accent,#B6FF00);color:var(--cta-text,#141413);
+              font-family:var(--font-display,'Inter');font-weight:700;font-size:0.8rem;
+              letter-spacing:0.04em;text-decoration:none;">
+      [CTA →]
+    </a>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var POPUP_ID        = 'popup-scroll';
+  var STORAGE_KEY     = 'popup_scroll_shown';
+  var SCROLL_THRESHOLD = 60;  // ← % chiều cao trang để trigger (0-100)
+  var COOLDOWN        = 1;    // ← ngày không show lại
+
+  function shouldShow() {
+    var last = localStorage.getItem(STORAGE_KEY);
+    return !last || (Date.now() - parseInt(last)) > COOLDOWN * 86400000;
+  }
+
+  var triggered = false;
+  window.addEventListener('scroll', function() {
+    if (triggered || !shouldShow()) return;
+    var scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    if (scrolled >= SCROLL_THRESHOLD) {
+      triggered = true;
+      var el = document.getElementById(POPUP_ID);
+      if (el) {
+        el.style.display = 'block';
+        // Animate in
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition = 'opacity 0.3s,transform 0.3s';
+        requestAnimationFrame(function() {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+        localStorage.setItem(STORAGE_KEY, Date.now().toString());
+      }
+    }
+  });
+})();
+</script>

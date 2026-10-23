@@ -1,0 +1,127 @@
+<!-- PATTERN: announcement-bar | Soft Luxe Theme
+     Usage: Place at very top of page, above nav.
+     Variables: MESSAGE, PROMO_CODE, LINK_URL
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+  :root {
+    --accent: #c9956a; --blush: #f0c8b8; --surface: #f8f0eb;
+    --faint: #e8d5cc; --body: #6b5042; --subtle: #a89080;
+  }
+  .sl-ann {
+    position: relative;
+    background: var(--surface);
+    padding: 10px 24px;
+    text-align: center;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+  }
+  /* Thin decorative lines top and bottom */
+  .sl-ann::before,
+  .sl-ann::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--faint) 20%, var(--accent) 50%, var(--faint) 80%, transparent);
+  }
+  .sl-ann::before { top: 0; }
+  .sl-ann::after  { bottom: 0; }
+
+  .sl-ann__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .sl-ann__text {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--body);
+    letter-spacing: 0.04em;
+  }
+  .sl-ann__text strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .sl-ann__divider {
+    width: 1px;
+    height: 14px;
+    background: var(--faint);
+    display: inline-block;
+  }
+  .sl-ann__code {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    background: rgba(201,149,106,0.10);
+    border: 1px solid rgba(201,149,106,0.25);
+    border-radius: 6px;
+    padding: 2px 10px;
+  }
+  .sl-ann__link {
+    font-size: 12px;
+    color: var(--subtle);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .sl-ann__link:hover { color: var(--accent); }
+
+  /* Tiny petal SVG decorations */
+  .sl-ann__petal {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .sl-ann__petal--left  { left: 16px; }
+  .sl-ann__petal--right { right: 16px; transform: translateY(-50%) scaleX(-1); }
+
+  @media (max-width: 640px) {
+    .sl-ann__divider,
+    .sl-ann__petal { display: none; }
+    .sl-ann__text  { font-size: 12px; }
+  }
+</style>
+
+<div class="sl-ann" role="banner" aria-label="Thông báo khuyến mãi">
+
+  <!-- Left petal decoration -->
+  <svg class="sl-ann__petal sl-ann__petal--left" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(0 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(72 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(144 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(216 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(288 10 10)"/>
+    <circle cx="10" cy="10" r="1.5" fill="#c9956a"/>
+  </svg>
+
+  <div class="sl-ann__inner">
+    <span class="sl-ann__text">
+      ✨ <strong>Miễn phí vận chuyển</strong> cho đơn từ 500K
+    </span>
+    <span class="sl-ann__divider" aria-hidden="true"></span>
+    <span class="sl-ann__text">
+      Mã: <span class="sl-ann__code">FREESHIP</span>
+    </span>
+    <span class="sl-ann__divider" aria-hidden="true"></span>
+    <a href="#" class="sl-ann__link">Mua ngay →</a>
+  </div>
+
+  <!-- Right petal decoration -->
+  <svg class="sl-ann__petal sl-ann__petal--right" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(0 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(72 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(144 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(216 10 10)"/>
+    <ellipse cx="10" cy="5"  rx="3" ry="5"  stroke="#c9956a" stroke-width="1" transform="rotate(288 10 10)"/>
+    <circle cx="10" cy="10" r="1.5" fill="#c9956a"/>
+  </svg>
+
+</div>

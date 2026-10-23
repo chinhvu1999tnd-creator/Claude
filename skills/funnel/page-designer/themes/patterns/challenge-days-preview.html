@@ -1,0 +1,145 @@
+<!--
+  challenge-days-preview.html — Day-by-day preview on registration page
+  Layout:     centered · max-w-3xl · vertical timeline or horizontal cards
+  Elements:   Section label · Day cards (number + topic + quick win promise)
+  Rule:       Mỗi day card phải có "quick win" cụ thể — không phải "học về X"
+              mà là "bạn sẽ có [output cụ thể] vào cuối ngày"
+              Đặt trong registration page, sau hero/form
+  Dùng cho:   Challenge registration page
+-->
+<section class="py-16" style="border-top:1px solid var(--rim)">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-10">
+      <p class="font-mono text-[11px] uppercase tracking-wider mb-3" style="color:var(--accent);letter-spacing:.12em">
+        Lịch trình challenge
+      </p>
+      <h2 class="font-display font-black text-ink"
+        style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.1;letter-spacing:-0.03em">
+        [X] ngày — [X] quick win<br>
+        <span style="color:var(--accent)">bắt đầu ngay từ ngày đầu tiên</span>
+      </h2>
+    </div>
+
+    <!-- Timeline cards -->
+    <div class="space-y-3">
+
+      <!-- Day 1 -->
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--surface);border:1px solid rgba(var(--accent-rgb),.2)">
+        <div class="shrink-0">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+            style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.25)">
+            01
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1 flex-wrap">
+            <p class="font-display font-bold text-sm text-ink">[Ngày, DD/MM] · [Tên topic Day 1]</p>
+            <span class="font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0"
+              style="background:rgba(var(--accent-rgb),.10);color:var(--accent)">Quick win</span>
+          </div>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            [Mô tả 1–2 câu: bạn sẽ <strong>làm được gì</strong> vào cuối ngày này — output cụ thể, không phải "học về X"]
+          </p>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--surface);border:1px solid var(--rim)">
+        <div class="shrink-0">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+            style="background:var(--raised);color:var(--subtle);border:1px solid var(--rim)">
+            02
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-display font-bold text-sm text-ink mb-1">[Ngày, DD/MM] · [Tên topic Day 2]</p>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            [Output cụ thể ngày 2]
+          </p>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--surface);border:1px solid var(--rim)">
+        <div class="shrink-0">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+            style="background:var(--raised);color:var(--subtle);border:1px solid var(--rim)">
+            03
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-display font-bold text-sm text-ink mb-1">[Ngày, DD/MM] · [Tên topic Day 3]</p>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            [Output cụ thể ngày 3]
+          </p>
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--surface);border:1px solid var(--rim)">
+        <div class="shrink-0">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+            style="background:var(--raised);color:var(--subtle);border:1px solid var(--rim)">
+            04
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-display font-bold text-sm text-ink mb-1">[Ngày, DD/MM] · [Tên topic Day 4]</p>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            [Output cụ thể ngày 4]
+          </p>
+        </div>
+      </div>
+
+      <!-- Day 5 — highlight -->
+      <div class="flex items-start gap-4 rounded-xl p-5"
+        style="background:rgba(var(--accent-rgb),.05);border:1px solid rgba(var(--accent-rgb),.2)">
+        <div class="shrink-0">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+            style="background:rgba(var(--accent-rgb),.15);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.3)">
+            05
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1 flex-wrap">
+            <p class="font-display font-bold text-sm text-ink">[Ngày, DD/MM] · [Tên topic Day 5]</p>
+            <span class="font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0"
+              style="background:rgba(var(--accent-rgb),.12);color:var(--accent)">🎯 Ngày đặc biệt</span>
+          </div>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            [Output ngày 5 + hint về offer: "và có thứ gì đó đặc biệt dành cho những ai muốn đi xa hơn"]
+          </p>
+        </div>
+      </div>
+
+      <!-- [OPTIONAL: Day 6, 7, ...] — uncomment nếu challenge dài hơn 5 ngày
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--surface);border:1px solid var(--rim)">
+        <div class="shrink-0">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+            style="background:var(--raised);color:var(--subtle);border:1px solid var(--rim)">
+            06
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-display font-bold text-sm text-ink mb-1">[Ngày] · [Topic]</p>
+          <p class="font-body text-xs" style="color:var(--body)">[Output]</p>
+        </div>
+      </div>
+      END [OPTIONAL] -->
+
+    </div>
+
+    <!-- Time commitment note -->
+    <div class="flex items-center gap-3 mt-6 p-4 rounded-xl" style="background:var(--raised);border:1px solid var(--rim)">
+      <svg class="shrink-0" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <circle cx="9" cy="9" r="7" stroke="var(--subtle)" stroke-width="1.2"/>
+        <path d="M9 5.5V9.5l2.5 1.5" stroke="var(--subtle)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="font-mono text-xs" style="color:var(--subtle)">
+        Cam kết thời gian: <strong class="text-ink">20–30 phút/ngày</strong> · Live session lúc <strong class="text-ink">[Giờ] GMT+7</strong> · Có replay nếu bỏ lỡ
+      </p>
+    </div>
+
+  </div>
+</section>

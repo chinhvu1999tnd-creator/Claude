@@ -1,0 +1,105 @@
+<!--
+  challenge-next-steps.html — What happens after registration (reduce anxiety)
+  Layout:     centered · max-w-2xl · numbered step list
+  Elements:   Section label · 4 steps với timing · Each: number + action + detail
+  Rule:       Mỗi step phải có timeframe cụ thể ("trong 2 phút", "ngày hôm nay", "Day 1")
+              Step 1 phải là hành động ngay lập tức sau khi submit form
+              Đặt SAU FAQ, TRƯỚC Final CTA — reduce last-minute anxiety
+  Dùng cho:   Challenge registration page · Webinar registration page (variant)
+-->
+<section class="py-16" style="background:var(--surface);border-top:1px solid var(--rim)">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-10">
+      <p class="font-mono text-[11px] uppercase tracking-wider mb-3" style="color:var(--subtle);letter-spacing:.12em">
+        Sau khi đăng ký
+      </p>
+      <h2 class="font-display font-black text-ink"
+        style="font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.1;letter-spacing:-0.03em">
+        Điều gì xảy ra tiếp theo?
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+
+      <!-- Step 1 — Immediate -->
+      <div class="flex items-start gap-4 rounded-xl p-5"
+        style="background:rgba(var(--accent-rgb),.05);border:1px solid rgba(var(--accent-rgb),.2)">
+        <div class="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+          style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.25)">1</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="font-display font-bold text-sm text-ink">Nhận email xác nhận</p>
+            <span class="font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0"
+              style="background:rgba(var(--accent-rgb),.10);color:var(--accent)">Trong 2 phút</span>
+          </div>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            Email có link Zalo Group, lịch challenge và hướng dẫn cài Claude Code (10 phút). Không thấy email → kiểm tra Spam.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--raised);border:1px solid var(--rim)">
+        <div class="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+          style="background:var(--surface);color:var(--subtle);border:1px solid var(--rim)">2</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="font-display font-bold text-sm text-ink">Vào nhóm Zalo Challenge</p>
+            <span class="font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0"
+              style="background:var(--surface);color:var(--subtle);border:1px solid var(--rim)">Ngay hôm nay</span>
+          </div>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            [X] người đang trong nhóm. Tự giới thiệu, xem assignment, làm quen cộng đồng trước Day 1.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--raised);border:1px solid var(--rim)">
+        <div class="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+          style="background:var(--surface);color:var(--subtle);border:1px solid var(--rim)">3</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="font-display font-bold text-sm text-ink">Làm pre-work (không bắt buộc)</p>
+            <span class="font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0"
+              style="background:var(--surface);color:var(--subtle);border:1px solid var(--rim)">Trước Day 1</span>
+          </div>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            [Mô tả pre-work ngắn gọn — VD: "Cài Claude Code, tạo tài khoản (miễn phí). Gửi hướng dẫn trong email."]
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--raised);border:1px solid var(--rim)">
+        <div class="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-mono font-black text-sm"
+          style="background:var(--surface);color:var(--subtle);border:1px solid var(--rim)">4</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="font-display font-bold text-sm text-ink">Day 1 bắt đầu</p>
+            <span class="font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0"
+              style="background:var(--surface);color:var(--subtle);border:1px solid var(--rim)">[Ngày bắt đầu] · 20:00</span>
+          </div>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            Live session qua [Zoom/Facebook Live]. Nhóm Zalo nhắc nhở 30 phút trước. Assignment gửi ngay sau buổi live.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Reassurance note -->
+    <div class="flex items-center gap-3 mt-6 p-4 rounded-xl" style="background:var(--raised);border:1px solid var(--rim)">
+      <svg class="shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="var(--subtle)" stroke-width="1.2"/>
+        <path d="M8 5v.5a1.5 1.5 0 001 1.4V8.5M8 10.5v.5" stroke="var(--subtle)" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <p class="font-body text-xs" style="color:var(--subtle)">
+        Có câu hỏi? Reply thẳng email xác nhận hoặc nhắn vào nhóm Zalo —
+        team sẽ trả lời trong vòng 2 giờ.
+      </p>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,125 @@
+<!--
+  OVERRIDE: testimonials.html — Dark Bold Neon
+  vs shared: glass cards + accent quote border
+  Override: raised dark cards + neon quote marks + result tag with glow + featured has animated border
+  Visual:   sharper proof density vs. clean glass cards
+-->
+<section class="relative py-20 overflow-hidden" style="background:var(--bg)">
+  <!-- Mesh bg for trust phase -->
+  <div class="absolute inset-0 pointer-events-none opacity-30"
+       style="background:radial-gradient(ellipse 60% 60% at 20% 50%,rgba(168,85,247,0.06) 0%,transparent 60%),
+              radial-gradient(ellipse 50% 50% at 80% 50%,rgba(0,194,255,0.05) 0%,transparent 60%)"></div>
+
+  <div class="max-w-4xl mx-auto px-6 relative">
+
+    <div class="text-center mb-12">
+      <p class="font-mono text-[10px] uppercase tracking-[0.14em] mb-3" style="color:var(--subtle)">[N] người đã thử nghiệm</p>
+      <h2 class="font-display font-black text-ink tracking-tight"
+          style="font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">
+        Đừng tin lời tôi.<br>
+        Tin vào <span style="background:linear-gradient(90deg,#B6FF00,#00C2FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">kết quả của họ.</span>
+      </h2>
+    </div>
+
+    <!-- Featured case study — animated border -->
+    <div class="relative rounded-2xl p-px mb-5 reveal"
+         style="background:linear-gradient(135deg,rgba(182,255,0,0.5),rgba(0,194,255,0.3),rgba(182,255,0,0.15));
+                box-shadow:0 0 40px rgba(182,255,0,0.12)">
+      <div class="rounded-2xl p-8 relative overflow-hidden" style="background:rgba(28,28,26,0.98)">
+        <div class="absolute inset-x-0 top-0 h-px"
+             style="background:linear-gradient(90deg,transparent,#B6FF00 40%,#00C2FF 60%,transparent)"></div>
+
+        <!-- Oversized neon quote mark -->
+        <div class="absolute top-4 right-6 font-display font-black opacity-8 select-none pointer-events-none"
+             style="font-size:6rem;line-height:1;color:var(--accent);opacity:0.08">"</div>
+
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center font-display font-black text-sm flex-shrink-0"
+               style="background:rgba(182,255,0,0.12);border:1px solid rgba(182,255,0,0.3);color:var(--accent)">[INI]</div>
+          <div>
+            <p class="font-display font-bold text-ink text-sm">[FULL NAME]</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[ROLE] · [CITY] · [DATE]</p>
+          </div>
+          <span class="ml-auto font-mono text-[9px] uppercase tracking-[0.08em] px-3 py-1.5 rounded-full flex-shrink-0"
+                style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.25);color:var(--accent)">Case study nổi bật</span>
+        </div>
+
+        <!-- Stats row with neon glow -->
+        <div class="flex gap-6 flex-wrap mb-6">
+          <div>
+            <span class="font-mono font-black tracking-tight block leading-none mb-1"
+                  style="font-size:clamp(1.5rem,3.5vw,2rem);color:var(--accent);text-shadow:0 0 16px rgba(182,255,0,0.4)">[STAT 1]</span>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[STAT 1 LABEL]</p>
+          </div>
+          <div>
+            <span class="font-mono font-black tracking-tight block leading-none mb-1"
+                  style="font-size:clamp(1.5rem,3.5vw,2rem);color:var(--accent);text-shadow:0 0 16px rgba(182,255,0,0.4)">[STAT 2]</span>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[STAT 2 LABEL]</p>
+          </div>
+          <div>
+            <span class="font-mono font-black tracking-tight block leading-none mb-1"
+                  style="font-size:clamp(1.5rem,3.5vw,2rem);color:#00C2FF;text-shadow:0 0 16px rgba(0,194,255,0.35)">[STAT 3]</span>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[STAT 3 LABEL]</p>
+          </div>
+        </div>
+
+        <div class="pl-5" style="border-left:2px solid rgba(182,255,0,0.4)">
+          <p class="font-body text-sm leading-relaxed italic mb-2" style="color:var(--body)">"[QUOTE]"</p>
+          <span class="font-mono text-[9px] uppercase tracking-widest" style="color:var(--subtle)">— [NAME], [ROLE], [CITY]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-col testi cards — dark raised + result tag glow -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+
+      <div class="rounded-xl p-5 flex flex-col reveal" style="background:var(--raised);border:1px solid rgba(255,255,255,0.05)">
+        <div class="font-mono font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-lg mb-4 self-start"
+             style="background:rgba(0,194,255,0.10);color:#00C2FF;border:1px solid rgba(0,194,255,0.22);
+                    box-shadow:0 0 12px rgba(0,194,255,0.15)">[RESULT TAG]</div>
+        <p class="font-body text-sm leading-relaxed italic flex-1 mb-4" style="color:var(--body)">"[QUOTE]"</p>
+        <div class="flex items-center gap-2.5 pt-3" style="border-top:1px solid rgba(255,255,255,0.06)">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+               style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.22);color:var(--accent)">[INI]</div>
+          <div>
+            <p class="font-display font-semibold text-ink text-xs">[NAME]</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[ROLE]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="rounded-xl p-5 flex flex-col reveal" style="background:var(--raised);border:1px solid rgba(255,255,255,0.05)">
+        <div class="font-mono font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-lg mb-4 self-start"
+             style="background:rgba(182,255,0,0.10);color:var(--accent);border:1px solid rgba(182,255,0,0.22);
+                    box-shadow:0 0 12px rgba(182,255,0,0.15)">[RESULT TAG]</div>
+        <p class="font-body text-sm leading-relaxed italic flex-1 mb-4" style="color:var(--body)">"[QUOTE]"</p>
+        <div class="flex items-center gap-2.5 pt-3" style="border-top:1px solid rgba(255,255,255,0.06)">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+               style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.22);color:var(--accent)">[INI]</div>
+          <div>
+            <p class="font-display font-semibold text-ink text-xs">[NAME]</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[ROLE]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="rounded-xl p-5 flex flex-col reveal" style="background:var(--raised);border:1px solid rgba(255,255,255,0.05)">
+        <div class="font-mono font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-lg mb-4 self-start"
+             style="background:rgba(0,194,255,0.10);color:#00C2FF;border:1px solid rgba(0,194,255,0.22);
+                    box-shadow:0 0 12px rgba(0,194,255,0.15)">[RESULT TAG]</div>
+        <p class="font-body text-sm leading-relaxed italic flex-1 mb-4" style="color:var(--body)">"[QUOTE]"</p>
+        <div class="flex items-center gap-2.5 pt-3" style="border-top:1px solid rgba(255,255,255,0.06)">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+               style="background:rgba(0,194,255,0.10);border:1px solid rgba(0,194,255,0.22);color:#00C2FF">[INI]</div>
+          <div>
+            <p class="font-display font-semibold text-ink text-xs">[NAME]</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">[ROLE]</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

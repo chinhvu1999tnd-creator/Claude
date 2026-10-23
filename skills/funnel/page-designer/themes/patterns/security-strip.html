@@ -1,0 +1,27 @@
+<!--
+  security-strip.html — Trust badges strip (dùng sát nút thanh toán)
+  Elements: SSL · Refund · Encrypted · Payment logos
+  Layout: flex wrap centered · minimal height
+-->
+<div class="flex flex-wrap items-center justify-center gap-4 py-3">
+  <span class="flex items-center gap-1.5 font-mono text-[10px]" style="color:var(--subtle)">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L2 3v3C2 9 3.8 10.5 6 11c2.2-.5 4-2 4-5V3L6 1z" stroke="var(--accent)" stroke-width="1.1" stroke-linejoin="round"/></svg>
+    SSL 256-bit
+  </span>
+  <span class="text-faint">·</span>
+  <span class="flex items-center gap-1.5 font-mono text-[10px]" style="color:var(--subtle)">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" stroke-width="1.1"/><path d="M4 6l1.5 1.5 3-3" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Hoàn tiền 7 ngày
+  </span>
+  <span class="text-faint">·</span>
+  <span class="flex items-center gap-1.5 font-mono text-[10px]" style="color:var(--subtle)">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="5" width="8" height="6" rx="1.5" stroke="var(--accent)" stroke-width="1.1"/><path d="M4 5V3.5a2 2 0 014 0V5" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round"/></svg>
+    Mã hoá thanh toán
+  </span>
+  <span class="text-faint">·</span>
+  <div class="flex items-center gap-2">
+    <span class="font-mono text-[9px] px-1.5 py-0.5 rounded" style="background:var(--raised);color:var(--subtle)">VietQR</span>
+    <span class="font-mono text-[9px] px-1.5 py-0.5 rounded" style="background:var(--raised);color:var(--subtle)">MoMo</span>
+    <span class="font-mono text-[9px] px-1.5 py-0.5 rounded" style="background:var(--raised);color:var(--subtle)">VNPAY</span>
+  </div>
+</div>

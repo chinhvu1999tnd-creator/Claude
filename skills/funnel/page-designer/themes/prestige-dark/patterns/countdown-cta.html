@@ -1,0 +1,259 @@
+<!--
+  PATTERN: Countdown CTA — Registration Closing Notice
+  THEME: prestige-dark
+  Mood: Restrained urgency — no ticking numbers, no bright colors
+  Layout: Centered, Cormorant italic date + Jost Light explanation
+  The luxury version of scarcity: quiet, factual, confident
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: Countdown CTA — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:  #c9a84c;
+      --bg:      #0c0c0a;
+      --surface: #141412;
+      --raised:  #1c1c19;
+      --ink:     #f5f0e8;
+      --body:    #c8c4b8;
+      --subtle:  #7a7870;
+      --faint:   #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+      color: var(--body);
+      padding: 80px 24px;
+    }
+
+    /* ─── Section ───────────────────────────────────────────────────── */
+    .countdown-cta {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Thin gold top line */
+    .countdown-cta__line-top {
+      width: 48px;
+      height: 1px;
+      background: rgba(201,168,76,0.5);
+      margin: 0 auto 40px;
+    }
+
+    /* Thin gold bottom line */
+    .countdown-cta__line-bottom {
+      width: 48px;
+      height: 1px;
+      background: rgba(201,168,76,0.5);
+      margin: 40px auto 0;
+    }
+
+    /* Eyebrow */
+    .countdown-cta__eyebrow {
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 24px;
+    }
+
+    /* The closing date — Cormorant italic, the focal point */
+    .countdown-cta__date {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    /* Year sub-label */
+    .countdown-cta__year {
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: rgba(201,168,76,0.5);
+      margin-bottom: 32px;
+    }
+
+    /* Heading below date */
+    .countdown-cta__title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    /* Explanation — Jost Light, no pressure */
+    .countdown-cta__body {
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 36px;
+    }
+
+    /* Availability indicator (not a countdown — just a static fact) */
+    .countdown-cta__availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border: 1px solid var(--faint);
+      border-radius: 2px;
+      margin-bottom: 36px;
+    }
+
+    .countdown-cta__avail-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.8;
+    }
+
+    .countdown-cta__avail-text {
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--body);
+    }
+
+    .countdown-cta__avail-count {
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--ink);
+      margin-left: 4px;
+    }
+
+    /* CTA Button — ghost gold border */
+    .countdown-cta__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--accent);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 350ms, color 350ms;
+      cursor: pointer;
+    }
+
+    .countdown-cta__btn:hover {
+      background: rgba(201,168,76,0.08);
+      color: var(--ink);
+    }
+
+    /* Supporting text below button */
+    .countdown-cta__support {
+      margin-top: 20px;
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--subtle);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      body { padding: 60px 24px; }
+
+      .countdown-cta__date {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <section class="countdown-cta">
+
+    <div class="countdown-cta__line-top" aria-hidden="true"></div>
+
+    <p class="countdown-cta__eyebrow">Đăng Ký Đóng Vào</p>
+
+    <!-- The date IS the hero element -->
+    <div class="countdown-cta__date">15 Tháng 6</div>
+    <div class="countdown-cta__year">2026</div>
+
+    <h2 class="countdown-cta__title">
+      Đợt Mở Bán Cuối Cùng
+    </h2>
+
+    <p class="countdown-cta__body">
+      Chỉ còn 12 căn hộ thuộc đợt mở bán thứ hai. Sau ngày 15 tháng 6,
+      danh sách đăng ký sẽ đóng lại và chúng tôi không nhận thêm
+      hồ sơ cho giai đoạn này.
+    </p>
+
+    <!-- Static availability — factual, not alarming -->
+    <div class="countdown-cta__availability">
+      <div class="countdown-cta__avail-dot"></div>
+      <span class="countdown-cta__avail-text">
+        Còn lại
+        <span class="countdown-cta__avail-count">12</span>
+        căn
+      </span>
+    </div>
+
+    <div style="margin-top: 0; display: block;">
+      <a href="#inquire" class="countdown-cta__btn">
+        Đăng Ký Ngay
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+             stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <path d="M2 7h10M8 3l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="countdown-cta__support">
+      Miễn phí tư vấn · Không ràng buộc · Phản hồi trong 2 giờ
+    </p>
+
+    <div class="countdown-cta__line-bottom" aria-hidden="true"></div>
+
+  </section>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • NO ticking countdown numbers. Ticking counters feel e-commerce,
+      not luxury. The date is stated once, clearly, in Cormorant italic.
+    • The availability dot is static — not animated (no live-pulse here,
+      that's for actual live indicators).
+    • "12 căn còn lại" should be a real number, not inflated for urgency.
+      Authenticity is the luxury brand's greatest asset.
+    • The gold date is at full --accent color — one of the rare cases
+      where gold is the primary element, justified because it IS the
+      key piece of information.
+    • The thin lines (top/bottom) mirror the guarantee-card.html pattern.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

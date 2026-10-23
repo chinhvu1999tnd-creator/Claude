@@ -1,0 +1,107 @@
+<!--
+================================================================================
+SCENE TEMPLATE — Boilerplate cho scenes/scene-{i}.html
+================================================================================
+
+CÁCH DÙNG:
+1. Copy file này, rename scene-{i}.html
+2. Replace 5 SLOT placeholders dưới đây:
+
+   {SCENE_I}       → số scene (vd: 1, 2, 8)
+   {DURATION}      → duration scene (vd: 5.53, 4.92)
+   {BG_GRADIENT}   → background gradient theo mood (xem mood-palettes.md)
+   {CONTENT_HTML}  → visual elements compose theo content scene (slot chính)
+   {CONTENT_CSS}   → CSS scoped cho {CONTENT_HTML}
+   {GSAP_TWEENS}   → tween entrance, anchor vào words[].at (Mode A)
+
+3. KHÔNG sửa các phần boilerplate (scoping ceremony, padding, justify-content)
+4. Run validate-snippets.mjs sau khi save để verify
+
+5 SLOT chiếm ~30% file thực sự — phần còn lại là boilerplate fixed.
+
+================================================================================
+-->
+
+<div class="clip"
+     data-scene-id="scene-{SCENE_I}"
+     data-start="0"
+     data-duration="{DURATION}"
+     data-track-index="1">
+
+  <div class="scene-content-scene-{SCENE_I}">
+
+    <!-- ┌─────────────────────────────────────────────────────────────┐ -->
+    <!-- │ SLOT: {CONTENT_HTML}                                         │ -->
+    <!-- │ Compose 6-10 elements theo Content-First Design:             │ -->
+    <!-- │   • 1-2 atmosphere (bg, orb, particles, grid)                │ -->
+    <!-- │   • 1 hero element (big number, headline, chart)             │ -->
+    <!-- │   • 3-5 supporting (cards, chips, labels, callouts)          │ -->
+    <!-- │   • 1-2 typography (title, sub)                              │ -->
+    <!-- │ Pattern: tham khảo layout-patterns.md Content Type Index     │ -->
+    <!-- └─────────────────────────────────────────────────────────────┘ -->
+    {CONTENT_HTML}
+
+  </div>
+
+  <style>
+    /* ━━━━━━━━━━ BOILERPLATE — KHÔNG SỬA ━━━━━━━━━━ */
+    .clip[data-scene-id="scene-{SCENE_I}"] {
+      width: 100%; height: 100%;
+      background: {BG_GRADIENT};  /* SLOT: gradient/radial theo mood */
+      position: relative; overflow: hidden;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #fff;
+    }
+    .clip[data-scene-id="scene-{SCENE_I}"] .scene-content-scene-{SCENE_I} {
+      width: 100%; height: 100%;
+      padding: 180px 80px 320px 80px;  /* 9:16 — KHÔNG ĐỔI */
+      /* padding: 120px 120px 220px 120px; cho 16:9 */
+      display: flex; flex-direction: column;
+      justify-content: center;  /* BẮT BUỘC — KHÔNG flex-start/end */
+      align-items: stretch;
+      gap: 32px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ━━━━━━━━━━ SLOT: {CONTENT_CSS} ━━━━━━━━━━ */
+    /* Tất cả selectors PHẢI prefix .clip[data-scene-id="scene-{SCENE_I}"] */
+    /* Ví dụ:
+    .clip[data-scene-id="scene-{SCENE_I}"] .my-headline {
+      font-size: 110px; font-weight: 900;
+      color: ...;
+    }
+    */
+    {CONTENT_CSS}
+  </style>
+
+  <script>
+    /* ━━━━━━━━━━ BOILERPLATE IIFE wrapper — KHÔNG SỬA ━━━━━━━━━━ */
+    (function() {
+      window.__timelines = window.__timelines || {};
+      const sel = s => '.clip[data-scene-id="scene-{SCENE_I}"] ' + s;
+      const tl = gsap.timeline({ paused: true });
+
+      /* ━━━━━━━━━━ SLOT: {GSAP_TWEENS} ━━━━━━━━━━ */
+      /* Quy tắc:
+         - Atmosphere t=0
+         - Hero anchored vào keyword timestamp từ words[].at (Mode A)
+         - Last entrance ≤ 70-85% duration
+         - Vary ≥ 3 easing (power3.out / back.out / expo.out / sine.out / elastic.out)
+         - KHÔNG: Math.random(), Date.now(), setTimeout, repeat: -1
+         - KHÔNG: animate width/height/visibility/display
+         - KHÔNG: gsap.to(opacity:0) exit
+         - Selectors qua sel() helper để tự động scope
+
+         Ví dụ:
+         tl.from(sel('.my-bg'), { opacity: 0, duration: 0.8 }, 0);
+         tl.from(sel('.my-headline'), { y: 60, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.55);
+         tl.from(sel('.my-number'), { scale: 0.4, opacity: 0, duration: 0.5, ease: "back.out(2.5)" }, 2.30);
+      */
+      {GSAP_TWEENS}
+
+      window.__timelines["scene-{SCENE_I}"] = tl;
+    })();
+  </script>
+</div>

@@ -1,0 +1,47 @@
+<!--
+  PATTERN: Hero Split (Left text / Right visual)
+  Use: When there's a product mockup, screenshot, or image to show
+  Brief: Layout=2-col grid 5fr/7fr · Background=canvas+blobs · Elements=badge+H1+sub+CTA · Visuals=mockup card
+-->
+<section class="relative min-h-screen flex items-center overflow-hidden pt-16" style="background:var(--bg);">
+  <div class="absolute w-96 h-96 rounded-full opacity-[0.08] blur-3xl top-20 right-0 animate-blob pointer-events-none" style="background:var(--accent);"></div>
+  <div class="max-w-6xl mx-auto px-6 py-20 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
+
+      <!-- Left: Text -->
+      <div>
+        <div class="reveal mb-6">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass">
+            <span class="w-1.5 h-1.5 rounded-full animate-live flex-shrink-0" style="background:var(--accent);"></span>
+            <span class="font-mono text-[10px] uppercase tracking-widest text-subtle">[BADGE TEXT]</span>
+          </span>
+        </div>
+        <h1 class="font-display font-black text-ink mb-5 reveal" style="font-size:clamp(2.25rem,4.5vw,4rem);line-height:1.05;letter-spacing:-0.03em;transition-delay:.06s;">
+          [HEADLINE LINE 1]<br>
+          <span class="text-gradient">[HEADLINE LINE 2]</span>
+        </h1>
+        <p class="text-subtle text-lg leading-relaxed mb-8 max-w-lg reveal" style="transition-delay:.12s;">[Subheadline]</p>
+        <div class="flex flex-col sm:flex-row gap-3 reveal" style="transition-delay:.18s;">
+          <a href="order.html" class="btn-glow inline-flex items-center gap-2 font-display font-bold text-sm px-7 py-3.5 rounded-btn min-h-[48px] cursor-pointer transition-all duration-200" style="background:var(--accent);color:var(--bg);">
+            [CTA PRIMARY] →
+          </a>
+          <a href="#section" class="inline-flex items-center gap-2 glass font-display font-semibold text-sm px-6 py-3.5 rounded-btn min-h-[48px] cursor-pointer text-ink hover:border-rim-strong transition-all duration-200">
+            [CTA SECONDARY]
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Visual / Mockup -->
+      <div class="reveal" style="transition-delay:.22s;">
+        <div class="glass rounded-3xl p-6 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,var(--accent),var(--cyan));"></div>
+          <!-- Replace with actual mockup, screenshot, or dashboard preview -->
+          <div class="aspect-[4/3] rounded-2xl flex items-center justify-center" style="background:var(--raised);">
+            <p class="font-mono text-[10px] uppercase tracking-widest text-faint">[PRODUCT MOCKUP / SCREENSHOT]</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

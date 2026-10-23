@@ -1,0 +1,171 @@
+<!--
+  OVERRIDE: hero.html — Bright Learn
+  vs shared: centered dark canvas + neon blobs
+  Override: 2-COLUMN — text trái · course dashboard SVG illustration phải
+  Visual: Inline SVG laptop/dashboard với progress bars + 2 floating result cards
+-->
+<section class="relative overflow-hidden py-16 sm:py-24"
+         style="background:radial-gradient(ellipse 80% 60% at 20% 0%,rgba(108,71,255,0.07) 0%,transparent 60%),var(--bg)">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[3fr_2fr] gap-10 items-center">
+
+      <!-- LEFT — copy -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
+             style="background:rgba(108,71,255,0.08);border:1px solid rgba(108,71,255,0.18)">
+          <span class="relative flex h-1.5 w-1.5 flex-shrink-0">
+            <span class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-live" style="background:var(--accent)"></span>
+            <span class="relative inline-flex h-1.5 w-1.5 rounded-full" style="background:var(--accent)"></span>
+          </span>
+          <span class="font-display font-semibold text-[11px] uppercase tracking-wider" style="color:var(--accent)">[AUDIENCE — e.g. Dành cho chủ shop online]</span>
+        </div>
+        <h1 class="font-display font-extrabold mb-5"
+            style="font-size:clamp(2rem,5vw,3.75rem);line-height:1.05;letter-spacing:-0.035em;color:var(--ink)">
+          [LINE 1]<br>
+          <span style="color:var(--accent)">[ACCENT LINE]</span><br>
+          [LINE 3]
+        </h1>
+        <p class="font-body text-lg leading-relaxed mb-8" style="color:var(--body);max-width:480px">
+          [Sub — 2 câu. Promise cụ thể + thời gian đạt được.]
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 mb-8">
+          <a href="[CTA_URL]"
+             class="inline-flex items-center justify-center gap-2 py-3.5 px-7 rounded-xl font-display font-bold text-sm text-white transition-all hover:-translate-y-0.5"
+             style="background:var(--accent);box-shadow:0 4px 20px rgba(108,71,255,0.35)">
+            [CTA TEXT] →
+          </a>
+          <a href="[SECONDARY_URL]"
+             class="inline-flex items-center justify-center gap-2 py-3.5 px-7 rounded-xl font-display font-semibold text-sm transition-colors"
+             style="color:var(--accent);border:1.5px solid var(--rim)">
+            [Secondary CTA]
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 pt-6" style="border-top:1px solid var(--faint)">
+          <div class="flex items-center gap-2">
+            <div class="flex -space-x-2">
+              <div class="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold" style="background:var(--accent);color:white">A</div>
+              <div class="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold" style="background:var(--teal);color:white">B</div>
+              <div class="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold" style="background:var(--orange);color:white">C</div>
+            </div>
+            <p class="font-body text-sm" style="color:var(--body)"><strong class="font-display font-bold" style="color:var(--ink)">[N]</strong> học viên</p>
+          </div>
+          <span class="w-px h-4" style="background:var(--faint)"></span>
+          <div class="flex items-center gap-1">
+            <svg width="60" height="12" viewBox="0 0 60 12" fill="none">
+              <path d="M6 1l1.5 3.5H11L8.2 6.8 9.5 11 6 8.5 2.5 11 3.8 6.8 1 5.5H4.5L6 1Z" fill="#facc15"/>
+              <path d="M18 1l1.5 3.5H23L20.2 6.8 21.5 11 18 8.5 14.5 11 15.8 6.8 13 5.5H16.5L18 1Z" fill="#facc15"/>
+              <path d="M30 1l1.5 3.5H35L32.2 6.8 33.5 11 30 8.5 26.5 11 27.8 6.8 25 5.5H28.5L30 1Z" fill="#facc15"/>
+              <path d="M42 1l1.5 3.5H47L44.2 6.8 45.5 11 42 8.5 38.5 11 39.8 6.8 37 5.5H40.5L42 1Z" fill="#facc15"/>
+              <path d="M54 1l1.5 3.5H59L56.2 6.8 57.5 11 54 8.5 50.5 11 51.8 6.8 49 5.5H52.5L54 1Z" fill="#facc15"/>
+            </svg>
+            <p class="font-body text-sm" style="color:var(--body)"><strong class="font-display font-bold" style="color:var(--ink)">[RATING]</strong>/5</p>
+          </div>
+          <span class="w-px h-4" style="background:var(--faint)"></span>
+          <p class="font-body text-sm" style="color:var(--body)">🔒 Hoàn tiền <strong class="font-display font-bold" style="color:var(--ink)">[N] ngày</strong></p>
+        </div>
+      </div>
+
+      <!-- RIGHT — course dashboard SVG illustration -->
+      <div class="relative hidden lg:block">
+
+        <!-- Main dashboard card -->
+        <div class="relative rounded-2xl overflow-hidden"
+             style="background:var(--bg);border:1px solid var(--faint);box-shadow:0 12px 40px rgba(108,71,255,0.10)">
+
+          <!-- Browser chrome bar -->
+          <div class="flex items-center gap-1.5 px-4 py-3" style="background:var(--surface);border-bottom:1px solid var(--faint)">
+            <div class="w-2.5 h-2.5 rounded-full" style="background:#ff5f57"></div>
+            <div class="w-2.5 h-2.5 rounded-full" style="background:#febc2e"></div>
+            <div class="w-2.5 h-2.5 rounded-full" style="background:#28c840"></div>
+            <div class="flex-1 mx-3 px-3 py-1 rounded-md text-center" style="background:var(--bg);border:1px solid var(--faint)">
+              <p class="font-mono text-[9px]" style="color:var(--subtle)">courses.academy.vn/dashboard</p>
+            </div>
+          </div>
+
+          <!-- Dashboard content SVG -->
+          <div class="p-5">
+            <svg viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+
+              <!-- Welcome header -->
+              <rect x="0" y="0" width="120" height="10" rx="5" fill="rgba(108,71,255,0.15)"/>
+              <rect x="0" y="16" width="80" height="7" rx="3.5" fill="rgba(108,71,255,0.08)"/>
+
+              <!-- Progress ring (right of header) -->
+              <circle cx="310" cy="18" r="18" stroke="rgba(108,71,255,0.12)" stroke-width="4"/>
+              <circle cx="310" cy="18" r="18" stroke="#6c47ff" stroke-width="4"
+                      stroke-dasharray="87 113" stroke-dashoffset="28" stroke-linecap="round"/>
+              <text x="310" y="22" text-anchor="middle" font-family="'DM Mono',monospace" font-size="8" font-weight="700" fill="#6c47ff">74%</text>
+
+              <!-- Module list -->
+              <!-- Module 1 — completed -->
+              <rect x="0" y="38" width="340" height="38" rx="8" fill="rgba(0,184,169,0.06)" stroke="rgba(0,184,169,0.2)" stroke-width="1"/>
+              <circle cx="18" cy="57" r="10" fill="rgba(0,184,169,0.15)"/>
+              <path d="M13 57l3.5 3.5 5-5" stroke="#00b8a9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="36" y="50" width="110" height="7" rx="3.5" fill="rgba(0,184,169,0.3)"/>
+              <rect x="36" y="62" width="70" height="5" rx="2.5" fill="rgba(0,184,169,0.15)"/>
+              <rect x="280" y="52" width="55" height="10" rx="5" fill="rgba(0,184,169,0.15)"/>
+              <text x="307" y="61" text-anchor="middle" font-family="'DM Mono',monospace" font-size="7" fill="#00b8a9">Hoàn thành</text>
+
+              <!-- Module 2 — in progress -->
+              <rect x="0" y="84" width="340" height="38" rx="8" fill="rgba(108,71,255,0.05)" stroke="rgba(108,71,255,0.15)" stroke-width="1"/>
+              <circle cx="18" cy="103" r="10" fill="rgba(108,71,255,0.12)" stroke="#6c47ff" stroke-width="1.2"/>
+              <path d="M15 103l2 2.5 5.5-5" stroke="#6c47ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 2"/>
+              <rect x="36" y="97" width="130" height="7" rx="3.5" fill="rgba(108,71,255,0.25)"/>
+              <rect x="36" y="108" width="260" height="5" rx="2.5" fill="rgba(108,71,255,0.08)"/>
+              <rect x="36" y="108" width="170" height="5" rx="2.5" fill="rgba(108,71,255,0.3)"/>
+              <!-- Progress text -->
+              <text x="310" y="107" text-anchor="middle" font-family="'DM Mono',monospace" font-size="7" fill="#6c47ff">65%</text>
+
+              <!-- Module 3 — locked -->
+              <rect x="0" y="130" width="340" height="38" rx="8" fill="rgba(216,212,239,0.05)" stroke="rgba(216,212,239,0.15)" stroke-width="1"/>
+              <circle cx="18" cy="149" r="10" fill="rgba(216,212,239,0.08)"/>
+              <path d="M15 151v-4a3 3 0 016 0v4M13 151h10v5H13z" stroke="rgba(138,134,160,0.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="36" y="143" width="100" height="7" rx="3.5" fill="rgba(216,212,239,0.15)"/>
+              <rect x="36" y="154" width="60" height="5" rx="2.5" fill="rgba(216,212,239,0.10)"/>
+
+              <!-- Next lesson CTA -->
+              <rect x="0" y="178" width="340" height="40" rx="10" fill="#6c47ff"/>
+              <text x="170" y="203" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" fill="white">▶  Tiếp tục học — Bài 2.3</text>
+
+            </svg>
+          </div>
+        </div>
+
+        <!-- Floating card 1 — top left -->
+        <div class="absolute -left-6 top-10 flex items-center gap-3 px-4 py-3 rounded-2xl animate-float"
+             style="background:var(--bg);border:1px solid var(--faint);box-shadow:0 8px 24px rgba(0,0,0,0.08)">
+          <!-- Teal completion icon -->
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+               style="background:rgba(0,184,169,0.12)">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="8" fill="rgba(0,184,169,0.2)"/>
+              <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="#00b8a9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-display font-bold text-xs" style="color:var(--ink)">[RESULT METRIC]</p>
+            <p class="font-body text-[10px]" style="color:var(--subtle)">[Context — e.g. Sau 3 tuần học]</p>
+          </div>
+        </div>
+
+        <!-- Floating card 2 — bottom right -->
+        <div class="absolute -right-6 bottom-10 flex items-center gap-3 px-4 py-3 rounded-2xl animate-float-2"
+             style="background:var(--bg);border:1px solid var(--faint);box-shadow:0 8px 24px rgba(0,0,0,0.08)">
+          <!-- Orange trend icon -->
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+               style="background:rgba(255,159,67,0.12)">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 13l4-4 3 3 5-6" stroke="#ff9f43" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 7h3v3" stroke="#ff9f43" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-display font-bold text-xs" style="color:var(--ink)">[RESULT METRIC 2]</p>
+            <p class="font-body text-[10px]" style="color:var(--subtle)">[Context 2]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

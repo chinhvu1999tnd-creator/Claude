@@ -1,0 +1,95 @@
+<!--
+  PATTERN: announcement-bar.html — Story First
+  Mood: Warm, human, literary — NOT promotional flash
+  Design: Warm surface bg + terracotta left accent strip + Libre Baskerville italic message
+  Usage: Latest episode, new blog post, upcoming workshop, new book chapter
+  Tone: Invitation, not urgency
+-->
+<div style="
+  background: var(--surface);
+  border-bottom: 1px solid var(--faint);
+  position: relative;
+  overflow: hidden;
+">
+  <!-- Terracotta left accent strip -->
+  <div style="
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent);
+  "></div>
+
+  <div style="
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 11px 24px 11px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  ">
+
+    <!-- Podcast/content icon -->
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
+      <circle cx="8" cy="8" r="7" fill="rgba(192,85,61,0.12)" stroke="var(--accent)" stroke-width="1.3"/>
+      <!-- Play triangle -->
+      <path d="M6.5 5.5L11 8L6.5 10.5V5.5Z" fill="var(--accent)"/>
+    </svg>
+
+    <!-- Message — Baskerville italic for the episode title -->
+    <p style="
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--body);
+      margin: 0;
+    ">
+      Tập mới nhất:
+      <em style="
+        font-family: 'Libre Baskerville', serif;
+        font-style: italic;
+        font-size: 14px;
+        color: var(--ink);
+        margin: 0 4px;
+      ">[Tên Tập / Tiêu Đề Bài Mới]</em>
+      —
+    </p>
+
+    <!-- CTA link -->
+    <a href="[EPISODE_URL]" style="
+      font-family: 'Libre Franklin', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(192,85,61,0.30);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    " onmouseover="this.style.borderColor='var(--accent)'"
+       onmouseout="this.style.borderColor='rgba(192,85,61,0.30)'">
+      Nghe ngay →
+    </a>
+
+    <!-- Divider dot -->
+    <span style="color:var(--faint); font-size:12px">·</span>
+
+    <!-- Secondary action -->
+    <a href="[NOTES_URL]" style="
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--subtle);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px dashed var(--faint);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    " onmouseover="this.style.color='var(--body)'"
+       onmouseout="this.style.color='var(--subtle)'">
+      hoặc đọc notes
+    </a>
+
+  </div>
+</div>

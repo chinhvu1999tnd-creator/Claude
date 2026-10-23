@@ -1,0 +1,129 @@
+<!--
+  oto-cta-qr.html — Dual CTA + QR reveal (2 states, tightly coupled)
+  ─────────────────────────────────────────────────────────────────────────────
+  STATE 1 (default): YES button (big accent) + "Không, tôi bỏ qua" small link
+  STATE 2 (after YES): QR section slides down · YES button → "Đã chuyển khoản ✓"
+  ─────────────────────────────────────────────────────────────────────────────
+  Flow:
+    YES bấm → showOTOQR() → QR section animates in
+    Khách quét QR → SePay xác nhận OTO → redirect Thank You (with OTO)
+    "Đã chuyển khoản" → handleOTOConfirm() → polling / redirect
+    NO link → redirect Thank You (without OTO)
+  ─────────────────────────────────────────────────────────────────────────────
+  Wiring:
+    THANK_YOU_WITH_OTO_URL    → trang thank you có OTO
+    THANK_YOU_WITHOUT_OTO_URL → trang thank you không có OTO
+    QR image / SePay widget   → replace slot placeholder
+    Bank details              → replace placeholders below
+-->
+<div class="max-w-xl mx-auto px-6 pb-12 text-center">
+
+  <!-- ── State 1: CTA buttons ── -->
+  <div id="oto-cta-state">
+
+    <!-- YES button -->
+    <button id="oto-yes-btn" onclick="showOTOQR()"
+      class="btn-glow w-full py-4 px-6 rounded-btn font-display font-black text-base flex items-center justify-center gap-3 mb-4 transition-all"
+      style="background:var(--accent);color:var(--bg)">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M3 7h14l-1.5 9H4.5L3 7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M8 7V5.5a2.5 2.5 0 015 0V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span id="oto-yes-label">Có! Tôi muốn nâng cấp — [Giá OTO]</span>
+    </button>
+
+    <!-- NO link — nhỏ, không phải button, dưới cùng -->
+    <a href="THANK_YOU_WITHOUT_OTO_URL"
+      class="block font-mono text-[11px] underline underline-offset-4 transition-opacity hover:opacity-70"
+      style="color:var(--faint)">
+      Không, tôi bỏ qua ưu đãi này và mất cơ hội mãi mãi
+    </a>
+
+  </div>
+
+  <!-- ── State 2: QR payment section (hidden by default) ── -->
+  <div id="oto-qr-section" style="display:none;margin-top:1.5rem">
+    <div class="rounded-xl overflow-hidden" style="background:var(--surface);border:1px solid rgba(var(--accent-rgb),.25)">
+
+      <div class="px-5 py-3 flex items-center gap-2" style="border-bottom:1px solid var(--rim);background:rgba(var(--accent-rgb),.05)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/>
+          <path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--accent)">Quét QR để hoàn tất nâng cấp</span>
+      </div>
+
+      <div class="p-5">
+        <p class="font-mono text-[10px] uppercase tracking-wider mb-4" style="color:var(--subtle)">Quét mã để thanh toán</p>
+
+        <!-- QR Code slot -->
+        <div class="media-slot aspect-1-1 rounded-xl mx-auto mb-4" style="width:160px;height:160px;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;" data-role="PRODUCT">
+          <!-- Replace: <img src="oto-qr.png" class="slot-img" alt="VietQR OTO"> -->
+          <!-- Or: SePay embed widget cho OTO amount -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">QR code tự động tạo từ payment link</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+
+        <div class="space-y-1.5 text-left mb-4">
+          <div class="flex justify-between font-mono text-xs"><span style="color:var(--subtle)">Ngân hàng</span><span class="text-ink font-medium">[Tên ngân hàng]</span></div>
+          <div class="flex justify-between font-mono text-xs"><span style="color:var(--subtle)">Số tài khoản</span><span class="text-ink font-medium">[Số tài khoản]</span></div>
+          <div class="flex justify-between font-mono text-xs"><span style="color:var(--subtle)">Số tiền</span><span class="font-black" style="color:var(--accent)">[Giá OTO]</span></div>
+          <div class="flex justify-between font-mono text-xs"><span style="color:var(--subtle)">Nội dung</span><span class="text-ink font-medium">OTO [mã đơn chính]</span></div>
+        </div>
+
+        <p class="font-mono text-[10px] mb-4" style="color:var(--subtle)">
+          Hệ thống tự xác nhận trong 2–5 phút · Link nâng cấp gửi qua email
+        </p>
+
+        <!-- "Đã chuyển khoản" confirm button -->
+        <button onclick="handleOTOConfirm()"
+          class="w-full py-3 px-4 rounded-btn font-display font-bold text-sm flex items-center justify-center gap-2 transition-all"
+          style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.25)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Tôi đã chuyển khoản xong
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Skip link still visible in State 2 -->
+    <a href="THANK_YOU_WITHOUT_OTO_URL"
+      class="block font-mono text-[10px] mt-4 underline underline-offset-4 transition-opacity hover:opacity-70"
+      style="color:var(--faint)">
+      Bỏ qua — vào kit không có nâng cấp
+    </a>
+  </div>
+
+</div>
+
+<script>
+function showOTOQR() {
+  /* Swap states */
+  document.getElementById('oto-cta-state').style.display  = 'none';
+  var qr = document.getElementById('oto-qr-section');
+  qr.style.display = 'block';
+  qr.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function handleOTOConfirm() {
+  /*
+    Option A (SePay auto-confirm):
+      SePay webhook fires → backend sets session flag → Thank You page reads flag
+      → Redirect handled server-side, this button is just a manual fallback
+
+    Option B (manual confirm):
+      Show a "Đang xác nhận..." state, then redirect after 3s
+  */
+  var btn = event.currentTarget;
+  btn.textContent = 'Đang xác nhận...';
+  btn.disabled = true;
+  /* Replace URL below */
+  setTimeout(function(){ window.location.href = 'THANK_YOU_WITH_OTO_URL'; }, 3000);
+}
+</script>

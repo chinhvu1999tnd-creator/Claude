@@ -1,0 +1,211 @@
+<!--
+  PATTERN: Guarantee Card — Minimal Typography Only
+  THEME: prestige-dark
+  Layout: Centered, thin gold lines top and bottom
+  No graphic, no shield, no icon — just typography
+  This is the restraint that signals confidence.
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: Guarantee Card — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:  #c9a84c;
+      --bg:      #0c0c0a;
+      --surface: #141412;
+      --ink:     #f5f0e8;
+      --body:    #c8c4b8;
+      --subtle:  #7a7870;
+      --faint:   #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+      color: var(--body);
+      padding: 80px 24px;
+    }
+
+    /* ─── Guarantee Section ─────────────────────────────────────────── */
+    .guarantee {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Top gold line */
+    .guarantee::before {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: rgba(201,168,76,0.5);
+      margin: 0 auto 40px;
+    }
+
+    /* Bottom gold line */
+    .guarantee::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: rgba(201,168,76,0.5);
+      margin: 40px auto 0;
+    }
+
+    /* Eyebrow label */
+    .guarantee__eyebrow {
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    /* Heading — quiet authority */
+    .guarantee__title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .guarantee__title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* Body — Jost Light, generous line height */
+    .guarantee__body {
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 28px;
+    }
+
+    /* Fine print */
+    .guarantee__fine {
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--subtle);
+      line-height: 1.6;
+    }
+
+    /* Optional: multiple guarantee points as list */
+    .guarantee__points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+      margin: 28px 0;
+    }
+
+    .guarantee__point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--body);
+    }
+
+    .guarantee__point-marker {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      body { padding: 60px 24px; }
+
+      .guarantee__points {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <section class="guarantee">
+
+    <p class="guarantee__eyebrow">Cam Kết Của Chúng Tôi</p>
+
+    <h2 class="guarantee__title">
+      Sự <em>Tin Tưởng</em><br>Là Nền Tảng
+    </h2>
+
+    <p class="guarantee__body">
+      The Grand Residences cam kết bàn giao đúng tiến độ, đúng chất lượng
+      như trong hợp đồng. Chúng tôi đã bàn giao thành công 7 dự án trong
+      15 năm qua — không một ngày trễ.
+    </p>
+
+    <!-- Optional guarantee points -->
+    <ul class="guarantee__points">
+      <li class="guarantee__point">
+        <!-- Thin line check icon -->
+        <svg class="guarantee__point-marker" viewBox="0 0 16 16" fill="none"
+             stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="2,8 6,12 14,4"/>
+        </svg>
+        Bàn giao đúng tiến độ hợp đồng — hoặc hoàn tiền 100%
+      </li>
+      <li class="guarantee__point">
+        <svg class="guarantee__point-marker" viewBox="0 0 16 16" fill="none"
+             stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="2,8 6,12 14,4"/>
+        </svg>
+        Bảo hành công trình 5 năm toàn bộ kết cấu
+      </li>
+      <li class="guarantee__point">
+        <svg class="guarantee__point-marker" viewBox="0 0 16 16" fill="none"
+             stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="2,8 6,12 14,4"/>
+        </svg>
+        Pháp lý sổ đỏ đầy đủ — chuyển giao trong 12 tháng sau bàn giao
+      </li>
+    </ul>
+
+    <p class="guarantee__fine">
+      Cam kết này được ghi rõ trong hợp đồng mua bán có công chứng.<br>
+      Chúng tôi không hứa những gì không thể thực hiện.
+    </p>
+
+  </section>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • The gold lines (::before / ::after) are 80px wide and 1px tall.
+      They frame the content without enclosing it — not a box.
+    • No shield graphic, no lock icon, no star badge. The typography
+      IS the guarantee. Quiet confidence needs no decoration.
+    • The guarantee__points list is optional — remove if the copy
+      is strong enough without bullet points.
+    • The check icon is a thin stroke SVG — consistent with the
+      icon language of this theme.
+    • Fine print should be honest and specific — vague guarantees
+      undermine the luxury positioning.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

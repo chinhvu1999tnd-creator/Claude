@@ -1,0 +1,414 @@
+<!-- PATTERN: hero | Soft Luxe Theme
+     Layout: 2-column — copy left, product photography right
+     Variables: HEADLINE_MAIN, HEADLINE_ITALIC, SUBHEADLINE, BODY, CTA_PRIMARY, CTA_GHOST, BADGE_1, BADGE_2, PHOTO_SRC
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Lato:wght@300;400;700&display=swap');
+  :root {
+    --accent: #c9956a; --accent-rgb: 201,149,106;
+    --blush: #f0c8b8; --blush-rgb: 240,200,184;
+    --mauve: #a87e8a; --bg: #fdf8f5; --surface: #f8f0eb;
+    --raised: #f2e6df; --ink: #2c2218; --body: #6b5042;
+    --subtle: #a89080; --faint: #e8d5cc;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .sl-hero {
+    position: relative;
+    background: var(--bg);
+    padding: 100px 24px 80px;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* Soft radial blush glow in background */
+  .sl-hero__glow {
+    position: absolute;
+    right: -10%;
+    top: -20%;
+    width: 70%;
+    height: 140%;
+    background: radial-gradient(ellipse at center, rgba(var(--blush-rgb),0.35) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Top-right botanical corner */
+  .sl-hero__corner-tr,
+  .sl-hero__corner-bl {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.3;
+  }
+  .sl-hero__corner-tr { top: 20px; right: 24px; }
+  .sl-hero__corner-bl { bottom: 20px; left: 24px; transform: rotate(180deg); }
+
+  .sl-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* LEFT: Copy */
+  .sl-hero__copy { display: flex; flex-direction: column; gap: 28px; }
+
+  .sl-hero__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--subtle);
+  }
+  .sl-hero__label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .sl-hero__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .sl-hero__headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .sl-hero__sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 400;
+    color: var(--body);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .sl-hero__body {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--body);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  .sl-hero__ctas {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 4px;
+  }
+
+  .sl-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 36px;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.35);
+    transition: all 0.25s ease;
+  }
+  .sl-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.45);
+  }
+
+  .sl-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .sl-btn-ghost:hover {
+    background: rgba(var(--accent-rgb), 0.06);
+    transform: translateY(-2px);
+  }
+
+  .sl-hero__trust {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 8px;
+  }
+  .sl-hero__trust-icons { display: flex; gap: 0; }
+  .sl-hero__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background: var(--blush);
+    margin-left: -8px;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .sl-hero__avatar:first-child { margin-left: 0; }
+  .sl-hero__trust-text {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--subtle);
+    line-height: 1.4;
+  }
+  .sl-hero__trust-text strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* RIGHT: Product visual */
+  .sl-hero__visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sl-hero__photo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .sl-hero__photo-bg {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 28px;
+    background: linear-gradient(145deg, var(--surface) 0%, var(--faint) 100%);
+    box-shadow: 0 16px 64px rgba(44,34,24,0.14);
+    overflow: hidden;
+    position: relative;
+  }
+  .sl-hero__photo-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.05) saturate(1.1) brightness(1.02);
+  }
+  /* Placeholder when no image */
+  .sl-hero__photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--subtle);
+    font-size: 13px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+  }
+
+  /* Floating badge cards */
+  .sl-hero__badge {
+    position: absolute;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 12px 18px;
+    box-shadow: 0 4px 24px rgba(44,34,24,0.10);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: heroFloat 6s ease-in-out infinite;
+    z-index: 2;
+  }
+  .sl-hero__badge--a { bottom: 15%; left: -14%; animation-delay: 0s; }
+  .sl-hero__badge--b { top: 18%;  right: -12%; animation-delay: 1.5s; }
+
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  .sl-hero__badge-icon { font-size: 20px; line-height: 1; }
+  .sl-hero__badge-text { font-family: 'Lato', sans-serif; }
+  .sl-hero__badge-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+  }
+  .sl-hero__badge-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--subtle);
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .sl-hero__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .sl-hero__visual { order: -1; }
+    .sl-hero__photo-wrap { max-width: 320px; }
+    .sl-hero__badge--a { left: -6%; }
+    .sl-hero__badge--b { right: -6%; }
+  }
+  @media (max-width: 640px) {
+    .sl-hero { padding: 60px 20px 60px; }
+    .sl-hero__badge { padding: 10px 14px; }
+  }
+</style>
+
+<section class="sl-hero" aria-label="Hero section">
+
+  <!-- Background radial glow -->
+  <div class="sl-hero__glow" aria-hidden="true"></div>
+
+  <!-- Top-right botanical corner decoration -->
+  <svg class="sl-hero__corner-tr" width="110" height="110" viewBox="0 0 110 110" fill="none" aria-hidden="true">
+    <ellipse cx="55" cy="20" rx="10" ry="18" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(0 55 55)"/>
+    <ellipse cx="55" cy="20" rx="10" ry="18" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(72 55 55)"/>
+    <ellipse cx="55" cy="20" rx="10" ry="18" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(144 55 55)"/>
+    <ellipse cx="55" cy="20" rx="10" ry="18" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(216 55 55)"/>
+    <ellipse cx="55" cy="20" rx="10" ry="18" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(288 55 55)"/>
+    <circle cx="55" cy="55" r="5" stroke="#c9956a" stroke-width="1.2"/>
+    <circle cx="55" cy="55" r="2" fill="#c9956a"/>
+    <!-- Leaf branch -->
+    <path d="M 80 90 Q 90 75 100 65" stroke="#e8d5cc" stroke-width="1" fill="none"/>
+    <ellipse cx="87" cy="80" rx="6" ry="3" stroke="#e8d5cc" stroke-width="1" transform="rotate(-40 87 80)"/>
+    <ellipse cx="95" cy="71" rx="5" ry="2.5" stroke="#e8d5cc" stroke-width="1" transform="rotate(-55 95 71)"/>
+  </svg>
+
+  <!-- Bottom-left botanical corner decoration -->
+  <svg class="sl-hero__corner-bl" width="90" height="90" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+    <ellipse cx="45" cy="16" rx="8" ry="14" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(0 45 45)"/>
+    <ellipse cx="45" cy="16" rx="8" ry="14" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(72 45 45)"/>
+    <ellipse cx="45" cy="16" rx="8" ry="14" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(144 45 45)"/>
+    <ellipse cx="45" cy="16" rx="8" ry="14" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(216 45 45)"/>
+    <ellipse cx="45" cy="16" rx="8" ry="14" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(288 45 45)"/>
+    <circle cx="45" cy="45" r="4" stroke="#c9956a" stroke-width="1"/>
+  </svg>
+
+  <div class="sl-hero__inner">
+
+    <!-- LEFT: Copy -->
+    <div class="sl-hero__copy">
+      <div class="sl-hero__label">Chăm Sóc Da Thuần Nhiên</div>
+
+      <h1 class="sl-hero__headline">
+        Làn Da<br>
+        <em>Rạng Rỡ</em><br>
+        Như Ánh Sáng
+      </h1>
+
+      <p class="sl-hero__sub">Công thức từ hoa hồng Thổ Nhĩ Kỳ &amp; rau má châu Á</p>
+
+      <p class="sl-hero__body">
+        Được nghiên cứu 8 năm từ các thành phần thuần nhiên cao cấp nhất thế giới.
+        Không paraben, không cồn — chỉ có điều tốt nhất cho làn da của bạn.
+      </p>
+
+      <div class="sl-hero__ctas">
+        <a href="#" class="sl-btn-primary">Mua Ngay →</a>
+        <a href="#" class="sl-btn-ghost">Tìm hiểu thêm</a>
+      </div>
+
+      <div class="sl-hero__trust">
+        <div class="sl-hero__trust-icons">
+          <div class="sl-hero__avatar"></div>
+          <div class="sl-hero__avatar" style="background:#f2e6df;"></div>
+          <div class="sl-hero__avatar" style="background:#e8d5cc;"></div>
+        </div>
+        <p class="sl-hero__trust-text">
+          <strong>15,000+</strong> khách hàng tin dùng mỗi tháng
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Product visual -->
+    <div class="sl-hero__visual">
+      <div class="sl-hero__photo-wrap">
+        <!-- Product photography slot -->
+        <div class="sl-hero__photo-bg">
+          <!-- Replace this placeholder with <img src="product-photo.jpg" alt="..."> -->
+          <div class="sl-hero__photo-placeholder">
+            <!-- Elegant product bottle line-art placeholder -->
+            <svg width="120" height="200" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Dropper bottle -->
+              <rect x="38" y="60" width="44" height="110" rx="12" stroke="#c9956a" stroke-width="1.5" fill="rgba(201,149,106,0.06)"/>
+              <!-- Neck -->
+              <rect x="48" y="40" width="24" height="24" rx="6" stroke="#c9956a" stroke-width="1.5" fill="rgba(201,149,106,0.04)"/>
+              <!-- Dropper bulb -->
+              <ellipse cx="60" cy="32" rx="10" ry="8" stroke="#c9956a" stroke-width="1.5" fill="rgba(201,149,106,0.08)"/>
+              <!-- Dropper tip -->
+              <line x1="60" y1="40" x2="60" y2="52" stroke="#c9956a" stroke-width="1.2"/>
+              <!-- Label area -->
+              <rect x="44" y="90" width="32" height="50" rx="4" stroke="#f0c8b8" stroke-width="1" fill="rgba(240,200,184,0.2)"/>
+              <!-- Brand mark on label -->
+              <text x="60" y="116" text-anchor="middle" font-family="serif" font-size="9" fill="#c9956a" font-style="italic">L</text>
+              <!-- Rose decoration -->
+              <ellipse cx="60" cy="130" rx="4" ry="6" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(0 60 136)"/>
+              <ellipse cx="60" cy="130" rx="4" ry="6" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(72 60 136)"/>
+              <ellipse cx="60" cy="130" rx="4" ry="6" stroke="#f0c8b8" stroke-width="0.8" transform="rotate(144 60 136)"/>
+              <!-- Botanical leaf -->
+              <path d="M 50 155 Q 42 145 46 135" stroke="#e8d5cc" stroke-width="1" fill="none"/>
+              <ellipse cx="48" cy="146" rx="5" ry="2.5" stroke="#e8d5cc" stroke-width="0.8" transform="rotate(-30 48 146)" fill="none"/>
+              <path d="M 70 155 Q 78 145 74 135" stroke="#e8d5cc" stroke-width="1" fill="none"/>
+              <ellipse cx="72" cy="146" rx="5" ry="2.5" stroke="#e8d5cc" stroke-width="0.8" transform="rotate(30 72 146)" fill="none"/>
+            </svg>
+            <span style="font-size:12px; color:var(--faint);">Ảnh sản phẩm</span>
+          </div>
+        </div>
+
+        <!-- Floating badge A: ingredient -->
+        <div class="sl-hero__badge sl-hero__badge--a">
+          <span class="sl-hero__badge-icon">🌹</span>
+          <div class="sl-hero__badge-text">
+            <span class="sl-hero__badge-name">Rose Extract</span>
+            <span class="sl-hero__badge-desc">Từ Thổ Nhĩ Kỳ</span>
+          </div>
+        </div>
+
+        <!-- Floating badge B: rating -->
+        <div class="sl-hero__badge sl-hero__badge--b">
+          <span class="sl-hero__badge-icon">✨</span>
+          <div class="sl-hero__badge-text">
+            <span class="sl-hero__badge-name">94% Hài lòng</span>
+            <span class="sl-hero__badge-desc">15,000+ đánh giá</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

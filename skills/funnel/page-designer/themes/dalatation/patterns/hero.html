@@ -1,0 +1,102 @@
+<!--
+  OVERRIDE: hero.html — Dalatation
+  vs shared: centered dark neon canvas
+  Override: FULL-SCREEN — cabin photo full-bleed + mountain SVG overlay + fog + pine corners
+  Layout: Full-screen with centered copy overlay on dark image
+  Visual: Mountain silhouette SVG + pine branch corners + campfire bottom glow
+-->
+<section class="relative min-h-screen flex items-center overflow-hidden" style="background:var(--bg)">
+
+  <!-- Full-bleed media slot — cabin/forest photo -->
+  <div class="absolute inset-0 media-slot" data-role="CONTEXT" style="background:var(--surface);border:2px dashed var(--faint)">
+    <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+      <span style="font-size:2.5rem;opacity:0.3">🖼️</span>
+      <p class="font-body text-sm font-medium" style="color:var(--subtle)">[Ảnh hero full-bleed]</p>
+      <p class="font-body text-xs" style="color:var(--faint)">1920×1080px · object-fit:cover · filter:brightness(0.5)</p>
+    </div>
+  </div>
+
+  <!-- Gradient overlays -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background:linear-gradient(to right,rgba(19,27,16,0.85) 0%,rgba(19,27,16,0.4) 60%,transparent 100%)"></div>
+  <!-- Campfire glow from below -->
+  <div class="absolute bottom-0 inset-x-0 pointer-events-none"
+       style="height:300px;background:radial-gradient(ellipse 60% 100% at 50% 100%,rgba(200,132,42,0.15) 0%,transparent 70%)"></div>
+  <!-- Fog/mist from top -->
+  <div class="absolute top-0 inset-x-0 pointer-events-none"
+       style="height:200px;background:linear-gradient(180deg,rgba(143,168,153,0.10) 0%,transparent 100%)"></div>
+
+  <!-- Pine branch corners -->
+  <svg class="absolute top-0 right-0 pointer-events-none" width="120" height="120" viewBox="0 0 120 120" fill="none" opacity="0.25">
+    <path d="M120 0L70 50" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M70 50L50 30" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M70 50L90 35" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M95 20L80 35" stroke="var(--accent)" stroke-width="1" stroke-linecap="round"/>
+    <path d="M95 20L105 32" stroke="var(--accent)" stroke-width="1" stroke-linecap="round"/>
+  </svg>
+
+  <!-- Copy -->
+  <div class="relative z-10 max-w-5xl mx-auto px-6 py-24">
+    <div class="max-w-xl">
+
+      <!-- Eyebrow -->
+      <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full mb-6"
+           style="background:rgba(77,124,90,0.15);border:1px solid rgba(77,124,90,0.3)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 10C2 10 4 5.5 6 4.5C8 3.5 10 5 9.5 8C9 10 7 11 5 10.5" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M5 10.5L4.5 9" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <span class="font-body font-medium text-[11px] uppercase tracking-wider" style="color:var(--accent)">[LOCATION] · Đà Lạt · [Altitude]m</span>
+      </div>
+
+      <!-- Headline — Fraunces serif -->
+      <h1 class="font-display font-bold mb-5"
+          style="font-size:clamp(2.25rem,6vw,4.5rem);line-height:1.06;letter-spacing:-0.025em;color:var(--ink)">
+        Thoát Khỏi Thành Phố —<br>
+        <em style="color:var(--accent);font-style:italic">Giữa Rừng Thông</em><br>
+        Đà Lạt
+      </h1>
+
+      <!-- Sub -->
+      <p class="font-body text-lg leading-relaxed mb-8" style="color:var(--body);max-width:420px">
+        [Tagline — VD: Cabin gỗ ấm cúng, lửa trại mỗi tối, sương mù buổi sáng. Trải nghiệm Đà Lạt đúng nghĩa nhất.]
+      </p>
+
+      <!-- CTA -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-10">
+        <a href="[BOOKING_URL]"
+           class="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm text-white transition-all hover:-translate-y-0.5"
+           style="padding:14px 28px;background:var(--amber);border-radius:10px;box-shadow:0 4px 20px rgba(200,132,42,0.40)">
+          🏕️ Đặt phòng ngay →
+        </a>
+        <a href="#rooms"
+           class="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm transition-colors"
+           style="padding:14px 24px;color:var(--ink);border:1.5px solid rgba(238,234,224,0.25);border-radius:10px">
+          Xem các cabin
+        </a>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="flex flex-wrap items-center gap-5 pt-6" style="border-top:1px solid rgba(238,234,224,0.12)">
+        <div class="flex items-center gap-2">
+          <span style="color:var(--amber);font-size:14px">★★★★★</span>
+          <span class="font-body text-sm" style="color:var(--body)"><strong style="color:var(--ink)">[RATING]</strong>/5</span>
+        </div>
+        <span class="w-px h-4" style="background:rgba(238,234,224,0.15)"></span>
+        <span class="font-body text-sm" style="color:var(--body)">🏕️ <strong style="color:var(--ink)">[N]+</strong> lượt nghỉ</span>
+        <span class="w-px h-4" style="background:rgba(238,234,224,0.15)"></span>
+        <span class="font-body text-sm" style="color:var(--body)">📍 <strong style="color:var(--ink)">[Distance]</strong> từ trung tâm</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-live">
+    <span class="font-body text-[10px] uppercase tracking-widest" style="color:rgba(238,234,224,0.3)">Khám phá</span>
+    <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+      <path d="M8 2v16M2 12l6 6 6-6" stroke="rgba(238,234,224,0.3)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+</section>

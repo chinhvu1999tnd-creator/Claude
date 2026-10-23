@@ -1,0 +1,265 @@
+<!--
+  PATTERN: cta-strip
+  THEME:   warm-authority
+  USE:     Warm amber bg + linen texture + 2-col: Lora headline left + application/booking form right
+  Design:  Professional "Apply Now" framing — not pushy, consultative tone
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --forest: #2d5016;
+    --bg: #fdf9f4; --surface: #f7f1e8; --raised: #efe6d8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .cta-strip {
+    background: var(--accent);
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Linen/warm texture overlay */
+  .cta-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  /* Soft warm circle decoration */
+  .cta-strip::after {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 320px; height: 320px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .cta-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Left — copy */
+  .cta-copy {}
+  .cta-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.70);
+    display: block;
+    margin-bottom: 14px;
+  }
+  /* Lora serif headline — warm authority signature */
+  .cta-headline {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cta-headline em {
+    font-style: italic;
+    display: block;
+  }
+  .cta-body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.70;
+    margin-bottom: 28px;
+  }
+  /* Trust pills */
+  .trust-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .trust-pill {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 999px;
+    padding: 5px 14px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Right — application form */
+  .cta-form-wrap {
+    background: rgba(253,249,244,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px;
+    padding: 36px;
+    backdrop-filter: blur(4px);
+  }
+  .form-title {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .form-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 22px;
+  }
+  .form-row { margin-bottom: 14px; }
+  .form-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.80);
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+  .form-input,
+  .form-select {
+    width: 100%;
+    background: rgba(255,255,255,0.10);
+    border: 1.5px solid rgba(255,255,255,0.20);
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.40); }
+  .form-input:focus,
+  .form-select:focus { border-color: rgba(255,255,255,0.65); }
+  .form-select option { background: var(--raised); color: var(--ink); }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .submit-btn {
+    width: 100%;
+    background: var(--ink);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+  .submit-btn:hover {
+    background: #0d0804;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .form-note {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.50);
+    text-align: center;
+    margin-top: 10px;
+  }
+  .form-note strong { color: rgba(255,255,255,0.72); }
+
+  @media (max-width: 768px) {
+    .cta-inner { grid-template-columns: 1fr; gap: 36px; }
+  }
+</style>
+
+<section class="cta-strip" id="dang-ky">
+  <div class="cta-inner">
+
+    <!-- Copy (left) -->
+    <div class="cta-copy">
+      <span class="cta-eyebrow">Bắt đầu</span>
+      <h2 class="cta-headline">
+        Đăng Ký Buổi
+        <em>Tư Vấn Miễn Phí</em>
+        30 Phút
+      </h2>
+      <p class="cta-body">
+        Chúng ta sẽ cùng nhìn thẳng vào tình trạng thực tế của doanh nghiệp bạn —
+        xác định vấn đề cốt lõi và tôi sẽ chia sẻ hướng tiếp cận phù hợp nhất.
+        Không cam kết, không áp lực.
+      </p>
+      <div class="trust-pills">
+        <span class="trust-pill">✓ Hoàn toàn miễn phí</span>
+        <span class="trust-pill">✓ 30 phút qua Zoom</span>
+        <span class="trust-pill">✓ Không bán hàng</span>
+      </div>
+    </div>
+
+    <!-- Application form (right) -->
+    <div class="cta-form-wrap">
+      <div class="form-title">Đăng Ký Tư Vấn</div>
+      <p class="form-subtitle">Điền thông tin — tôi sẽ liên hệ trong 24h</p>
+
+      <div class="form-row">
+        <label class="form-label">Họ & Tên</label>
+        <input type="text" class="form-input" placeholder="Nguyễn Văn A">
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="email@company.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Điện thoại</label>
+          <input type="tel" class="form-input" placeholder="09xx xxx xxx">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Doanh nghiệp của bạn</label>
+        <select class="form-select">
+          <option value="">Quy mô hiện tại</option>
+          <option>Startup (dưới 1 tỷ doanh thu)</option>
+          <option>SME đang tăng trưởng (1–10 tỷ)</option>
+          <option>Doanh nghiệp ổn định (10–50 tỷ)</option>
+          <option>Doanh nghiệp lớn (trên 50 tỷ)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Vấn đề bạn muốn giải quyết</label>
+        <select class="form-select">
+          <option value="">Chọn vấn đề chính</option>
+          <option>Tăng doanh thu & mở rộng thị trường</option>
+          <option>Xây dựng hệ thống vận hành</option>
+          <option>Phát triển đội ngũ lãnh đạo</option>
+          <option>Chiến lược định giá & margin</option>
+          <option>Chuẩn bị gọi vốn / mở rộng</option>
+        </select>
+      </div>
+
+      <button class="submit-btn">Gửi Đăng Ký →</button>
+      <p class="form-note">Hoặc nhắn tin trực tiếp: <strong>Zalo / Telegram @nguyenminhtuan</strong></p>
+    </div>
+
+  </div>
+</section>

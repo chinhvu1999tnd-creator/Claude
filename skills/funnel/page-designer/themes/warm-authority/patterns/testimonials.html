@@ -1,0 +1,328 @@
+<!--
+  PATTERN: testimonials
+  THEME:   warm-authority
+  USE:     Client result cards — professional B2B feel for coaching/consulting
+  Design:  Lora italic quote, amber left border on featured, client name + company/role,
+           result metric in amber Source Code Pro. Warm card on surface bg.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:wght@400;600&family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --forest: #2d5016;
+    --bg: #fdf9f4; --surface: #f7f1e8; --raised: #efe6d8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+    --rim: rgba(181,115,42,0.20);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .testimonials-section {
+    background: var(--surface);
+    padding: 88px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonials-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .testi-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-tag {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.68rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); display: block; margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Lora', serif; font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    color: var(--ink); line-height: 1.12;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+  .testi-card {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .testi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 32px rgba(30,22,10,0.10);
+  }
+  /* Featured — amber left border */
+  .testi-card.featured {
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 4px 24px rgba(30,22,10,0.08);
+  }
+  /* Open quote decorative — Lora serif */
+  .quote-mark {
+    font-family: 'Lora', serif;
+    font-size: 4.5rem;
+    line-height: 0.6;
+    color: rgba(181,115,42,0.12);
+    position: absolute;
+    top: 16px; left: 20px;
+    pointer-events: none; user-select: none;
+  }
+  /* Result metric — amber Source Code Pro, above quote */
+  .result-metric {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(45,80,22,0.08);
+    border: 1px solid rgba(45,80,22,0.20);
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+  .result-num {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--forest);
+  }
+  .result-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--forest);
+    opacity: 0.8;
+  }
+  /* Quote — Lora italic */
+  .testi-quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--body);
+    line-height: 1.68;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .testi-quote .emphasis {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  /* Footer */
+  .testi-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--faint);
+    padding-top: 16px;
+  }
+  .avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1.5px solid var(--faint);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    overflow: hidden;
+  }
+  /* Lora italic for client name — personal brand touch */
+  .client-name {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .client-meta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.74rem;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+  .verified-badge {
+    margin-left: auto;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--forest);
+    background: rgba(45,80,22,0.08);
+    border: 1px solid rgba(45,80,22,0.20);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  /* Summary bar */
+  .rating-summary {
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .summary-stat {
+    text-align: center;
+  }
+  .summary-num {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+  .summary-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    color: var(--subtle);
+    margin-top: 4px;
+    display: block;
+  }
+  .summary-divider {
+    width: 1px; height: 48px;
+    background: var(--faint);
+    flex-shrink: 0;
+  }
+  .summary-logos {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .logo-item {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--subtle);
+    letter-spacing: -0.02em;
+    transition: color 0.2s;
+  }
+  .logo-item:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .testi-grid { grid-template-columns: 1fr; }
+    .summary-divider { display: none; }
+  }
+</style>
+
+<section class="testimonials-section" id="khach-hang">
+  <div class="testi-inner">
+    <div class="section-header">
+      <span class="section-tag">Kết quả thực tế</span>
+      <h2 class="section-title">Khách Hàng Nói Gì Sau Khi <em>Cùng Làm Việc</em></h2>
+    </div>
+
+    <div class="testi-grid">
+
+      <!-- FEATURED testimonial -->
+      <div class="testi-card featured">
+        <div class="quote-mark">"</div>
+        <div class="result-metric">
+          <span class="result-num">+340%</span>
+          <span class="result-label">doanh thu sau 8 tháng</span>
+        </div>
+        <p class="testi-quote">
+          "Trước khi làm việc cùng [Tên], chúng tôi cứ chạy quanh mà không biết
+          vấn đề thực sự ở đâu. Sau 3 buổi tư vấn,
+          <span class="emphasis">tôi thấy rõ toàn bộ bức tranh</span> — và biết chính xác
+          cần làm gì tiếp theo."
+        </p>
+        <div class="testi-footer">
+          <div class="avatar">M</div>
+          <div>
+            <p class="client-name">Minh Phúc</p>
+            <p class="client-meta">CEO · Công ty TNHH Xây Dựng Phúc Thịnh · 45 nhân sự</p>
+          </div>
+          <span class="verified-badge">✓ Kết quả thực</span>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testi-card">
+        <div class="quote-mark">"</div>
+        <div class="result-metric">
+          <span class="result-num">Tái ký 2 năm liên tiếp</span>
+        </div>
+        <p class="testi-quote">
+          "[Tên] không phải consultant thông thường. Anh ấy thực sự hiểu bối cảnh
+          thị trường Việt Nam — không mang framework nước ngoài áp thẳng vào.
+          <span class="emphasis">Mỗi lời khuyên đều có thể thực thi ngay</span>."
+        </p>
+        <div class="testi-footer">
+          <div class="avatar">H</div>
+          <div>
+            <p class="client-name">Hà Linh</p>
+            <p class="client-meta">Founder · Chuỗi bán lẻ thời trang · 8 cửa hàng</p>
+          </div>
+          <span class="verified-badge">✓ Kết quả thực</span>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testi-card">
+        <div class="quote-mark">"</div>
+        <div class="result-metric">
+          <span class="result-num">Nhân 3 team size</span>
+          <span class="result-label">trong 12 tháng</span>
+        </div>
+        <p class="testi-quote">
+          "Chương trình đào tạo đội ngũ thay đổi hoàn toàn cách team chúng tôi
+          làm việc. Từ reactive sang proactive.
+          <span class="emphasis">Sếp tôi cũng nhận ra sự khác biệt</span> chỉ sau 60 ngày."
+        </p>
+        <div class="testi-footer">
+          <div class="avatar">T</div>
+          <div>
+            <p class="client-name">Thanh Hà</p>
+            <p class="client-meta">Sales Director · Công ty phân phối FMCG · TP.HCM</p>
+          </div>
+          <span class="verified-badge">✓ Kết quả thực</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary bar -->
+    <div class="rating-summary">
+      <div class="summary-stat">
+        <span class="summary-num">200+</span>
+        <span class="summary-label">Doanh nghiệp đã hợp tác</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-stat">
+        <span class="summary-num">94%</span>
+        <span class="summary-label">Tỷ lệ tái ký hợp đồng</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-logos">
+        <span class="logo-item">Forbes</span>
+        <span class="logo-item">CafeF</span>
+        <span class="logo-item">VnExpress</span>
+        <span class="logo-item">Shark Tank VN</span>
+      </div>
+    </div>
+
+  </div>
+</section>

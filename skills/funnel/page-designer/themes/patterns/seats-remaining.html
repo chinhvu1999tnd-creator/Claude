@@ -1,0 +1,36 @@
+<!--
+  seats-remaining.html — Scarcity / seats remaining urgency block
+  Layout:     centered bar · max-w-xl · horizontal layout
+  Background: danger dim · danger border
+  Elements:   fire icon · "X chỗ còn lại" text · progress bar
+  Visuals:    animated progress fill · pulsing red dot
+-->
+<section class="py-8 bg-canvas">
+  <div class="max-w-xl mx-auto px-6 reveal">
+
+    <div class="rounded-xl p-5" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18)">
+      <div class="flex items-center gap-3 mb-3">
+        <!-- Fire icon -->
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(239,68,68,0.12)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2C8 2 11 5 11 8C11 9.5 10.5 10.5 9.5 11C9.8 10 9.5 9 9 8.5C9 9.5 8 10.5 7 11C6 10 5.5 9 5.5 8C5.5 6.5 6 5.5 6.5 5C6.2 6 6.5 7 7 7.5C7 5.5 8 2 8 2Z" fill="#ef4444"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-live"></span>
+            <p class="text-sm font-medium text-ink">Chỉ còn <span class="font-mono font-black" style="color:#ef4444">7 chỗ</span> trong đợt này</p>
+          </div>
+          <p class="text-subtle text-xs mt-0.5">Đã có 43/50 người đăng ký</p>
+        </div>
+        <span class="shrink-0 text-xs font-mono text-subtle">86%</span>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="h-2 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.06)">
+        <div class="h-full rounded-full transition-all duration-1000" style="width:86%;background:linear-gradient(90deg,#ef4444,#F97316)"></div>
+      </div>
+    </div>
+
+  </div>
+</section>

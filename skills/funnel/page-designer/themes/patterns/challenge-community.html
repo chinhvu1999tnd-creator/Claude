@@ -1,0 +1,141 @@
+<!--
+  challenge-community.html — Community proof section
+  Layout:     centered · max-w-4xl · member count + activity feed + platform badges
+  Slots:      [CONTEXT] screenshots của group activity (optional)
+  Elements:   Member count · Activity feed (mock posts) · Platform badges · Energy copy
+  Rule:       Đây là proof về CỘNG ĐỒNG — khác với result cards (proof về cá nhân)
+              Mục tiêu: "tôi sẽ không một mình trong này" — giảm isolation anxiety
+              Đặt SAU Results, TRƯỚC Days Preview
+  Dùng cho:   Challenge registration page
+-->
+<section class="py-16" style="background:var(--surface);border-top:1px solid var(--rim)">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-10">
+      <p class="font-mono text-[11px] uppercase tracking-wider mb-3" style="color:var(--accent);letter-spacing:.12em">
+        Cộng đồng
+      </p>
+      <h2 class="font-display font-black text-ink mb-3"
+        style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.1;letter-spacing:-0.03em">
+        Bạn sẽ không làm một mình
+      </h2>
+      <p class="font-body mx-auto" style="color:var(--body);font-size:1rem;max-width:500px">
+        [X] người đang trong cộng đồng — học cùng, hỏi cùng, share kết quả cùng.
+        Đây là lý do challenge hiệu quả hơn tự học một mình.
+      </p>
+    </div>
+
+    <!-- Member count + platforms -->
+    <div class="flex flex-wrap items-center justify-center gap-4 mb-10">
+      <div class="flex items-center gap-3 px-5 py-3 rounded-xl"
+        style="background:var(--raised);border:1px solid rgba(var(--accent-rgb),.2)">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full border-2 flex items-center justify-center font-mono text-[9px] font-bold" style="background:rgba(var(--accent-rgb),.2);color:var(--accent);border-color:var(--raised)">TM</div>
+          <div class="w-8 h-8 rounded-full border-2 flex items-center justify-center font-mono text-[9px] font-bold" style="background:rgba(var(--cyan-rgb),.2);color:var(--cyan);border-color:var(--raised)">LP</div>
+          <div class="w-8 h-8 rounded-full border-2 flex items-center justify-center font-mono text-[9px] font-bold" style="background:rgba(var(--purple-rgb),.2);color:var(--purple);border-color:var(--raised)">HN</div>
+          <div class="w-8 h-8 rounded-full border-2 flex items-center justify-center font-mono text-[9px]" style="background:var(--surface);color:var(--subtle);border-color:var(--raised)">+X</div>
+        </div>
+        <div>
+          <p class="font-mono font-black text-sm" style="color:var(--accent)">[X]+ thành viên</p>
+          <p class="font-mono text-[10px]" style="color:var(--subtle)">đang hoạt động</p>
+        </div>
+      </div>
+
+      <!-- Platform badges -->
+      <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl"
+        style="background:var(--raised);border:1px solid var(--rim)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="2" width="12" height="12" rx="3" stroke="var(--cyan)" stroke-width="1.2"/>
+          <path d="M5 10V7a2.5 2.5 0 015 0v3M5 8.5h5" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span class="font-mono text-xs" style="color:var(--body)">Zalo Group</span>
+      </div>
+
+      <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl"
+        style="background:var(--raised);border:1px solid var(--rim)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M11 1H5a3 3 0 00-3 3v6a3 3 0 003 3h1l2 2 2-2h1a3 3 0 003-3V4a3 3 0 00-3-3z" stroke="#4A9EF5" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-mono text-xs" style="color:var(--body)">Facebook Group</span>
+      </div>
+    </div>
+
+    <!-- Activity feed (mock — replace with real screenshots) -->
+    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+
+      <!-- Post 1 -->
+      <div class="rounded-xl p-4" style="background:var(--raised);border:1px solid var(--rim)">
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-mono text-xs font-bold"
+            style="background:rgba(var(--accent-rgb),.12);color:var(--accent)">TN</div>
+          <div>
+            <p class="font-body text-xs font-semibold text-ink">[Tên] · [Nghề nghiệp]</p>
+            <p class="font-mono text-[9px]" style="color:var(--subtle)">Day 1 · 8:42 PM</p>
+          </div>
+        </div>
+        <p class="font-body text-xs leading-relaxed mb-3" style="color:var(--body)">
+          "[Fake/real post: chia sẻ assignment Day 1 + kết quả cụ thể. VD: 'Vừa xong assignment Day 1! /setup-start chạy xong trong 15 phút, AI hiểu đúng business của mình rồi 🔥']"
+        </p>
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-[10px]" style="color:var(--subtle)">❤️ 24 · 💬 8 bình luận</span>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="rounded-xl p-4" style="background:var(--raised);border:1px solid var(--rim)">
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-mono text-xs font-bold"
+            style="background:rgba(var(--cyan-rgb),.12);color:var(--cyan)">MH</div>
+          <div>
+            <p class="font-body text-xs font-semibold text-ink">[Tên] · [Nghề nghiệp]</p>
+            <p class="font-mono text-[9px]" style="color:var(--subtle)">Day 3 · 9:15 PM</p>
+          </div>
+        </div>
+        <p class="font-body text-xs leading-relaxed mb-3" style="color:var(--body)">
+          "[Post Day 3: VD: 'Day 3 done! 7 bài content Facebook ra trong 12 phút. Trước đây mất cả buổi sáng mới viết được 1 bài. Cảm ơn mọi người trong group đã support! 💪']"
+        </p>
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-[10px]" style="color:var(--subtle)">❤️ 47 · 💬 15 bình luận</span>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="rounded-xl p-4" style="background:var(--raised);border:1px solid var(--rim)">
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-mono text-xs font-bold"
+            style="background:rgba(var(--purple-rgb),.12);color:var(--purple)">QA</div>
+          <div>
+            <p class="font-body text-xs font-semibold text-ink">[Tên] · [Nghề nghiệp]</p>
+            <p class="font-mono text-[9px]" style="color:var(--subtle)">Day 5 · 10:05 PM</p>
+          </div>
+        </div>
+        <p class="font-body text-xs leading-relaxed mb-3" style="color:var(--body)">
+          "[Post Day 5: VD: 'FUNNEL LIVE RỒI MỌI NGƯỜI ơi! Link: [url]. Làm xong Day 5 assignment trong 35 phút. Trước tưởng phải 2 tuần mới xong được điều này 😭🔥']"
+        </p>
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-[10px]" style="color:var(--subtle)">❤️ 89 · 💬 32 bình luận</span>
+        </div>
+      </div>
+
+      <!-- Screenshot slot (optional) -->
+      <div class="relative media-slot rounded-xl overflow-hidden" style="background:var(--surface);border:2px dashed var(--faint);min-height:160px" data-role="CONTEXT">
+        <!-- Replace: <img src="group-screenshot.jpg" class="w-full h-full object-cover" alt="Cộng đồng"> -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+          <span style="font-size:2.5rem;opacity:0.3">🖼️</span>
+          <p class="font-body text-sm font-medium" style="color:var(--subtle)">[Screenshot nhóm cộng đồng]</p>
+          <p class="font-body text-xs" style="color:var(--faint)">1920×1080px · object-fit:cover</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Energy quote -->
+    <div class="rounded-xl p-5 text-center" style="background:rgba(var(--accent-rgb),.04);border:1px solid rgba(var(--accent-rgb),.15)">
+      <p class="font-editorial text-lg" style="color:var(--ink);font-style:italic">
+        "[Quote ngắn nói về sức mạnh của cộng đồng trong challenge — VD: 'Khi bạn thấy 50 người khác đang làm cùng mình, bỗng dưng mọi thứ trở nên dễ hơn rất nhiều.']"
+      </p>
+      <p class="font-mono text-[11px] mt-3" style="color:var(--subtle)">— [Tên host]</p>
+    </div>
+
+  </div>
+</section>

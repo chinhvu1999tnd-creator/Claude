@@ -1,0 +1,16 @@
+{
+  "name": "payment-confirm",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "SePay payment confirmation webhook for landing page funnels",
+  "scripts": {
+    "test": "node test-webhook.js",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

@@ -1,0 +1,424 @@
+<!--
+  PATTERN: hero
+  THEME:   bold-persona
+  USE:     Override of shared hero-portrait — Bold Persona version
+           Syne 800 headline · coral accent word + underline · portrait with coral shadow
+           Electric blue secondary CTA · white bg · dot grid accent
+  Layout:  Left: headline + sub + CTAs + trust strip
+           Right: portrait photo + floating badges
+  Rule:    Portrait MUST be real photo — use media-slot placeholder for dev
+           Headline: 3 lines max, Syne 800, coral on key word
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8533a; --accent-rgb: 232,83,58;
+    --electric: #1a56db; --electric-rgb: 26,86,219;
+    --bg: #ffffff; --surface: #f9fafb; --raised: #f3f4f6;
+    --ink: #111827; --body: #374151; --subtle: #9ca3af; --faint: #e5e7eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .hero {
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0 80px;
+  }
+
+  /* Dot grid background — subtle */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  /* Diagonal accent — top right corner */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 300px; height: 300px;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 16px,
+      rgba(232,83,58,0.05) 16px,
+      rgba(232,83,58,0.05) 17px
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* — LEFT COPY — */
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(232,83,58,0.07);
+    border: 1px solid rgba(232,83,58,0.2);
+    border-radius: 9999px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+  }
+  .eyebrow-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse-dot 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-headline {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.75rem, 5.5vw, 5rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  /* Coral accent word + animated underline */
+  .hero-headline .accent-word {
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+  }
+  .hero-headline .accent-word::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underline-reveal 0.6s 0.5s ease forwards;
+  }
+  @keyframes underline-reveal {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  .hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--body);
+    max-width: 440px;
+    margin-bottom: 36px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 15px 30px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(232,83,58,0.30);
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 6px 24px rgba(232,83,58,0.40);
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--electric);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 26px;
+    border-radius: 8px;
+    border: 1.5px solid var(--electric);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover { background: rgba(26,86,219,0.06); }
+
+  /* Trust strip */
+  .hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding-top: 28px;
+    border-top: 1px solid var(--faint);
+  }
+  .trust-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .trust-stat-num {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .trust-stat-num.coral { color: var(--accent); }
+  .trust-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--body);
+  }
+  .trust-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--faint);
+  }
+
+  /* — RIGHT PORTRAIT — */
+  .hero-portrait-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .portrait-container {
+    position: relative;
+    animation: float-portrait 5s ease-in-out infinite;
+  }
+  @keyframes float-portrait {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+
+  .portrait-slot {
+    width: 320px;
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    box-shadow: 8px 8px 0 rgba(232,83,58,0.15), 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  /* Replace inner content with: <img src="[PORTRAIT]" alt="[NAME]" style="width:100%;height:100%;object-fit:cover;object-position:top;filter:contrast(1.05) saturate(1.1)"> */
+
+  /* Floating badge — bottom left */
+  .badge-bottom-left {
+    position: absolute;
+    left: -20px;
+    bottom: 32px;
+    background: var(--bg);
+    border: 1px solid var(--faint);
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    min-width: 140px;
+  }
+  .badge-bottom-left .badge-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .badge-bottom-left .badge-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+
+  /* Floating stat — top right */
+  .badge-top-right {
+    position: absolute;
+    right: -20px;
+    top: 28px;
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 12px 16px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(232,83,58,0.35);
+    min-width: 80px;
+  }
+  .badge-top-right .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #fff;
+    line-height: 1;
+  }
+  .badge-top-right .stat-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.8);
+    margin-top: 3px;
+    font-weight: 500;
+  }
+
+  /* Geometric corner accent */
+  .geo-corner {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 64px;
+    height: 64px;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 900px) {
+    .hero { padding: 80px 0 60px; min-height: auto; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-portrait-wrap { order: -1; }
+    .portrait-slot { width: 260px; height: 340px; }
+    .badge-bottom-left { left: -10px; }
+    .badge-top-right { right: -10px; }
+  }
+  @media (max-width: 560px) {
+    .hero-inner { padding: 0 20px; }
+    .portrait-slot { width: 220px; height: 290px; }
+    .hero-headline { font-size: 2.2rem; }
+  }
+</style>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- LEFT — Copy -->
+    <div>
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span>[CREDENTIAL — e.g. Entrepreneur Coach · Speaker · Forbes Vietnam]</span>
+      </div>
+
+      <h1 class="hero-headline">
+        [Tên] Giúp Bạn<br>
+        <span class="accent-word">[Kết Quả Cụ Thể]</span><br>
+        Nhanh Hơn Bạn Nghĩ
+      </h1>
+
+      <p class="hero-sub">
+        [Positioning — 2 câu. Ai bạn giúp, họ đạt được gì, thời gian bao lâu. Cụ thể và đo được. Không sáo rỗng.]
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#dang-ky" class="btn-primary">
+          [Primary CTA — e.g. Tham gia miễn phí] →
+        </a>
+        <a href="#chuong-trinh" class="btn-secondary">
+          [Secondary — e.g. Xem chương trình]
+        </a>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="hero-trust">
+        <div class="trust-stat">
+          <span class="trust-stat-num coral">[N]K+</span>
+          <span class="trust-stat-label">Followers</span>
+        </div>
+        <span class="trust-sep"></span>
+        <div class="trust-stat">
+          <span class="trust-stat-num">[N]+</span>
+          <span class="trust-stat-label">Học viên</span>
+        </div>
+        <span class="trust-sep"></span>
+        <div class="trust-stat">
+          <span class="trust-stat-num">[N] Năm</span>
+          <span class="trust-stat-label">Liên tiếp Top Coach</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — Portrait -->
+    <div class="hero-portrait-wrap">
+      <div class="portrait-container">
+        <!-- Portrait photo slot -->
+        <div class="portrait-slot" data-role="PERSON">
+          <!-- DEV PLACEHOLDER — replace with real photo:
+               <img src="[PORTRAIT_URL]" alt="[NAME]"
+                    style="width:100%;height:100%;object-fit:cover;object-position:top center;filter:contrast(1.05) saturate(1.1)">
+          -->
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f3f4f6;position:relative;">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.3" xmlns="http://www.w3.org/2000/svg">
+              <pattern id="heroDots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="12" cy="12" r="1" fill="#9ca3af"/>
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#heroDots)"/>
+            </svg>
+            <svg width="100" height="140" viewBox="0 0 120 160" fill="none" style="position:relative;z-index:1;opacity:0.3">
+              <circle cx="60" cy="42" r="28" stroke="#e8533a" stroke-width="2" fill="rgba(232,83,58,0.08)"/>
+              <path d="M10 145C10 108 30 90 60 90C90 90 110 108 110 145" stroke="#e8533a" stroke-width="2" stroke-linecap="round" fill="rgba(232,83,58,0.06)"/>
+            </svg>
+            <p style="position:absolute;bottom:14px;font-family:'Inter',sans-serif;font-size:0.7rem;color:#9ca3af;text-align:center;">[ Ảnh chân dung ]</p>
+          </div>
+        </div>
+
+        <!-- Floating badge — achievement -->
+        <div class="badge-bottom-left">
+          <div class="badge-title">[Achievement — e.g. Forbes 30U30]</div>
+          <div class="badge-sub">[Year / Publication]</div>
+        </div>
+
+        <!-- Floating stat — coral pill -->
+        <div class="badge-top-right">
+          <div class="stat-num">[N]K</div>
+          <div class="stat-lbl">[Metric — e.g. Học viên]</div>
+        </div>
+
+        <!-- Geometric corner -->
+        <svg class="geo-corner" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="64" x2="64" y2="0" stroke="#e8533a" stroke-width="1.5" opacity="0.3"/>
+          <line x1="16" y1="64" x2="64" y2="16" stroke="#e8533a" stroke-width="1.5" opacity="0.2"/>
+          <line x1="32" y1="64" x2="64" y2="32" stroke="#e8533a" stroke-width="1.5" opacity="0.12"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,71 @@
+<!--
+  countdown-cta.html — Countdown timer + CTA block
+  Layout:     centered · max-w-2xl · countdown row + CTA below
+  Background: radial gradient accent on dark · subtle grid
+  Elements:   urgency label · countdown (days/hours/min/sec) · headline · CTA button
+  Visuals:    4 digit boxes with labels · blinking colon separators
+-->
+<section class="relative py-20 overflow-hidden" style="background:radial-gradient(ellipse at center top,rgba(182,255,0,0.10) 0%,transparent 70%),var(--bg)">
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px)"></div>
+
+  <div class="relative max-w-2xl mx-auto px-6 text-center reveal">
+
+    <p class="text-[10px] font-mono tracking-widest uppercase mb-4" style="color:var(--accent)">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-current mr-1.5 animate-live align-middle"></span>
+      Ưu đãi kết thúc sau
+    </p>
+
+    <!-- Countdown boxes -->
+    <div class="flex items-center justify-center gap-2 mb-8" id="countdown-display">
+      <div class="flex flex-col items-center">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center font-mono font-black text-2xl sm:text-3xl text-ink" style="background:var(--surface);border:1px solid rgba(255,255,255,0.1)" id="cd-days">02</div>
+        <span class="text-[9px] font-mono text-subtle mt-1.5 uppercase tracking-wider">Ngày</span>
+      </div>
+      <span class="text-2xl font-mono text-subtle mb-5 animate-live">:</span>
+      <div class="flex flex-col items-center">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center font-mono font-black text-2xl sm:text-3xl text-ink" style="background:var(--surface);border:1px solid rgba(255,255,255,0.1)" id="cd-hours">23</div>
+        <span class="text-[9px] font-mono text-subtle mt-1.5 uppercase tracking-wider">Giờ</span>
+      </div>
+      <span class="text-2xl font-mono text-subtle mb-5 animate-live">:</span>
+      <div class="flex flex-col items-center">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center font-mono font-black text-2xl sm:text-3xl text-ink" style="background:var(--surface);border:1px solid rgba(255,255,255,0.1)" id="cd-mins">59</div>
+        <span class="text-[9px] font-mono text-subtle mt-1.5 uppercase tracking-wider">Phút</span>
+      </div>
+      <span class="text-2xl font-mono text-subtle mb-5 animate-live">:</span>
+      <div class="flex flex-col items-center">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center font-mono font-black text-2xl sm:text-3xl" style="background:var(--surface);border:1px solid rgba(182,255,0,0.3);color:var(--accent)" id="cd-secs">00</div>
+        <span class="text-[9px] font-mono text-subtle mt-1.5 uppercase tracking-wider">Giây</span>
+      </div>
+    </div>
+
+    <h2 class="font-display font-black text-ink mb-2" style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.1;letter-spacing:-0.03em">Đừng bỏ lỡ ưu đãi này</h2>
+    <p class="text-subtle text-sm mb-7">Giá tăng trở lại sau khi đồng hồ về 0.</p>
+
+    <a href="#checkout" class="btn-glow inline-flex items-center gap-2 py-3.5 px-8 rounded-btn font-display font-black text-sm" style="background:var(--accent);color:var(--bg)">
+      Đăng ký ngay với giá ưu đãi
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7.5 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  // Set deadline: 2 days from now (replace with actual deadline)
+  const deadline = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000);
+  function tick() {
+    const diff = deadline - Date.now();
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>

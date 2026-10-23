@@ -1,0 +1,57 @@
+<!--
+  ty-leadmag-header.html — Lead magnet opt-in confirmation header
+  Layout:     centered · max-w-xl · inbox illustration
+  Elements:   Email flying icon · Headline · "Kiểm tra email" instruction · Spam tip
+  Rule:       Không redirect thẳng sang offer — deliver trước, pitch sau
+              Mục tiêu: người dùng mở email và nhận được lead magnet
+-->
+<div class="relative text-center py-14 px-6 overflow-hidden">
+
+  <!-- Top glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 pointer-events-none"
+    style="background:radial-gradient(ellipse,rgba(var(--accent-rgb),.11) 0%,transparent 70%);filter:blur(36px)"></div>
+
+  <div class="relative max-w-lg mx-auto">
+
+    <!-- Email icon -->
+    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+      style="background:rgba(var(--accent-rgb),.10);border:1.5px solid rgba(var(--accent-rgb),.25)">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <rect x="3" y="6" width="24" height="18" rx="3" stroke="var(--accent)" stroke-width="1.5"/>
+        <path d="M3 10l12 8 12-8" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="font-display font-black text-ink mb-3"
+      style="font-size:clamp(1.625rem,4vw,2.25rem);line-height:1.12;letter-spacing:-0.03em">
+      Kiểm tra email ngay!
+    </h1>
+    <p class="font-body mb-6" style="color:var(--body);font-size:1.0625rem;line-height:1.7">
+      <strong class="text-ink">[Tên lead magnet]</strong> đang được gửi đến<br>
+      <span style="color:var(--accent)">[email@example.com]</span>
+    </p>
+
+    <!-- Instruction card -->
+    <div class="rounded-xl p-5 text-left" style="background:var(--surface);border:1px solid var(--rim)">
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-mono text-[10px] font-bold"
+            style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2)">1</div>
+          <p class="font-body text-sm" style="color:var(--body)">Mở email từ <strong class="text-ink">[Tên thương hiệu]</strong> trong hộp thư đến</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-mono text-[10px] font-bold"
+            style="background:rgba(var(--accent-rgb),.12);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2)">2</div>
+          <p class="font-body text-sm" style="color:var(--body)">Nhấn nút hoặc link tải [lead magnet] trong email</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-mono text-[10px] font-bold"
+            style="background:var(--raised);color:var(--subtle);border:1px solid var(--rim)">3</div>
+          <p class="font-body text-sm" style="color:var(--subtle)">Không thấy email sau 5 phút? Kiểm tra thư mục <strong style="color:var(--body)">Spam / Promotions</strong></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

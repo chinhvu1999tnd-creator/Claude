@@ -1,0 +1,171 @@
+<!--
+  webinar-results.html — Proof bomb section for webinar registration page
+  Layout:     centered · max-w-4xl · stats row + 2–3 result cards
+  Slots:      [PERSON] 1:1 circular · [RESULT] 4:3 screenshot/metric
+  Elements:   Section label · 3 metric boxes · 2–3 result cards (avatar + metric + quote)
+  Rule:       Đặt NGAY SAU hero — attention cao nhất trước khi audience scroll đi
+              Số liệu phải cụ thể: "340% leads" không phải "tăng đáng kể"
+              Profile người đạt kết quả phải thật: tên + nghề + địa điểm
+  Dùng cho:   Webinar registration page · Sales page (variant)
+-->
+<section class="py-16" style="background:var(--surface);border-top:1px solid var(--rim)">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-10">
+      <p class="font-mono text-[11px] uppercase tracking-wider mb-3" style="color:var(--accent);letter-spacing:.12em">
+        Kết quả thực tế
+      </p>
+      <h2 class="font-display font-black text-ink"
+        style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.1;letter-spacing:-0.03em">
+        [Headline ngắn — VD: "Những gì học viên đã đạt được"]
+      </h2>
+    </div>
+
+    <!-- ── Metric strip ── -->
+    <div class="grid grid-cols-3 gap-4 mb-10">
+
+      <div class="rounded-xl p-5 text-center" style="background:var(--raised);border:1px solid rgba(var(--accent-rgb),.15)">
+        <p class="font-mono font-black mb-1" style="font-size:clamp(1.75rem,4vw,2.5rem);color:var(--accent);letter-spacing:-0.04em">
+          [X]+
+        </p>
+        <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--subtle)">[Label — VD: Học viên]</p>
+      </div>
+
+      <div class="rounded-xl p-5 text-center" style="background:var(--raised);border:1px solid rgba(var(--cyan-rgb),.15)">
+        <p class="font-mono font-black mb-1" style="font-size:clamp(1.75rem,4vw,2.5rem);color:var(--cyan);letter-spacing:-0.04em">
+          [X]%
+        </p>
+        <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--subtle)">[Label — VD: Tăng trưởng TB]</p>
+      </div>
+
+      <div class="rounded-xl p-5 text-center" style="background:var(--raised);border:1px solid rgba(var(--purple-rgb),.15)">
+        <p class="font-mono font-black mb-1" style="font-size:clamp(1.75rem,4vw,2.5rem);color:var(--purple);letter-spacing:-0.04em">
+          [X]
+        </p>
+        <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--subtle)">[Label — VD: Ngày trung bình]</p>
+      </div>
+
+    </div>
+
+    <!-- ── Result cards ── -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- Card 1 -->
+      <div class="rounded-xl overflow-hidden" style="background:var(--raised);border:1px solid var(--rim)">
+
+        <!-- Replace: <img src="result-1.jpg" class="slot-img" alt="[Kết quả]"> -->
+        <div class="relative w-full overflow-hidden media-slot" style="aspect-ratio:4/3;background:var(--surface);border:2px dashed var(--faint)" data-role="RESULT">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">[Screenshot / metric · 4:3]</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+
+        <div class="p-4">
+          <!-- Result metric highlight -->
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-3"
+            style="background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.2)">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M1 7l3-4 2.5 3 2-3 1.5 4" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-mono text-[10px] font-bold" style="color:var(--accent)">[Kết quả nổi bật — VD: +340% leads]</span>
+          </div>
+
+          <!-- Avatar + name -->
+          <div class="flex items-center gap-2.5 mb-2.5">
+            <!-- Replace: <img src="person.jpg" class="slot-img" style="border-radius:9999px" alt=""> -->
+            <div class="media-slot shrink-0 rounded-full" style="width:34px;height:34px;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;" data-role="PERSON">
+              <span style="font-size:1.5rem;opacity:0.4">👤</span>
+            </div>
+            <div>
+              <p class="font-body text-xs font-semibold text-ink">[Tên · Nghề nghiệp]</p>
+              <p class="font-mono text-[9px]" style="color:var(--subtle)">[Địa điểm · Thời gian đạt kết quả]</p>
+            </div>
+          </div>
+
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">
+            "[Quote 1–2 câu — kết quả cụ thể, giọng thật]"
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="rounded-xl overflow-hidden" style="background:var(--raised);border:1px solid var(--rim)">
+        <!-- Replace: <img src="result-2.jpg" class="slot-img" alt="[Kết quả]"> -->
+        <div class="relative w-full overflow-hidden media-slot" style="aspect-ratio:4/3;background:var(--surface);border:2px dashed var(--faint)" data-role="RESULT">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">[Screenshot / metric · 4:3]</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-3"
+            style="background:rgba(var(--cyan-rgb),.10);border:1px solid rgba(var(--cyan-rgb),.2)">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M1 7l3-4 2.5 3 2-3 1.5 4" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-mono text-[10px] font-bold" style="color:var(--cyan)">[Kết quả nổi bật]</span>
+          </div>
+          <div class="flex items-center gap-2.5 mb-2.5">
+            <!-- Replace: <img src="person.jpg" class="slot-img" style="border-radius:9999px" alt=""> -->
+            <div class="media-slot shrink-0 rounded-full" style="width:34px;height:34px;background:var(--surface);border:2px dashed var(--faint);display:flex;align-items:center;justify-content:center;" data-role="PERSON">
+              <span style="font-size:1.5rem;opacity:0.4">👤</span>
+            </div>
+            <div>
+              <p class="font-body text-xs font-semibold text-ink">[Tên · Nghề nghiệp]</p>
+              <p class="font-mono text-[9px]" style="color:var(--subtle)">[Địa điểm · Thời gian]</p>
+            </div>
+          </div>
+          <p class="font-body text-xs leading-relaxed" style="color:var(--body)">"[Quote cụ thể]"</p>
+        </div>
+      </div>
+
+      <!-- [OPTIONAL: Card 3] — uncomment nếu có đủ 3 case studies
+      <div class="rounded-xl overflow-hidden" style="background:var(--raised);border:1px solid var(--rim)">
+        ... same structure ...
+      </div>
+      END [OPTIONAL] -->
+
+      <!-- Social proof strip — thay card 3 nếu chỉ có 2 case studies -->
+      <div class="rounded-xl p-5 flex flex-col justify-center" style="background:var(--raised);border:1px solid var(--rim)">
+        <p class="font-mono text-[11px] uppercase tracking-wider mb-4" style="color:var(--subtle);letter-spacing:.1em">
+          Cũng đã tham dự
+        </p>
+        <div class="space-y-2.5">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center shrink-0 font-mono text-[9px] font-bold"
+              style="background:rgba(var(--accent-rgb),.12);color:var(--accent)">TN</div>
+            <div>
+              <p class="font-body text-xs font-semibold text-ink">[Tên]</p>
+              <p class="font-mono text-[9px]" style="color:var(--subtle)">[Kết quả ngắn]</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center shrink-0 font-mono text-[9px] font-bold"
+              style="background:rgba(var(--cyan-rgb),.12);color:var(--cyan)">MP</div>
+            <div>
+              <p class="font-body text-xs font-semibold text-ink">[Tên]</p>
+              <p class="font-mono text-[9px]" style="color:var(--subtle)">[Kết quả ngắn]</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center shrink-0 font-mono text-[9px] font-bold"
+              style="background:rgba(var(--purple-rgb),.12);color:var(--purple)">HK</div>
+            <div>
+              <p class="font-body text-xs font-semibold text-ink">[Tên]</p>
+              <p class="font-mono text-[9px]" style="color:var(--subtle)">[Kết quả ngắn]</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center shrink-0 font-mono text-[9px] font-bold"
+              style="background:var(--surface);color:var(--subtle)">+</div>
+            <p class="font-mono text-[10px]" style="color:var(--subtle)">[X] người khác đã đăng ký</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

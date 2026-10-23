@@ -1,0 +1,215 @@
+<!--
+  PATTERN: Stats Bar
+  THEME: prestige-dark
+  Layout: 4 stats inline, separated by 1px gold vertical lines
+  No cards, no background — floats on surface
+  Numbers: Cormorant Garamond italic gold
+  Labels: Jost tracking-widest uppercase 10px
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: Stats Bar — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:  #c9a84c;
+      --bg:      #0c0c0a;
+      --surface: #141412;
+      --ink:     #f5f0e8;
+      --body:    #c8c4b8;
+      --subtle:  #7a7870;
+      --faint:   #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+    }
+
+    /* ─── Stats Bar ─────────────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--faint);
+      border-bottom: 1px solid var(--faint);
+      padding: 48px 64px;
+    }
+
+    .stats-bar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    /* Individual stat cell */
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 0 32px;
+      position: relative;
+      text-align: center;
+    }
+
+    /* Vertical gold separator (not on last cell) */
+    .stat:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: rgba(201,168,76,0.25);
+    }
+
+    /* The number — Cormorant italic gold */
+    .stat__value {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+    }
+
+    /* Suffix (Tỷ, Tầng, Căn, %) — smaller, still Cormorant italic */
+    .stat__suffix {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.6em;
+      color: rgba(201,168,76,0.7);
+      vertical-align: baseline;
+      margin-left: 2px;
+    }
+
+    /* The label — Jost, ultra-tracked, muted */
+    .stat__label {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--subtle);
+    }
+
+    /* Optional descriptor — even smaller */
+    .stat__desc {
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      color: var(--body);
+      opacity: 0.7;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .stats-bar {
+        padding: 40px 24px;
+      }
+
+      .stats-bar__inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 0;
+      }
+
+      .stat:nth-child(1)::after,
+      .stat:nth-child(3)::after {
+        display: block;
+      }
+
+      .stat:nth-child(2)::after,
+      .stat:nth-child(4)::after {
+        display: none;
+      }
+
+      /* Horizontal divider after first row */
+      .stat:nth-child(2) {
+        padding-bottom: 32px;
+      }
+
+      .stat:nth-child(2)::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -100%;
+        right: -100%;
+        height: 1px;
+        background: var(--faint);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-bar__inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <section class="stats-bar">
+    <div class="stats-bar__inner">
+
+      <!-- Stat 1 -->
+      <div class="stat">
+        <div class="stat__value">
+          42<span class="stat__suffix">tầng</span>
+        </div>
+        <div class="stat__label">Chiều Cao</div>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="stat">
+        <div class="stat__value">
+          380<span class="stat__suffix">căn</span>
+        </div>
+        <div class="stat__label">Tổng Số Căn</div>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="stat">
+        <div class="stat__value">
+          98<span class="stat__suffix">%</span>
+        </div>
+        <div class="stat__label">Đã Bán</div>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="stat">
+        <div class="stat__value">
+          8.5<span class="stat__suffix">Tỷ</span>
+        </div>
+        <div class="stat__label">Giá Từ</div>
+        <div class="stat__desc">VND · Studio 45m²</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • Keep exactly 4 stats. More than 4 breaks the balance.
+    • The italic Cormorant gold number is the visual hero here.
+    • Labels must be uppercase, tracked. This is non-negotiable.
+    • No card backgrounds. Stats float directly on the surface.
+    • The vertical separators are gold at 0.25 opacity — barely there.
+    • For prices, use DM Mono instead of Cormorant if you want the
+      number to read as data rather than emotion (both are valid).
+    • The .stat__desc line is optional — remove if data is self-evident.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

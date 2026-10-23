@@ -1,0 +1,80 @@
+<!--
+  nav.html — Fixed navigation with announcement bar
+  Layout:     announcement bar fixed top-0 · nav fixed below it · both collapse on scroll
+  Background: ann-bar transparent accent tint · nav transparent → glass on scroll
+  Elements:   ann-bar: live dot + promo text + timer + CTA link
+              nav: logo left · links center · CTA button right
+  Behavior:   scroll > 60px → ann-bar collapses (height→0) → nav rises to top-0 + glass bg
+  Note:       ann-bar height defined in #ann-bar CSS (base.css) as fixed 37px
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Logo / brand name (left)
+  · Primary CTA button (right)
+  · Scroll behavior: transparent → glass on scroll
+  Elements tùy chọn:
+  · Announcement bar (top strip): live dot + promo text + timer + CTA
+  · Nav links (center): 2-4 internal anchors
+  DEFAULT LAYOUT (Mode A):
+  Fixed top · ann-bar (37px) + nav (56px) · logo left · links center · CTA right
+  ─────────────────────────────────────────────────────────────────────
+-->
+
+<!-- Announcement bar -->
+<div id="ann-bar" style="height:37px;background:linear-gradient(90deg,rgba(182,255,0,0.10),rgba(0,194,255,0.07),rgba(182,255,0,0.10));border-bottom:1px solid rgba(182,255,0,0.14)">
+  <div class="h-full flex items-center justify-center px-4">
+    <p class="text-xs font-mono flex items-center gap-2 flex-wrap justify-center">
+      <span class="w-1.5 h-1.5 rounded-full animate-live inline-block" style="background:var(--accent)"></span>
+      <span style="color:var(--accent)" class="font-bold">Ưu đãi ra mắt:</span>
+      <span class="text-ink font-bold" id="ann-timer">47:59:59</span>
+      <span class="text-subtle hidden sm:inline">·</span>
+      <a href="#checkout" class="underline hidden sm:inline" style="color:var(--accent)">Đăng ký ngay →</a>
+    </p>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav id="site-nav" style="top:37px">
+  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center gap-6">
+    <!-- Logo -->
+    <a href="#" class="font-mono font-bold text-sm shrink-0 flex items-center gap-2" style="color:var(--accent)">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect width="20" height="20" rx="4" style="fill:rgba(182,255,0,0.15)"/>
+        <path d="M5 10h3l2-5 2 10 2-5h1" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Brand Name
+    </a>
+    <!-- Links (desktop) -->
+    <div class="flex-1 hidden md:flex items-center gap-6 text-xs font-mono" style="color:var(--subtle)">
+      <a href="#features" class="hover:text-ink transition-colors">Tính năng</a>
+      <a href="#pricing"  class="hover:text-ink transition-colors">Giá</a>
+      <a href="#faq"      class="hover:text-ink transition-colors">FAQ</a>
+    </div>
+    <!-- CTA -->
+    <a href="#checkout" class="btn-glow shrink-0 px-4 py-2 rounded-btn text-xs font-bold" style="background:var(--accent);color:var(--bg)">
+      Đăng ký ngay
+    </a>
+  </div>
+</nav>
+
+<!-- Nav behavior script (paste once per page, before </body>) -->
+<script>
+(function() {
+  const annBar = document.getElementById('ann-bar');
+  const nav    = document.getElementById('site-nav');
+  const ANN_H  = 37; // must match ann-bar height in px
+
+  function onScroll() {
+    if (window.scrollY > 60) {
+      annBar.classList.add('collapsed');
+      nav.style.top = '0px';
+      nav.classList.add('nav-scrolled');
+    } else {
+      annBar.classList.remove('collapsed');
+      nav.style.top = ANN_H + 'px';
+      nav.classList.remove('nav-scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // run on load
+})();
+</script>

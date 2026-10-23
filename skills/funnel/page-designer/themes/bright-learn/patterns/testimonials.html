@@ -1,0 +1,109 @@
+<!--
+  OVERRIDE: testimonials.html — Bright Learn
+  vs shared: dark raised cards · neon result tag glow · 3-col + featured dark
+  Override: 2-COL MASONRY — white cards · star ratings · colored result badges · no glow
+  Layout change: MAJOR — masonry 2-col replaces featured + 3-col dark
+-->
+<section class="py-20" style="background:var(--surface)">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <p class="font-display font-semibold text-xs uppercase tracking-wider mb-3" style="color:var(--accent)">[N] học viên đã hoàn thành</p>
+      <h2 class="font-display font-bold" style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.15;letter-spacing:-0.02em;color:var(--ink)">
+        Họ đã thay đổi thế nào<br>
+        <span style="color:var(--accent)">sau khi học?</span>
+      </h2>
+    </div>
+
+    <!-- 2-col masonry layout -->
+    <div class="grid sm:grid-cols-2 gap-4">
+
+      <!-- Card 1 — tall, featured -->
+      <div class="rounded-2xl p-6 flex flex-col"
+           style="background:var(--bg);border:1.5px solid var(--rim);box-shadow:0 4px 20px rgba(108,71,255,0.07)">
+        <!-- Result badge -->
+        <div class="inline-flex items-center gap-1.5 self-start mb-4 px-3 py-1.5 rounded-full"
+             style="background:rgba(0,184,169,0.10);border:1px solid rgba(0,184,169,0.2)">
+          <span class="text-xs">📈</span>
+          <span class="font-display font-semibold text-[11px] uppercase tracking-wider" style="color:var(--teal)">[RESULT TAG — e.g. ROAS 4.2x]</span>
+        </div>
+        <!-- Stars -->
+        <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
+        <!-- Big stat -->
+        <p class="font-display font-extrabold mb-2" style="font-size:2rem;color:var(--accent)">[MAIN METRIC]</p>
+        <p class="font-body text-xs mb-4" style="color:var(--subtle)">[Metric context]</p>
+        <!-- Quote -->
+        <p class="font-body text-sm leading-relaxed flex-1 mb-5" style="color:var(--body)">
+          "[FULL QUOTE — dài hơn các card khác, 3–4 câu]"
+        </p>
+        <!-- Author -->
+        <div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--faint)">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center font-display font-bold text-sm flex-shrink-0"
+               style="background:rgba(108,71,255,0.10);color:var(--accent)">[INI]</div>
+          <div>
+            <p class="font-display font-semibold text-sm" style="color:var(--ink)">[FULL NAME]</p>
+            <p class="font-body text-xs" style="color:var(--subtle)">[Role] · [City]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column — 2 stacked cards -->
+      <div class="flex flex-col gap-4">
+
+        <!-- Card 2 -->
+        <div class="rounded-2xl p-6 flex flex-col"
+             style="background:var(--bg);border:1px solid var(--faint);box-shadow:0 2px 12px rgba(0,0,0,0.04)">
+          <div class="inline-flex items-center gap-1.5 self-start mb-3 px-3 py-1 rounded-full"
+               style="background:rgba(255,159,67,0.10);border:1px solid rgba(255,159,67,0.2)">
+            <span class="font-display font-semibold text-[11px] uppercase tracking-wider" style="color:var(--orange)">[RESULT TAG]</span>
+          </div>
+          <div class="text-yellow-400 text-sm mb-2">★★★★★</div>
+          <p class="font-body text-sm leading-relaxed flex-1 mb-4" style="color:var(--body)">"[QUOTE — 2–3 câu]"</p>
+          <div class="flex items-center gap-2.5 pt-3" style="border-top:1px solid var(--faint)">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+                 style="background:rgba(0,184,169,0.10);color:var(--teal)">[INI]</div>
+            <div>
+              <p class="font-display font-semibold text-xs" style="color:var(--ink)">[NAME]</p>
+              <p class="font-body text-[10px]" style="color:var(--subtle)">[Role] · [City]</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="rounded-2xl p-6 flex flex-col"
+             style="background:var(--bg);border:1px solid var(--faint);box-shadow:0 2px 12px rgba(0,0,0,0.04)">
+          <div class="inline-flex items-center gap-1.5 self-start mb-3 px-3 py-1 rounded-full"
+               style="background:rgba(108,71,255,0.08);border:1px solid rgba(108,71,255,0.18)">
+            <span class="font-display font-semibold text-[11px] uppercase tracking-wider" style="color:var(--accent)">[RESULT TAG]</span>
+          </div>
+          <div class="text-yellow-400 text-sm mb-2">★★★★★</div>
+          <p class="font-body text-sm leading-relaxed flex-1 mb-4" style="color:var(--body)">"[QUOTE — 2–3 câu]"</p>
+          <div class="flex items-center gap-2.5 pt-3" style="border-top:1px solid var(--faint)">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center font-display font-bold text-xs flex-shrink-0"
+                 style="background:rgba(108,71,255,0.10);color:var(--accent)">[INI]</div>
+            <div>
+              <p class="font-display font-semibold text-xs" style="color:var(--ink)">[NAME]</p>
+              <p class="font-body text-[10px]" style="color:var(--subtle)">[Role] · [City]</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Trust strip below -->
+    <div class="flex flex-wrap items-center justify-center gap-6 mt-8 pt-6" style="border-top:1px solid var(--faint)">
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-400 text-sm">★★★★★</span>
+        <span class="font-display font-bold text-sm" style="color:var(--ink)">[RATING]/5</span>
+        <span class="font-body text-sm" style="color:var(--subtle)">trung bình</span>
+      </div>
+      <span class="w-px h-4" style="background:var(--faint)"></span>
+      <span class="font-body text-sm" style="color:var(--subtle)">[N]+ đánh giá xác thực</span>
+      <span class="w-px h-4" style="background:var(--faint)"></span>
+      <span class="font-body text-sm" style="color:var(--subtle)">[N]% học viên đề xuất</span>
+    </div>
+
+  </div>
+</section>

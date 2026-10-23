@@ -1,0 +1,50 @@
+<!--
+  OVERRIDE: cta-strip.html — Trust Navy
+  vs shared: accent bg + dark-on-neon + blobs
+  vs bright-learn: 2-col + registration form right
+  Override: GOLD STRIP — minimal copy + dark-on-gold button + no decoration
+  Layout: centered — authority needs no complexity at close
+-->
+<section class="relative py-16 overflow-hidden" style="background:var(--accent)">
+
+  <!-- Subtle diagonal texture on gold -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.04]"
+       style="background-image:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(0,0,0,1) 20px,rgba(0,0,0,1) 21px)"></div>
+
+  <div class="relative max-w-3xl mx-auto px-6 text-center">
+
+    <p class="font-mono text-[10px] uppercase tracking-[0.16em] mb-4 opacity-60" style="color:var(--accent-text)">
+      [Label — e.g. Cohort [N] · [Month YYYY]]
+    </p>
+
+    <h2 class="font-display font-bold mb-4"
+        style="font-size:clamp(1.75rem,4vw,3rem);line-height:1.1;letter-spacing:-0.025em;color:var(--accent-text)">
+      [CTA Headline — direct, no hype]
+    </h2>
+
+    <p class="font-body text-base mb-8 opacity-75" style="color:var(--accent-text)">
+      [1 câu — nói về giới hạn cohort hoặc lý do hành động ngay. Không dùng dấu chấm than.]
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="[ORDER_URL]"
+         class="inline-flex items-center gap-2 py-3.5 px-10 font-body font-semibold text-sm transition-all hover:opacity-90"
+         style="background:var(--accent-text);color:var(--accent);border-radius:4px">
+        [CTA TEXT] →
+      </a>
+      <p class="font-mono text-[11px] uppercase tracking-wider opacity-50" style="color:var(--accent-text)">
+        [N] spots remaining
+      </p>
+    </div>
+
+    <!-- Trust fine print -->
+    <div class="flex items-center justify-center gap-6 mt-8 opacity-50">
+      <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--accent-text)">✓ [N]-day refund</span>
+      <span class="w-px h-3" style="background:var(--accent-text)"></span>
+      <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--accent-text)">✓ [Credential]</span>
+      <span class="w-px h-3" style="background:var(--accent-text)"></span>
+      <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--accent-text)">✓ [N] years track record</span>
+    </div>
+
+  </div>
+</section>

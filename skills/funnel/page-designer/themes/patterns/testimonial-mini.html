@@ -1,0 +1,21 @@
+<!--
+  testimonial-mini.html — 1 strong quote near payment (không phải 3 cards)
+  Slots: [PERSON] 1:1 circular tiny
+  Rule: Chỉ 1 quote, ngắn nhất có thể, kết quả cụ thể nhất
+  Vị trí: Giữa form và nút thanh toán, hoặc trong right column
+-->
+<div class="flex items-start gap-3 px-4 py-3 rounded-xl" style="background:var(--raised);border:1px solid var(--rim)">
+  <!-- [PERSON] tiny avatar -->
+  <div class="slot-circle shrink-0" data-role="PERSON">
+    <div class="media-slot aspect-1-1 rounded-full" style="width:36px;height:36px">
+      <!-- Replace: <img src="customer.jpg" class="slot-img" alt="Name"> -->
+      <div class="slot-placeholder rounded-full">
+        <span class="font-mono font-black text-xs" style="color:var(--accent)">NT</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex-1">
+    <p class="font-body text-sm text-ink leading-snug">"Quote mạnh nhất — kết quả cụ thể, không hoa mỹ. Tối đa 2 câu."</p>
+    <p class="font-mono text-[10px] mt-1.5" style="color:var(--subtle)">Nguyễn Tên · Vai trò · ✓ Đã xác minh</p>
+  </div>
+</div>

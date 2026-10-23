@@ -1,0 +1,376 @@
+<!--
+  PATTERN: hero
+  THEME:   warm-authority
+  USE:     Personal brand hero — portrait right, copy left, amber credential badge
+  Design:  Override of shared hero-portrait. Lora serif headline, warm glow behind portrait,
+           amber credential badge floating near portrait, warm cream bg.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #b5732a; --accent-rgb: 181,115,42;
+    --forest: #2d5016;
+    --bg: #fdf9f4; --surface: #f7f1e8; --raised: #efe6d8;
+    --ink: #1e160a; --body: #4a3520; --subtle: #8a7560; --faint: #ddd0be;
+    --rim: rgba(181,115,42,0.20);
+    --radius-btn: 10px; --radius-card: 16px; --radius-pill: 9999px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .hero {
+    background: var(--bg);
+    padding: 80px 24px 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle paper grain */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  /* Warm amber background glow */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(ellipse, rgba(181,115,42,0.08) 0%, transparent 65%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* === LEFT — copy === */
+  .hero-copy {}
+  .credential-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(181,115,42,0.08);
+    border: 1px solid rgba(181,115,42,0.22);
+    border-radius: var(--radius-pill);
+    padding: 6px 14px;
+    margin-bottom: 24px;
+  }
+  .credential-pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .credential-pill-text {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+  }
+  .hero-headline {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+    display: block;
+  }
+  .hero-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--body);
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 36px;
+    max-width: 460px;
+  }
+  /* CTA row */
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: var(--radius-btn);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(181,115,42,0.25);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 20px rgba(181,115,42,0.35);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 13px 24px;
+    border-radius: var(--radius-btn);
+    border: 1.5px solid rgba(181,115,42,0.30);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    background: rgba(181,115,42,0.06);
+    border-color: var(--accent);
+  }
+  /* Trust strip */
+  .hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid var(--faint);
+  }
+  .trust-metric {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .trust-num {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+  .trust-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--body);
+  }
+  .trust-divider {
+    width: 1px; height: 20px;
+    background: var(--faint);
+    flex-shrink: 0;
+  }
+
+  /* === RIGHT — portrait === */
+  .hero-portrait-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+  }
+  .portrait-container {
+    position: relative;
+    width: 300px;
+  }
+  /* Warm glow behind portrait */
+  .portrait-glow {
+    position: absolute;
+    inset: -16px;
+    border-radius: 28px;
+    background: radial-gradient(ellipse at 60% 40%, rgba(181,115,42,0.12) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .portrait-slot {
+    width: 300px;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--raised);
+    border: 1px solid var(--faint);
+    position: relative;
+    z-index: 1;
+  }
+  .portrait-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.08) saturate(1.1) brightness(1.02);
+  }
+  /* Credential badge — floating bottom-left */
+  .credential-badge {
+    position: absolute;
+    bottom: -16px; left: -20px;
+    background: var(--bg);
+    border: 1px solid var(--faint);
+    border-radius: var(--radius-card);
+    padding: 12px 16px;
+    box-shadow: 0 4px 20px rgba(30,22,10,0.08);
+    z-index: 2;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-5px); }
+  }
+  .cred-badge-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .cred-badge-sub {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.68rem;
+    color: var(--subtle);
+    margin-top: 2px;
+  }
+  /* Impact number — floating top-right */
+  .impact-badge {
+    position: absolute;
+    top: 16px; right: -20px;
+    background: var(--accent);
+    border-radius: var(--radius-card);
+    padding: 10px 16px;
+    box-shadow: 0 4px 16px rgba(181,115,42,0.30);
+    z-index: 2;
+    text-align: center;
+    animation: float 4s ease-in-out infinite 1.5s;
+  }
+  .impact-num {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #fff;
+    line-height: 1;
+  }
+  .impact-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.82);
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-portrait-wrap { display: none; }
+  }
+</style>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- Left — copy -->
+    <div class="hero-copy">
+      <!-- Credential pill -->
+      <div class="credential-pill">
+        <div class="credential-pill-dot"></div>
+        <span class="credential-pill-text">[Vai trò — Business Coach · Speaker · Author]</span>
+      </div>
+
+      <!-- Lora serif headline -->
+      <h1 class="hero-headline">
+        [Tên] Giúp [Đối tượng]<br>
+        <em>[Đạt Kết Quả Cụ Thể]</em>
+        Có Hệ Thống
+      </h1>
+
+      <!-- Lead sub -->
+      <p class="hero-sub">
+        [Positioning statement — 2 câu. Ai, giúp ai, đạt kết quả gì. Cụ thể và đo được.
+        Tone: cố vấn đáng tin cậy, không phải người bán hàng.]
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-actions">
+        <a href="#dang-ky" class="btn-primary">Đặt lịch tư vấn miễn phí →</a>
+        <a href="#hanh-trinh" class="btn-secondary">Xem hành trình của tôi</a>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="hero-trust">
+        <div class="trust-metric">
+          <span class="trust-num">[N]+</span>
+          <span class="trust-label">Khách hàng</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-metric">
+          <span class="trust-num">[N]M+</span>
+          <span class="trust-label">Doanh thu tạo ra</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-metric">
+          <span class="trust-num">[N] năm</span>
+          <span class="trust-label">Kinh nghiệm</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — portrait -->
+    <div class="hero-portrait-wrap">
+      <div class="portrait-container">
+        <div class="portrait-glow"></div>
+
+        <!-- Portrait slot — replace SVG with real photo -->
+        <div class="portrait-slot" data-role="PERSON">
+          <!-- Replace with: <img src="portrait.jpg" alt="[Tên]"> -->
+          <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg"
+               style="width:100%;height:100%">
+            <rect width="300" height="380" fill="#efe6d8"/>
+            <circle cx="150" cy="130" r="60" fill="#ddd0be" stroke="#b5732a" stroke-width="1" opacity="0.5"/>
+            <path d="M50 360 C50 290 90 260 150 260 C210 260 250 290 250 360"
+                  fill="#ddd0be" stroke="#b5732a" stroke-width="1" opacity="0.4"/>
+            <text x="150" y="320" text-anchor="middle" font-family="sans-serif"
+                  font-size="11" fill="#8a7560">[ Ảnh chân dung thực tế ]</text>
+          </svg>
+        </div>
+
+        <!-- Credential badge — bottom left -->
+        <div class="credential-badge">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8.5" stroke="#b5732a" stroke-width="1.5"/>
+              <path d="M10 4 L11.4 8 L15.5 8 L12.3 10.5 L13.7 14.5 L10 12 L6.3 14.5 L7.7 10.5 L4.5 8 L8.6 8 Z"
+                    fill="#b5732a" opacity="0.8"/>
+            </svg>
+            <div>
+              <p class="cred-badge-title">[Forbes Contributor]</p>
+              <p class="cred-badge-sub">[2024] · Tác giả sách</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Impact badge — top right -->
+        <div class="impact-badge">
+          <p class="impact-num">[N]M+</p>
+          <p class="impact-label">Doanh thu khách hàng</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

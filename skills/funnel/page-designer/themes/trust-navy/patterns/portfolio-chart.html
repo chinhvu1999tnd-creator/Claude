@@ -1,0 +1,125 @@
+<!--
+  NEW PATTERN: portfolio-chart.html — Trust Navy only
+  Use: Portfolio / track record performance visualization
+  Layout: Full-width chart section — line chart SVG + legend + disclaimer
+  Visual: SVG area chart với gold line, green fill, benchmark comparison, axis labels
+  Rule: Đặt SAU Stats bar, TRƯỚC Problem
+        Disclaimer bắt buộc: "Past performance does not guarantee future results"
+        Y-axis: % return. X-axis: time periods (quarters/years)
+        Max 2 lines: portfolio (gold) + benchmark (silver dashed)
+  Dùng cho: Trust Navy — finance, investment coaching, wealth management
+-->
+<section class="py-16" style="background:var(--surface);border-top:1px solid var(--faint)">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- Header row -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div>
+        <p class="font-mono text-[9px] uppercase tracking-[0.14em] mb-2" style="color:var(--subtle)">Track record</p>
+        <h2 class="font-display font-semibold" style="font-size:clamp(1.125rem,2.5vw,1.5rem);line-height:1.2;color:var(--ink)">
+          Hiệu suất danh mục — [N] năm liên tiếp
+        </h2>
+      </div>
+      <!-- Legend -->
+      <div class="flex items-center gap-5 flex-shrink-0">
+        <div class="flex items-center gap-2">
+          <svg width="24" height="8" viewBox="0 0 24 8"><line x1="0" y1="4" x2="24" y2="4" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/></svg>
+          <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--accent)">Danh mục</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg width="24" height="8" viewBox="0 0 24 8"><line x1="0" y1="4" x2="24" y2="4" stroke="var(--silver)" stroke-width="1.5" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.6"/></svg>
+          <span class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">VN-Index</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart container -->
+    <div style="border:1px solid var(--faint);border-radius:6px;overflow:hidden;background:var(--raised)">
+
+      <!-- Chart SVG -->
+      <div class="relative p-5 pb-2">
+        <svg viewBox="0 0 760 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" style="overflow:visible">
+
+          <!-- Y-axis grid lines & labels -->
+          <!-- +50% -->
+          <line x1="60" y1="20" x2="750" y2="20" stroke="var(--faint)" stroke-width="0.75"/>
+          <text x="50" y="24" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--subtle)">+50%</text>
+          <!-- +25% -->
+          <line x1="60" y1="70" x2="750" y2="70" stroke="var(--faint)" stroke-width="0.75"/>
+          <text x="50" y="74" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--subtle)">+25%</text>
+          <!-- 0% baseline — more visible -->
+          <line x1="60" y1="120" x2="750" y2="120" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="4 3"/>
+          <text x="50" y="124" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="9" fill="rgba(255,255,255,0.35)">0%</text>
+          <!-- -25% -->
+          <line x1="60" y1="170" x2="750" y2="170" stroke="var(--faint)" stroke-width="0.75"/>
+          <text x="50" y="174" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--subtle)">-25%</text>
+
+          <!-- X-axis labels (quarters) -->
+          <text x="80"  y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--subtle)">Q1'22</text>
+          <text x="195" y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--subtle)">Q3'22</text>
+          <text x="310" y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--subtle)">Q1'23</text>
+          <text x="425" y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--subtle)">Q3'23</text>
+          <text x="540" y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--subtle)">Q1'24</text>
+          <text x="655" y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--subtle)">Q3'24</text>
+          <text x="740" y="210" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--subtle)">YTD</text>
+
+          <!--
+            Portfolio line — gold, outperforming
+            Points (x, y): start at 0%, trend upward with volatility
+            Y mapping: 0%=120, +50%=20, -25%=170 → each 1% = 2px
+          -->
+          <!-- Area fill under portfolio line -->
+          <path d="M80,120 L130,108 L180,95 L230,110 L280,82 L330,65 L380,78 L430,55 L480,42 L530,58 L580,38 L630,28 L680,22 L730,25 L750,120 Z"
+                fill="rgba(76,175,125,0.12)"/>
+          <!-- Portfolio line -->
+          <path d="M80,120 L130,108 L180,95 L230,110 L280,82 L330,65 L380,78 L430,55 L480,42 L530,58 L580,38 L630,28 L680,22 L730,25"
+                stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Benchmark line — VN-Index, silver dashed, underperforming -->
+          <path d="M80,120 L130,115 L180,125 L230,132 L280,118 L330,110 L380,122 L430,115 L480,108 L530,118 L580,110 L630,105 L680,100 L730,95"
+                stroke="var(--silver)" stroke-width="1.5" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+
+          <!-- Endpoint dots -->
+          <circle cx="730" cy="25" r="4" fill="var(--accent)" stroke="var(--raised)" stroke-width="2"/>
+          <circle cx="730" cy="95" r="3" fill="var(--silver)" stroke="var(--raised)" stroke-width="1.5" opacity="0.7"/>
+
+          <!-- End labels -->
+          <text x="740" y="22" font-family="'IBM Plex Mono',monospace" font-size="9" font-weight="700" fill="var(--accent)">+49%</text>
+          <text x="740" y="92" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--silver)" opacity="0.7">+13%</text>
+
+        </svg>
+      </div>
+
+      <!-- Chart footer — key metrics strip -->
+      <div class="grid grid-cols-3 sm:grid-cols-5 divide-x" style="border-top:1px solid var(--faint);border-color:var(--faint)">
+        <div class="px-4 py-3 text-center">
+          <p class="font-mono font-bold text-base" style="color:var(--positive)">+49.2%</p>
+          <p class="font-mono text-[9px] uppercase tracking-wider mt-0.5" style="color:var(--subtle)">Tổng lợi nhuận</p>
+        </div>
+        <div class="px-4 py-3 text-center" style="border-left:1px solid var(--faint)">
+          <p class="font-mono font-bold text-base" style="color:var(--accent)">+24.6%</p>
+          <p class="font-mono text-[9px] uppercase tracking-wider mt-0.5" style="color:var(--subtle)">CAGR</p>
+        </div>
+        <div class="px-4 py-3 text-center" style="border-left:1px solid var(--faint)">
+          <p class="font-mono font-bold text-base" style="color:var(--ink)">-8.2%</p>
+          <p class="font-mono text-[9px] uppercase tracking-wider mt-0.5" style="color:var(--subtle)">Max Drawdown</p>
+        </div>
+        <div class="hidden sm:block px-4 py-3 text-center" style="border-left:1px solid var(--faint)">
+          <p class="font-mono font-bold text-base" style="color:var(--accent)">1.84</p>
+          <p class="font-mono text-[9px] uppercase tracking-wider mt-0.5" style="color:var(--subtle)">Sharpe Ratio</p>
+        </div>
+        <div class="hidden sm:block px-4 py-3 text-center" style="border-left:1px solid var(--faint)">
+          <p class="font-mono font-bold text-base" style="color:var(--positive)">+36%</p>
+          <p class="font-mono text-[9px] uppercase tracking-wider mt-0.5" style="color:var(--subtle)">vs VN-Index</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mandatory disclaimer -->
+    <p class="font-mono text-[9px] mt-3" style="color:var(--subtle)">
+      * Past performance does not guarantee future results. Returns shown are net of fees, for illustrative purposes only. Individual results will vary based on entry point, portfolio composition, and market conditions. Data period: Q1/2022 – Q4/2024.
+    </p>
+
+  </div>
+</section>

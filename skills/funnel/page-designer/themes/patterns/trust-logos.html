@@ -1,0 +1,38 @@
+<!--
+  trust-logos.html — Brand / media trust logos row
+  Layout:     centered row · flex wrap · gap-8 · grayscale logos
+  Background: var(--bg) · no effects
+  Elements:   section label "Được nhắc đến trên" + logo row (5-8 logos)
+  Visuals:    SVG text logos · opacity-30 default · opacity-60 hover
+-->
+<section class="py-12 bg-canvas">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <p class="text-center text-label text-subtle mb-8 tracking-widest uppercase font-mono">Được nhắc đến trên</p>
+
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+
+      <!-- Logo slot — replace SVGs with actual brand logos -->
+      <svg class="h-6 opacity-30 hover:opacity-60 transition-opacity duration-200" viewBox="0 0 120 24" fill="none">
+        <text x="0" y="18" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="white">VnExpress</text>
+      </svg>
+
+      <svg class="h-6 opacity-30 hover:opacity-60 transition-opacity duration-200" viewBox="0 0 80 24" fill="none">
+        <text x="0" y="18" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="white">Kenh14</text>
+      </svg>
+
+      <svg class="h-6 opacity-30 hover:opacity-60 transition-opacity duration-200" viewBox="0 0 90 24" fill="none">
+        <text x="0" y="18" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="white">CafeF</text>
+      </svg>
+
+      <svg class="h-6 opacity-30 hover:opacity-60 transition-opacity duration-200" viewBox="0 0 100 24" fill="none">
+        <text x="0" y="18" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="white">Dantri</text>
+      </svg>
+
+      <svg class="h-6 opacity-30 hover:opacity-60 transition-opacity duration-200" viewBox="0 0 80 24" fill="none">
+        <text x="0" y="18" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="white">Forbes</text>
+      </svg>
+
+    </div>
+  </div>
+</section>

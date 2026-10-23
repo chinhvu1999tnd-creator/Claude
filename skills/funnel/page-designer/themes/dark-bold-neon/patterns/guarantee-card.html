@@ -1,0 +1,66 @@
+<!--
+  OVERRIDE: guarantee-card.html — Dark Bold Neon
+  vs shared: gradient border + shield icon + surface card
+  Override: animated neon border glow + shield with neon fill + pulsing ring behind shield
+  Visual:   electric guarantee seal vs. clean card
+-->
+<section class="relative py-16 overflow-hidden" style="background:var(--bg)">
+  <div class="max-w-lg mx-auto px-6 relative">
+
+    <!-- Animated neon glow wrapper -->
+    <div class="relative rounded-2xl p-px"
+         style="background:linear-gradient(135deg,rgba(182,255,0,0.5),rgba(0,194,255,0.25),rgba(168,85,247,0.2),rgba(182,255,0,0.3));
+                box-shadow:0 0 50px rgba(182,255,0,0.18),0 0 100px rgba(182,255,0,0.06)">
+
+      <div class="relative rounded-2xl px-8 py-10 text-center overflow-hidden" style="background:var(--surface)">
+
+        <!-- Top neon line -->
+        <div class="absolute inset-x-0 top-0 h-px"
+             style="background:linear-gradient(90deg,transparent,#B6FF00 30%,#00C2FF 70%,transparent)"></div>
+
+        <!-- Shield icon with pulsing rings -->
+        <div class="relative flex items-center justify-center mb-6">
+          <!-- Pulse rings -->
+          <div class="absolute w-20 h-20 rounded-full animate-ping opacity-10" style="background:var(--accent)"></div>
+          <div class="absolute w-16 h-16 rounded-full opacity-15" style="background:var(--accent)"></div>
+          <!-- Shield -->
+          <div class="relative w-14 h-14 flex items-center justify-center rounded-2xl z-10"
+               style="background:rgba(182,255,0,0.10);border:1.5px solid rgba(182,255,0,0.4);
+                      box-shadow:0 0 24px rgba(182,255,0,0.25)">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M14 3L5 7v8c0 5 4 9.5 9 11 5-1.5 9-6 9-11V7L14 3Z"
+                    fill="rgba(182,255,0,0.15)" stroke="#B6FF00" stroke-width="1.5"
+                    stroke-linejoin="round"/>
+              <path d="M10 14l3 3 5-5" stroke="#B6FF00" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="font-mono text-[10px] uppercase tracking-[0.14em] mb-2" style="color:var(--accent)">[Duration — e.g. 30 Ngày]</p>
+        <h2 class="font-display font-black text-ink mb-4"
+            style="font-size:clamp(1.25rem,3vw,1.75rem);line-height:1.1;letter-spacing:-0.03em">
+          Cam Kết Hoàn Tiền 100%
+        </h2>
+
+        <p class="font-body text-sm leading-relaxed mb-6" style="color:var(--body);max-width:360px;margin-left:auto;margin-right:auto">
+          [Mô tả bảo đảm — VD: Nếu sau [X] ngày bạn không thấy kết quả,
+          chúng tôi hoàn lại toàn bộ số tiền — không câu hỏi, không thủ tục phức tạp.]
+        </p>
+
+        <!-- Signature line -->
+        <div class="flex items-center justify-center gap-3 pt-5"
+             style="border-top:1px solid rgba(182,255,0,0.12)">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center font-display font-black text-xs"
+               style="background:rgba(182,255,0,0.10);border:1px solid rgba(182,255,0,0.25);color:var(--accent)">[INI]</div>
+          <div class="text-left">
+            <p class="font-display font-bold text-sm text-ink">[Tên người ký]</p>
+            <p class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[Chức danh]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

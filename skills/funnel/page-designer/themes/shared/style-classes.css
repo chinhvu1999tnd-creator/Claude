@@ -1,0 +1,552 @@
+/*
+ * ══════════════════════════════════════════════════════════════
+ *  STYLE CLASS LIBRARY — AI Agent Business Kit Designer Skill
+ *  Version: 1.0.0
+ *
+ *  Semantic CSS class vocabulary — 12 categories.
+ *  All values use CSS tokens from :root (aesthetic direction).
+ *  AI applies class NAMES, not raw CSS values.
+ *
+ *  USAGE:
+ *  1. Aesthetic direction defines tokens in :root
+ *  2. These classes consume those tokens
+ *  3. AI writes HTML using class names only
+ *
+ *  REQUIRED TOKENS (must be defined in :root):
+ *  --bg, --surface, --s2, --fg, --muted, --border
+ *  --accent, --accent-dim, --accent-text, --accent-glow
+ *  --border-hover, --gradient, --glow
+ *  --fd (font display), --fb (font body), --fm (font mono)
+ *  --r-sm, --r-md, --r-lg, --r-full, --r (default)
+ *  --card-pad, --gap-md, --gap-lg
+ *  --shadow-sm, --shadow-md, --shadow-glow-val
+ * ══════════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────
+   BASE RESET
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; font-family: var(--fb); font-size: 16px; line-height: 1.7; background: var(--bg); color: var(--fg); }
+img { max-width: 100%; display: block; }
+p { text-wrap: pretty; }
+h1, h2, h3, h4 { text-wrap: balance; color: var(--fg); }
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 1 — TYPOGRAPHY
+   Semantic text roles. Never hardcode font-size.
+════════════════════════════════════════════ */
+
+/* Display — hero headlines */
+.display-xl {
+  font-family: var(--fd); font-weight: 900;
+  font-size: clamp(2.75rem, 8vw, 6.5rem);
+  letter-spacing: -0.04em; line-height: 0.93;
+}
+/* display-hero: dùng cho H1 nhiều dòng (2-3 lines) — không dùng display-xl */
+.display-hero {
+  font-family: var(--fd); font-weight: 900;
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  letter-spacing: -0.035em; line-height: 1.0;
+}
+.display-lg {
+  font-family: var(--fd); font-weight: 900;
+  font-size: clamp(1.875rem, 4.5vw, 3.5rem);
+  letter-spacing: -0.03em; line-height: 1.0;
+}
+.display-md {
+  font-family: var(--fd); font-weight: 800;
+  font-size: clamp(1.375rem, 2.5vw, 2rem);
+  letter-spacing: -0.025em; line-height: 1.1;
+}
+.display-sm {
+  font-family: var(--fd); font-weight: 700;
+  font-size: clamp(1.0625rem, 2vw, 1.375rem);
+  letter-spacing: -0.015em; line-height: 1.25;
+}
+
+/* Section titles */
+.section-title {
+  font-family: var(--fd); font-weight: 900;
+  font-size: clamp(1.875rem, 4.5vw, 3.5rem);
+  letter-spacing: -0.03em; line-height: 1.05;
+  color: var(--fg);
+}
+
+/* Body text */
+.body-lg { font-size: 1.0625rem; line-height: 1.75; }
+.body-md { font-size: 1rem;      line-height: 1.7;  }
+.body-sm { font-size: 0.9375rem; line-height: 1.65; }
+.body-xs { font-size: 0.875rem;  line-height: 1.6;  }
+
+/* Labels — supplementary, dark backgrounds */
+.eyebrow {
+  font-family: var(--fm); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); display: block;
+}
+.mono-label {
+  font-family: var(--fm); font-size: 11px;
+  letter-spacing: 0.08em; color: var(--muted);
+}
+
+/* Muted text */
+.text-muted { color: var(--muted); }
+.text-fg    { color: var(--fg); }
+.text-accent { color: var(--accent); }
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 2 — KEYWORD HIGHLIGHT
+   Apply to <span> inside headings or body.
+════════════════════════════════════════════ */
+
+/* Primary emphasis — accent color + italic */
+.highlight {
+  color: var(--accent);
+  font-style: italic;
+}
+/* Strong accent — bold, no italic */
+.accent-mark {
+  color: var(--accent);
+  font-weight: 800;
+}
+/* Gradient text — for 2-4 words in hero H1 only */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Playfair italic — emotional moments */
+.editorial {
+  font-family: var(--fe, 'Playfair Display', serif);
+  font-style: italic;
+  font-weight: 700;
+}
+/* Number watermark — decorative, card corners */
+.num-watermark {
+  font-family: var(--fd); font-weight: 900;
+  font-size: 3.5rem; letter-spacing: -0.05em; line-height: 1;
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.12; position: absolute; top: 14px; right: 16px;
+  user-select: none; pointer-events: none;
+}
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 3 — MOTION
+   One entrance per hero. Scroll reveal for rest.
+════════════════════════════════════════════ */
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1),
+              transform 0.55s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.on { opacity: 1; transform: translateY(0); }
+
+/* Stagger children — add .stagger to parent, children get delay */
+.stagger > * { opacity: 0; transform: translateY(18px); }
+.stagger.on > *:nth-child(1) { animation: _fadeUp 0.5s 0.00s cubic-bezier(0.16,1,0.3,1) forwards; }
+.stagger.on > *:nth-child(2) { animation: _fadeUp 0.5s 0.08s cubic-bezier(0.16,1,0.3,1) forwards; }
+.stagger.on > *:nth-child(3) { animation: _fadeUp 0.5s 0.16s cubic-bezier(0.16,1,0.3,1) forwards; }
+.stagger.on > *:nth-child(4) { animation: _fadeUp 0.5s 0.24s cubic-bezier(0.16,1,0.3,1) forwards; }
+@keyframes _fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero layer entrances — apply to individual elements */
+.entrance { opacity: 0; }
+.entrance-1 { animation: _heroIn 0.7s 0.06s both cubic-bezier(0.16,1,0.3,1); }
+.entrance-2 { animation: _heroIn 0.8s 0.18s both cubic-bezier(0.16,1,0.3,1); }
+.entrance-3 { animation: _heroIn 0.65s 0.32s both cubic-bezier(0.16,1,0.3,1); }
+.entrance-4 { animation: _heroIn 0.6s 0.46s both cubic-bezier(0.16,1,0.3,1); }
+.entrance-5 { animation: _heroIn 0.6s 0.60s both cubic-bezier(0.16,1,0.3,1); }
+@keyframes _heroIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 4 — CARD
+   Container elements. padding from --card-pad token.
+════════════════════════════════════════════ */
+
+.card-base {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: var(--card-pad);
+  transition: border-color 0.2s ease;
+}
+.card-base:hover { border-color: var(--border-hover); }
+
+/* Gradient border wrapper — inner element gets surface bg */
+.card-gradient-border {
+  padding: 1.5px;
+  border-radius: calc(var(--r-md) + 1.5px);
+  background: var(--gradient);
+}
+.card-gradient-border > * {
+  background: var(--surface);
+  border-radius: var(--r-md);
+}
+
+/* Ghost — transparent with border */
+.card-ghost {
+  background: transparent; border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: var(--card-pad);
+  transition: border-color 0.2s ease;
+}
+.card-ghost:hover { border-color: var(--border-hover); }
+
+/* Left-accent card */
+.card-accent-left {
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: var(--card-pad);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card-accent-left:hover { border-color: var(--border-hover); transform: translateX(2px); }
+
+/* Seamless grid cells */
+.grid-seamless {
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden;
+}
+.grid-seamless > * { background: var(--surface); padding: var(--card-pad); }
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 5 — LIST STYLE
+   Apply to <ul> or <ol>. li content flows naturally.
+════════════════════════════════════════════ */
+
+.dot-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.dot-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9375rem; line-height: 1.6; }
+.dot-list li::before { content: ''; width: 7px; height: 7px; min-width: 7px; background: var(--accent); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9375rem; line-height: 1.6; }
+.check-list li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+.arrow-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.arrow-list li { display: flex; gap: 12px; font-size: 0.9375rem; line-height: 1.6; }
+.arrow-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+/* Numbered steps — stacked bordered rows */
+.steps-list {
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden;
+}
+.steps-list li {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px; font-size: 0.9375rem;
+}
+.steps-list li + li { border-top: 1px solid var(--border); }
+.steps-list li:nth-child(odd) { background: color-mix(in oklch, var(--accent) 3%, transparent); }
+.steps-list .step-n {
+  font-family: var(--fd); font-weight: 900;
+  font-size: 1.75rem; letter-spacing: -0.04em; line-height: 1;
+  color: var(--accent); flex-shrink: 0; width: 36px;
+}
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 6 — SHADOW
+   Apply alongside other classes.
+════════════════════════════════════════════ */
+
+.shadow-sm   { box-shadow: var(--shadow-sm); }
+.shadow-md   { box-shadow: var(--shadow-md); }
+.shadow-glow { box-shadow: var(--shadow-glow-val); }
+.shadow-none { box-shadow: none !important; }
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 7 — IMAGE
+   Apply to img wrapper or img directly.
+════════════════════════════════════════════ */
+
+.img-frame {
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border); overflow: hidden;
+}
+.img-glow {
+  border-radius: var(--r-lg);
+  box-shadow: 0 0 48px var(--glow);
+}
+.img-circle { border-radius: 50%; overflow: hidden; }
+
+/* Video frame — gradient border */
+.video-frame {
+  padding: 1.5px;
+  border-radius: calc(var(--r-lg) + 1.5px);
+  background: var(--gradient);
+  box-shadow: 0 0 48px color-mix(in oklch, var(--accent) 15%, transparent);
+}
+.video-frame > div {
+  position: relative; width: 100%; aspect-ratio: 16/9;
+  background: #000; border-radius: var(--r-lg); overflow: hidden;
+}
+.video-frame iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 8 — BUTTON
+   All buttons use font-family: var(--fd).
+════════════════════════════════════════════ */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--fd); font-weight: 800;
+  font-size: 14px; letter-spacing: 0.01em;
+  padding: 13px 24px; min-height: 48px;
+  border-radius: var(--r-sm); border: none;
+  cursor: pointer; text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.btn svg { transition: transform 0.15s ease; }
+.btn:hover svg { transform: translateX(4px); }
+.btn:active { transform: scale(0.99); }
+
+.btn-primary {
+  background: var(--accent); color: var(--accent-text);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-val);
+}
+
+.btn-ghost {
+  background: transparent; color: var(--fg);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { border-color: var(--border-hover); }
+
+.btn-dark {
+  background: #000; color: #fff;
+}
+.btn-dark:hover { background: #1a1a1a; transform: translateY(-1px); }
+
+.btn-text {
+  background: transparent; color: var(--accent);
+  padding: 0; min-height: auto; font-weight: 700;
+}
+
+/* Modifiers */
+.btn-lg   { font-size: 16px; padding: 15px 32px; min-height: 52px; }
+.btn-sm   { font-size: 13px; padding: 9px 18px;  min-height: 40px; }
+.btn-full { width: 100%; justify-content: center; }
+.btn-pill { border-radius: var(--r-full); }
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 9 — LAYOUT & SPACING
+   Section padding + container width + grid.
+════════════════════════════════════════════ */
+
+/* Containers */
+.w    { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.w-lg { max-width:  960px; margin: 0 auto; padding: 0 24px; }
+.w-md { max-width:  720px; margin: 0 auto; padding: 0 24px; }
+.w-sm { max-width:  560px; margin: 0 auto; padding: 0 24px; }
+
+/* Section padding */
+.sec    { padding: 88px 24px; }
+.sec-md { padding: 64px 24px; }
+.sec-sm { padding: 48px 24px; }
+
+/* Grid */
+.g2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-md); }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-md); }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-md); }
+
+/* Grid seamless (1px border between cells) */
+.g2-seamless { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+.g2-seamless > * { background: var(--surface); }
+
+/* Flex helpers */
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap    { display: flex; flex-wrap: wrap; }
+
+/* Stack (vertical flex) */
+.stack    { display: flex; flex-direction: column; }
+.stack-sm { gap: 8px; }
+.stack-md { gap: 16px; }
+.stack-lg { gap: 28px; }
+
+/* Divider */
+.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* Responsive grid collapse */
+@media (max-width: 640px) {
+  .g2, .g3     { grid-template-columns: 1fr; }
+  .g4          { grid-template-columns: repeat(2, 1fr); }
+  .g2-seamless { grid-template-columns: 1fr; }
+  .btn-full-mobile { width: 100%; justify-content: center; }
+  .hide-mobile { display: none; }
+  .sec    { padding: 60px 20px; }
+  .sec-md { padding: 48px 20px; }
+  .sec-sm { padding: 36px 20px; }
+}
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 10 — SECTION BACKGROUND
+   Semantic background classes with child typography.
+   The bg class implies typography color — AI doesn't guess.
+════════════════════════════════════════════ */
+
+/* Hero — dark base, atmospheric effects defined inline per aesthetic */
+.bg-hero { background-color: var(--bg); }
+
+/* Surface — slightly lighter, with border bands */
+.bg-surface {
+  background-color: var(--surface);
+  box-shadow: inset 0 1px 0 var(--border), inset 0 -1px 0 var(--border);
+}
+
+/* Contrast — white shock. Child text auto-adapts to dark. */
+.bg-contrast { background-color: #ffffff; }
+.bg-contrast .section-title { color: #080808; }
+.bg-contrast .display-xl,
+.bg-contrast .display-lg,
+.bg-contrast .display-md { color: #080808; }
+.bg-contrast .eyebrow,
+.bg-contrast .mono-label { color: #9ca3af; }
+.bg-contrast p { color: #374151; }
+.bg-contrast .text-muted { color: #6b7280; }
+
+/* Accent-full — used ONCE per page for final CTA */
+.bg-accent-full { background-color: var(--accent); }
+.bg-accent-full .section-title,
+.bg-accent-full .display-xl,
+.bg-accent-full .display-lg,
+.bg-accent-full h1, .bg-accent-full h2, .bg-accent-full h3 {
+  color: var(--accent-text);
+  -webkit-text-fill-color: var(--accent-text);
+}
+.bg-accent-full p { color: color-mix(in oklch, var(--accent-text) 65%, transparent); }
+.bg-accent-full .eyebrow,
+.bg-accent-full .mono-label { color: color-mix(in oklch, var(--accent-text) 45%, transparent); }
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 11 — BADGE & PILL
+   Inline labels. Different from buttons (no action).
+════════════════════════════════════════════ */
+
+/* Pill — rounded, prominent */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--fm); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: var(--r-sm);
+}
+.pill-accent {
+  background: var(--accent-dim); color: var(--accent);
+  border: 1px solid color-mix(in oklch, var(--accent) 25%, transparent);
+}
+.pill-muted {
+  background: rgba(255,255,255,0.04); color: var(--muted);
+  border: 1px solid var(--border);
+}
+.pill-rounded { border-radius: var(--r-full); }
+
+/* Chip — rectangular, smaller */
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--fm); font-size: 11px; color: var(--muted);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px; padding: 5px 10px;
+}
+.chip-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+/* Badge — flat, simple */
+.badge {
+  display: inline-block;
+  font-family: var(--fm); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: var(--r-sm);
+}
+.badge-accent { background: var(--accent-dim); color: var(--accent); }
+.badge-muted  { background: rgba(255,255,255,0.06); color: var(--muted); }
+.badge-red    { background: rgba(239,68,68,0.1); color: #f87171; }
+.badge-green  { background: rgba(34,197,94,0.1); color: #4ade80; }
+
+
+/* ══════════════════════════════════════════
+   CATEGORY 12 — FORM ELEMENTS
+   Consistent inputs, radios, errors across all pages.
+════════════════════════════════════════════ */
+
+.input-base {
+  width: 100%; background: var(--s2, var(--surface));
+  color: var(--fg); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 14px 16px;
+  font-size: 16px; font-family: var(--fb); outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input-base:focus {
+  border-color: color-mix(in oklch, var(--accent) 50%, transparent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.input-base::placeholder { color: var(--muted); opacity: 0.7; }
+textarea.input-base { resize: none; min-height: 120px; line-height: 1.65; }
+
+/* Radio option card */
+.radio-option {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 15px 18px; background: var(--s2, var(--surface));
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.radio-option:hover {
+  border-color: color-mix(in oklch, var(--accent) 35%, transparent);
+}
+.radio-option.selected {
+  border-color: var(--accent); background: var(--accent-dim);
+}
+.radio-dot {
+  width: 18px; height: 18px; min-width: 18px;
+  border: 1.5px solid var(--border); border-radius: 50%;
+  margin-top: 2px; position: relative; flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+.radio-option.selected .radio-dot { border-color: var(--accent); }
+.radio-option.selected .radio-dot::after {
+  content: ''; position: absolute; inset: 3px;
+  border-radius: 50%; background: var(--accent);
+}
+.radio-text { font-size: 14px; line-height: 1.55; color: var(--fg); }
+
+/* Field feedback */
+.field-error {
+  font-size: 12px; color: #ff6b6b; margin-top: 8px;
+  display: none; font-family: var(--fm); letter-spacing: 0.04em;
+}
+.field-error.show { display: block; }
+.form-hint {
+  font-size: 13px; color: var(--muted);
+  margin-bottom: 20px; line-height: 1.6;
+}
+.form-note {
+  font-size: 12px; color: var(--muted); margin-top: 12px;
+  font-family: var(--fm); letter-spacing: 0.04em; text-align: center;
+}

@@ -1,0 +1,395 @@
+<!-- PATTERN: testimonials | Soft Luxe Theme
+     Layout: Before/After skin result cards, 2-col or 3-col
+     Each card: skin condition badge, before/after photo slots, result metric, customer quote
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@1,400&display=swap');
+  :root {
+    --accent: #c9956a; --accent-rgb: 201,149,106; --blush: #f0c8b8;
+    --mauve: #a87e8a; --surface: #f8f0eb; --raised: #f2e6df;
+    --ink: #2c2218; --body: #6b5042; --subtle: #a89080; --faint: #e8d5cc;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .sl-testimonials {
+    background: var(--surface);
+    padding: 100px 24px;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Botanical corner decoration */
+  .sl-testimonials__deco {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.2;
+  }
+  .sl-testimonials__deco--tr { top: 20px; right: 20px; }
+  .sl-testimonials__deco--bl { bottom: 20px; left: 20px; transform: rotate(180deg); }
+
+  .sl-testimonials__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 60px;
+  }
+  .sl-testimonials__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .sl-testimonials__label::before,
+  .sl-testimonials__label::after { content:''; display:block; width:28px; height:1px; background:var(--faint); }
+  .sl-testimonials__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .sl-testimonials__title em { font-style: italic; color: var(--accent); }
+
+  /* Pull quote in Cormorant — max 1 use */
+  .sl-testimonials__pullquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--mauve);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .sl-testimonials__grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* Result card */
+  .sl-result-card {
+    background: #ffffff;
+    border: 1px solid var(--faint);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(44,34,24,0.07);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+  .sl-result-card:hover {
+    box-shadow: 0 8px 40px rgba(44,34,24,0.12);
+    transform: translateY(-4px);
+  }
+
+  /* Before / After photo panels */
+  .sl-result-card__photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+
+  .sl-result-card__photo {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .sl-result-card__photo--before {
+    background: linear-gradient(135deg, #e8ddd6 0%, #d6c8be 100%);
+  }
+  .sl-result-card__photo--after {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--faint) 100%);
+  }
+
+  .sl-result-card__photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .sl-result-card__photo--before img {
+    filter: saturate(0.7) brightness(0.95);
+  }
+  .sl-result-card__photo--after img {
+    filter: sepia(0.05) saturate(1.15) brightness(1.05);
+  }
+
+  /* Before/After placeholder content */
+  .sl-result-card__photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Photo label badges */
+  .sl-photo-label {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    padding: 3px 12px;
+    white-space: nowrap;
+    z-index: 1;
+  }
+  .sl-photo-label--before {
+    background: var(--raised);
+    color: var(--subtle);
+    border: 1px solid var(--faint);
+  }
+  .sl-photo-label--after {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb), 0.25);
+  }
+
+  /* Center divider line */
+  .sl-result-card__divider {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(255,255,255,0.8);
+    z-index: 2;
+    transform: translateX(-50%);
+  }
+
+  /* Skin condition badge */
+  .sl-result-card__badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--body);
+    background: rgba(255,255,255,0.90);
+    border: 1px solid var(--faint);
+    border-radius: 9999px;
+    padding: 3px 12px;
+    z-index: 3;
+    backdrop-filter: blur(4px);
+  }
+
+  .sl-result-card__body {
+    padding: 24px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+  }
+
+  .sl-result-card__metric {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sl-result-card__quote {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--body);
+    line-height: 1.7;
+    font-style: italic;
+    position: relative;
+    padding-left: 16px;
+  }
+  .sl-result-card__quote::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--blush);
+    line-height: 1;
+  }
+
+  .sl-result-card__author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 6px;
+    border-top: 1px solid var(--faint);
+  }
+  .sl-result-card__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1.5px solid var(--faint);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .sl-result-card__author-info { flex: 1; }
+  .sl-result-card__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+  }
+  .sl-result-card__duration {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--subtle);
+    display: block;
+    margin-top: 1px;
+  }
+
+  /* Star rating */
+  .sl-result-card__stars {
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-left: auto;
+  }
+
+  @media (max-width: 900px) {
+    .sl-testimonials__grid { grid-template-columns: 1fr; max-width: 440px; }
+  }
+  @media (max-width: 640px) {
+    .sl-testimonials { padding: 60px 20px; }
+  }
+</style>
+
+<section class="sl-testimonials" aria-label="Đánh giá khách hàng">
+
+  <!-- Decorative corners -->
+  <svg class="sl-testimonials__deco sl-testimonials__deco--tr" width="100" height="100" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(0 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(72 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(144 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(216 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(288 50 50)"/>
+    <circle cx="50" cy="50" r="4" stroke="#c9956a" stroke-width="1"/>
+  </svg>
+  <svg class="sl-testimonials__deco sl-testimonials__deco--bl" width="100" height="100" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(0 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(72 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(144 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(216 50 50)"/>
+    <ellipse cx="50" cy="18" rx="9" ry="16" stroke="#f0c8b8" stroke-width="1.2" transform="rotate(288 50 50)"/>
+    <circle cx="50" cy="50" r="4" stroke="#c9956a" stroke-width="1"/>
+  </svg>
+
+  <div class="sl-testimonials__header">
+    <div class="sl-testimonials__label">Kết quả thực tế</div>
+    <h2 class="sl-testimonials__title">Trước &amp; Sau Khi<br><em>Dùng Lumière</em></h2>
+    <p class="sl-testimonials__pullquote">"Làn da đẹp nhất là làn da được yêu thương"</p>
+  </div>
+
+  <div class="sl-testimonials__grid">
+
+    <!-- Card 1: Acne skin -->
+    <div class="sl-result-card">
+      <div class="sl-result-card__photos">
+        <div class="sl-result-card__badge">Da mụn</div>
+        <div class="sl-result-card__photo sl-result-card__photo--before">
+          <div class="sl-result-card__photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#e8d5cc" stroke-width="1.5"/><circle cx="20" cy="16" r="6" stroke="#e8d5cc" stroke-width="1"/></svg>
+          </div>
+          <span class="sl-photo-label sl-photo-label--before">Trước</span>
+        </div>
+        <div class="sl-result-card__divider" aria-hidden="true"></div>
+        <div class="sl-result-card__photo sl-result-card__photo--after">
+          <div class="sl-result-card__photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#c9956a" stroke-width="1.5" fill="rgba(201,149,106,0.08)"/><path d="M14 22 Q20 28 26 22" stroke="#c9956a" stroke-width="1.2" fill="none"/></svg>
+          </div>
+          <span class="sl-photo-label sl-photo-label--after">Sau 4 tuần</span>
+        </div>
+      </div>
+      <div class="sl-result-card__body">
+        <p class="sl-result-card__metric">Da sáng hơn 40%, mụn giảm 80% sau 4 tuần</p>
+        <p class="sl-result-card__quote">Lần đầu tiên trong 5 năm tôi dám ra ngoài không cần che phấn. Serum Rose Gold đã thay đổi cuộc đời tôi.</p>
+        <div class="sl-result-card__author">
+          <div class="sl-result-card__avatar"></div>
+          <div class="sl-result-card__author-info">
+            <span class="sl-result-card__name">Nguyễn Thị Lan</span>
+            <span class="sl-result-card__duration">Dùng Essential Set · 4 tuần</span>
+          </div>
+          <div class="sl-result-card__stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Dry skin -->
+    <div class="sl-result-card">
+      <div class="sl-result-card__photos">
+        <div class="sl-result-card__badge">Da khô</div>
+        <div class="sl-result-card__photo sl-result-card__photo--before">
+          <div class="sl-result-card__photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#e8d5cc" stroke-width="1.5"/></svg>
+          </div>
+          <span class="sl-photo-label sl-photo-label--before">Trước</span>
+        </div>
+        <div class="sl-result-card__divider" aria-hidden="true"></div>
+        <div class="sl-result-card__photo sl-result-card__photo--after">
+          <div class="sl-result-card__photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#c9956a" stroke-width="1.5" fill="rgba(201,149,106,0.08)"/></svg>
+          </div>
+          <span class="sl-photo-label sl-photo-label--after">Sau 3 tuần</span>
+        </div>
+      </div>
+      <div class="sl-result-card__body">
+        <p class="sl-result-card__metric">Độ ẩm da tăng 65%, da mềm mịn từ ngày đầu</p>
+        <p class="sl-result-card__quote">Moisturizer Pearl thấm vào da ngay lập tức, không nhờn. Da tôi chưa bao giờ mềm mịn đến thế.</p>
+        <div class="sl-result-card__author">
+          <div class="sl-result-card__avatar" style="background:var(--raised);"></div>
+          <div class="sl-result-card__author-info">
+            <span class="sl-result-card__name">Trần Minh Châu</span>
+            <span class="sl-result-card__duration">Dùng Starter Kit · 3 tuần</span>
+          </div>
+          <div class="sl-result-card__stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Aging skin -->
+    <div class="sl-result-card">
+      <div class="sl-result-card__photos">
+        <div class="sl-result-card__badge">Da lão hóa</div>
+        <div class="sl-result-card__photo sl-result-card__photo--before">
+          <div class="sl-result-card__photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#e8d5cc" stroke-width="1.5"/></svg>
+          </div>
+          <span class="sl-photo-label sl-photo-label--before">Trước</span>
+        </div>
+        <div class="sl-result-card__divider" aria-hidden="true"></div>
+        <div class="sl-result-card__photo sl-result-card__photo--after">
+          <div class="sl-result-card__photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#c9956a" stroke-width="1.5" fill="rgba(201,149,106,0.08)"/></svg>
+          </div>
+          <span class="sl-photo-label sl-photo-label--after">Sau 6 tuần</span>
+        </div>
+      </div>
+      <div class="sl-result-card__body">
+        <p class="sl-result-card__metric">Nếp nhăn mờ đi rõ rệt, da căng bóng hơn</p>
+        <p class="sl-result-card__quote">Luxury Collection là khoản đầu tư tốt nhất tôi dành cho bản thân. Bạn bè cứ hỏi tôi bí quyết trẻ đẹp.</p>
+        <div class="sl-result-card__author">
+          <div class="sl-result-card__avatar" style="background:var(--faint);"></div>
+          <div class="sl-result-card__author-info">
+            <span class="sl-result-card__name">Lê Thị Hoa</span>
+            <span class="sl-result-card__duration">Dùng Luxury Collection · 6 tuần</span>
+          </div>
+          <div class="sl-result-card__stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

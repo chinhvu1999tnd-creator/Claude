@@ -1,0 +1,366 @@
+<!--
+  PATTERN: CTA Strip — 2-Column: Headline + Form
+  THEME: prestige-dark
+  Layout: Dark surface bg, left: Cormorant headline, right: inquiry form
+  NO gold background — gold is accent only in this theme
+  Form: name, phone, email, submit (ghost button with gold border)
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern: CTA Strip — Prestige Dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:  #c9a84c;
+      --bg:      #0c0c0a;
+      --surface: #141412;
+      --raised:  #1c1c19;
+      --ink:     #f5f0e8;
+      --body:    #c8c4b8;
+      --subtle:  #7a7870;
+      --faint:   #2a2a26;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Jost', system-ui, sans-serif;
+      color: var(--body);
+    }
+
+    /* ─── CTA Strip ─────────────────────────────────────────────────── */
+    .cta-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--faint);
+      padding: 80px 64px;
+    }
+
+    .cta-strip__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ─── Left: Headline column ─────────────────────────────────────── */
+    .cta-strip__copy {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-top: 8px;
+    }
+
+    .cta-strip__eyebrow {
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .cta-strip__headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .cta-strip__headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .cta-strip__subline {
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--body);
+      max-width: 440px;
+    }
+
+    /* Trust indicators below headline */
+    .cta-strip__trust {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-top: 28px;
+      border-top: 1px solid var(--faint);
+    }
+
+    .cta-strip__trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--body);
+    }
+
+    .cta-strip__trust-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.5);
+      flex-shrink: 0;
+    }
+
+    /* ─── Right: Form column ─────────────────────────────────────────── */
+    .cta-strip__form-wrap {
+      background: var(--raised);
+      border: 1px solid var(--faint);
+      border-radius: 4px;
+      padding: 40px;
+    }
+
+    .cta-strip__form-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.375rem;
+      color: var(--ink);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Form grid */
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cta-form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Field group */
+    .cta-form__group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .cta-form__label {
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--subtle);
+    }
+
+    .cta-form__input,
+    .cta-form__select {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--faint);
+      border-radius: 2px;
+      padding: 12px 14px;
+      color: var(--ink);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      transition: border-color 350ms;
+      outline: none;
+      appearance: none;
+    }
+
+    .cta-form__input::placeholder {
+      color: var(--subtle);
+      font-weight: 300;
+    }
+
+    .cta-form__input:focus,
+    .cta-form__select:focus {
+      border-color: rgba(201,168,76,0.4);
+    }
+
+    .cta-form__select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%237a7870' stroke-width='1.2'%3E%3Cpolyline points='2,4 6,8 10,4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    .cta-form__select option {
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    /* Submit button */
+    .cta-form__submit {
+      width: 100%;
+      padding: 16px 28px;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--accent);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 350ms, color 350ms;
+      margin-top: 8px;
+    }
+
+    .cta-form__submit:hover {
+      background: rgba(201,168,76,0.1);
+      color: var(--ink);
+    }
+
+    /* Privacy note */
+    .cta-form__privacy {
+      font-weight: 300;
+      font-size: 11px;
+      color: var(--subtle);
+      text-align: center;
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .cta-strip {
+        padding: 64px 32px;
+      }
+
+      .cta-strip__inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .cta-form__row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cta-strip {
+        padding: 48px 20px;
+      }
+
+      .cta-strip__form-wrap {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PATTERN OUTPUT ───────────────────────────────────────────── -->
+  <section class="cta-strip" id="inquire">
+    <div class="cta-strip__inner">
+
+      <!-- Left: Copy -->
+      <div class="cta-strip__copy">
+
+        <p class="cta-strip__eyebrow">Đăng Ký Tư Vấn</p>
+
+        <h2 class="cta-strip__headline">
+          Bắt Đầu<br>
+          Hành Trình<br>
+          <em>Của Bạn</em>
+        </h2>
+
+        <p class="cta-strip__subline">
+          Đội ngũ tư vấn của chúng tôi sẽ liên hệ trong vòng 2 giờ
+          để sắp xếp buổi tham quan riêng tư tại dự án.
+        </p>
+
+        <div class="cta-strip__trust">
+          <div class="cta-strip__trust-item">
+            <span class="cta-strip__trust-dot"></span>
+            Tư vấn riêng tư — không áp lực
+          </div>
+          <div class="cta-strip__trust-item">
+            <span class="cta-strip__trust-dot"></span>
+            Tham quan thực tế tại showroom
+          </div>
+          <div class="cta-strip__trust-item">
+            <span class="cta-strip__trust-dot"></span>
+            Hỗ trợ pháp lý và tài chính miễn phí
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Form -->
+      <div class="cta-strip__form-wrap">
+
+        <h3 class="cta-strip__form-title">Thông Tin Liên Hệ</h3>
+
+        <form class="cta-form" action="#" method="POST">
+
+          <div class="cta-form__row">
+            <div class="cta-form__group">
+              <label class="cta-form__label" for="full-name">Họ Và Tên</label>
+              <input class="cta-form__input" type="text" id="full-name"
+                     name="full_name" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="cta-form__group">
+              <label class="cta-form__label" for="phone">Số Điện Thoại</label>
+              <input class="cta-form__input" type="tel" id="phone"
+                     name="phone" placeholder="0888 xxx xxx" required>
+            </div>
+          </div>
+
+          <div class="cta-form__group">
+            <label class="cta-form__label" for="email">Email</label>
+            <input class="cta-form__input" type="email" id="email"
+                   name="email" placeholder="email@cua.ban" required>
+          </div>
+
+          <div class="cta-form__group">
+            <label class="cta-form__label" for="interest">Loại Căn Quan Tâm</label>
+            <select class="cta-form__select" id="interest" name="interest">
+              <option value="">-- Chọn loại căn --</option>
+              <option value="studio">Studio (45–52 m²) · Từ 3.2 Tỷ</option>
+              <option value="2pn">2 Phòng Ngủ (75–95 m²) · Từ 7.8 Tỷ</option>
+              <option value="penthouse">Penthouse (320–480 m²) · Từ 32 Tỷ</option>
+            </select>
+          </div>
+
+          <button class="cta-form__submit" type="submit">
+            Đăng Ký Tham Quan →
+          </button>
+
+          <p class="cta-form__privacy">
+            Thông tin của bạn được bảo mật tuyệt đối.<br>
+            Chúng tôi không chia sẻ với bên thứ ba.
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!--
+    USAGE NOTES:
+    ─────────────────────────────────────────────────────────────────
+    • Background is SURFACE (#141412) — not gold, never gold.
+    • The form container is RAISED (#1c1c19) — 1 level above surface.
+    • Input backgrounds are SURFACE — creating a recessed feel.
+    • Submit button is ghost (gold border, transparent fill).
+    • The .cta-form__row creates 2-column layout for name+phone.
+    • Add POST action to your form handler (Netlify/Vercel form, etc.)
+    • Trust points reinforce without being salesy — keep them factual.
+    ─────────────────────────────────────────────────────────────────
+  -->
+
+</body>
+</html>

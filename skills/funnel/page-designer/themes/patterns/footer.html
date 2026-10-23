@@ -1,0 +1,54 @@
+<!--
+  PATTERN: Footer
+  Use: Bottom of every page
+  Brief: Layout=3-col grid · Background=surface border-top · Elements=logo+links+copy+socials
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Brand name + tagline (col 1)
+  · Link list với label (col 2)
+  · Contact info: email + social (col 3)
+  · Copyright line + policy links (bottom row)
+  Elements tùy chọn:
+  · Social icons
+  · Newsletter mini-form
+  DEFAULT LAYOUT (Mode A):
+  3-col grid · bg-surface · border-top · copyright bottom row
+  ─────────────────────────────────────────────────────────────────────
+-->
+<footer class="border-t border-rim py-12 px-6" style="background:var(--surface);">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+      <!-- Brand -->
+      <div>
+        <p class="font-display font-black text-ink text-base mb-3">
+          [Brand]<span style="color:var(--accent);">.</span>
+        </p>
+        <p class="text-subtle text-sm leading-relaxed font-ui">[Brand tagline 1-2 sentences]</p>
+      </div>
+      <!-- Links -->
+      <div>
+        <p class="font-mono text-[10px] uppercase tracking-widest text-faint mb-4">Liên kết</p>
+        <div class="space-y-2">
+          <a href="#" class="block text-subtle text-sm font-ui hover:text-ink transition-colors duration-200">[Link 1]</a>
+          <a href="#" class="block text-subtle text-sm font-ui hover:text-ink transition-colors duration-200">[Link 2]</a>
+          <a href="#" class="block text-subtle text-sm font-ui hover:text-ink transition-colors duration-200">[Link 3]</a>
+        </div>
+      </div>
+      <!-- Contact -->
+      <div>
+        <p class="font-mono text-[10px] uppercase tracking-widest text-faint mb-4">Liên hệ</p>
+        <div class="space-y-2">
+          <p class="text-subtle text-sm font-ui">[email@domain.com]</p>
+          <p class="text-subtle text-sm font-ui">[Facebook / Zalo link]</p>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-rim pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-mono text-[10px] uppercase tracking-widest text-faint">© [YEAR] [Brand] · Bảo lưu mọi quyền</p>
+      <div class="flex gap-4">
+        <a href="#" class="font-mono text-[10px] uppercase tracking-widest text-faint hover:text-subtle transition-colors">Chính sách</a>
+        <a href="#" class="font-mono text-[10px] uppercase tracking-widest text-faint hover:text-subtle transition-colors">Điều khoản</a>
+      </div>
+    </div>
+  </div>
+</footer>

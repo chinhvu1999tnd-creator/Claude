@@ -1,0 +1,102 @@
+<!--
+  process-visual.html — Method / solution visual with step images
+  Slots: [PROCESS] 1:1 per step (icon photo, screenshot, illustration)
+  Fits any method:
+    SaaS     → UI walkthrough screenshots per step
+    Service  → process photos (consultation, delivery, result)
+    Course   → lesson preview per module
+    Travel   → journey stage photos (departure, destination, experience)
+    Product  → usage steps (open, apply, wait, see result)
+  Layout: horizontal timeline on desktop · vertical on mobile
+  Background: bg-canvas bg-grid
+-->
+<section class="py-24 bg-canvas bg-grid">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-16 reveal">
+      <span class="section-label">Phương pháp</span>
+      <h2 class="font-display font-black text-h2 text-ink">Cách hoạt động<br><span class="text-accent">từng bước</span></h2>
+      <p class="font-body text-sm text-subtle mt-3 max-w-lg mx-auto">Mô tả ngắn tại sao phương pháp này khác biệt và hiệu quả hơn các cách khác.</p>
+    </div>
+
+    <!-- Steps — desktop horizontal, mobile vertical -->
+    <div class="relative">
+
+      <!-- Connector line (desktop only) -->
+      <div class="hidden md:block absolute top-[72px] left-[calc(16.66%+28px)] right-[calc(16.66%+28px)]" style="height:1px;background:linear-gradient(90deg,transparent,var(--rim-strong) 20%,var(--rim-strong) 80%,transparent)"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center reveal">
+          <!-- [PROCESS] step visual — square -->
+          <div class="relative mb-5" data-role="PROCESS">
+            <div class="relative media-slot aspect-1-1 rounded-2xl" style="width:144px;background:var(--surface);border:2px dashed var(--faint)">
+              <!-- Replace with step photo/screenshot/illustration -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+                <span style="font-size:2rem;opacity:0.35">📸</span>
+                <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh minh họa quy trình</p>
+                <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+              </div>
+            </div>
+            <!-- Step number badge -->
+            <div class="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center font-mono font-black text-xs" style="background:var(--accent);color:var(--bg)">1</div>
+          </div>
+          <h3 class="font-display font-bold text-h3 text-ink mb-2">Tên bước 1</h3>
+          <p class="font-body text-sm text-subtle leading-relaxed">Mô tả ngắn bước này làm gì và tại sao cần thiết. 2 câu.</p>
+          <!-- Optional sub-detail -->
+          <div class="mt-3 flex items-center gap-1.5 font-mono text-xs text-subtle">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--accent)" stroke-width="1"/><path d="M4 6l1.5 1.5 3-3" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Thời gian / effort cần thiết
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center reveal d1">
+          <div class="relative mb-5" data-role="PROCESS">
+            <div class="relative media-slot aspect-1-1 rounded-2xl" style="width:144px;background:var(--surface);border:2px dashed var(--faint)">
+              <!-- Replace with step photo/screenshot/illustration -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+                <span style="font-size:2rem;opacity:0.35">📸</span>
+                <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh minh họa quy trình</p>
+                <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+              </div>
+            </div>
+            <div class="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center font-mono font-black text-xs" style="background:var(--cyan);color:var(--bg)">2</div>
+          </div>
+          <h3 class="font-display font-bold text-h3 text-ink mb-2">Tên bước 2</h3>
+          <p class="font-body text-sm text-subtle leading-relaxed">Mô tả ngắn. Tập trung vào hành động cụ thể người dùng thực hiện.</p>
+          <div class="mt-3 flex items-center gap-1.5 font-mono text-xs text-subtle">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--cyan)" stroke-width="1"/><path d="M4 6l1.5 1.5 3-3" stroke="var(--cyan)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Thời gian / effort
+          </div>
+        </div>
+
+        <!-- Step 3 — result -->
+        <div class="flex flex-col items-center text-center reveal d2">
+          <div class="relative mb-5" data-role="RESULT">
+            <div class="p-px rounded-2xl" style="background:linear-gradient(135deg,rgba(var(--accent-rgb),.4),rgba(var(--cyan-rgb),.2))">
+              <div class="relative media-slot aspect-1-1 rounded-2xl" style="width:144px;background:var(--surface);border:2px dashed var(--faint)">
+                <!-- Replace with result photo/screenshot/illustration -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+                  <span style="font-size:2rem;opacity:0.35">📸</span>
+                  <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh minh họa quy trình</p>
+                  <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center font-mono font-black text-xs" style="background:var(--accent);color:var(--bg)">✓</div>
+          </div>
+          <h3 class="font-display font-bold text-h3 text-ink mb-2">Kết quả đạt được</h3>
+          <p class="font-body text-sm text-subtle leading-relaxed">Bước này = kết quả. Mô tả cụ thể outcome mà người dùng nhận được. Con số nếu có.</p>
+          <div class="mt-3 flex items-center gap-1.5 font-mono text-xs text-accent">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 2.4L10 3.9l-2 2 .5 2.6L6 7.3l-2.5 1.2.5-2.6-2-2 2.8-.5L6 1z" fill="currentColor" opacity=".7"/></svg>
+            Outcome cuối cùng
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,119 @@
+<!--
+  results-gallery.html — Proof / results gallery
+  Slots: [RESULT] 4:3 × 6 + caption per item
+  Fits any proof type:
+    SaaS      → dashboard screenshots, metric graphs
+    Travel    → customer trip photos, destination photos
+    Coaching  → before/after transformations, student certificates
+    Products  → unboxing, usage photos, review screenshots
+    Services  → portfolio work, project outcomes
+  Layout: 3-col masonry-feel grid · max-w-5xl
+  Background: bg-canvas bg-dots
+-->
+<section class="py-24 bg-canvas bg-dots">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Kết quả thực tế</span>
+      <h2 class="font-display font-black text-h2 text-ink">Bằng chứng từ <span class="text-accent">người dùng thật</span></h2>
+      <p class="font-body text-sm text-subtle mt-3">Không chỉnh sửa. Không dàn dựng.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 reveal">
+
+      <!-- Result card — repeat 6 times, vary caption -->
+      <div class="card rounded-xl overflow-hidden" data-role="RESULT">
+        <div class="media-slot aspect-4-3" style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh / screenshot kết quả</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-medium text-ink text-sm mb-1">Mô tả kết quả ngắn gọn</p>
+          <p class="font-mono text-xs text-subtle">Tên khách hàng · Vai trò / Ngành</p>
+        </div>
+      </div>
+
+      <div class="card rounded-xl overflow-hidden" data-role="RESULT">
+        <div class="media-slot aspect-4-3" style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh / screenshot kết quả</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-medium text-ink text-sm mb-1">Kết quả nổi bật với con số</p>
+          <p class="font-mono text-xs text-subtle">Tên khách hàng · Vai trò / Ngành</p>
+        </div>
+      </div>
+
+      <!-- Tall card — for portrait results (before/after, mobile screenshots) -->
+      <div class="card rounded-xl overflow-hidden" data-role="RESULT">
+        <div class="media-slot aspect-3-4" style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Screenshot mobile / Before-After</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-medium text-ink text-sm mb-1">Kết quả trên điện thoại / Before-After</p>
+          <p class="font-mono text-xs text-subtle">Tên khách hàng · Vai trò / Ngành</p>
+        </div>
+      </div>
+
+      <div class="card rounded-xl overflow-hidden" data-role="RESULT">
+        <div class="media-slot aspect-4-3" style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh / screenshot kết quả</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-medium text-ink text-sm mb-1">Mô tả kết quả ngắn gọn</p>
+          <p class="font-mono text-xs text-subtle">Tên khách hàng · Vai trò / Ngành</p>
+        </div>
+      </div>
+
+      <div class="card rounded-xl overflow-hidden" data-role="RESULT">
+        <div class="media-slot aspect-4-3" style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh / screenshot kết quả</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-medium text-ink text-sm mb-1">Kết quả nổi bật</p>
+          <p class="font-mono text-xs text-subtle">Tên khách hàng · Vai trò / Ngành</p>
+        </div>
+      </div>
+
+      <div class="card rounded-xl overflow-hidden" data-role="RESULT">
+        <div class="media-slot aspect-4-3" style="background:var(--surface);border:2px dashed var(--faint)">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+            <span style="font-size:2rem;opacity:0.35">📸</span>
+            <p class="font-body text-xs font-medium" style="color:var(--subtle)">Ảnh / screenshot kết quả</p>
+            <p class="font-body text-[10px]" style="color:var(--faint)">min 800px wide</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-medium text-ink text-sm mb-1">Kết quả cuối cùng</p>
+          <p class="font-mono text-xs text-subtle">Tên khách hàng · Vai trò / Ngành</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA below gallery -->
+    <p class="text-center font-mono text-xs text-subtle mt-8 reveal">
+      Xem thêm kết quả →
+      <a href="#" class="underline text-accent ml-1">500+ case studies</a>
+    </p>
+
+  </div>
+</section>

@@ -1,0 +1,55 @@
+<!--
+  order-faq-mini.html — 3 câu FAQ tối đa tại order page
+  Rule: Chỉ 3 câu — câu hỏi phổ biến nhất tại thời điểm sắp thanh toán
+  Layout: inline accordion, không có icon phức tạp
+  Vị trí: Below-the-fold, sau khi thanh toán section
+-->
+<div class="rounded-xl overflow-hidden" style="border:1px solid var(--rim)">
+  <div class="px-5 py-3" style="background:var(--surface);border-bottom:1px solid var(--rim)">
+    <p class="font-mono text-[10px] uppercase tracking-wider" style="color:var(--subtle)">Câu hỏi thường gặp</p>
+  </div>
+  <div id="order-faq" style="background:var(--surface)">
+
+    <div style="border-bottom:1px solid var(--rim)">
+      <button onclick="oFAQ(this)" class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/[.02] transition-colors">
+        <span class="font-body text-sm text-ink">Tôi nhận link truy cập ngay sau khi chuyển khoản không?</span>
+        <svg class="w-3.5 h-3.5 shrink-0 transition-transform" viewBox="0 0 14 14" fill="none"><path d="M3.5 5l3.5 3.5L10.5 5" stroke="var(--subtle)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="oFAQ-ans px-5 pb-4" style="display:none">
+        <p class="font-body text-sm" style="color:var(--body)">Hệ thống tự xác nhận trong 2–5 phút sau khi nhận thanh toán. Email sẽ đến ngay sau đó. Nếu sau 10 phút chưa nhận — nhắn Telegram @aiagentkit để hỗ trợ ngay.</p>
+      </div>
+    </div>
+
+    <div style="border-bottom:1px solid var(--rim)">
+      <button onclick="oFAQ(this)" class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/[.02] transition-colors">
+        <span class="font-body text-sm text-ink">Tôi cần biết gì trước khi bắt đầu?</span>
+        <svg class="w-3.5 h-3.5 shrink-0 transition-transform" viewBox="0 0 14 14" fill="none"><path d="M3.5 5l3.5 3.5L10.5 5" stroke="var(--subtle)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="oFAQ-ans px-5 pb-4" style="display:none">
+        <p class="font-body text-sm" style="color:var(--body)">Không cần kiến thức gì đặc biệt. Hướng dẫn setup từng bước có trong kit — mất khoảng 15 phút để cài và chạy lệnh đầu tiên.</p>
+      </div>
+    </div>
+
+    <div>
+      <button onclick="oFAQ(this)" class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/[.02] transition-colors">
+        <span class="font-body text-sm text-ink">Nếu tôi không hài lòng thì sao?</span>
+        <svg class="w-3.5 h-3.5 shrink-0 transition-transform" viewBox="0 0 14 14" fill="none"><path d="M3.5 5l3.5 3.5L10.5 5" stroke="var(--subtle)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="oFAQ-ans px-5 pb-4" style="display:none">
+        <p class="font-body text-sm" style="color:var(--body)">Hoàn tiền 100% trong 7 ngày nếu không hài lòng vì bất kỳ lý do gì. Email một câu — xử lý trong 24h, không hỏi thêm.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function oFAQ(btn) {
+  const ans = btn.nextElementSibling;
+  const icon = btn.querySelector('svg');
+  const open = ans.style.display !== 'none';
+  document.querySelectorAll('.oFAQ-ans').forEach(a => a.style.display = 'none');
+  document.querySelectorAll('#order-faq button svg').forEach(i => i.style.transform = '');
+  if (!open) { ans.style.display = 'block'; icon.style.transform = 'rotate(180deg)'; }
+}
+</script>

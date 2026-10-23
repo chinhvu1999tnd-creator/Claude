@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "items": [
+    {
+      "name": "lovable",
+      "file": "lovable.svg",
+      "label": "Lovable",
+      "brand_color": "#FF4F8B",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "bolt",
+      "file": "bolt.svg",
+      "label": "Bolt.new",
+      "brand_color": "#FFCC1B",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "v0",
+      "file": "v0.svg",
+      "label": "v0",
+      "brand_color": "#ffffff",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "cursor",
+      "file": "cursor.svg",
+      "label": "Cursor",
+      "brand_color": "#ffffff",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "claude",
+      "file": "claude.svg",
+      "label": "Claude",
+      "brand_color": "#D97757",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "chatgpt",
+      "file": "chatgpt.svg",
+      "label": "ChatGPT",
+      "brand_color": "#10A37F",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "gemini",
+      "file": "gemini.svg",
+      "label": "Gemini",
+      "brand_color": "#4285F4",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "replit",
+      "file": "replit.svg",
+      "label": "Replit",
+      "brand_color": "#F26207",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "antigravity",
+      "file": "antigravity.svg",
+      "label": "Antigravity",
+      "brand_color": "#4285F4",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "windsurf",
+      "file": "windsurf.svg",
+      "label": "Windsurf",
+      "brand_color": "#00D2C8",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "github-copilot",
+      "file": "github-copilot.svg",
+      "label": "GH Copilot",
+      "brand_color": "#ffffff",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    },
+    {
+      "name": "openai",
+      "file": "openai.svg",
+      "label": "OpenAI",
+      "brand_color": "#ffffff",
+      "source": "wordmark-generated",
+      "license": "kit-generated, replace with official asset if needed"
+    }
+  ]
+}

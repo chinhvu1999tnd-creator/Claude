@@ -1,0 +1,358 @@
+<!-- PATTERN: ingredient-spotlight | Soft Luxe Theme (NEW)
+     Layout: 2×2 grid — 4 key ingredients with botanical SVG, Playfair italic name, sourcing origin, benefit
+     Beauty/skincare specific trust builder
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
+  :root {
+    --accent: #c9956a; --accent-rgb: 201,149,106; --blush: #f0c8b8;
+    --mauve: #a87e8a; --bg: #fdf8f5; --surface: #f8f0eb; --raised: #f2e6df;
+    --ink: #2c2218; --body: #6b5042; --subtle: #a89080; --faint: #e8d5cc;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .sl-ingredients {
+    background: var(--bg);
+    padding: 100px 24px;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Large faint petal background decoration */
+  .sl-ingredients__bg-deco {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0.06;
+  }
+
+  .sl-ingredients__header {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 64px;
+  }
+  .sl-ingredients__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .sl-ingredients__label::before,
+  .sl-ingredients__label::after { content:''; display:block; width:28px; height:1px; background:var(--faint); }
+  .sl-ingredients__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .sl-ingredients__title em { font-style: italic; color: var(--accent); }
+  .sl-ingredients__sub {
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--body);
+    line-height: 1.75;
+  }
+
+  /* 2×2 Grid */
+  .sl-ingredients__grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Ingredient card */
+  .sl-ing-card {
+    background: #ffffff;
+    border: 1px solid var(--faint);
+    border-radius: 20px;
+    padding: 36px 32px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    box-shadow: 0 4px 24px rgba(44,34,24,0.06);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .sl-ing-card:hover {
+    box-shadow: 0 8px 40px rgba(44,34,24,0.10);
+    transform: translateY(-3px);
+    border-color: rgba(201,149,106,0.30);
+  }
+
+  /* Subtle corner rose gold accent */
+  .sl-ing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 0 2px 2px 0;
+    opacity: 0.6;
+  }
+
+  /* Botanical SVG illustration box */
+  .sl-ing-card__illus {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--faint);
+  }
+
+  .sl-ing-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sl-ing-card__name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+
+  .sl-ing-card__viet {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--subtle);
+    letter-spacing: 0.04em;
+    margin-top: -4px;
+  }
+
+  .sl-ing-card__origin {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mauve);
+    background: rgba(168,126,138,0.08);
+    border: 1px solid rgba(168,126,138,0.20);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    width: fit-content;
+  }
+  .sl-ing-card__origin-pin { font-size: 12px; }
+
+  .sl-ing-card__benefit {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--body);
+    line-height: 1.7;
+  }
+
+  .sl-ing-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 2px;
+  }
+  .sl-ing-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    background: rgba(201,149,106,0.10);
+    border-radius: 9999px;
+    padding: 2px 9px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .sl-ingredients__grid { grid-template-columns: 1fr; max-width: 480px; }
+  }
+  @media (max-width: 640px) {
+    .sl-ingredients { padding: 60px 20px; }
+    .sl-ing-card { flex-direction: column; gap: 16px; }
+    .sl-ing-card__illus { width: 64px; height: 64px; }
+  }
+</style>
+
+<section class="sl-ingredients" aria-label="Thành phần">
+
+  <!-- Large background petal decoration -->
+  <svg class="sl-ingredients__bg-deco" width="400" height="400" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <ellipse cx="200" cy="60"  rx="55" ry="110" stroke="#c9956a" stroke-width="2" transform="rotate(0 200 200)"/>
+    <ellipse cx="200" cy="60"  rx="55" ry="110" stroke="#c9956a" stroke-width="2" transform="rotate(72 200 200)"/>
+    <ellipse cx="200" cy="60"  rx="55" ry="110" stroke="#c9956a" stroke-width="2" transform="rotate(144 200 200)"/>
+    <ellipse cx="200" cy="60"  rx="55" ry="110" stroke="#c9956a" stroke-width="2" transform="rotate(216 200 200)"/>
+    <ellipse cx="200" cy="60"  rx="55" ry="110" stroke="#c9956a" stroke-width="2" transform="rotate(288 200 200)"/>
+    <circle cx="200" cy="200" r="20" stroke="#c9956a" stroke-width="2"/>
+  </svg>
+
+  <div class="sl-ingredients__header">
+    <div class="sl-ingredients__label">Công thức</div>
+    <h2 class="sl-ingredients__title">Thành Phần <em>Thuần Nhiên</em><br>Từ Khắp Thế Giới</h2>
+    <p class="sl-ingredients__sub">Mỗi thành phần được chọn lọc kỹ lưỡng từ nguồn gốc thiên nhiên tốt nhất, đảm bảo hiệu quả và an toàn tuyệt đối cho mọi loại da.</p>
+  </div>
+
+  <div class="sl-ingredients__grid">
+
+    <!-- Ingredient 1: Rosa Damascena -->
+    <div class="sl-ing-card">
+      <div class="sl-ing-card__illus" aria-hidden="true">
+        <!-- Rose botanical SVG -->
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 5 petals -->
+          <ellipse cx="24" cy="10" rx="5"  ry="10" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.08)" transform="rotate(0 24 24)"/>
+          <ellipse cx="24" cy="10" rx="5"  ry="10" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.08)" transform="rotate(72 24 24)"/>
+          <ellipse cx="24" cy="10" rx="5"  ry="10" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.08)" transform="rotate(144 24 24)"/>
+          <ellipse cx="24" cy="10" rx="5"  ry="10" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.08)" transform="rotate(216 24 24)"/>
+          <ellipse cx="24" cy="10" rx="5"  ry="10" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.08)" transform="rotate(288 24 24)"/>
+          <!-- Center -->
+          <circle cx="24" cy="24" r="4" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.20)"/>
+          <circle cx="24" cy="24" r="1.5" fill="#c9956a"/>
+        </svg>
+      </div>
+      <div class="sl-ing-card__content">
+        <div class="sl-ing-card__name">Rosa Damascena</div>
+        <div class="sl-ing-card__viet">Hoa Hồng Damask</div>
+        <div class="sl-ing-card__origin">
+          <span class="sl-ing-card__origin-pin">📍</span>
+          Thung lũng Hoa hồng, Thổ Nhĩ Kỳ
+        </div>
+        <p class="sl-ing-card__benefit">
+          Chiết xuất hoa hồng nguyên chất — dưỡng ẩm sâu, làm sáng da tự nhiên, chống oxy hóa mạnh mẽ.
+        </p>
+        <div class="sl-ing-card__tags">
+          <span class="sl-ing-tag">Dưỡng ẩm</span>
+          <span class="sl-ing-tag">Làm sáng</span>
+          <span class="sl-ing-tag">Anti-age</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ingredient 2: Centella Asiatica -->
+    <div class="sl-ing-card">
+      <div class="sl-ing-card__illus" aria-hidden="true">
+        <!-- Centella (pennywort) botanical SVG -->
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 3 rounded leaves on stems -->
+          <path d="M24 40 Q22 28 16 20" stroke="#c9956a" stroke-width="1.2" fill="none"/>
+          <path d="M24 40 Q24 26 24 16" stroke="#c9956a" stroke-width="1.2" fill="none"/>
+          <path d="M24 40 Q26 28 32 20" stroke="#c9956a" stroke-width="1.2" fill="none"/>
+          <!-- Kidney-shaped leaves -->
+          <path d="M10 18 Q14 10 20 16 Q16 22 10 18Z" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.10)"/>
+          <path d="M18 10 Q24 4  30 10 Q24 16 18 10Z" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.10)"/>
+          <path d="M28 16 Q34 10 38 18 Q32 22 28 16Z" stroke="#c9956a" stroke-width="1.2" fill="rgba(201,149,106,0.10)"/>
+          <!-- Vein lines -->
+          <path d="M15 14 Q13 17 11 17" stroke="#f0c8b8" stroke-width="0.7" fill="none"/>
+          <path d="M24 7 Q24 12 24 13" stroke="#f0c8b8" stroke-width="0.7" fill="none"/>
+          <path d="M33 14 Q35 17 37 17" stroke="#f0c8b8" stroke-width="0.7" fill="none"/>
+        </svg>
+      </div>
+      <div class="sl-ing-card__content">
+        <div class="sl-ing-card__name">Centella Asiatica</div>
+        <div class="sl-ing-card__viet">Rau Má Châu Á</div>
+        <div class="sl-ing-card__origin">
+          <span class="sl-ing-card__origin-pin">📍</span>
+          Vùng đồng bằng sông Cửu Long, Việt Nam
+        </div>
+        <p class="sl-ing-card__benefit">
+          Phục hồi và làm dịu da kích ứng, tăng sản sinh collagen tự nhiên, thu nhỏ lỗ chân lông hiệu quả.
+        </p>
+        <div class="sl-ing-card__tags">
+          <span class="sl-ing-tag">Phục hồi</span>
+          <span class="sl-ing-tag">Làm dịu</span>
+          <span class="sl-ing-tag">Collagen</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ingredient 3: Niacinamide -->
+    <div class="sl-ing-card">
+      <div class="sl-ing-card__illus" aria-hidden="true">
+        <!-- Abstract crystal/geometric SVG for Niacinamide -->
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Hexagon outline -->
+          <path d="M24 6 L38 14 L38 30 L24 38 L10 30 L10 14 Z" stroke="#c9956a" stroke-width="1.3" fill="rgba(201,149,106,0.07)"/>
+          <!-- Inner hexagon -->
+          <path d="M24 13 L33 18 L33 28 L24 33 L15 28 L15 18 Z" stroke="#f0c8b8" stroke-width="1" fill="none"/>
+          <!-- Center lines suggesting prism -->
+          <line x1="24" y1="13" x2="24" y2="33" stroke="#f0c8b8" stroke-width="0.7"/>
+          <line x1="15" y1="18" x2="33" y2="28" stroke="#f0c8b8" stroke-width="0.7"/>
+          <line x1="33" y1="18" x2="15" y2="28" stroke="#f0c8b8" stroke-width="0.7"/>
+          <!-- Center dot -->
+          <circle cx="24" cy="23" r="2.5" fill="#c9956a" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="sl-ing-card__content">
+        <div class="sl-ing-card__name">Niacinamide</div>
+        <div class="sl-ing-card__viet">Vitamin B3 Thuần Khiết</div>
+        <div class="sl-ing-card__origin">
+          <span class="sl-ing-card__origin-pin">📍</span>
+          Phòng thí nghiệm chuẩn EU, Đức
+        </div>
+        <p class="sl-ing-card__benefit">
+          Làm đều màu da, mờ thâm nám và vết thâm sau mụn, kiểm soát bóng nhờn và cân bằng da hiệu quả.
+        </p>
+        <div class="sl-ing-card__tags">
+          <span class="sl-ing-tag">Mờ thâm</span>
+          <span class="sl-ing-tag">Đều màu</span>
+          <span class="sl-ing-tag">Pore</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ingredient 4: Hyaluronic Acid -->
+    <div class="sl-ing-card">
+      <div class="sl-ing-card__illus" aria-hidden="true">
+        <!-- Water droplet with sparkle SVG for HA -->
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Droplet shape -->
+          <path d="M24 6 C24 6 10 22 10 30 C10 38 16 42 24 42 C32 42 38 38 38 30 C38 22 24 6 24 6Z" stroke="#c9956a" stroke-width="1.3" fill="rgba(201,149,106,0.08)"/>
+          <!-- Inner highlight -->
+          <path d="M18 28 C18 28 18 34 24 36" stroke="rgba(201,149,106,0.5)" stroke-width="1" fill="none" stroke-linecap="round"/>
+          <!-- Sparkle gleam marks -->
+          <line x1="30" y1="16" x2="32" y2="14" stroke="#f0c8b8" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="32" y1="18" x2="35" y2="18" stroke="#f0c8b8" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="30" y1="20" x2="33" y2="22" stroke="#f0c8b8" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Molecule dot -->
+          <circle cx="24" cy="30" r="2" fill="#c9956a" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="sl-ing-card__content">
+        <div class="sl-ing-card__name">Hyaluronic Acid</div>
+        <div class="sl-ing-card__viet">Axit Hyaluronic Đa Tầng</div>
+        <div class="sl-ing-card__origin">
+          <span class="sl-ing-card__origin-pin">📍</span>
+          Phòng thí nghiệm sinh học, Nhật Bản
+        </div>
+        <p class="sl-ing-card__benefit">
+          Cấp ẩm tức thì và giữ ẩm 72 giờ, làm đầy các nếp nhăn mịn từ bên trong, da căng bóng tự nhiên.
+        </p>
+        <div class="sl-ing-card__tags">
+          <span class="sl-ing-tag">Cấp ẩm</span>
+          <span class="sl-ing-tag">Plumping</span>
+          <span class="sl-ing-tag">72h</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

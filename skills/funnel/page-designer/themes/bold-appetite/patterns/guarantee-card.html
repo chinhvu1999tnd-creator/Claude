@@ -1,0 +1,228 @@
+<!--
+  PATTERN: guarantee-card
+  THEME:   bold-appetite
+  USE:     Chef promise / satisfaction guarantee — centered, artisan tone
+-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --accent: #e8742a; --yellow: #f5c842; --cream: #f5ead8;
+    --bg: #1a1008; --surface: #231608; --raised: #2e1e0a;
+    --faint: #3d2d1a; --body: #d4c4a8; --subtle: #8a7560;
+    --rim: rgba(232,116,42,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .guarantee-section {
+    background: var(--bg);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .guarantee-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .guarantee-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .guarantee-card {
+    background: var(--raised);
+    border: 1px solid var(--rim);
+    border-radius: 20px;
+    padding: 56px 48px;
+    box-shadow: 0 4px 24px rgba(232,116,42,0.20);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Decorative corner accents */
+  .guarantee-card::before,
+  .guarantee-card::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 1.5px solid rgba(232,116,42,0.15);
+    border-radius: 4px;
+  }
+  .guarantee-card::before { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+  .guarantee-card::after  { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+  /* Chef signature SVG */
+  .chef-seal {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 28px;
+    background: rgba(232,116,42,0.08);
+    border: 1.5px solid var(--rim);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .guarantee-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .guarantee-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .guarantee-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--body);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .guarantee-quote .emphasis {
+    color: var(--cream);
+    font-style: normal;
+    font-weight: 600;
+  }
+  /* Chef signature */
+  .chef-sig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .sig-line {
+    width: 120px;
+    height: 1px;
+    background: var(--faint);
+  }
+  .chef-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+  .chef-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--subtle);
+  }
+  /* Guarantee points */
+  .guarantee-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--faint);
+  }
+  .guar-point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .guar-icon {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+  .guar-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cream);
+    text-align: center;
+  }
+  .guar-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    color: var(--subtle);
+    text-align: center;
+    line-height: 1.4;
+  }
+  @media (max-width: 560px) {
+    .guarantee-card { padding: 40px 24px; }
+    .guarantee-points { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+
+<section class="guarantee-section">
+  <div class="guarantee-inner">
+    <div class="guarantee-card">
+
+      <!-- Chef seal icon -->
+      <div class="chef-seal">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Chef hat -->
+          <path d="M10 26 C10 20 14 16 18 16 C17 12 19 8 22 7 C25 8 27 12 26 16 C30 16 34 20 34 26 L10 26Z" fill="none" stroke="#e8742a" stroke-width="1.5" stroke-linejoin="round"/>
+          <rect x="10" y="26" width="24" height="4" rx="2" fill="none" stroke="#e8742a" stroke-width="1.5"/>
+          <!-- Band stripe -->
+          <line x1="10" y1="28" x2="34" y2="28" stroke="#e8742a" stroke-width="0.5" opacity="0.5"/>
+          <!-- Crown of hat -->
+          <ellipse cx="22" cy="11" rx="7" ry="5" fill="none" stroke="#e8742a" stroke-width="1" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <span class="guarantee-tag">Cam Kết Chất Lượng</span>
+
+      <h2 class="guarantee-headline">
+        Bảo Đảm Trải Nghiệm<br>Xứng Đáng Từng Đồng
+      </h2>
+
+      <p class="guarantee-quote">
+        "Chúng tôi cam kết mỗi bữa ăn là <span class="emphasis">một kỷ niệm đáng nhớ</span>.
+        Nếu bất kỳ điều gì không đạt kỳ vọng của anh/chị, Chef
+        sẽ trực tiếp lắng nghe và làm hài lòng."
+      </p>
+
+      <!-- Chef signature -->
+      <div class="chef-sig">
+        <!-- Handwritten-style SVG signature -->
+        <svg width="140" height="40" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 28 C18 20 22 15 30 20 C38 25 36 14 44 18 C52 22 48 12 58 15 C68 18 65 10 75 14 C82 17 80 26 90 22 C100 18 105 12 115 16 C120 18 125 24 130 22" stroke="#e8742a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+          <path d="M20 32 C30 30 50 33 70 31 C90 29 110 32 130 30" stroke="#e8742a" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.3"/>
+        </svg>
+        <div class="sig-line"></div>
+        <div class="chef-name">Chef Nguyễn Văn Minh</div>
+        <div class="chef-title">Bếp trưởng · Nhà Hàng Bếp Lửa</div>
+      </div>
+
+      <!-- Guarantee points -->
+      <div class="guarantee-points">
+        <div class="guar-point">
+          <div class="guar-icon">🌿</div>
+          <div class="guar-label">Nguyên liệu Tươi</div>
+          <div class="guar-desc">Nhập hàng mỗi sáng, không bảo quản qua đêm</div>
+        </div>
+        <div class="guar-point">
+          <div class="guar-icon">👨‍🍳</div>
+          <div class="guar-label">Nấu Tại Chỗ</div>
+          <div class="guar-desc">Mỗi món hoàn thành trong 15 phút</div>
+        </div>
+        <div class="guar-point">
+          <div class="guar-icon">💛</div>
+          <div class="guar-label">Hoàn Tiền 100%</div>
+          <div class="guar-desc">Không hài lòng — chúng tôi không tính tiền</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

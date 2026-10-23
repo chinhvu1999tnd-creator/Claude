@@ -1,0 +1,206 @@
+<!--
+  PATTERN: stats-bar
+  THEME: clean-clinic
+  USE: 4-stat proof section — track record numbers
+  BG: var(--surface) teal-tinted
+  CARD: white, teal top-border 2px
+-->
+<style>
+  :root {
+    --accent: #0fa37f;
+    --surface: #f0faf8;
+    --raised: #e6f7f4;
+    --ink: #0d2b24;
+    --body: #1f5c4e;
+    --subtle: #5a8f85;
+    --faint: #c8e8e3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+
+  .stats-section {
+    background: var(--surface);
+    padding: 64px 24px;
+  }
+  .stats-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .stats-eyebrow {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .stats-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 48px;
+    font-family: 'Inter', sans-serif;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    border-top: 2px solid var(--accent);
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(13,43,36,0.06);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .stat-card:hover {
+    box-shadow: 0 4px 20px rgba(13,43,36,0.10);
+    transform: translateY(-2px);
+  }
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: var(--accent);
+  }
+  .stat-number {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+    font-family: 'Inter', sans-serif;
+  }
+  .stat-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-family: 'Inter', sans-serif;
+  }
+  .stat-sub {
+    font-size: 0.8125rem;
+    color: var(--subtle);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- STATS BAR SECTION -->
+<section class="stats-section">
+  <div class="stats-container">
+    <!-- Optional section header -->
+    <p class="stats-eyebrow">Con Số Thực Tế</p>
+    <h2 class="stats-title">Được hàng nghìn bệnh nhân tin tưởng</h2>
+
+    <div class="stats-grid">
+
+      <!-- Stat 1: Years experience -->
+      <div class="stat-card" data-reveal>
+        <div class="stat-icon">
+          <!-- Calendar icon -->
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="16" height="16" rx="2"/>
+            <line x1="13" y1="2" x2="13" y2="6"/>
+            <line x1="7" y1="2" x2="7" y2="6"/>
+            <line x1="3" y1="10" x2="19" y2="10"/>
+          </svg>
+        </div>
+        <!-- SLOT: Replace number and label -->
+        <div class="stat-number">12</div>
+        <div class="stat-label">Năm kinh nghiệm</div>
+        <div class="stat-sub">Thành lập từ năm 2013</div>
+      </div>
+
+      <!-- Stat 2: Patients treated -->
+      <div class="stat-card" data-reveal style="transition-delay:0.1s">
+        <div class="stat-icon">
+          <!-- Users icon -->
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <!-- SLOT: Replace -->
+        <div class="stat-number">8,500+</div>
+        <div class="stat-label">Bệnh nhân</div>
+        <div class="stat-sub">Đã điều trị thành công</div>
+      </div>
+
+      <!-- Stat 3: Success / satisfaction rate -->
+      <div class="stat-card" data-reveal style="transition-delay:0.2s">
+        <div class="stat-icon">
+          <!-- Thumbs up / check icon -->
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>
+            <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+          </svg>
+        </div>
+        <!-- SLOT: Replace -->
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Hài lòng</div>
+        <div class="stat-sub">Đánh giá sau điều trị</div>
+      </div>
+
+      <!-- Stat 4: Specialist doctors -->
+      <div class="stat-card" data-reveal style="transition-delay:0.3s">
+        <div class="stat-icon">
+          <!-- Stethoscope / doctor icon -->
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.8 2.4A2.4 2.4 0 0 0 2.4 4.8v4.8a7.2 7.2 0 0 0 7.2 7.2"/>
+            <path d="M9.6 16.8a7.2 7.2 0 0 0 7.2-7.2V4.8A2.4 2.4 0 0 0 14.4 2.4"/>
+            <circle cx="17.4" cy="18" r="3.6"/>
+          </svg>
+        </div>
+        <!-- SLOT: Replace -->
+        <div class="stat-number">15</div>
+        <div class="stat-label">Chuyên gia</div>
+        <div class="stat-sub">Bác sĩ chuyên khoa đầu ngành</div>
+      </div>
+
+    </div>
+
+    <!-- Medical disclaimer below stats -->
+    <p style="text-align:center;font-size:0.75rem;color:var(--subtle);margin-top:24px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.5;">
+      * Số liệu tổng hợp từ hệ thống quản lý bệnh nhân nội bộ, cập nhật tháng 5/2025. Kết quả điều trị có thể khác nhau theo từng cá nhân.
+    </p>
+  </div>
+</section>
+<!-- END: stats-bar -->
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+</script>
+
+<!--
+  USAGE NOTES:
+  - Always 4 stats — symmetrical grid
+  - Numbers in var(--accent) teal
+  - Each card: icon + big number + label + sub-label
+  - Teal 2px top border is signature of stats card
+  - Always include data disclaimer below
+-->

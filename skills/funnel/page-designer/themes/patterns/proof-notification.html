@@ -1,0 +1,64 @@
+<!--
+  proof-notification.html — Live social proof toast notifications
+  Slots: [PERSON] 1:1 tiny circular per notification
+  Fits any business: "X vừa mua", "Y vừa đăng ký", "Z vừa đặt tour"
+  Layout: fixed bottom-left stack · auto-cycling · subtle entrance
+  Note: paste once per page near </body>. Configure PROOF_DATA array.
+-->
+
+<!-- Toast container — fixed bottom-left -->
+<div id="proof-stack" class="fixed bottom-24 left-4 z-40 flex flex-col gap-2 pointer-events-none" style="max-width:280px"></div>
+
+<script>
+(function(){
+  // ── Configure for your business ──────────────────
+  const PROOF_DATA = [
+    { name:'Nguyễn Thanh A', role:'Coach · Hà Nội',     action:'vừa đăng ký',     initials:'NT', color:'var(--accent)',  time:'2 phút trước' },
+    { name:'Trần Minh B',    role:'Freelancer · HCM',   action:'vừa hoàn thành',  initials:'TM', color:'var(--cyan)',    time:'7 phút trước' },
+    { name:'Lê Thu C',       role:'Chủ shop · Đà Nẵng', action:'vừa mua',         initials:'LT', color:'var(--purple)',  time:'12 phút trước'},
+    { name:'Phạm Văn D',     role:'Agency · Hải Phòng', action:'vừa xem kết quả', initials:'PV', color:'#F59E0B',       time:'18 phút trước'},
+    { name:'Hoàng Linh E',   role:'Coach · Cần Thơ',    action:'vừa đăng ký',     initials:'HL', color:'#34D399',       time:'23 phút trước'},
+  ];
+
+  let idx = 0;
+  const stack = document.getElementById('proof-stack');
+
+  function createToast(data) {
+    const el = document.createElement('div');
+    el.className = 'proof-toast';
+    el.style.cssText = 'opacity:0;transform:translateX(-16px);transition:opacity .4s ease,transform .4s ease;pointer-events:auto';
+    el.innerHTML = `
+      <div style="width:32px;height:32px;border-radius:9999px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(255,255,255,0.07);color:${data.color}">
+        ${data.initials}
+        <!--
+          PERSON slot — replace initials span with:
+          <img src="photo.jpg" alt="${data.name}" style="width:100%;height:100%;object-fit:cover;border-radius:9999px">
+        -->
+      </div>
+      <div style="flex:1;min-width:0">
+        <p style="font-family:'Inter Tight',sans-serif;font-size:12px;font-weight:600;color:var(--ink);line-height:1.3">${data.name} <span style="color:var(--subtle);font-weight:400">${data.action}</span></p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--subtle);margin-top:2px">${data.role} · ${data.time}</p>
+      </div>
+      <div style="width:6px;height:6px;border-radius:9999px;flex-shrink:0;background:${data.color}"></div>
+    `;
+    stack.appendChild(el);
+    requestAnimationFrame(() => { el.style.opacity='1'; el.style.transform='translateX(0)'; });
+
+    // Auto-dismiss after 4s
+    setTimeout(() => {
+      el.style.opacity='0'; el.style.transform='translateX(-16px)';
+      setTimeout(() => el.remove(), 400);
+    }, 4000);
+  }
+
+  function showNext() {
+    createToast(PROOF_DATA[idx % PROOF_DATA.length]);
+    idx++;
+    // Random interval 8–14 seconds
+    setTimeout(showNext, 8000 + Math.random() * 6000);
+  }
+
+  // Start after 3s delay
+  setTimeout(showNext, 3000);
+})();
+</script>

@@ -1,0 +1,62 @@
+<!--
+  ty-refer.html — Share / referral (post-purchase)
+  Layout:     centered · max-w-xl · share card
+  Elements:   Incentive headline · Pre-filled share message · Platform share buttons · Copy link
+  Rule:       Luôn có sẵn nội dung để share — không để user tự nghĩ nội dung
+              Incentive rõ ràng: giảm giá cho bạn / hoa hồng / bonus thêm
+  Dùng cho:   Post-purchase — section cuối trang
+-->
+<div class="max-w-xl mx-auto px-6 pb-12">
+  <div class="rounded-xl p-6" style="background:var(--surface);border:1px solid var(--rim)">
+
+    <div class="text-center mb-5">
+      <p class="font-mono text-[11px] uppercase tracking-wider mb-2" style="color:var(--subtle);letter-spacing:.12em">Chia sẻ với bạn bè</p>
+      <h3 class="font-display font-bold text-ink" style="font-size:1.125rem;letter-spacing:-0.015em">
+        [Incentive — VD: "Giới thiệu bạn · Nhận [X] hoa hồng"]
+      </h3>
+      <p class="font-body text-sm mt-1" style="color:var(--body)">[Mô tả ngắn điều kiện]</p>
+    </div>
+
+    <!-- Pre-filled message -->
+    <div class="rounded-lg p-4 mb-4" style="background:var(--raised);border:1px solid var(--rim)">
+      <p class="font-mono text-[10px] uppercase tracking-wider mb-2" style="color:var(--subtle)">Nội dung sẵn để share:</p>
+      <p id="share-text" class="font-body text-sm leading-relaxed" style="color:var(--body)">
+        "[Nội dung share mẫu — 2–3 câu mô tả sản phẩm + link referal của user]"
+      </p>
+    </div>
+
+    <!-- Share buttons -->
+    <div class="grid grid-cols-2 gap-2 mb-3">
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/sharer/sharer.php?u=[REFERRAL_URL]" target="_blank"
+        class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg font-mono text-[11px] transition-colors"
+        style="background:rgba(24,119,242,.12);color:#4A9EF5;border:1px solid rgba(24,119,242,.2);text-decoration:none">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M9 1H7a3 3 0 00-3 3v1H2v3h2v5h3V8h2l.5-3H7V4a1 1 0 011-1h1V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+        Facebook
+      </a>
+      <!-- Zalo -->
+      <a href="https://zalo.me/share?url=[REFERRAL_URL]" target="_blank"
+        class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg font-mono text-[11px] transition-colors"
+        style="background:rgba(var(--cyan-rgb),.10);color:var(--cyan);border:1px solid rgba(var(--cyan-rgb),.2);text-decoration:none">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="3" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M4 9.5V6a2 2 0 014 0v3.5M4 7.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        Zalo
+      </a>
+    </div>
+
+    <!-- Copy referral link -->
+    <div class="flex items-center gap-2 rounded-lg px-3 py-2.5" style="background:var(--raised);border:1px solid var(--rim)">
+      <span class="font-mono text-xs flex-1 truncate" style="color:var(--subtle)">[REFERRAL_URL]</span>
+      <button onclick="navigator.clipboard.writeText('[REFERRAL_URL]');this.textContent='✓ Đã copy'"
+        class="font-mono text-[10px] px-2.5 py-1 rounded shrink-0 transition-colors"
+        style="background:rgba(var(--accent-rgb),.12);color:var(--accent)">
+        Copy link
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<!--
+  two-paths.html — Two paths comparison (with me vs without me)
+  Layout:     2-col grid · max-w-3xl · each col is a path card
+  Background: left col = danger dim · right col = accent dim
+  Elements:   path header (X vs ✓) + bullet list per path
+  Visuals:    X icons left · checkmark icons right · divider "VS" badge center
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-3xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Lựa chọn của bạn</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Hai con đường <span style="color:var(--accent)">trước mặt bạn</span></h2>
+    </div>
+
+    <div class="relative grid grid-cols-2 gap-4 reveal">
+
+      <!-- VS badge center -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center font-mono font-black text-xs text-ink" style="background:var(--bg);border:2px solid rgba(255,255,255,0.12)">VS</div>
+
+      <!-- Left — Without -->
+      <div class="rounded-xl p-6" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15)">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.15)">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M3 3l6 6" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p class="text-sm font-medium" style="color:#ef4444">Không có khóa học</p>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-start gap-2.5 text-sm text-subtle">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5l7-7M3.5 3.5l7 7" stroke="#ef4444" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Tiếp tục mày mò một mình, mất hàng tháng
+          </div>
+          <div class="flex items-start gap-2.5 text-sm text-subtle">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5l7-7M3.5 3.5l7 7" stroke="#ef4444" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Mắc sai lầm tốn kém mà đáng lẽ có thể tránh
+          </div>
+          <div class="flex items-start gap-2.5 text-sm text-subtle">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5l7-7M3.5 3.5l7 7" stroke="#ef4444" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Không biết mình đang đi đúng hướng hay không
+          </div>
+          <div class="flex items-start gap-2.5 text-sm text-subtle">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5l7-7M3.5 3.5l7 7" stroke="#ef4444" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Kết quả không nhất quán, khó scale
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — With -->
+      <div class="rounded-xl p-6" style="background:rgba(182,255,0,0.04);border:1px solid rgba(182,255,0,0.15)">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center" style="background:rgba(182,255,0,0.12)">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 5-5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="text-sm font-medium" style="color:var(--accent)">Với khóa học này</p>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-start gap-2.5 text-sm text-ink">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Có lộ trình rõ ràng từng bước, không mơ hồ
+          </div>
+          <div class="flex items-start gap-2.5 text-sm text-ink">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Tránh được sai lầm phổ biến nhờ kinh nghiệm thực tế
+          </div>
+          <div class="flex items-start gap-2.5 text-sm text-ink">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Được hỗ trợ khi gặp khó khăn
+          </div>
+          <div class="flex items-start gap-2.5 text-sm text-ink">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent)" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Kết quả đo lường được trong 33 ngày
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Decision CTA -->
+    <div class="text-center mt-8 reveal">
+      <a href="#checkout" class="btn-glow inline-flex items-center gap-2 py-3.5 px-8 rounded-btn font-display font-black text-sm" style="background:var(--accent);color:var(--bg)">
+        Chọn con đường đúng
+      </a>
+    </div>
+
+  </div>
+</section>

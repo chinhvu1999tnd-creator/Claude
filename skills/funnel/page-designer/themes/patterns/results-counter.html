@@ -1,0 +1,74 @@
+<!--
+  results-counter.html — Animated results / impact counter section
+  Layout:     centered · max-w-3xl · 3-col metric grid
+  Background: radial gradient accent dim
+  Elements:   label + large metric numbers + descriptions + total impact line
+  Visuals:    counter animation on scroll · accent numbers · subtle grid bg
+-->
+<section class="relative py-20 overflow-hidden" style="background:radial-gradient(ellipse at 50% 0%,rgba(182,255,0,0.07) 0%,transparent 65%),var(--bg)">
+  <div class="absolute inset-0 opacity-[0.025]" style="background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px)"></div>
+
+  <div class="relative max-w-3xl mx-auto px-6 text-center">
+
+    <div class="mb-12 reveal">
+      <span class="section-label">Kết quả thực tế</span>
+      <h2 class="font-display font-black text-ink" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Con số <span style="color:var(--accent)">biết nói</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12 reveal">
+
+      <div class="flex flex-col items-center">
+        <div class="font-mono font-black leading-none mb-2 counter" data-target="2400" style="font-size:clamp(2.5rem,6vw,4rem);color:var(--accent)">0</div>
+        <p class="text-ink font-medium text-sm mb-1">Học viên đã đào tạo</p>
+        <p class="text-subtle text-xs">Trên 15 tỉnh thành</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="font-mono font-black leading-none mb-2 flex items-start counter-wrap" style="font-size:clamp(2.5rem,6vw,4rem);color:var(--accent)">
+          <span class="counter" data-target="93">0</span><span>%</span>
+        </div>
+        <p class="text-ink font-medium text-sm mb-1">Tỉ lệ hoàn thành</p>
+        <p class="text-subtle text-xs">Cao hơn TB ngành 3×</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="font-mono font-black leading-none mb-2 counter" data-target="33" style="font-size:clamp(2.5rem,6vw,4rem);color:var(--accent)">0</div>
+        <p class="text-ink font-medium text-sm mb-1">Ngày trung bình</p>
+        <p class="text-subtle text-xs">Để thấy kết quả đầu tiên</p>
+      </div>
+
+    </div>
+
+    <!-- Impact statement -->
+    <div class="inline-flex items-center gap-2.5 px-5 py-3 rounded-full reveal" style="background:rgba(182,255,0,0.07);border:1px solid rgba(182,255,0,0.15)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5l1.5 3 3.5.5-2.5 2.5.6 3.5L7 9.5l-3.1 1.5.6-3.5L2 5l3.5-.5L7 1.5z" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round" fill="rgba(182,255,0,0.1)"/></svg>
+      <p class="text-sm text-ink">Tổng cộng đã giúp học viên tạo ra <span class="font-mono font-bold" style="color:var(--accent)">4.7 tỷ đồng</span> doanh thu</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  function animateCounters(entries) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.counter').forEach(el => {
+        const target = +el.dataset.target;
+        const duration = 1500;
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(ease * target).toLocaleString('vi-VN');
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+      observer.unobserve(entry.target);
+    });
+  }
+  const observer = new IntersectionObserver(animateCounters, { threshold: 0.3 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>

@@ -1,0 +1,207 @@
+<!--
+  PATTERN: Hero (S1–S3)
+  Theme: dark-bold-neon · Stack: Tailwind CDN
+  Sig: deep canvas + ambient blobs + grid overlay + gradient headline + glass pill
+  Rule: H1 uses font-size clamp — NOT a fixed Tailwind text-* class
+  ── CONTENT SCHEMA (Mode B — đọc phần này, tự quyết layout) ──────────
+  Elements bắt buộc:
+  · Audience callout — badge/pill mô tả đối tượng
+  · H1 headline — 2-4 lines, có gradient accent
+  · Subheadline — 1-2 câu, promise cụ thể
+  · Primary CTA + urgency text
+  · Social proof strip — 3-4 metrics
+  Elements tùy chọn:
+  · [PERSON] slot — ảnh người dùng / instructor (3:4)
+  · [PRODUCT] slot — mockup / screenshot (16:9)
+  DEFAULT LAYOUT (Mode A):
+  Full-width centered · min-h-screen · text-center · max-w-3xl
+  ─────────────────────────────────────────────────────────────────────
+-->
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT A: Centered Canvas (DEFAULT)
+     Dùng khi: Dark themes · tech/SaaS · high-energy · has hero visual space
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center overflow-hidden"
+         style="background:linear-gradient(180deg,#1c1c1a 0%,#141413 100%);">
+
+  <!-- Ambient blobs (accent + cyan) -->
+  <div class="absolute w-96 h-96 rounded-full opacity-[0.08] blur-3xl bg-accent-DEFAULT top-16 -left-32 animate-blob pointer-events-none"></div>
+  <div class="absolute w-72 h-72 rounded-full opacity-[0.06] blur-3xl bg-cyan-DEFAULT bottom-24 -right-20 animate-blob-2 pointer-events-none"></div>
+
+  <!-- Grid overlay -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background-image:linear-gradient(rgba(182,255,0,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(182,255,0,.03) 1px,transparent 1px);background-size:60px 60px;"></div>
+  <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none"
+       style="background:linear-gradient(to bottom,transparent,#141413);"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-6 py-24 text-center">
+
+    <!-- Audience callout pill -->
+    <div class="reveal mb-8">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass cursor-default">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent-DEFAULT animate-live flex-shrink-0"></span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-subtle">[AUDIENCE — e.g. Dành cho người muốn xây kênh]</span>
+      </span>
+    </div>
+
+    <!-- Headline — clamp for 2-3 lines -->
+    <h1 class="font-display font-black text-ink mb-6 reveal"
+        style="font-size:clamp(2.25rem,5.5vw,4.5rem);line-height:1.03;letter-spacing:-0.035em;transition-delay:.05s;">
+      [LINE 1]<br>
+      [LINE 2] —<br>
+      <span class="text-gradient">[ACCENT LINE],</span><br>
+      [LINE 4]
+    </h1>
+
+    <!-- Sub-headline -->
+    <p class="text-subtle text-lg leading-relaxed max-w-xl mx-auto mb-10 reveal"
+       style="transition-delay:.10s;">
+      [Sub — 2 câu. Promise cụ thể.]
+    </p>
+
+    <!-- CTA row -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal"
+         style="transition-delay:.16s;">
+      <a href="order.html"
+         class="btn-glow inline-flex items-center gap-2 bg-accent-DEFAULT text-accent-text font-display font-bold text-base px-8 py-4 rounded-btn min-h-[50px] cursor-pointer transition-colors duration-250 hover:brightness-110">
+        [CTA TEXT] →
+      </a>
+      <span class="text-faint text-sm">[Urgency — e.g. Chỉ còn hiệu lực hôm nay]</span>
+    </div>
+
+    <!-- Social proof strip -->
+    <div class="flex flex-wrap items-center justify-center gap-5 mt-12 reveal" style="transition-delay:.22s;">
+      <div class="flex items-center gap-2">
+        <span class="font-display font-black text-2xl text-ink tracking-tight">[N]</span>
+        <span class="text-subtle text-sm">học viên</span>
+      </div>
+      <span class="w-px h-5 bg-rim"></span>
+      <div class="flex items-center gap-2">
+        <span class="font-display font-black text-2xl text-ink tracking-tight">[RATING]★</span>
+        <span class="text-subtle text-sm">đánh giá</span>
+      </div>
+      <span class="w-px h-5 bg-rim"></span>
+      <div class="flex items-center gap-2">
+        <span class="font-display font-black text-2xl text-ink tracking-tight">[N] ngày</span>
+        <span class="text-subtle text-sm">hoàn tiền</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT B: 2-Col Split — text left, stat panel right
+     Dùng khi: Light themes · warm-authority · bold-persona · when you want asymmetry
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center overflow-hidden" style="background:var(--bg);">
+  <!-- Subtle grid -->
+  <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(var(--accent-rgb),.02) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--accent-rgb),.02) 1px,transparent 1px);background-size:60px 60px;"></div>
+  <!-- Accent top line -->
+  <div class="absolute top-0 left-0 w-24 h-px" style="background:var(--accent);"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-28 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <!-- Left: copy -->
+    <div>
+      <div class="reveal mb-6">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest" style="background:rgba(var(--accent-rgb),.10);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.22);border-radius:var(--radius-btn,4px);">
+          <span class="w-1.5 h-1.5 rounded-full animate-live flex-shrink-0" style="background:var(--accent);"></span>
+          [AUDIENCE LABEL]
+        </span>
+      </div>
+
+      <h1 class="font-display font-black text-ink reveal" style="font-size:clamp(2.25rem,4.5vw,3.75rem);line-height:1.02;letter-spacing:-0.03em;transition-delay:.05s;">
+        [LINE 1]<br>
+        <span style="color:var(--accent)">[LINE 2]</span><br>
+        [LINE 3]
+      </h1>
+
+      <p class="text-body text-lg leading-relaxed mt-5 mb-8 max-w-lg reveal" style="color:var(--subtle);transition-delay:.10s;">[SUBHEADLINE — 2 câu, promise cụ thể]</p>
+
+      <div class="flex flex-col sm:flex-row gap-3 reveal" style="transition-delay:.16s;">
+        <a href="#checkout" class="btn-glow inline-flex items-center justify-center gap-2 font-display font-bold text-base px-8 py-4 min-h-[50px]" style="background:var(--accent);color:var(--bg);border-radius:var(--radius-btn,4px);">
+          [CTA TEXT]
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <span class="self-center text-sm font-mono" style="color:var(--subtle)">[URGENCY — e.g. Chỉ còn 48h]</span>
+      </div>
+    </div>
+
+    <!-- Right: stat cards panel -->
+    <div class="reveal" style="transition-delay:.12s;">
+      <div class="grid grid-cols-2 gap-3">
+
+        <div class="p-5" style="background:var(--surface);border:1px solid var(--rim);border-radius:var(--radius-card,6px);">
+          <span class="font-mono font-black text-3xl block leading-none mb-1" style="color:var(--accent)">[STAT 1]</span>
+          <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 1]</span>
+        </div>
+
+        <div class="p-5" style="background:var(--surface);border:1px solid var(--rim);border-radius:var(--radius-card,6px);">
+          <span class="font-mono font-black text-3xl block leading-none mb-1" style="color:var(--accent)">[STAT 2]</span>
+          <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 2]</span>
+        </div>
+
+        <div class="col-span-2 p-5" style="background:var(--surface);border:1px solid rgba(var(--accent-rgb),.25);border-radius:var(--radius-card,6px);">
+          <div class="border-l-2 pl-4" style="border-color:var(--accent);">
+            <p class="text-sm leading-relaxed italic mb-3" style="color:var(--body)">"[SHORT SOCIAL PROOF QUOTE — 1-2 câu từ khách hàng thật]"</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-bold flex-shrink-0" style="background:rgba(var(--accent-rgb),.12);color:var(--accent)">[INI]</div>
+              <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[NAME] · [RESULT]</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARIANT C: Editorial Oversized — H1 dominates viewport
+     Dùng khi: signal theme · minimal-mono · bold-persona · khi muốn typography là visual
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex flex-col justify-end pb-16 overflow-hidden" style="background:var(--bg);">
+  <!-- Top accent bar -->
+  <div class="absolute top-0 left-0 right-0 h-px" style="background:var(--accent);opacity:0.6;"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pt-32">
+
+    <div class="mb-6 reveal">
+      <span class="font-mono text-[10px] uppercase tracking-[0.16em]" style="color:var(--subtle)">[AUDIENCE LABEL] — [YEAR OR CONTEXT]</span>
+    </div>
+
+    <h1 class="font-display font-black text-ink reveal" style="font-size:clamp(3.5rem,9vw,8rem);line-height:0.92;letter-spacing:-0.04em;transition-delay:.04s;">
+      [LINE 1]<br>
+      <span style="color:var(--accent)">[LINE 2]</span><br>
+      [LINE 3]
+    </h1>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-8 reveal" style="transition-delay:.14s;">
+      <a href="#checkout" class="btn-glow inline-flex items-center gap-2 font-display font-bold text-base px-8 py-4 min-h-[50px]" style="background:var(--accent);color:var(--bg);border-radius:var(--radius-btn,4px);">
+        [CTA TEXT]
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <div class="h-px w-10 flex-shrink-0" style="background:var(--faint);"></div>
+      <p class="text-sm max-w-xs leading-relaxed" style="color:var(--subtle)">[SUBHEADLINE — 1 câu ngắn, statement]</p>
+    </div>
+
+    <!-- Bottom stats strip -->
+    <div class="mt-16 pt-8 flex flex-wrap gap-10 reveal" style="border-top:1px solid var(--faint);transition-delay:.2s;">
+      <div>
+        <span class="font-mono font-black text-2xl block leading-none mb-1" style="color:var(--accent)">[N]+</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 1]</span>
+      </div>
+      <div>
+        <span class="font-mono font-black text-2xl block leading-none mb-1" style="color:var(--accent)">[N]%</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 2]</span>
+      </div>
+      <div>
+        <span class="font-mono font-black text-2xl block leading-none mb-1" style="color:var(--accent)">[N] ngày</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest" style="color:var(--subtle)">[LABEL 3]</span>
+      </div>
+    </div>
+
+  </div>
+</section>

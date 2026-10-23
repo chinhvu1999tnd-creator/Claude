@@ -1,0 +1,92 @@
+<!--
+  review-grid.html — 3-col review card grid with star ratings
+  Layout:     3-col grid · max-w-5xl · masonry feel via varying card heights
+  Background: var(--bg)
+  Elements:   label + H2 + aggregate rating bar + review cards (stars · name · role · quote · date)
+  Visuals:    star SVGs · avatar initials · verified badge
+-->
+<section class="py-24 bg-canvas">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Đánh giá</span>
+      <h2 class="font-display font-black text-ink mb-4" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;letter-spacing:-0.03em">Học viên nói gì <span style="color:var(--accent)">về khóa học</span></h2>
+      <!-- Aggregate -->
+      <div class="flex items-center justify-center gap-3">
+        <span class="font-mono font-black text-4xl" style="color:var(--accent)">4.9</span>
+        <div>
+          <div class="flex gap-0.5">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          </div>
+          <p class="text-subtle text-xs mt-0.5">2,400+ đánh giá</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+
+      <!-- Review card -->
+      <div class="rounded-xl p-5 flex flex-col gap-3" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <div class="flex gap-0.5">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+        </div>
+        <p class="text-ink text-sm leading-relaxed flex-1">"Nội dung review thực tế và cụ thể. Nêu kết quả đạt được sau khi học. Câu quote ngắn 2–3 dòng."</p>
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background:rgba(182,255,0,0.15);color:var(--accent)">NT</div>
+          <div>
+            <p class="text-ink text-xs font-medium">Nguyễn Thị A</p>
+            <p class="text-subtle text-[10px]">Chủ shop · Hà Nội</p>
+          </div>
+          <span class="ml-auto text-[10px] font-mono" style="color:var(--accent)">✓ Đã xác minh</span>
+        </div>
+      </div>
+
+      <div class="rounded-xl p-5 flex flex-col gap-3" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <div class="flex gap-0.5">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+        </div>
+        <p class="text-ink text-sm leading-relaxed flex-1">"Review dài hơn một chút — 4–5 câu. Mô tả hành trình trước và sau. Kết quả cụ thể bằng số."</p>
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background:rgba(0,194,255,0.15);color:var(--cyan)">TH</div>
+          <div>
+            <p class="text-ink text-xs font-medium">Trần Hoàng B</p>
+            <p class="text-subtle text-[10px]">Freelancer · TP.HCM</p>
+          </div>
+          <span class="ml-auto text-[10px] font-mono" style="color:var(--accent)">✓ Đã xác minh</span>
+        </div>
+      </div>
+
+      <div class="rounded-xl p-5 flex flex-col gap-3" style="background:var(--surface);border:1px solid rgba(255,255,255,0.07)">
+        <div class="flex gap-0.5">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7L8 1z"/></svg>
+        </div>
+        <p class="text-ink text-sm leading-relaxed flex-1">"Review ngắn và súc tích. Một câu kết quả mạnh."</p>
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background:rgba(240,34,106,0.15);color:#F0226A">LN</div>
+          <div>
+            <p class="text-ink text-xs font-medium">Lê Ngọc C</p>
+            <p class="text-subtle text-[10px]">Coach · Đà Nẵng</p>
+          </div>
+          <span class="ml-auto text-[10px] font-mono" style="color:var(--accent)">✓ Đã xác minh</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,122 @@
+<!--
+  PATTERN: guarantee-card.html — Story First
+  Design: Conversational, human, honest — NOT a corporate seal or badge
+  Copy: Baskerville italic for the promise itself — reads like a personal letter
+  Background: Warm surface — NOT terracotta bg (too aggressive for a trust moment)
+  No graphic seal — just honest words, a left border accent, and warm typography
+  Language: Direct and personal ("tôi sẽ hoàn lại") not legal/corporate
+-->
+<section style="
+  background: var(--surface);
+  padding: 60px 24px;
+  border-top: 1px solid var(--faint);
+  border-bottom: 1px solid var(--faint);
+">
+  <div style="max-width: 680px; margin: 0 auto;">
+
+    <!-- Section label -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+      <div style="width:24px;height:1.5px;background:var(--accent)"></div>
+      <span style="
+        font-family:'Libre Franklin',sans-serif;font-size:11px;font-weight:600;
+        color:var(--accent);letter-spacing:0.10em;text-transform:uppercase;
+      ">Cam kết của tôi</span>
+    </div>
+
+    <!-- Main guarantee block — left border, warm card -->
+    <div style="
+      border-left: 5px solid var(--accent);
+      padding: 28px 32px;
+      background: var(--raised);
+      border-radius: 0 18px 18px 0;
+      position: relative;
+    ">
+
+      <!-- Headline -->
+      <h3 style="
+        font-family:'Libre Baskerville',serif;font-weight:700;
+        font-size:clamp(1.125rem,2.5vw,1.375rem);
+        color:var(--ink);margin:0 0 18px;line-height:1.30;
+      ">Thử [N] ngày — không rủi ro</h3>
+
+      <!-- The promise — italic Baskerville, reads like a personal letter -->
+      <p style="
+        font-family:'Libre Baskerville',serif;
+        font-style:italic;
+        font-size:clamp(1rem,2vw,1.1875rem);
+        line-height:1.70;
+        color:var(--ink);
+        margin:0 0 20px;
+      ">
+        "Nếu sau [N] ngày bạn cảm thấy chương trình này chưa phù hợp với hành trình của mình — tôi sẽ hoàn lại toàn bộ, không câu hỏi, không phán xét."
+      </p>
+
+      <!-- Context paragraph — warm and human -->
+      <p style="
+        font-family:'Nunito Sans',sans-serif;font-weight:300;
+        font-size:15px;line-height:1.75;color:var(--body);
+        margin:0 0 24px;
+      ">
+        Tôi tin rằng nếu bạn thực sự tham gia và thử — bạn sẽ cảm nhận được điều gì đó thay đổi. Nhưng nếu không, thì hành trình của mỗi người là khác nhau và không có gì phải xấu hổ khi điều này chưa đúng thời điểm với bạn.
+      </p>
+
+      <!-- Signature / personal note -->
+      <div style="
+        display:flex;align-items:center;gap:14px;
+        padding-top:20px;
+        border-top:1px dashed var(--faint);
+      ">
+        <!-- Avatar placeholder -->
+        <div style="
+          width:44px;height:44px;border-radius:50%;flex-shrink:0;
+          background:linear-gradient(135deg,rgba(192,85,61,0.15),rgba(107,143,113,0.12));
+          border:2px solid rgba(192,85,61,0.20);
+          display:flex;align-items:center;justify-content:center;
+        ">
+          <span style="font-family:'Libre Baskerville',serif;font-size:16px;font-style:italic;color:var(--accent)">[?]</span>
+        </div>
+        <div>
+          <p style="
+            font-family:'Libre Baskerville',serif;
+            font-style:italic;font-size:14px;
+            color:var(--ink);margin:0 0 2px;
+          ">[Tên của bạn]</p>
+          <p style="font-family:'Libre Franklin',sans-serif;font-size:12px;color:var(--subtle);margin:0">[Vai trò — Coach, tác giả, podcaster]</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reassurance row — 3 simple trust signals, warm icons -->
+    <div style="
+      display:flex;flex-wrap:wrap;gap:20px;
+      margin-top:24px;padding:20px;
+      background:var(--bg);border-radius:14px;
+      border:1px dashed var(--faint);
+    ">
+      <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:140px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 2L10 5.5L14 6L11 9L11.5 13L8 11L4.5 13L5 9L2 6L6 5.5L8 2Z"
+                fill="rgba(192,85,61,0.10)" stroke="var(--accent)" stroke-width="1.3" stroke-linejoin="round"/>
+        </svg>
+        <span style="font-family:'Libre Franklin',sans-serif;font-size:12.5px;color:var(--body)">Hoàn tiền đầy đủ [N] ngày</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:140px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="6" width="12" height="9" rx="2" fill="rgba(107,143,113,0.10)" stroke="var(--sage)" stroke-width="1.3"/>
+          <path d="M5 6V5a3 3 0 0 1 6 0v1" stroke="var(--sage)" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          <circle cx="8" cy="10.5" r="1.2" fill="var(--sage)"/>
+        </svg>
+        <span style="font-family:'Libre Franklin',sans-serif;font-size:12.5px;color:var(--body)">Thanh toán bảo mật</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:140px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 2C5 2 3 4 3 7.5c0 3 1.5 5 5 7.5C13 12.5 13 10.5 13 7.5 13 4 11 2 8 2Z"
+                fill="rgba(192,85,61,0.08)" stroke="var(--accent)" stroke-width="1.3"/>
+          <path d="M6 8l1.5 1.5L11 6" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span style="font-family:'Libre Franklin',sans-serif;font-size:12.5px;color:var(--body)">Không cần giải thích lý do</span>
+      </div>
+    </div>
+
+  </div>
+</section>
